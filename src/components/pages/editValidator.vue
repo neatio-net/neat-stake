@@ -76,9 +76,7 @@
               placeholder="Gas Price"
             ></el-input>
           </div>
-          <!-- <div class="item">
-                        <el-button @click="dialogVisible=true" class="dnk" type="danger">{{$t('walletInfo.dnk')}}</el-button>
-          </div>-->
+
         </div>
         <el-button @click="sendTx" class="gt" type="danger">{{
           $t("gt")
@@ -196,22 +194,7 @@ export default {
       });
     },
     async sendTx() {
-      // if (!this.moniker) {
-      //   this.info("error", this.$t("errMoniker"))
-      //   return;
-      // }
-      // if (!this.website) {
-      //   this.info("error", this.$t("errWebsite"))
-      //   return;
-      // }
-      // if (!this.identity) {
-      //   this.info("error", this.$t("errIdentity"))
-      //   return;
-      // }
-      // if (!this.details) {
-      //   this.info("error", this.$t("errDetails"))
-      //   return;
-      // }
+
       if (isNaN(this.limit) || this.limit <= 0) {
         this.info("error", this.$t("errLimit"));
         return;
@@ -252,7 +235,7 @@ export default {
       //   .sendSignTx({
       //     gasPrice: this.price,
       //     gas: this.limit,
-      //     to: "0x0000000000000000000000000000000000001001",
+      //     to: "0x0000000000000000000000000000000000000505",
       //     value: "1000000",
       //     account: { address: this.address, privateKey: this.privateKey },
       //     data: contractMethod + data.substring(2),
@@ -270,7 +253,7 @@ export default {
       const params = [
         {
           from: this.address,
-          to: "0x0000000000000000000000000000000000001001",
+          to: "0x0000000000000000000000000000000000000505",
           gas: Utils.toHex(this.limit),
           gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
           value: "0x0",

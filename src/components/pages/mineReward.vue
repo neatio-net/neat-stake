@@ -36,17 +36,7 @@
             <p style="font-size:14px">{{$t('totalReward')}}</p>
             <el-input style="width:420px" readonly v-model="totalReward" :placeholder="$t('totalReward')"></el-input>
           </div>
-<!--          <div class="item">-->
-<!--            <p style="font-size:14px">Gas Limit</p>-->
-<!--            <el-input style="width:420px"  v-model="limit" placeholder="Gas Limit"></el-input>-->
-<!--          </div>-->
-<!--          <div class="item">-->
-<!--            <p style="font-size:14px">Gas Price</p>-->
-<!--            <el-input style="width:420px"  v-model="price" placeholder="Gas Price"></el-input>-->
-<!--          </div>-->
-          <!-- <div class="item">
-              <el-button @click="dialogVisible=true" class="dnk" type="danger">{{$t('walletInfo.dnk')}}</el-button>
-          </div> -->
+
         </div>
         <el-button @click="sendTx"  class="gt" type="danger">{{$t('wr')}}</el-button>
       </div>
@@ -71,7 +61,7 @@
         totalReward: 0,
         address:'',
         privateKey:'',
-        toAddress:"0x0000000000000000000000000000000000000000",
+        toAddress:"0x0000000000000000000000000000000000000505",
         receiveAddress: "",
         amount: 0,
         limit:'30000',

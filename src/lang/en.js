@@ -1,6 +1,6 @@
 export default {
     newWallet: 'New Wallet',
-    walletInfo: 'NeatValidator',
+    walletInfo: 'NeatStake',
     mapping: 'Token Mapping',
     transfer: 'Transfer',
     contract: 'Contract',

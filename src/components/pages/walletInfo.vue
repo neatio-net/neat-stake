@@ -13,20 +13,106 @@
            <div class="not-connected" v-show="address == ''">
            Please Unlock Your MetaMask wallet!
            </div>
-         <div class="wallet-address" v-show="address != ''">
+           <!-- Pool1 -->
+          <div class="cards-grid__item">
+            <div class="cards-grid__graphic">
+              <div class="cards-grid__icon cards-grid__icon--create">
+                <span></span>
+              </div>
+            </div>
+            <div class="cards-grid__title">
+              <div class="poolNo">#1</div>
+              <div class="vAddy">{{ addy1 }}</div>
+              <div class="vPower">{{ vPower1 }}</div>
+              <div class="vComm">{{ vComm }}</div>
+              <button class="rippleStake">SELECT</button>
+            </div>
+          </div>
+
+
+           <!-- Pool2 -->
+                 <div class="cards-grid__item">
+            <div class="cards-grid__graphic">
+              <div class="cards-grid__icon cards-grid__icon--create">
+                <span></span>
+              </div>
+            </div>
+
+            <div class="cards-grid__title">
+              <div class="poolNo">#2</div>
+              <div class="vAddy">{{ addy2 }}</div>
+              <div class="vPower">{{ vPower2 }}</div>
+              <div class="vComm">{{ vComm }}</div>
+              <button class="rippleStake">SELECT</button>
+            </div>
+          </div>
+            <!-- Pool3 -->
+                 <div class="cards-grid__item">
+            <div class="cards-grid__graphic">
+              <div class="cards-grid__icon cards-grid__icon--create">
+                <span></span>
+              </div>
+            </div>
+            <div class="cards-grid__title">
+              <div class="poolNo">#3</div>
+              <div class="vAddy">{{ addy3 }}</div>
+              <div class="vPower">{{ vPower3 }}</div>
+              <div class="vComm">{{ vComm }}</div>
+              <button class="rippleStake">SELECT</button>
+            </div>
+          </div>
+                      <!-- Pool4 -->
+                 <div class="cards-grid__item">
+            <div class="cards-grid__graphic">
+              <div class="cards-grid__icon cards-grid__icon--create">
+                <span></span>
+              </div>
+            </div>
+            <div class="cards-grid__title">
+              <div class="poolNo">#4</div>
+              <div class="vAddy">{{ addy4 }}</div>
+              <div class="vPower">{{ vPower4 }}</div>
+              <div class="vComm">{{ vComm }}</div>
+              <button class="rippleStake">SELECT</button>
+            </div>
+          </div>
+                      <!-- Pool5 -->
+                 <div class="cards-grid__item">
+            <div class="cards-grid__graphic">
+              <div class="cards-grid__icon cards-grid__icon--create">
+                <span></span>
+              </div>
+            </div>
+            <div class="cards-grid__title">
+              <div class="poolNo">#5</div>
+              <div class="vAddy">{{ addy5 }}</div>
+              <div class="vPower">{{ vPower5 }}</div>
+              <div class="vComm">{{ vComm }}</div>
+              <button class="rippleStake">SELECT</button>
+            </div>
+          </div>
+
+
+
+      </div>
+
+
+    
+      <div class="box2" v-show="address != ''">
+        <div style="margin: 48px 0 0 108px">
+                  <div class="balance-details" v-show="address != ''">
+                   <div class="wallet-balance-available" v-show="address !== ''">
+                       <div class="wallet-address" v-show="address != ''">
               <span style="color:lightgrey" > Validator Address:</span> 
                <div class="address-title" v-show="address != ''">
               {{address}}
               </div>
           </div>
-
-          <div class="balance-details" v-show="address != ''">
-                   <div class="wallet-balance-available" v-show="address !== ''">
            <span style="color:lightgrey">Available Balance:</span>  <span style="color:#a6ff33">{{fullbalance}}</span>  NEAT
           </div>
             <div class="wallet-balance-available">
-           <span style="color:lightgrey">Collateral Locked:</span> <span style="color:#a6ff33">{{staking}}</span>  NEAT 
-           <button class="rippleUnreg" @click="unRegister">unregister</button>
+           <span style="color:lightgrey">Delegated coinss:</span> <span style="color:#a6ff33">{{staking}}</span>  NEAT 
+           <button class="rippleUnreg" @click="unRegister">unstake</button>
           </div>
             <div class="wallet-balance-available">
            <span style="color:lightgrey">Unclaimed Rewards:</span> <span style="color:#a6ff33">{{rewards}}</span>  
@@ -35,38 +121,31 @@
                 >
           </div>
           </div>
-
-      </div>
-
-
-    
-      <div class="box2" v-show="address != ''">
-        <div style="margin: 48px 0 0 108px">
             <!-- ADDRESS -->     
-          <div class="item" >
+          <!-- <div class="item" >
             <p style="font-size: 14px">Validator Public Key (256 char long)</p>
             <input class="inputs"
               style="width: 420px;background-color:#000"
               v-model="nodePublicKey"
               placeholder="Public key"
             >
-          </div>
-          <div class="item">
+          </div> -->
+          <!-- <div class="item">
             <p style="font-size: 14px">Validator Private Key (64 char long)</p>
             <input class="inputs"
               style="width: 420px;background-color:#000"
               v-model="nodePrivateKey"
               placeholder="Private key"
             >
-          </div>
-          <div class="item">
+          </div> -->
+          <!-- <div class="item">
             <p style="font-size: 14px">Pool Commission (default 15%)</p>
             <input class="inputs"
               style="width: 420px;background-color:#000"
               v-model="commission"
               placeholder="Commission"
             >
-          </div>
+          </div> -->
           <div class="item">
             <p style="font-size: 14px">Amount To Be Staked (locked)</p>
             <input class="inputs"
@@ -78,7 +157,7 @@
         </div>
  
         <div class="btn">
-          <button id="gtButton" @click="registerValidator">{{ "PROCEED" }}</button>
+          <button id="gtButton" @click="registerValidator">{{ "STAKE" }}</button>
         </div>
         
       </div>
@@ -93,10 +172,13 @@ import BigNumber from "bignumber.js";
 import neatioapi from "neatioapi";
 import axios from "axios";
 
-const Utils = neatioapi.utils;
+const Utils = require("neatioapi").utils;
 const Nat = require("neatioapi").nat;
-const Url = 'https://rpc.neatio.net';
+const URL = 'https://rpc.neatio.net';
 const RPC = require("neatioapi").rpc;
+const Abi = require("neatioapi").abi;
+const Web3 = require('web3');
+const web3 = new Web3('https://rpc.neatio.net');
 
 export default {
   data() {
@@ -106,14 +188,23 @@ export default {
       fullbalance:"",
       address: "",
       privateKey: "",
-      nodePublicKey: "",
-      nodePrivateKey: "",
       commission: 15,
       staking:"",
       rewards:"",
       amount:"",
       limit: "21000",
       price: "",
+      addy1: null,
+      addy2: null,
+      addy3: null,
+      addy4: null,
+      addy5: null,
+      vPower1: null,
+      vPower2: null,
+      vPower3: null,
+      vPower4: null,
+      vPower5: null,
+      vComm: "15%",
     };
   },
   components: {
@@ -121,10 +212,62 @@ export default {
     EyeInput,
   },
 
-  mounted() {
+  async mounted() {
     this.connectAccount();
     this.initialize();
+
+
+    const DATA = {
+      jsonrpc: "2.0",
+      method: "neat_getNextEpochValidators",
+      params: [],
+      id: 1,
+    };
+
+    await axios
+      .post(URL, DATA)
+      .then((response) => (this.array = response.data.result));
+
+    const validators = this.array;
+    console.log(validators);
+    const v1 = Object(validators)[0];
+    //console.log(v1);
+
+    const v1Addy = v1.address;
+    this.addy1 = v1Addy;
+    const vPower1 = Utils.toNEAT(Nat.toString(v1.votingPower));
+    this.vPower1 = vPower1;
+
+    const v2 = Object(validators)[1];
+    const v2Addy = v2.address;
+    this.addy2 = v2Addy;
+    const vPower2 = Utils.toNEAT(Nat.toString(v2.votingPower));
+    this.vPower2 = vPower2;
+
+    const v3 = Object(validators)[2];
+    const v3Addy = v3.address;
+    this.addy3 = v3Addy;
+    const vPower3 = Utils.toNEAT(Nat.toString(v3.votingPower));
+    this.vPower3 = vPower3;
+
+    const v4 = Object(validators)[3];
+    const v4Addy = v4.address;
+    this.addy4 = v4Addy;
+    const vPower4 = Utils.toNEAT(Nat.toString(v4.votingPower));
+    this.vPower4 = vPower4;
+
+    const v5 = Object(validators)[4];
+    const v5Addy = v5.address;
+    this.addy5 = v5Addy;
+    const vPower5 = Utils.toNEAT(Nat.toString(v5.votingPower));
+    this.vPower5 = vPower5;
+
+
+
+
   },
+
+
   methods: {
 
 
