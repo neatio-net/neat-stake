@@ -115,7 +115,7 @@ export default {
           this.connectAccount();
         } else {
           
-          this.address = `⦿ Neatio Mainnet`
+          this.address = `Neatio Mainnet`
         }
 
       } catch (e) {
@@ -373,7 +373,7 @@ export default {
       height: 30px;
       color: #000000;
       border: 1px solid #000;
-      border-radius: 4px;
+      border-radius: 24px;
       background-color: #000;
       font-size: 16px;
       cursor: pointer;

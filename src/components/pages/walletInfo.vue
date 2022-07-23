@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="dashboard" >
-      VALIDATOR DASHBOARD
+      NEATIO STAKING DASHBOARD
     </div>
     <div v-if="step == 1">    
 
@@ -9,86 +9,42 @@
     </div>
     <div v-if="step == 2" style="padding-bottom: 90px">
 
+    <div class="boxes">
      <div class="box1" >
            <div class="not-connected" v-show="address == ''">
            Please Unlock Your MetaMask wallet!
            </div>
-           <!-- Pool1 -->
+
+                      <!-- Pool1 -->
           <div class="cards-grid__item">
             <div class="cards-grid__graphic">
               <div class="cards-grid__icon cards-grid__icon--create">
-                <span></span>
-              </div>
-            </div>
-            <div class="cards-grid__title">
-              <div class="poolNo">#1</div>
-              <div class="vAddy">{{ addy1 }}</div>
-              <div class="vPower">{{ vPower1 }}</div>
-              <div class="vComm">{{ vComm }}</div>
-              <button class="rippleStake">SELECT</button>
-            </div>
-          </div>
 
+              </div>
+            </div>
+            <div class="pools">
+              <div class="poolNo">Pool #1</div>
+              <div class="vAddy">{{ addy4 }} </div>
+              <div class="vPower"><span style="color:grey">Pool Total Weight: </span>{{ vPower4 }} 
+              <span style="color:#00bfff; font-size: small; font-weight: bold;"> NEAT</span></div>
+              <div class="vComm"><span style="color:grey">Pool Commission: </span>{{ vComm }}</div>
+              <!-- <button class="rippleStake">SELECT</button> -->
+            </div>
+          </div>
+                      <!-- Pool2 -->
+          <div class="cards-grid__item">
+            <div class="cards-grid__graphic">
+              <div class="cards-grid__icon cards-grid__icon--create">
 
-           <!-- Pool2 -->
-                 <div class="cards-grid__item">
-            <div class="cards-grid__graphic">
-              <div class="cards-grid__icon cards-grid__icon--create">
-                <span></span>
               </div>
             </div>
-
-            <div class="cards-grid__title">
-              <div class="poolNo">#2</div>
-              <div class="vAddy">{{ addy2 }}</div>
-              <div class="vPower">{{ vPower2 }}</div>
-              <div class="vComm">{{ vComm }}</div>
-              <button class="rippleStake">SELECT</button>
-            </div>
-          </div>
-            <!-- Pool3 -->
-                 <div class="cards-grid__item">
-            <div class="cards-grid__graphic">
-              <div class="cards-grid__icon cards-grid__icon--create">
-                <span></span>
-              </div>
-            </div>
-            <div class="cards-grid__title">
-              <div class="poolNo">#3</div>
-              <div class="vAddy">{{ addy3 }}</div>
-              <div class="vPower">{{ vPower3 }}</div>
-              <div class="vComm">{{ vComm }}</div>
-              <button class="rippleStake">SELECT</button>
-            </div>
-          </div>
-                      <!-- Pool4 -->
-                 <div class="cards-grid__item">
-            <div class="cards-grid__graphic">
-              <div class="cards-grid__icon cards-grid__icon--create">
-                <span></span>
-              </div>
-            </div>
-            <div class="cards-grid__title">
-              <div class="poolNo">#4</div>
-              <div class="vAddy">{{ addy4 }}</div>
-              <div class="vPower">{{ vPower4 }}</div>
-              <div class="vComm">{{ vComm }}</div>
-              <button class="rippleStake">SELECT</button>
-            </div>
-          </div>
-                      <!-- Pool5 -->
-                 <div class="cards-grid__item">
-            <div class="cards-grid__graphic">
-              <div class="cards-grid__icon cards-grid__icon--create">
-                <span></span>
-              </div>
-            </div>
-            <div class="cards-grid__title">
-              <div class="poolNo">#5</div>
-              <div class="vAddy">{{ addy5 }}</div>
-              <div class="vPower">{{ vPower5 }}</div>
-              <div class="vComm">{{ vComm }}</div>
-              <button class="rippleStake">SELECT</button>
+            <div class="pools">
+              <div class="poolNo">Pool #2</div>
+              <div class="vAddy">{{ addy5 }} </div>
+              <div class="vPower"><span style="color:grey">Pool Total Weight: </span>{{ vPower5 }} 
+              <span style="color:#00bfff; font-size: small; font-weight: bold;"> NEAT</span></div>
+              <div class="vComm"><span style="color:grey">Pool Commission: </span>{{ vComm }}</div>
+              <!-- <button class="rippleStake">SELECT</button> -->
             </div>
           </div>
 
@@ -99,67 +55,43 @@
 
     
       <div class="box2" v-show="address != ''">
-        <div style="margin: 48px 0 0 108px">
+        <div class="walletInfo">
                   <div class="balance-details" v-show="address != ''">
                    <div class="wallet-balance-available" v-show="address !== ''">
                        <div class="wallet-address" v-show="address != ''">
-              <span style="color:lightgrey" > Validator Address:</span> 
+              <span style="color:lightgrey" > Connected Wallet Address</span> 
                <div class="address-title" v-show="address != ''">
               {{address}}
               </div>
           </div>
-           <span style="color:lightgrey">Available Balance:</span>  <span style="color:#a6ff33">{{fullbalance}}</span>  NEAT
+          
+           <span style="color:lightgrey; font-size: 14px;">Available Balance:</span>  <span style="color:#a6ff33">{{fullbalance}}</span> <span style="font-weight: bold; font-size: 12px;">NEAT</span>
           </div>
             <div class="wallet-balance-available">
-           <span style="color:lightgrey">Delegated coinss:</span> <span style="color:#a6ff33">{{staking}}</span>  NEAT 
+           <span style="color:lightgrey; font-size: 14px;">Delegated Coins:</span> <span style="color:#a6ff33">{{staking}}</span>   <span style="font-weight: bold; font-size: 12px;">NEAT</span>
            <button class="rippleUnreg" @click="unRegister">unstake</button>
           </div>
             <div class="wallet-balance-available">
-           <span style="color:lightgrey">Unclaimed Rewards:</span> <span style="color:#a6ff33">{{rewards}}</span>  
+           <span style="color:lightgrey; font-size: 14px;">Unclaimed Rewards:</span> <span style="color:#a6ff33">{{rewards}}</span>  
            <router-link to="/claimReward"
                   ><button class="rippleClaim">claim</button></router-link
                 >
           </div>
           </div>
-            <!-- ADDRESS -->     
-          <!-- <div class="item" >
-            <p style="font-size: 14px">Validator Public Key (256 char long)</p>
-            <input class="inputs"
-              style="width: 420px;background-color:#000"
-              v-model="nodePublicKey"
-              placeholder="Public key"
-            >
-          </div> -->
-          <!-- <div class="item">
-            <p style="font-size: 14px">Validator Private Key (64 char long)</p>
-            <input class="inputs"
-              style="width: 420px;background-color:#000"
-              v-model="nodePrivateKey"
-              placeholder="Private key"
-            >
-          </div> -->
-          <!-- <div class="item">
-            <p style="font-size: 14px">Pool Commission (default 15%)</p>
-            <input class="inputs"
-              style="width: 420px;background-color:#000"
-              v-model="commission"
-              placeholder="Commission"
-            >
-          </div> -->
+                </div>
           <div class="item">
-            <p style="font-size: 14px">Amount To Be Staked (locked)</p>
             <input class="inputs"
-              style="width: 420px;background-color:#000"
               v-model="amount"
-              placeholder="Amount"
+              placeholder="Amount To Stake"
             >
           </div>
-        </div>
+
  
         <div class="btn">
-          <button id="gtButton" @click="registerValidator">{{ "STAKE" }}</button>
+          <button id="gtButton" @click="registerValidator">{{ "LET'S STAKE" }}</button>
         </div>
         
+      </div>
       </div>
     </div>
   </div>
@@ -547,23 +479,28 @@ button {
 }
 
 .address-title {
-  margin-bottom:5px;
- 
   margin-top:10px;
-  width: 420px
+  margin-bottom:50px; 
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: -15px;
+  
 }
 
 .wallet-address {
   margin-bottom:5px;
-  margin-left: 108px;
+  margin-left: 10px;
   margin-top:10px;
-  width: 420px
+  text-align: center;
+
 }
 
 .inputs {
     background-color: #000;
     background-image: none;
-    border-radius: 4px;
+    border-radius: 24px;
+    width: 120px;
+    margin: 20px;
     border: 1px solid #dcdfe6;
     box-sizing: border-box;
     color: #606266;
@@ -572,39 +509,80 @@ button {
     height: 40px;
     line-height: 40px;
     outline: 0;
-    padding: 0 15px;
+    padding: 15px;
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
     width: 100%; 
 }
+.walletInfo {
+  text-align: left;
+  margin: 10px;
+}
+.item {
+
+  display: inline-block;
+  vertical-align: top;
+  height: 118px;
+  margin-left: 10px;
+}
+
 
 .wallet-balance-available {
-  margin-bottom:5px;
+  margin: 10px;
 }
 
 .balance-details {
-  margin-left: 120px;
+
   margin-top:10px;
 }
  .dashboard{
     font-size:24px;
-    font-weight:500;
+    font-weight: bold;
     color: #00bfFf;
-    padding: 60px;  
- }
+    padding: 60px;
+  
 
+ }
+.pools {
+  margin: 10px;
+
+}
+.poolNo {
+  color: #a6ff33;
+}
+
+.vPower {
+  color:#fff;
+}
+
+.vComm {
+  color:#fff;
+}
+
+.ticker {
+  color:#00BFFF;
+  font-size: small;
+  font-weight: bold;
+  margin-left: 5px;
+  display: flex;
+}
 
 .rippleClaim {
   font-size: 12px;
-  min-width: 100px;
+  min-width: 80px;
+  height: 22px;
+  border-radius: 24px;
+  font-weight: bold;
 	background-position: center;
 	transition: background 0.4s;
   float: right;
+  margin-top: -5px;
  
   }
 
   .rippleClaim:hover {
   color: #000;  
 	text-transform: uppercase;
+
 	background: #00BFFF radial-gradient(circle, transparent 1%, #00BFFF 1%) 
 	center/15000%; 
   }
@@ -617,11 +595,15 @@ button {
 
   .rippleUnreg {
   font-size: 12px;
-  min-width: 100px;
+  min-width: 80px;
+  height: 22px;
+  border-radius: 24px;
+  font-weight: bold;
   color: #00bfff;
 	background-position: center;
 	transition: background 0.4s;
   float: right;
+  margin-top: -5px;
  
   }
 
@@ -653,12 +635,7 @@ button {
   font-size: 18px;
   vertical-align: 5px;
 }
-.item {
-  width: 540px;
-  display: inline-block;
-  vertical-align: top;
-  height: 118px;
-}
+
 .gt {
   width: 280px;
   height: 44px;
@@ -683,7 +660,7 @@ button {
       height: 40px;
       color: #000000;
       border: 1px solid #000;
-      border-radius: 4px;
+      border-radius: 24px;
       background-color: #00bfff;
       font-size: 16px;
       cursor: pointer;

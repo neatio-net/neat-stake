@@ -26,33 +26,37 @@ export default {
   background-size: cover;
 
 }
+.boxes {
+  display:inline-flex;
+}
 
 .box1 {
-  width: 1200px;
+  width: 480px;
   height: auto;
   padding-top: 20px;
   padding-bottom: 20px;
   border-style: solid;
-  border-width: 1px;
-  border-color: azure;
+  border-color: #2c3e50;
+  border-width: 2px;
+
   background: #000;
-  display: flex;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  margin: 0px auto 0px auto;
+  display:grid;
+  border-radius: 24px;
+  margin: 0px 10px 0px 10px;
   position: relative;
   text-align: left;
 }
 
 .box2 {
-  width: 1200px;
+  width: 360px;
   height: auto;
+    border-radius: 24px;
   padding-bottom: 50px;
   border-style: solid;
-  border-width: 1px;
-  border-color: azure;
+  border-width: 2px;
+  border-color: #000;
   background: #191c20;
-  margin: 0px auto 0px auto;
+  margin: 0px 10px 0px 10px;
   position: relative;
   text-align: left;
 }
