@@ -86,6 +86,7 @@ export default {
       amount:"",
       limit: "21000",
       price: "",
+      stakingPool: null,
     };
   },
   components: {
@@ -222,7 +223,7 @@ export default {
       const params = [
         {
           from: this.address,
-          to: "0x0000000000000000000000000000000000000505",
+          to: this.stakingPool, // Staking pool contract
           gas: Utils.toHex(this.limit),
           gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
           value: "0x0",

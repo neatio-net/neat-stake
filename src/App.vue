@@ -30,6 +30,24 @@ export default {
   display:inline-flex;
 }
 
+.box0 {
+  width: auto;
+  max-width: 860px;
+  height: fit-content;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-style: solid;
+  border-color: #2c3e50;
+  border-width: 2px;
+  background: #000;
+  border-radius: 24px;
+  margin: 0 auto;
+  display: flex;
+  align-content: center; 
+  justify-content: center;
+  
+}
+
 .box1 {
   width: 480px;
   height: auto;

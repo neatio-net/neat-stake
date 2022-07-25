@@ -1,7 +1,10 @@
 <template>
   <div class="main">
     <div class="dashboard" >
-      NEATIO STAKING DASHBOARD
+           <div class="box0">      
+          NEATIO STAKING DASHBOARD
+        </div>
+
     </div>
     <div v-if="step == 1">    
 
@@ -65,14 +68,14 @@
               </div>
           </div>
           
-           <span style="color:lightgrey; font-size: 14px;">Available Balance:</span>  <span style="color:#a6ff33">{{fullbalance}}</span> <span style="font-weight: bold; font-size: 12px;">NEAT</span>
+           <span style="color:lightgrey; font-size: 14px;">Available Balance:</span>  <span style="color:#a6ff33">{{ (+balance).toFixed(2)}}</span> <span style="font-weight: bold; font-size: 12px;">NEAT</span>
           </div>
             <div class="wallet-balance-available">
-           <span style="color:lightgrey; font-size: 14px;">Delegated Coins:</span> <span style="color:#a6ff33">{{staking}}</span>   <span style="font-weight: bold; font-size: 12px;">NEAT</span>
-           <button class="rippleUnreg" @click="unRegister">unstake</button>
+           <span style="color:lightgrey; font-size: 14px;">Delegated Coins:</span> <span style="color:#a6ff33">{{(+staking).toFixed(2)}}</span>   <span style="font-weight: bold; font-size: 12px;">NEAT</span>
+           <button class="rippleUnreg" @click="unStake">unstake</button>
           </div>
             <div class="wallet-balance-available">
-           <span style="color:lightgrey; font-size: 14px;">Unclaimed Rewards:</span> <span style="color:#a6ff33">{{rewards}}</span>  
+           <span style="color:lightgrey; font-size: 14px;">Unclaimed Rewards:</span> <span style="color:#a6ff33">{{(+rewards).toFixed(2)}}</span>  
            <router-link to="/claimReward"
                   ><button class="rippleClaim">claim</button></router-link
                 >
@@ -82,13 +85,13 @@
           <div class="item">
             <input class="inputs"
               v-model="amount"
-              placeholder="Amount To Stake"
+              placeholder="Enter Amount To Stake"
             >
           </div>
 
  
         <div class="btn">
-          <button id="gtButton" @click="registerValidator">{{ "LET'S STAKE" }}</button>
+          <button id="gtButton" @click="neatStake">{{ "LET'S STAKE" }}</button>
         </div>
         
       </div>
@@ -126,17 +129,18 @@ export default {
       amount:"",
       limit: "21000",
       price: "",
-      addy1: null,
-      addy2: null,
-      addy3: null,
+      // addy1: null,
+      // addy2: null,
+      // addy3: null,
       addy4: null,
       addy5: null,
-      vPower1: null,
-      vPower2: null,
-      vPower3: null,
+      // vPower1: null,
+      // vPower2: null,
+      // vPower3: null,
       vPower4: null,
       vPower5: null,
       vComm: "15%",
+      stakingPool: null,
     };
   },
   components: {
@@ -162,25 +166,25 @@ export default {
 
     const validators = this.array;
     console.log(validators);
-    const v1 = Object(validators)[0];
-    //console.log(v1);
 
-    const v1Addy = v1.address;
-    this.addy1 = v1Addy;
-    const vPower1 = Utils.toNEAT(Nat.toString(v1.votingPower));
-    this.vPower1 = vPower1;
 
-    const v2 = Object(validators)[1];
-    const v2Addy = v2.address;
-    this.addy2 = v2Addy;
-    const vPower2 = Utils.toNEAT(Nat.toString(v2.votingPower));
-    this.vPower2 = vPower2;
+    // const v1 = Object(validators)[0];
+    // const v1Addy = v1.address;
+    // this.addy1 = v1Addy;
+    // const vPower1 = Utils.toNEAT(Nat.toString(v1.votingPower));
+    // this.vPower1 = vPower1;
 
-    const v3 = Object(validators)[2];
-    const v3Addy = v3.address;
-    this.addy3 = v3Addy;
-    const vPower3 = Utils.toNEAT(Nat.toString(v3.votingPower));
-    this.vPower3 = vPower3;
+    // const v2 = Object(validators)[1];
+    // const v2Addy = v2.address;
+    // this.addy2 = v2Addy;
+    // const vPower2 = Utils.toNEAT(Nat.toString(v2.votingPower));
+    // this.vPower2 = vPower2;
+
+    // const v3 = Object(validators)[2];
+    // const v3Addy = v3.address;
+    // this.addy3 = v3Addy;
+    // const vPower3 = Utils.toNEAT(Nat.toString(v3.votingPower));
+    // this.vPower3 = vPower3;
 
     const v4 = Object(validators)[3];
     const v4Addy = v4.address;
@@ -193,10 +197,6 @@ export default {
     this.addy5 = v5Addy;
     const vPower5 = Utils.toNEAT(Nat.toString(v5.votingPower));
     this.vPower5 = vPower5;
-
-
-
-
   },
 
 
@@ -238,9 +238,10 @@ export default {
           params: [this.address]        
         })      
         .then( (result) => {
+          console.log("balance", result);
           this.balance = Utils.toNEAT(result)
         }
-        )       
+        )    
         .catch( (error) => {
             console.log("Error", error)
           }
@@ -254,11 +255,13 @@ export default {
         params: [`${this.address}`, "latest", true],
         id: 1,
       };
-      axios.post(Url, valData )
+      axios.post(URL, valData )
         .then((response) => {
+          
           this.fullbalance = Utils.toNEAT(
             Nat.toString(response.data.result.balance)
           ),
+
           this.staking = Utils.toNEAT(
               Nat.toString(response.data.result.delegateBalance)
           ),
@@ -295,87 +298,87 @@ export default {
 
 
     // REGISTER
-    async registerValidator() {
-      if (
-        this.nodePublicKey.indexOf("0x") === 0 &&
-        this.nodePublicKey.length !== 258
-      ) {
-        this.info("error", this.$t("errPublicKey"));
-        return;
-      }
-      if (
-        this.nodePublicKey.indexOf("0x") !== 0 &&
-        this.nodePublicKey.length !== 256
-      ) {
-        this.info("error", this.$t("errPublicKey"));
-        return;
-      }
-      if (this.nodePublicKey.indexOf("0x") !== 0) {
-        this.nodePublicKey = "0x" + this.nodePublicKey;
-      }
+    async neatStake() {
+      // if (
+      //   this.nodePublicKey.indexOf("0x") === 0 &&
+      //   this.nodePublicKey.length !== 258
+      // ) {
+      //   this.info("error", this.$t("errPublicKey"));
+      //   return;
+      // }
+      // if (
+      //   this.nodePublicKey.indexOf("0x") !== 0 &&
+      //   this.nodePublicKey.length !== 256
+      // ) {
+      //   this.info("error", this.$t("errPublicKey"));
+      //   return;
+      // }
+      // if (this.nodePublicKey.indexOf("0x") !== 0) {
+      //   this.nodePublicKey = "0x" + this.nodePublicKey;
+      // }
 
-      if (
-        this.nodePrivateKey.indexOf("0x") === 0 &&
-        this.nodePrivateKey.length !== 66
-      ) {
-        this.info("error", this.$t("errPrivatekey"));
-        return;
-      }
-      if (
-        this.nodePrivateKey.indexOf("0x") !== 0 &&
-        this.nodePrivateKey.length !== 64
-      ) {
-        this.info("error", this.$t("errPrivatekey"));
-        return;
-      }
-      if (this.nodePrivateKey.indexOf("0x") !== 0) {
-        this.nodePrivateKey = "0x" + this.nodePrivateKey;
-      }
+      // if (
+      //   this.nodePrivateKey.indexOf("0x") === 0 &&
+      //   this.nodePrivateKey.length !== 66
+      // ) {
+      //   this.info("error", this.$t("errPrivatekey"));
+      //   return;
+      // }
+      // if (
+      //   this.nodePrivateKey.indexOf("0x") !== 0 &&
+      //   this.nodePrivateKey.length !== 64
+      // ) {
+      //   this.info("error", this.$t("errPrivatekey"));
+      //   return;
+      // }
+      // if (this.nodePrivateKey.indexOf("0x") !== 0) {
+      //   this.nodePrivateKey = "0x" + this.nodePrivateKey;
+      // }
 
-      if (
-        isNaN(this.commission) ||
-        Math.floor(this.commission) !== this.commission ||
-        this.commission > 100 ||
-        this.commission < 1
-      ) {
-        this.info("error", this.$t("errCommission"));
-        return;
-      }
-      if (isNaN(this.limit) || this.limit <= 0) {
-        this.info("error", this.$t("errLimit"));
-        return;
-      }
-      if (isNaN(this.price) || this.price < 0) {
-        this.info("error", this.$t("errPrice"));
-        return;
-      }
+      // if (
+      //   isNaN(this.commission) ||
+      //   Math.floor(this.commission) !== this.commission ||
+      //   this.commission > 100 ||
+      //   this.commission < 1
+      // ) {
+      //   this.info("error", this.$t("errCommission"));
+      //   return;
+      // }
+      // if (isNaN(this.limit) || this.limit <= 0) {
+      //   this.info("error", this.$t("errLimit"));
+      //   return;
+      // }
+      // if (isNaN(this.price) || this.price < 0) {
+      //   this.info("error", this.$t("errPrice"));
+      //   return;
+      // }
 
-      if (this.price < 0.0000005) {
-        this.price = '0.0000005'
-      }
+      // if (this.price < 0.0000005) {
+      //   this.price = '0.0000005'
+      // }
 
-      if (this.limit < 21000) {
-        this.info("error", this.$t("errLimitLess"));
-        return;
-      }
+      // if (this.limit < 21000) {
+      //   this.info("error", this.$t("errLimitLess"));
+      //   return;
+      // }
 
-      if (this.price > 0.000005) {
-        this.info("error", this.$t("errPriceBig"));
-        return;
-      }
+      // if (this.price > 0.000005) {
+      //   this.info("error", this.$t("errPriceBig"));
+      //   return;
+      // }
       
-      let send = RPC(Url);
+      let send = RPC(URL);
 
-      let contractMethod = neatioapi.abi.methodID("Register", [
+      let contractMethod = neatioapi.abi.methodID("Delegate", [
         "bytes",
         "bytes",
         "uint8",
       ]);
 
-      let signature = await send("neat_signAddress", [
-        this.address,
-        this.nodePrivateKey,
-      ]);
+      // let signature = await send("neat_signAddress", [
+      //   this.address,
+      //   this.nodePrivateKey,
+      // ]);
       
 
       let data = neatioapi.abi.encodeParams(
@@ -387,7 +390,7 @@ export default {
       const params = [
         {
           from: this.address,
-          to: "0x0000000000000000000000000000000000000505",
+          to: this.stakingPool, // Staking pool contract   
           gas: Utils.toHex(this.limit),
           gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
           value: Utils.toHex(Utils.fromNEAT(this.amount)),
@@ -402,7 +405,7 @@ export default {
         })
         .then((result) => {
           console.log('hash', result);
-          this.$alert(result, "Validator successfully registered!", {
+          this.$alert(result, "Delegation was successful!", {
             confirmButtonText: this.$t("confirm"),
             type: "success",
           });
@@ -416,12 +419,12 @@ export default {
         });
     },
     // UNREGISTER
-    async unRegister() {
+    async unStake() {
         let contractMethod = neatioapi.abi.methodID("UnRegister", []);
               const params = [
         {
           from: this.address,
-          to: "0x0000000000000000000000000000000000000505",
+           to: this.stakingPool, // Staking pool contract
           gas: Utils.toHex(this.limit),
           gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
           value: "0x0",
@@ -436,7 +439,7 @@ export default {
         })
         .then((result) => {
           console.log('hash', result);
-          this.$alert(result, "Validator successfully unregistered!", {
+          this.$alert(result, "UnStake was successful!", {
             confirmButtonText: this.$t("confirm"),
             type: "success",
           });
@@ -511,8 +514,10 @@ button {
     outline: 0;
     padding: 15px;
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-    width: 100%; 
+    width: 100%;     
+    text-align: center;
 }
+
 .walletInfo {
   text-align: left;
   margin: 10px;
@@ -538,7 +543,7 @@ button {
     font-size:24px;
     font-weight: bold;
     color: #00bfFf;
-    padding: 60px;
+    padding: 20px;
   
 
  }
