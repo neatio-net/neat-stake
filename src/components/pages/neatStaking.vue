@@ -3,6 +3,7 @@
     <div class="dashboard" >
            <div class="box0">      
           NEATIO STAKING DASHBOARD
+          
         </div>
 
     </div>
@@ -14,9 +15,7 @@
 
     <div class="boxes">
      <div class="box1" >
-           <div class="not-connected" v-show="address == ''">
-           Please Unlock Your MetaMask wallet!
-           </div>
+
 
                       <!-- Pool1 -->
           <div class="cards-grid__item">
@@ -57,8 +56,18 @@
 
 
     
-      <div class="box2" v-show="address != ''">
-        <div class="walletInfo">
+      <div class="box2" >
+ 
+               <div class="lockked" v-show="address === ''">
+                  <img
+                    src="../../assets/lock.png"
+                    alt="Lock"
+                    class="lockimg"
+                  />
+      </div>
+
+                    <div class="locked" v-show="address === ''">Wallet Locked!</div>
+        <div class="neatStaking">
                   <div class="balance-details" v-show="address != ''">
                    <div class="wallet-balance-available" v-show="address !== ''">
                        <div class="wallet-address" v-show="address != ''">
@@ -70,6 +79,7 @@
           
            <span style="color:lightgrey; font-size: 14px;">Available Balance:</span>  <span style="color:#a6ff33">{{ (+balance).toFixed(2)}}</span> <span style="font-weight: bold; font-size: 12px;">NEAT</span>
           </div>
+          
             <div class="wallet-balance-available">
            <span style="color:lightgrey; font-size: 14px;">Delegated Coins:</span> <span style="color:#a6ff33">{{(+staking).toFixed(2)}}</span>   <span style="font-weight: bold; font-size: 12px;">NEAT</span>
            <button class="rippleUnreg" @click="unStake">unstake</button>
@@ -81,8 +91,8 @@
                 >
           </div>
           </div>
-                </div>
-          <div class="item">
+            </div>
+          <div class="item" v-show="address !== ''">
             <input class="inputs"
               v-model="amount"
               placeholder="Enter Amount To Stake"
@@ -90,7 +100,7 @@
           </div>
 
  
-        <div class="btn">
+        <div class="btn" v-show="address !== ''">
           <button id="gtButton" @click="neatStake">{{ "LET'S STAKE" }}</button>
         </div>
         
@@ -129,14 +139,8 @@ export default {
       amount:"",
       limit: "21000",
       price: "",
-      // addy1: null,
-      // addy2: null,
-      // addy3: null,
       addy4: null,
       addy5: null,
-      // vPower1: null,
-      // vPower2: null,
-      // vPower3: null,
       vPower4: null,
       vPower5: null,
       vComm: "15%",
@@ -166,25 +170,6 @@ export default {
 
     const validators = this.array;
     console.log(validators);
-
-
-    // const v1 = Object(validators)[0];
-    // const v1Addy = v1.address;
-    // this.addy1 = v1Addy;
-    // const vPower1 = Utils.toNEAT(Nat.toString(v1.votingPower));
-    // this.vPower1 = vPower1;
-
-    // const v2 = Object(validators)[1];
-    // const v2Addy = v2.address;
-    // this.addy2 = v2Addy;
-    // const vPower2 = Utils.toNEAT(Nat.toString(v2.votingPower));
-    // this.vPower2 = vPower2;
-
-    // const v3 = Object(validators)[2];
-    // const v3Addy = v3.address;
-    // this.addy3 = v3Addy;
-    // const vPower3 = Utils.toNEAT(Nat.toString(v3.votingPower));
-    // this.vPower3 = vPower3;
 
     const v4 = Object(validators)[3];
     const v4Addy = v4.address;
@@ -299,73 +284,7 @@ export default {
 
     // REGISTER
     async neatStake() {
-      // if (
-      //   this.nodePublicKey.indexOf("0x") === 0 &&
-      //   this.nodePublicKey.length !== 258
-      // ) {
-      //   this.info("error", this.$t("errPublicKey"));
-      //   return;
-      // }
-      // if (
-      //   this.nodePublicKey.indexOf("0x") !== 0 &&
-      //   this.nodePublicKey.length !== 256
-      // ) {
-      //   this.info("error", this.$t("errPublicKey"));
-      //   return;
-      // }
-      // if (this.nodePublicKey.indexOf("0x") !== 0) {
-      //   this.nodePublicKey = "0x" + this.nodePublicKey;
-      // }
 
-      // if (
-      //   this.nodePrivateKey.indexOf("0x") === 0 &&
-      //   this.nodePrivateKey.length !== 66
-      // ) {
-      //   this.info("error", this.$t("errPrivatekey"));
-      //   return;
-      // }
-      // if (
-      //   this.nodePrivateKey.indexOf("0x") !== 0 &&
-      //   this.nodePrivateKey.length !== 64
-      // ) {
-      //   this.info("error", this.$t("errPrivatekey"));
-      //   return;
-      // }
-      // if (this.nodePrivateKey.indexOf("0x") !== 0) {
-      //   this.nodePrivateKey = "0x" + this.nodePrivateKey;
-      // }
-
-      // if (
-      //   isNaN(this.commission) ||
-      //   Math.floor(this.commission) !== this.commission ||
-      //   this.commission > 100 ||
-      //   this.commission < 1
-      // ) {
-      //   this.info("error", this.$t("errCommission"));
-      //   return;
-      // }
-      // if (isNaN(this.limit) || this.limit <= 0) {
-      //   this.info("error", this.$t("errLimit"));
-      //   return;
-      // }
-      // if (isNaN(this.price) || this.price < 0) {
-      //   this.info("error", this.$t("errPrice"));
-      //   return;
-      // }
-
-      // if (this.price < 0.0000005) {
-      //   this.price = '0.0000005'
-      // }
-
-      // if (this.limit < 21000) {
-      //   this.info("error", this.$t("errLimitLess"));
-      //   return;
-      // }
-
-      // if (this.price > 0.000005) {
-      //   this.info("error", this.$t("errPriceBig"));
-      //   return;
-      // }
       
       let send = RPC(URL);
 
@@ -374,12 +293,6 @@ export default {
         "bytes",
         "uint8",
       ]);
-
-      // let signature = await send("neat_signAddress", [
-      //   this.address,
-      //   this.nodePrivateKey,
-      // ]);
-      
 
       let data = neatioapi.abi.encodeParams(
         ["bytes", "bytes", "uint8"],
@@ -390,7 +303,7 @@ export default {
       const params = [
         {
           from: this.address,
-          to: this.stakingPool, // Staking pool contract   
+          to: this.stakingPool,   
           gas: Utils.toHex(this.limit),
           gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
           value: Utils.toHex(Utils.fromNEAT(this.amount)),
@@ -418,13 +331,15 @@ export default {
           console.log('tx error', error)
         });
     },
+
+
     // UNREGISTER
     async unStake() {
         let contractMethod = neatioapi.abi.methodID("UnRegister", []);
               const params = [
         {
           from: this.address,
-           to: this.stakingPool, // Staking pool contract
+           to: this.stakingPool, 
           gas: Utils.toHex(this.limit),
           gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
           value: "0x0",
@@ -481,6 +396,26 @@ button {
   margin-top: 50px;
 }
 
+.locked {
+  text-align: center;
+  margin: 20px;
+  color:#a6ff33;
+}
+
+.lockked {
+  align-items: center;
+  justify-content: center;
+}
+.lockimg {
+  width: 124px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+
 .address-title {
   margin-top:10px;
   margin-bottom:50px; 
@@ -518,7 +453,7 @@ button {
     text-align: center;
 }
 
-.walletInfo {
+.neatStaking {
   text-align: left;
   margin: 10px;
 }
@@ -552,7 +487,7 @@ button {
 
 }
 .poolNo {
-  color: #ddd;
+  color: #a6ff33;
 }
 
 .vPower {

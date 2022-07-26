@@ -14,11 +14,12 @@
           id="home"
           :class="{ 'nav-active': $route.path === '/' }"
           class="pgy"
-          >{{ $t("walletInfo") }}</router-link
+          >{{ $t("neatStaking") }}</router-link
         >
 
         <div class="connBtn">
-          <button id="connectButton" @click=switchToEtheruemChain> <div class="conColor2">{{address}}</div> </button>
+  
+          <button id="connectButton" @click=switchToEtheruemChain> <div class="conColor2">{{address}} </div> </button>
         </div>
    
       </div>
@@ -41,35 +42,6 @@ export default {
       chainId: '0x203',
       testChainId: '0x20d',
       address: '',
-      blockchainList: [
-        {
-          name: this.$t("nav.blockchain.block"),
-          url: "/blockchain/blocklist/1",
-        },
-        {
-          name: this.$t("nav.blockchain.transaction"),
-          url: "/blockchain/txlist/1",
-        },
-        {
-          name: this.$t("nav.blockchain.token"),
-          url: "/blockchain/tokenlist/1",
-        },
-        {
-          name: this.$t("nav.blockchain.account"),
-          url: "/blockchain/accountlist/1",
-        },
-        {
-          name: this.$t("nav.blockchain.referendum"),
-          url: "/referendum",
-        },
-      ],
-      guidelist: [
-        { name: this.$t("nav.enVersion"), url: "/static/help/en.pdf" },
-        {
-          name: this.$t("nav.cnVersion"),
-          url: "/static/help/cn.pdf",
-        },
-      ],
       isTestNetwork: true,
     };
   },
