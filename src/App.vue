@@ -62,7 +62,7 @@ export default {
   border-radius: 24px;
   margin: 0px 10px 0px 10px;
   position: relative;
-  text-align: left;
+  /* text-align: left; */
 }
 
 .box2 {

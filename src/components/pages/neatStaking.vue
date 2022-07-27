@@ -29,8 +29,10 @@
               <div class="vAddy">{{ addy4 }} </div>
               <div class="vPower"><span style="color:grey">Pool Total Weight: </span>{{ vPower4 }} 
               <span style="color:#00bfff; font-size: small; font-weight: bold;"> NEAT</span></div>
-              <div class="vComm"><span style="color:grey">Pool Commission: </span>{{ vComm }}</div>
-              <!-- <button class="rippleStake">SELECT</button> -->
+              <div class="vComm"><span style="color:grey">Pool Fee: </span>{{ vComm }}</div>
+            <div class="btn" v-show="address !== ''">
+              <button id="selectBtn" @click="neatStake">{{ "SELECT" }}</button>
+            </div>
             </div>
           </div>
                       <!-- Pool2 -->
@@ -46,7 +48,11 @@
               <div class="vPower"><span style="color:grey">Pool Total Weight: </span>{{ vPower5 }} 
               <span style="color:#00bfff; font-size: small; font-weight: bold;"> NEAT</span></div>
               <div class="vComm"><span style="color:grey">Pool Commission: </span>{{ vComm }}</div>
-              <!-- <button class="rippleStake">SELECT</button> -->
+            
+        <div class="btn" v-show="address !== ''">
+          <button id="selectBtn" @click="neatStake">{{ "SELECT" }}</button>
+        </div>
+        
             </div>
           </div>
 
@@ -282,7 +288,7 @@ export default {
 
 
 
-    // REGISTER
+    // STAKE
     async neatStake() {
 
       
@@ -333,7 +339,7 @@ export default {
     },
 
 
-    // UNREGISTER
+    // UNSTAKE
     async unStake() {
         let contractMethod = neatioapi.abi.methodID("UnRegister", []);
               const params = [
@@ -377,7 +383,7 @@ export default {
 
 button {
 	border: none;
-   min-width: 40px;
+  min-width: 40px;
 	font-family: Arial, Helvetica, sans-serif;
 	text-transform: uppercase;
 	cursor: pointer;
@@ -387,7 +393,8 @@ button {
 	background-color: #24292f;
   border-radius: 4px;
 	outline: none;
-  margin: 0px 0px 0px 60px;
+  align-items: center;
+  margin: 10px auto;
   }
   
 .info {
@@ -405,6 +412,7 @@ button {
 .lockked {
   align-items: center;
   justify-content: center;
+
 }
 .lockimg {
   width: 124px;
@@ -435,21 +443,18 @@ button {
 
 .inputs {
     background-color: #000;
-    background-image: none;
     border-radius: 24px;
-    width: 120px;
-    margin: 20px;
+    width: 240px;
+    margin: 20px auto;
     border: 1px solid #dcdfe6;
     box-sizing: border-box;
-    color: #606266;
-    display: inline-block;
     font-size: inherit;
     height: 40px;
     line-height: 40px;
     outline: 0;
     padding: 15px;
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-    width: 100%;     
+
     text-align: center;
 }
 
@@ -458,11 +463,7 @@ button {
   margin: 10px;
 }
 .item {
-
-  display: inline-block;
-  vertical-align: top;
-  height: 118px;
-  margin-left: 10px;
+ display: flex;  
 }
 
 
@@ -570,33 +571,13 @@ button {
 
 
  }
-.neatio {
-  display: inline-block;
-  font-size: 18px;
-  vertical-align: 5px;
-}
 
-.gt {
-  width: 280px;
-  height: 44px;
-  margin-left: 450px;
-  margin-top: 50px;
-  color: #000;
-}
-
-.button {
-  color:#000;
-  text-align: center;
-   width: 50%;
-  margin: 0 auto;
-
-}
 
 .btn {
   display: flex;
 }
     #gtButton {
-      width: 240px;
+      width: 140px;
       height: 40px;
       color: #000000;
       border: 1px solid #000;
@@ -607,8 +588,22 @@ button {
       margin: 0 auto;
       margin-top: 50px;
     }
-
     #gtButton:hover {
+      background-color: #a6ff33;
+    }
+
+        #selectBtn {
+      width: 80px;
+      height: 20px;
+      color: #000000;
+      border: 1px solid #000;
+      border-radius: 24px;
+      background-color: #00bfff;
+      font-size: 12px;
+      font-weight:bolder;
+      cursor: pointer;
+    }
+    #selectBtn:hover {
       background-color: #a6ff33;
     }
 
