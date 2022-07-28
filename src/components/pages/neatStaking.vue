@@ -26,12 +26,12 @@
             </div>
             <div class="pools">
               <div class="poolNo">Pool #1</div>
-              <div class="vAddy">{{ addy4 }} </div>
+              <div class="vAddy" id="pool1">{{ addy4 }} </div>
               <div class="vPower"><span style="color:grey">Pool Total Weight: </span>{{ vPower4 }} 
               <span style="color:#00bfff; font-size: small; font-weight: bold;"> NEAT</span></div>
               <div class="vComm"><span style="color:grey">Pool Fee: </span>{{ vComm }}</div>
-            <div class="btn" v-show="address !== ''">
-              <button id="selectBtn" @click="neatStake">{{ "SELECT" }}</button>
+            <div class="btn" v-show="address !== '' && pool2 === null">
+              <button id="selectBtn" @click="selectPool1">{{ "SELECT" }}</button>
             </div>
             </div>
           </div>
@@ -44,13 +44,13 @@
             </div>
             <div class="pools">
               <div class="poolNo">Pool #2</div>
-              <div class="vAddy">{{ addy5 }} </div>
+              <div class="vAddy" id="pool2">{{ addy5 }} </div>
               <div class="vPower"><span style="color:grey">Pool Total Weight: </span>{{ vPower5 }} 
               <span style="color:#00bfff; font-size: small; font-weight: bold;"> NEAT</span></div>
               <div class="vComm"><span style="color:grey">Pool Commission: </span>{{ vComm }}</div>
             
-        <div class="btn" v-show="address !== ''">
-          <button id="selectBtn" @click="neatStake">{{ "SELECT" }}</button>
+        <div class="btn" v-show="address !== '' && pool1 === null">
+          <button id="selectBtn" @click="selectPool2">{{ "SELECT" }}</button>
         </div>
         
             </div>
@@ -105,6 +105,14 @@
             >
           </div>
 
+            <div class="pool-address-title" v-show="address != '' && pool1 != null"> {{"Selected Pool Address"}} </div>
+            <div class="pool-address" v-show="address != '' && pool1 != null"> {{ pool1}} </div>  
+            <div class="pool-address-title" v-show="address != '' && pool2 != null"> {{"Selected Pool Address"}} </div> 
+            <div class="pool-address" v-show="address != '' && pool2 != null"> {{ pool2}} </div> 
+        
+
+ 
+       
  
         <div class="btn" v-show="address !== ''">
           <button id="gtButton" @click="neatStake">{{ "LET'S STAKE" }}</button>
@@ -150,7 +158,9 @@ export default {
       vPower4: null,
       vPower5: null,
       vComm: "15%",
-      stakingPool: null,
+      pool1: null,
+      pool2: null,
+  
     };
   },
   components: {
@@ -285,9 +295,24 @@ export default {
 
         )
     },
+   
+   // SELECT POOL1
+    selectPool1() {
+      document.getElementById("pool1").click();
+      const pool1 = this.addy4;
+      this.pool1 = pool1;
+    },
 
-
-
+      
+  
+    
+    // // SELECT POOL2
+    selectPool2() {
+      document.getElementById("pool2").click();
+      const pool2 = this.addy5;
+      this.pool2 = pool2;
+    },
+    
     // STAKE
     async neatStake() {
 
@@ -396,6 +421,20 @@ button {
   align-items: center;
   margin: 10px auto;
   }
+
+.pool-address {
+  text-align: center;
+  color:#fff;
+  font-size: 14px;
+  
+}
+
+.pool-address-title {
+  text-align: center;
+  color:rgb(158, 158, 158);
+  size: 12px;
+  margin-bottom: 5px;
+}
   
 .info {
   display: inline-block;
@@ -452,9 +491,9 @@ button {
     height: 40px;
     line-height: 40px;
     outline: 0;
+    color: #a6ff33;
     padding: 15px;
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-
     text-align: center;
 }
 
@@ -464,6 +503,7 @@ button {
 }
 .item {
  display: flex;  
+ color:#00BFFF;
 }
 
 
