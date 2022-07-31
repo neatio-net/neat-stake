@@ -30,8 +30,8 @@
               <div class="vPower"><span style="color:grey">Pool Total Weight: </span>{{ vPower4 }} 
               <span style="color:#00bfff; font-size: small; font-weight: bold;"> NEAT</span></div>
               <div class="vComm"><span style="color:grey">Pool Fee: </span>{{ vComm }}</div>
-            <div class="btn" v-show="address !== '' && pool2 === null">
-              <button id="selectBtn" @click="selectPool1">{{ "SELECT" }}</button>
+            <div class="btn" v-show="address !== ''">
+              <button id="selectBtn" @click="neatStake1">{{ "STAKE" }}</button>
             </div>
             </div>
           </div>
@@ -49,8 +49,8 @@
               <span style="color:#00bfff; font-size: small; font-weight: bold;"> NEAT</span></div>
               <div class="vComm"><span style="color:grey">Pool Commission: </span>{{ vComm }}</div>
             
-        <div class="btn" v-show="address !== '' && pool1 === null">
-          <button id="selectBtn" @click="selectPool2">{{ "SELECT" }}</button>
+        <div class="btn" v-show="address !== ''">
+          <button id="selectBtn" @click="neatStake1">{{ "STAKE" }}</button>
         </div>
         
             </div>
@@ -98,25 +98,25 @@
           </div>
           </div>
             </div>
-          <div class="item" v-show="address !== ''">
+          <!-- <div class="item" v-show="address !== ''">
             <input class="inputs"
               v-model="amount"
               placeholder="Enter Amount To Stake"
             >
-          </div>
-
+          </div> -->
+<!-- 
             <div class="pool-address-title" v-show="address != '' && pool1 != null"> {{"Selected Pool Address"}} </div>
             <div class="pool-address" v-show="address != '' && pool1 != null"> {{ pool1}} </div>  
             <div class="pool-address-title" v-show="address != '' && pool2 != null"> {{"Selected Pool Address"}} </div> 
-            <div class="pool-address" v-show="address != '' && pool2 != null"> {{ pool2}} </div> 
+            <div class="pool-address" v-show="address != '' && pool2 != null"> {{ pool2}} </div>  -->
         
 
  
        
- 
+<!--  
         <div class="btn" v-show="address !== ''">
           <button id="gtButton" @click="neatStake">{{ "LET'S STAKE" }}</button>
-        </div>
+        </div> -->
         
       </div>
       </div>
@@ -133,10 +133,10 @@ import axios from "axios";
 
 const Utils = require("neatioapi").utils;
 const Nat = require("neatioapi").nat;
-const URL = 'https://rpc.neatio.net';
-const RPC = require("neatioapi").rpc;
 const Abi = require("neatioapi").abi;
 const Web3 = require('web3');
+const Utilss = require('web3').utils;
+const URL = 'https://rpc.neatio.net';
 const web3 = new Web3('https://rpc.neatio.net');
 
 export default {
@@ -295,76 +295,94 @@ export default {
 
         )
     },
-   
-   // SELECT POOL1
-    selectPool1() {
+  
+    // STAKE WIP
+      stringToHex(str) {
+      var val = "0x";
+      for (var i = 0; i < str.length; i++) {
+        if (val == "") {
+          val = str.charCodeAt(i).toString(16);
+        } else {
+          val += str.charCodeAt(i).toString(16);
+        }
+      }
+      return val;
+    },
+
+    neatStake1() {
       document.getElementById("pool1").click();
       const pool1 = this.addy4;
       this.pool1 = pool1;
-    },
-
-      
-  
-    
-    // // SELECT POOL2
-    selectPool2() {
-      document.getElementById("pool2").click();
-      const pool2 = this.addy5;
-      this.pool2 = pool2;
-    },
-    
-    // STAKE
-    async neatStake() {
-
-      
-      let send = RPC(URL);
-
-      let contractMethod = neatioapi.abi.methodID("Delegate", [
-        "bytes",
-        "bytes",
-        "uint8",
-      ]);
-
-      let data = neatioapi.abi.encodeParams(
-        ["bytes", "bytes", "uint8"],
-        [this.nodePublicKey, signature, this.commission]
-      );
-
-
-      const params = [
-        {
-          from: this.address,
-          to: this.stakingPool,   
-          gas: Utils.toHex(this.limit),
-          gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-          value: Utils.toHex(Utils.fromNEAT(this.amount)),
-          data: contractMethod + data.substring(2)
+      this.$prompt(this.$t("Amount To Stake"), "", {
+        confirmButtonText: this.$t("CONFIRM"),
+        cancelButtonText: this.$t("CANCEL"),
+        inputValidator: (val) => {
+          if (isNaN(val)) {
+            return this.$t("mNum");
+          }
+          if (+val <= 0) {
+            return this.$t("gt0");
+          }
+          if (+val + this.limit * this.price >= this.balance) {
+            return this.$t("notEnough");
+          }
         },
-      ];
+      }).then(({ value }) => {
+        let data = Abi.encodeParams(["address"], [this.pool1]);
+        let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
+        const params = [
+          {
+            from: this.address,
+            to: "0x0000000000000000000000000000000000000505",
+            gas: Utils.toHex(this.limit),
+            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+            value: Utils.toHex(Utils.fromNEAT(value)),
+            data: "0x" + functionSig + data.substring(2),
+          }
+        ];
 
-      ethereum
-        .request({
-          method: 'eth_sendTransaction',
-          params,
-        })
-        .then((result) => {
-          console.log('hash', result);
-          this.$alert(result, "Delegation was successful!", {
-            confirmButtonText: this.$t("confirm"),
-            type: "success",
+        ethereum
+          .request({
+            method: 'eth_sendTransaction',
+            params,
+          })
+          .then((result) => {
+            console.log('hash', result);
+            this.$alert("hash:" + result, "You succesfully staked your coins!", {
+              confirmButtonText: this.$t("CLOSE"),
+              type: "success",
+            });
+            // setTimeout(() => {
+            //   this.refresh();
+            //   this.getBalance();
+            // }, 2000)
+          })
+          .catch((error) => {
+            console.log('tx error', error)
           });
-
-          setTimeout(() => {
-            this.getBalance();
-          }, 2000)
-        })
-        .catch((error) => {
-          console.log('tx error', error)
-        });
+      });
     },
 
 
-    // UNSTAKE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // UNSTAKE WIP
     async unStake() {
         let contractMethod = neatioapi.abi.methodID("UnRegister", []);
               const params = [
@@ -405,6 +423,10 @@ export default {
 </script>
 
 <style scoped>
+
+.el-button {
+  border-radius: 24px;
+}
 
 button {
 	border: none;

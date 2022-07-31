@@ -84,6 +84,20 @@ export default {
   color: rgba(102, 102, 102, 1);
   font-size: 34px;
 }
+
+.el-button {
+  border-radius: 24px;
+  font-weight: bold;
+}
+.el-message-box {
+  border-radius: 24px;
+  background-color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.el-message-box__message {
+  text-align: center;
+} 
 .el-radio__input.is-checked + .el-radio__label {
   color: #00bfff;
 }
@@ -134,5 +148,24 @@ export default {
 }
 .el-input.is-active .el-input__inner, .el-input__inner:focus {
   border-color: #00bfff;
+}
+
+.el-message-box__input {
+  text-align: center;
+}
+
+.el-message-box__btns {
+ text-align: center;
+}
+.el-input {
+ width: 240px;
+ margin: 0 auto;
+}
+.el-input__inner {
+  border-radius: 24px;
+  background-color: #2c3e50;
+  color: #A6FF33;
+  text-align:center
+  
 }
 </style>
