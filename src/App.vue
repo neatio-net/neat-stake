@@ -95,6 +95,11 @@ export default {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.el-message-box__content {
+  color: #00bfff;
+  font-size: 1.2rem;
+}
+
 .el-message-box__message {
   text-align: center;
 } 
@@ -148,6 +153,10 @@ export default {
 }
 .el-input.is-active .el-input__inner, .el-input__inner:focus {
   border-color: #00bfff;
+}
+.el-message-box__title{
+ color: #00bfff;
+ text-align: center;
 }
 
 .el-message-box__input {
