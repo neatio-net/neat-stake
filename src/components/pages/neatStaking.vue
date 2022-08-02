@@ -1,70 +1,42 @@
 <template>
-  <div class="main">
+   
     <div class="dashboard" >
-           <div class="box0">      
-          NEATIO STAKING DASHBOARD
-          
-        </div>
-
-    </div>
-    <div v-if="step == 1">    
-
-      <Access @unlock="unlock"></Access>
-    </div>
-    <div v-if="step == 2" style="padding-bottom: 90px">
-
-    <div class="boxes">
-     <div class="box1" >
-      <!-- Pool1 -->
-          <div class="cards-grid__item">
-            <div class="cards-grid__graphic">
-              <div class="cards-grid__icon cards-grid__icon--create">
-
-              </div>
-            </div>
+    <div class="boxe">
+           <div class="box0"><div class="dsbd">NEATIO STAKING DASHBOARD</div> </div>
+           <div class="boxes">
+             <div class="box1" >
+      <!-- Pool1 --> 
+    
             <div class="pools">
               <div class="poolNo">Pool #1</div>
               <div class="vAddy" id="pool1">{{ addy3 }} </div>
-              <div class="vPower"><span style="color:grey">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:grey">Pool Total Weight: </span>{{ (+vPower3).toFixed(2) }} 
-              <span style="color:#00bfff; font-size: small; font-weight: bold;"> NEAT</span></div>
+              <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower3).toFixed(0) }} 
+              <span style="color:#496785; font-size: small; font-weight: bold;"> NEAT</span></div>
             <div class="btns" v-show="address !== ''">
                 <button class="rippleStake" @click="neatStake1">stake</button>                
                 <button class="rippleClaims" @click="claimRwd1">claim</button>
                 <button class="rippleUnstake" @click="unStake1">unstake</button>
             </div>
             </div>
-          </div>
+     
 
                       <!-- Pool2 -->
-          <div class="cards-grid__item">
-            <div class="cards-grid__graphic">
-              <div class="cards-grid__icon cards-grid__icon--create">
-
-              </div>
-            </div>
+    
             <div class="pools">
               <div class="poolNo">Pool #2</div>
               <div class="vAddy" id="pool2">{{ addy4 }} </div>
-              <div class="vPower"><span style="color:grey">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:grey">Pool Total Weight: </span>{{ (+vPower4).toFixed(2) }} 
-              <span style="color:#00bfff; font-size: small; font-weight: bold;"> NEAT</span></div>
-            <div class="btns" v-show="address !== ''">
+              <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower4).toFixed(0) }} 
+              <span style="color:#496785; font-size: small; font-weight: bold;"> NEAT</span></div>
+               <div class="btns" v-show="address !== ''">
                 <button class="rippleStake" @click="neatStake2">stake</button>                
                 <button class="rippleClaims" @click="claimRwd2">claim</button>
                 <button class="rippleUnstake" @click="unStake2">unstake</button>
             </div>
             </div>
-          </div>
-          <!-- Pool3 -->
-                      
-
-
-
+       
+          <!-- Pool3 -->                  
       </div>
-
-
-    
       <div class="box2" >
- 
                <div class="lockked" v-show="address === ''">
                   <img
                     src="../../assets/lock.png"
@@ -78,30 +50,33 @@
                   <div class="balance-details" v-show="address != ''">
                    <div class="wallet-balance-available" v-show="address !== ''">
                        <div class="wallet-address" v-show="address != ''">
-              <span style="color:lightgrey" > Connected Wallet Address</span> 
+              <span style="color:lightgrey" >Connected Wallet</span> 
                <div class="address-title" v-show="address != ''">
-              {{address}}
+              {{ addry }}
               </div>
-          </div>
-          
-           <span style="color:lightgrey; font-size: 14px;">Available Balance:</span>  <span style="color:#a6ff33">{{ (+balance).toFixed(6)}}</span> <span style="font-weight: bold; font-size: 12px;">NEAT</span>
-          </div>
-          
+          </div>   
+          <div class="walBalT"> {{ (+balance).toFixed(4)}}<span style="color:#496785; font-size: 24px; font-weight:normal;"> NEAT</span> </div>
+
+          </div>          
             <div class="wallet-balance-available">
-           <span style="color:lightgrey; font-size: 14px;">Delegated Coins:</span> <span style="color:#a6ff33">{{(+staking).toFixed(6)}}</span>   <span style="font-weight: bold; font-size: 12px;">NEAT</span>
-           <!-- <button class="rippleUnreg" @click="unStake1">unstake</button> -->
+           <span style="color:lightgrey; font-size: 14px;">Staking:</span> <span style="color:#a6ff33">{{(+staking).toFixed(4)}}</span>   <span style="font-weight: bold; color:#496785; font-size: 14px;">NEAT</span>
           </div>
             <div class="wallet-balance-available">
-           <span style="color:lightgrey; font-size: 14px;">Unclaimed Rewards:</span> <span style="color:#a6ff33">{{(+rewards).toFixed(6)}}</span>  <span style="font-weight: bold; font-size: 12px;">NEAT</span>
-           <!-- <router-link to="/claimReward"
-                  ><button class="rippleClaim" @click="claimRwd1">claim</button></router-link
-                > -->
+           <span style="color:lightgrey; font-size: 14px;">Rewards:</span> <span style="color:#a6ff33">{{(+rewards).toFixed(4)}}</span>  <span style="font-weight: bold; color:#496785; font-size: 14px;">NEAT</span>
           </div>
           </div>
-            </div>
-        
+            </div>        
       </div>
-      </div>
+
+    </div>
+    <div v-if="step == 1">    
+      <Access @unlock="unlock"></Access>
+    </div>
+    <div v-if="step == 2" style="padding-bottom: 90px">
+    
+
+   
+    </div>
     </div>
   </div>
 </template>
@@ -206,6 +181,7 @@ export default {
         this.address = _accounts[0];
         this.getBalance ()
         this.getBalanceDetail();
+        
       })
     },
 
@@ -214,6 +190,7 @@ export default {
       try {
         const accounts = await ethereum.request({ method: "eth_requestAccounts" });
         this.address = accounts[0];
+        this.addry = `${accounts[0].substr(0, 5)} . . . ${accounts[0].slice(-5)}`;
         this.getBalance ()
         this.getBalanceDetail();
         this.getGasPrice();
@@ -302,7 +279,7 @@ export default {
 
     neatStake1() {
       document.getElementById("pool1").click();
-      const pool1 = this.addy4;
+      const pool1 = this.addy3;
       this.pool1 = pool1;
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
@@ -338,8 +315,7 @@ export default {
             params,
           })
           .then((result) => {
-            console.log('hash', result);
-            this.$alert("hash:" + result, "You succesfully staked your coins!", {
+              this.$alert("TX:" + result, "You succesfully staked your coins!", {
               confirmButtonText: this.$t("CLOSE"),
               type: "success",
             });
@@ -353,7 +329,7 @@ export default {
       });
     },
 
-    // UNSTAKE WIP
+    // UNSTAKE DONE
     unStake1() {
       document.getElementById("pool1").click();
       const pool1 = this.addy4;
@@ -404,8 +380,8 @@ export default {
           })
           .then((result) => {
             console.log('hash', result);
-            this.$alert("hash:" + result, "success", {
-              confirmButtonText: this.$t("confirm"),
+            this.$alert("TX:" + result, "You succesfully unstaked your coins!", {
+              confirmButtonText: this.$t("CLOSE"),
               type: "success",
             });
 
@@ -420,7 +396,7 @@ export default {
       });
     },
       
-      // Claim REWARD WIP
+      // Claim REWARD DONE
       claimRwd1() {
       document.getElementById("pool1").click();
       const pool1 = this.addy4;
@@ -466,7 +442,7 @@ export default {
           })
           .then((result) => {
             console.log('hash', result);
-            this.$alert("hash:" + result, "success", {
+            this.$alert("TX:" + result, "You succesfully claimed your rewards!", {
               confirmButtonText: this.$t("confirm"),
               type: "success",
             });
@@ -536,7 +512,7 @@ export default {
       });
     },
 
-    // UNSTAKE WIP
+    // UNSTAKE DONE
     unStake2() {
       document.getElementById("pool2").click();
       const pool2 = this.addy4;
@@ -726,13 +702,16 @@ button {
 
 }
 
+.vAddy {
+  font-size: 14px;
+}
+
 .address-title {
   margin-top:10px;
   margin-bottom:50px; 
-  font-size: 14px;
+  font-size: 17px;
   font-weight: bold;
-  margin-left: -15px;
-  
+ 
 }
 
 .wallet-address {
@@ -742,7 +721,22 @@ button {
   text-align: center;
 
 }
+.walBal {
+  color:#fff;
+  display:flex;
+  font-size:22px;
+  text-align: center;
+  margin: 0 auto;
+  
+  }
+  
+.walBalT {
+  color:#a6ff33;
+  margin: 0 10px;
+  font-size:24px;
 
+  }
+  
 .inputs {
     background-color: #000;
     border-radius: 24px;
@@ -772,19 +766,18 @@ button {
 
 .wallet-balance-available {
   margin: 10px;
+  text-align: center;
+
 }
 
 .balance-details {
-
+  text-align: center;
   margin-top:10px;
 }
  .dashboard{
-    font-size:24px;
     font-weight: bold;
     color: #00bfFf;
-    padding: 20px;
-  
-
+    padding-top: 10px;
  }
 .pools {
   margin: 10px;
@@ -797,10 +790,11 @@ button {
 .vPower {
   color:#fff;
   margin-top: 5px;
+  font-size: 14px;
 }
 
 .vComm {
-  color:#fff;
+  color:#ddd;
 }
 
 .ticker {
@@ -868,7 +862,7 @@ button {
   }
 
   .rippleUnstake:hover {
-  color: #fff;  
+  color: #000;  
 	text-transform: uppercase;
 	background: red radial-gradient(circle, transparent 1%, red 1%) 
 	center/15000%; 
@@ -890,7 +884,10 @@ button {
 
 
  }
-
+ .dsbd {
+  color: #fff;
+  margin: 5px;
+ }
 
 .btn {
   display: flex;

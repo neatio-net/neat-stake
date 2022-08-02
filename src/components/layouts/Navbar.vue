@@ -9,16 +9,9 @@
         />
       </router-link>
       <div class="common-inline-block ic" style="">
-        <router-link
-          to="/"
-          id="home"
-          :class="{ 'nav-active': $route.path === '/' }"
-          class="pgy"
-          >{{ $t("neatStaking") }}</router-link
-        >
 
-        <div class="connBtn">
-  
+
+        <div class="connBtn">  
           <button id="connectButton" @click=switchToEtheruemChain> <div class="conColor2">{{address}} </div> </button>
         </div>
    
@@ -28,8 +21,7 @@
 </template>
 
 <script>
-import axios from "axios";
-import MetaMaskOnboarding from '@metamask/onboarding';
+
 
 export default {
   name: "NavPanel",
@@ -87,7 +79,7 @@ export default {
           this.connectAccount();
         } else {
           
-          this.address = `Neatio Mainnet`
+          this.address = `☉  Neatio`
         }
 
       } catch (e) {
@@ -157,14 +149,20 @@ export default {
   box-shadow: 0px 4px 8px 0px rgba(230, 230, 230, 0.6);
   background-color: #24292f;
   height: auto;
+  
+  
   .nav-panel {
     text-align: left;
     box-sizing: border-box;
-    width: 1200px;
+    width: auto;
+    height: 48px;
+    max-width: 1100px;
     margin: 0 auto;
+
     .logo-neatio {
-      width: 60px;
+      width: 48px;
       height: auto;
+      float: left;
       /*margin-top: 20px*/
     }
     .ii {
@@ -172,10 +170,12 @@ export default {
     }
     .ic {
       margin-left: 10px;
-      width: 1100px;
+      width: auto;
+
+
       & a {
         margin-right: 15px;
-        color: #666666;
+        color: #fff;
         text-decoration: none;
         font-weight: 500;
 
@@ -341,8 +341,9 @@ export default {
     }
 
     #connectButton {
-      width: 165px;
+      width: 125px;
       height: 30px;
+
       color: #000000;
       border: 1px solid #000;
       border-radius: 24px;
@@ -357,13 +358,18 @@ export default {
   }
 }
 .common-inline-block {
-  display: inline-block;  
+  //display:flow-root; 
+
   cursor: pointer; 
 }
 
 .connBtn {
   float: right;
+  margin: 10px 10px 0 0;
+  
 }
-
+.nameSite {
+  margin-top: 10px;
+}
 
 </style>

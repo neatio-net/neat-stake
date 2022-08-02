@@ -16,7 +16,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #00bfff;
-  min-width: 1200px;
   font-family: Helvetica;
 }
 .main {
@@ -26,57 +25,79 @@ export default {
   background-size: cover;
 
 }
+
+.boxe {
+  width: 50%;
+  margin: 0 auto;
+
+}
 .boxes {
-  display:inline-flex;
+display: grid;
+grid-template-columns: 1fr 1fr;
+width: 100%;
+margin: 0 auto;
+
+}
+@media only screen and (max-width: 560px) {
+.boxes {
+display:inline-table;
+}
+.boxe {
+  width: 100%;
+  margin: 0 auto;
+}
+
 }
 
 .box0 {
   width: auto;
-  max-width: 860px;
+  max-width: 1100px;  
   height: fit-content;
-  padding-top: 20px;
-  padding-bottom: 20px;
   border-style: solid;
   border-color: #2c3e50;
   border-width: 2px;
-  background: #000;
+  background: #141a20;
   border-radius: 24px;
-  margin: 0 auto;
-  display: flex;
+  margin: 10px auto;  
+  padding: 0 10px; 
   align-content: center; 
   justify-content: center;
   
 }
 
 .box1 {
-  width: 480px;
-  height: auto;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  width: auto;
+  max-width: 600px;
+  min-height: 320px;
+  padding-top: 10px;
   border-style: solid;
-  border-color: #2c3e50;
+  border-color: #141a20;
   border-width: 2px;
-
+  
   background: #000;
   display:grid;
   border-radius: 24px;
-  margin: 0px 10px 0px 10px;
-  position: relative;
+  margin: 10px 10px 0px 10px;
+  /* position: relative; */
   /* text-align: left; */
 }
 
 .box2 {
-  width: 360px;
-  height: auto;
-    border-radius: 24px;
-  padding-bottom: 50px;
+  width: auto;
+  max-width: 600px;
+   height: 320px;
+  padding-top: 10px;
   border-style: solid;
-  border-width: 2px;
   border-color: #000;
-  background: #191c20;
-  margin: 0px 10px 0px 10px;
-  position: relative;
-  text-align: left;
+  border-width: 2px;
+  
+  background: #141a20;
+  display:grid;
+  border-radius: 24px;
+  margin: 10px 10px 0px 10px;
+  /* position: relative; */
+  /* text-align: left; */
+
 }
 
 
