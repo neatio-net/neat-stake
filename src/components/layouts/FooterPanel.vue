@@ -117,8 +117,9 @@
 
 <style lang="scss">
   .footer-panel {
+  
     height: auto;
-    color: #FFFFFF;
+
     background-color: #24292f; 
   }
 .footer-box {

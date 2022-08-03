@@ -1,6 +1,6 @@
 <template>
-   
-    <div class="dashboard" >
+
+<div class="dashboard" >
     <div class="boxe">
            <div class="box0"><div class="dsbd">NEATIO STAKING DASHBOARD</div> </div>
            <div class="boxes">
@@ -47,23 +47,39 @@
 
                     <div class="locked" v-show="address === ''">Wallet Locked!</div>
         <div class="neatStaking">
+          <!-- <span style="color:lightgrey" >Connected Wallet</span>  -->
                   <div class="balance-details" v-show="address != ''">
-                   <div class="wallet-balance-available" v-show="address !== ''">
-                       <div class="wallet-address" v-show="address != ''">
-              <span style="color:lightgrey" >Connected Wallet</span> 
-               <div class="address-title" v-show="address != ''">
-              {{ addry }}
+                   <div class="wallet-balance" v-show="address !== ''">
+                       <div class="wallet-address" v-show="address != ''">    <div class="address-title" v-show="address != ''">
+                <div class="wl"> <img src="../../assets/wallet.png" alt="stake" class="walimgs"/></div>{{ addry }}
               </div>
-          </div>   
+              
+           
+          </div>  
+        
           <div class="walBalT"> {{ (+balance).toFixed(4)}}<span style="color:#496785; font-size: 24px; font-weight:normal;"> NEAT</span> </div>
 
-          </div>          
-            <div class="wallet-balance-available">
-           <span style="color:lightgrey; font-size: 14px;">Staking:</span> <span style="color:#a6ff33">{{(+staking).toFixed(4)}}</span>   <span style="font-weight: bold; color:#496785; font-size: 14px;">NEAT</span>
+          </div>  
+          
+          <div class="boxess">
+         <div class="wallet-balance-available">
+              <div class="wl"> <img src="../../assets/stake.png" alt="stake" class="walimgs"/></div>
+              <span style="color:lightgrey; font-size: 14px;">Coins In Stake</span>
+            <span style="color:#a6ff33">{{(+staking).toFixed(2)}}</span>  
+           <span style="font-weight: bold; color:#496785; font-size: 14px;">NEAT</span>
           </div>
+
+
             <div class="wallet-balance-available">
-           <span style="color:lightgrey; font-size: 14px;">Rewards:</span> <span style="color:#a6ff33">{{(+rewards).toFixed(4)}}</span>  <span style="font-weight: bold; color:#496785; font-size: 14px;">NEAT</span>
+              <div class="wl"> <img src="../../assets/claim.png" alt="stake" class="walimgs"/></div>
+              <span style="color:lightgrey; font-size: 14px;">Stake Rewards</span>
+            <span style="color:#a6ff33">{{(+rewards).toFixed(4)}}</span>  
+           <span style="font-weight: bold; color:#496785; font-size: 14px;">NEAT</span>
           </div>
+          </div>
+
+
+
           </div>
             </div>        
       </div>
@@ -79,6 +95,8 @@
     </div>
     </div>
   </div>
+
+    
 </template>
 
 <script>
@@ -708,7 +726,7 @@ button {
 
 .address-title {
   margin-top:10px;
-  margin-bottom:50px; 
+  margin-bottom:24px; 
   font-size: 17px;
   font-weight: bold;
  
@@ -733,7 +751,8 @@ button {
 .walBalT {
   color:#a6ff33;
   margin: 0 10px;
-  font-size:24px;
+  font-size:36px;
+  font-weight: 400;
 
   }
   
@@ -758,16 +777,19 @@ button {
   text-align: left;
   margin: 10px;
 }
-.item {
- display: flex;  
- color:#00BFFF;
+.walimgs {  
+  width: 36px;
+  height: auto;
 }
-
 
 .wallet-balance-available {
   margin: 10px;
+  max-width: 124px;
   text-align: center;
 
+}
+.wl {
+  margin: 10px;
 }
 
 .balance-details {
@@ -875,15 +897,12 @@ button {
   } */
 
 
- .not-connected {
-    font-size:16px;
-    font-weight:240;
-    color: #00bfFf;
-    margin: auto;
-    color: #a6ff33;
-
-
- }
+.boxess {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 16px 24px;
+}
  .dsbd {
   color: #fff;
   margin: 5px;

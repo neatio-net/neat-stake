@@ -43,9 +43,14 @@ margin: 0 auto;
 display:inline-table;
 }
 .boxe {
-  width: 100%;
+  width: 100vw;
+
   margin: 0 auto;
 }
+.dashboard {
+   width: 100%;
+  margin: 0 auto;
+  }
 
 }
 

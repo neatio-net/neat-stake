@@ -22,9 +22,11 @@
 <style lang="scss">
   .layout {
     background-color: #f9f9f9;
+
     .main {
     margin: 0px auto;
    	height: 100vh;
     }
+
   }
 </style>
