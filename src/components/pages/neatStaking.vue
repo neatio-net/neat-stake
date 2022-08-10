@@ -5,14 +5,22 @@
            <div class="box0"><div class="dsbd">NEATIO STAKING DASHBOARD</div> </div>
            <div class="boxes">
              <div class="box1" >
-      <!-- Pool1 --> 
-    
+
+           <!-- Pool1 --> 
             <div class="pools">
-              <div class="poolNo">Pool #1</div>
-              <div class="vAddy" id="pool1">{{ addy3 }} </div>
+              <!-- <div class="poolNo">#1 <div class="vAddy">{{ "Alex's Staking Pool" }}</div></div> -->
+              <div class="vAddy" id="pool1"><span style="color:#a6ff33">#1 </span>{{ "NEATIO ASIA" }}
+              <span style="color:#496785"> - Owner<span style="color:#a6ff33"> ⋮ </span></span> <span style="color:#fff; font-size:14px; font-weight: bold;"> Alex </span></div>
               <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower3).toFixed(0) }} 
               <span style="color:#496785; font-size: small; font-weight: bold;"> NEAT</span></div>
-            <div class="btns" v-show="address !== ''">
+
+              <div class="btns" v-show="address !== '' && sPool !== null">
+                <button class="rippleStake" @click="neatStake11">stake</button>                
+                <button class="rippleClaims" @click="claimRwd1">claim</button>
+                <button class="rippleUnstake" @click="unStake1">unstake</button>
+            </div>
+
+            <div class="btns" v-show="address !== '' && sPool === null">
                 <button class="rippleStake" @click="neatStake1">stake</button>                
                 <button class="rippleClaims" @click="claimRwd1">claim</button>
                 <button class="rippleUnstake" @click="unStake1">unstake</button>
@@ -20,14 +28,20 @@
             </div>
      
 
-                      <!-- Pool2 -->
-    
+            <!-- Pool2 -->
             <div class="pools">
-              <div class="poolNo">Pool #2</div>
-              <div class="vAddy" id="pool2">{{ addy4 }} </div>
+              <div class="vAddy" id="pool2"><span style="color:#a6ff33">#2 </span>{{ "Zcode's Pool" }}
+              <span style="color:#496785"> - Owner<span style="color:#a6ff33"> ⋮ </span></span> <span style="color:#fff; font-size:14px; font-weight: bold;"> Zcode </span></div>
               <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower4).toFixed(0) }} 
               <span style="color:#496785; font-size: small; font-weight: bold;"> NEAT</span></div>
-               <div class="btns" v-show="address !== ''">
+
+              <div class="btns" v-show="address !== '' && sPool !== null">
+                <button class="rippleStake" @click="neatStake11">stake</button>                
+                <button class="rippleClaims" @click="claimRwd1">claim</button>
+                <button class="rippleUnstake" @click="unStake1">unstake</button>
+              </div>
+
+               <div class="btns" v-show="address !== '' && sPool === null">
                 <button class="rippleStake" @click="neatStake2">stake</button>                
                 <button class="rippleClaims" @click="claimRwd2">claim</button>
                 <button class="rippleUnstake" @click="unStake2">unstake</button>
@@ -127,6 +141,7 @@ export default {
       rewards:"",
       amount:"",
       limit: "21000",
+      addry: null,
       price: "",
       addy3: null,
       addy4: null,
@@ -151,6 +166,7 @@ export default {
     this.initialize();
 
 
+
     const DATA = {
       jsonrpc: "2.0",
       method: "neat_getNextEpochValidators",
@@ -163,7 +179,6 @@ export default {
       .then((response) => (this.array = response.data.result));
 
     const validators = this.array;
-    console.log(validators);
     
     const v3 = Object(validators)[2];
     const v3Addy = v3.address;
@@ -191,13 +206,14 @@ export default {
     initialize () {
       ethereum.on("chainChanged", (_chainId) => {        
         this.getGasPrice();
-        this.getBalance ()
-        this.getBalanceDetail()
+        this.getBalance ();
+        this.getBalanceDetail();
+         this.checkA();
       });
 
       ethereum.on("accountsChanged", (_accounts) => {
         this.address = _accounts[0];
-        this.getBalance ()
+        this.getBalance ();
         this.getBalanceDetail();
         
       })
@@ -214,7 +230,7 @@ export default {
         this.getGasPrice();
       } catch (e) {
         console.log("request accounts error:", e);
-      }
+      }     
     },
 
 
@@ -225,7 +241,6 @@ export default {
           params: [this.address]        
         })      
         .then( (result) => {
-          console.log("balance", result);
           this.balance = Utils.toNEAT(result)
         }
         )    
@@ -271,7 +286,6 @@ export default {
           params: []
         })
         .then((result) => {
-            console.log("gasprice", result);
             this.price = Utils.toNEAT(result);
           }
         )
@@ -281,8 +295,7 @@ export default {
 
         )
     },
-  
-    // STAKE DONE
+
       stringToHex(str) {
       var val = "0x";
       for (var i = 0; i < str.length; i++) {
@@ -333,7 +346,8 @@ export default {
             params,
           })
           .then((result) => {
-              this.$alert("TX:" + result, "You succesfully staked your coins!", {
+
+            this.$alert("TX ID: " + result, "Staked Was Succesful!", {
               confirmButtonText: this.$t("CLOSE"),
               type: "success",
             });
@@ -347,10 +361,9 @@ export default {
       });
     },
 
-    // UNSTAKE DONE
     unStake1() {
       document.getElementById("pool1").click();
-      const pool1 = this.addy4;
+      const pool1 = this.addy3;
       this.pool1 = pool1;
       this.$prompt(this.$t("Amount To Unstake"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -398,7 +411,7 @@ export default {
           })
           .then((result) => {
             console.log('hash', result);
-            this.$alert("TX:" + result, "You succesfully unstaked your coins!", {
+            this.$alert("TX ID: " + result, "You succesfully unstaked your coins!", {
               confirmButtonText: this.$t("CLOSE"),
               type: "success",
             });
@@ -414,10 +427,9 @@ export default {
       });
     },
       
-      // Claim REWARD DONE
       claimRwd1() {
       document.getElementById("pool1").click();
-      const pool1 = this.addy4;
+      const pool1 = this.addy3;
       this.pool1 = pool1;
       this.$prompt(this.$t("Amount To Claim"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -460,7 +472,7 @@ export default {
           })
           .then((result) => {
             console.log('hash', result);
-            this.$alert("TX:" + result, "You succesfully claimed your rewards!", {
+            this.$alert("TX ID: " + result, "You succesfully claimed your rewards!", {
               confirmButtonText: this.$t("confirm"),
               type: "success",
             });
@@ -476,11 +488,11 @@ export default {
       });
     },
 
-    // 2nd Round
     neatStake2() {
       document.getElementById("pool2").click();
       const pool2 = this.addy4;
       this.pool2 = pool2;
+      console.log(pool2);
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
         cancelButtonText: this.$t("CANCEL"),
@@ -516,7 +528,7 @@ export default {
           })
           .then((result) => {
 
-            this.$alert("TX:" + result, "Staked Was Succesful!", {
+            this.$alert("TX ID: " + result, "Staked Was Succesful!", {
               confirmButtonText: this.$t("CLOSE"),
               type: "success",
             });
@@ -530,7 +542,6 @@ export default {
       });
     },
 
-    // UNSTAKE DONE
     unStake2() {
       document.getElementById("pool2").click();
       const pool2 = this.addy4;
@@ -581,7 +592,7 @@ export default {
           })
           .then((result) => {
           
-            this.$alert("TX:" + result, "UnStake Was Succesful!", {
+            this.$alert("TX ID: " + result, "UnStake Was Succesful!", {
               confirmButtonText: this.$t("CLOSE"),
               type: "success",
             });
@@ -593,7 +604,6 @@ export default {
       });
     },
       
-      // Claim REWARD DONE
       claimRwd2() {
       document.getElementById("pool2").click();
       const pool2 = this.addy4;
@@ -649,7 +659,6 @@ export default {
       });
     },
     
-    // Claim END
        
   },
 };
@@ -720,8 +729,17 @@ button {
 
 }
 
-.vAddy {
+.poolNo {
+  color: #a7ff33;
   font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+
+.vAddy {
+  font-size: 0.8rem;
+  color:#00bfff;
 }
 
 .address-title {
@@ -804,9 +822,6 @@ button {
 .pools {
   margin: 10px;
 
-}
-.poolNo {
-  color: #a6ff33;
 }
 
 .vPower {
@@ -901,11 +916,13 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  margin: 16px 24px;
+  margin: 12px 24px;
 }
  .dsbd {
   color: #fff;
-  margin: 5px;
+  margin: 10px;
+  font-size: 16px;
+  font-weight: 400;
  }
 
 .btn {
