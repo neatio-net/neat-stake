@@ -6,9 +6,7 @@
            <div class="boxes">
              <div class="box1" >
 
-           <!-- Pool1 --> 
             <div class="pools">
-              <!-- <div class="poolNo">#1 <div class="vAddy">{{ "Alex's Staking Pool" }}</div></div> -->
               <div class="vAddy" id="pool1"><span style="color:#a6ff33">#1 </span>{{ "NEATIO ASIA" }}
               <span style="color:#496785"> - Owner<span style="color:#a6ff33"> ⋮ </span></span> <span style="color:#fff; font-size:14px; font-weight: bold;"> Alex </span></div>
               <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower3).toFixed(0) }} 
@@ -23,7 +21,6 @@
             </div>
      
 
-            <!-- Pool2 -->
             <div class="pools">
               <div class="vAddy" id="pool2"><span style="color:#a6ff33">#2 </span>{{ "Zcode's Pool" }}
               <span style="color:#496785"> - Owner<span style="color:#a6ff33"> ⋮ </span></span> <span style="color:#fff; font-size:14px; font-weight: bold;"> Zcode </span></div>
@@ -38,7 +35,6 @@
             </div>
             </div>
        
-          <!-- Pool3 -->                  
       </div>
       <div class="box2" >
                <div class="lockked" v-show="address === ''">
@@ -51,7 +47,6 @@
 
                     <div class="locked" v-show="address === ''">Wallet Locked!</div>
         <div class="neatStaking">
-          <!-- <span style="color:lightgrey" >Connected Wallet</span>  -->
                   <div class="balance-details" v-show="address != ''">
                    <div class="wallet-balance" v-show="address !== ''">
                        <div class="wallet-address" v-show="address != ''">    <div class="address-title" v-show="address != ''">
