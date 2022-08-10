@@ -14,13 +14,8 @@
               <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower3).toFixed(0) }} 
               <span style="color:#496785; font-size: small; font-weight: bold;"> NEAT</span></div>
 
-              <div class="btns" v-show="address !== '' && sPool !== null">
-                <button class="rippleStake" @click="neatStake11">stake</button>                
-                <button class="rippleClaims" @click="claimRwd1">claim</button>
-                <button class="rippleUnstake" @click="unStake1">unstake</button>
-            </div>
 
-            <div class="btns" v-show="address !== '' && sPool === null">
+            <div class="btns" v-show="address !== '' ">
                 <button class="rippleStake" @click="neatStake1">stake</button>                
                 <button class="rippleClaims" @click="claimRwd1">claim</button>
                 <button class="rippleUnstake" @click="unStake1">unstake</button>
@@ -35,13 +30,8 @@
               <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower4).toFixed(0) }} 
               <span style="color:#496785; font-size: small; font-weight: bold;"> NEAT</span></div>
 
-              <div class="btns" v-show="address !== '' && sPool !== null">
-                <button class="rippleStake" @click="neatStake11">stake</button>                
-                <button class="rippleClaims" @click="claimRwd1">claim</button>
-                <button class="rippleUnstake" @click="unStake1">unstake</button>
-              </div>
 
-               <div class="btns" v-show="address !== '' && sPool === null">
+               <div class="btns" v-show="address !== ''">
                 <button class="rippleStake" @click="neatStake2">stake</button>                
                 <button class="rippleClaims" @click="claimRwd2">claim</button>
                 <button class="rippleUnstake" @click="unStake2">unstake</button>
