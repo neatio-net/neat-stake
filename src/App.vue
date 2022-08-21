@@ -31,6 +31,12 @@ export default {
   margin: 0 auto;
 
 }
+.statsD {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 12px;
+}
 .boxes {
 display: grid;
 grid-template-columns: 1fr 1fr;
@@ -47,10 +53,21 @@ display:inline-table;
 
   margin: 0 auto;
 }
+
+.statsD {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 12px 24px;
+}
+
 .dashboard {
    width: 100%;
   margin: 0 auto;
   }
+.el-message-box {
+  width: 268px;
+}
 
 }
 
@@ -59,11 +76,11 @@ display:inline-table;
   max-width: 1100px;  
   height: fit-content;
   border-style: solid;
-  border-color: #2c3e50;
+  border-color: #000;
   border-width: 2px;
-  background: #141a20;
+  background: #1d2630;
   border-radius: 24px;
-  margin: 10px auto;  
+  margin: 10px 10px auto;  
   padding: 0 10px; 
   align-content: center; 
   justify-content: center;
@@ -73,35 +90,29 @@ display:inline-table;
 .box1 {
   width: auto;
   max-width: 600px;
-  min-height: 320px;
+  min-height: 300px;
   padding-top: 10px;
   border-style: solid;
-  border-color: #141a20;
-  border-width: 2px;
-  
+  border-color: #2c3e50;
+  border-width: 1px;  
   background: #000;
   display:grid;
   border-radius: 24px;
-  margin: 10px 10px 0px 10px;
-  /* position: relative; */
-  /* text-align: left; */
+  margin: 20px 10px 0px 10px;
 }
 
 .box2 {
   width: auto;
   max-width: 600px;
-   height: 320px;
+  min-height: 300px;
   padding-top: 10px;
   border-style: solid;
   border-color: #000;
   border-width: 2px;
-  
-  background: #141a20;
+  background: #1d2630;
   display:grid;
   border-radius: 24px;
-  margin: 10px 10px 0px 10px;
-  /* position: relative; */
-  /* text-align: left; */
+  margin: 20px 10px 0px 10px;
 
 }
 
@@ -112,32 +123,32 @@ display:inline-table;
 }
 
 .el-button {
-  border-radius: 24px;
-  font-weight: bold;
+  border-radius: 24px !important;
+  font-weight: bold !important;
 }
 .el-message-box {
-  border-radius: 24px;
-  background-color: #000;
-  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 24px !important;
+  background-color: #000 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .el-message-box__content {
-  color: #00bfff;
-  font-size: 1.2rem;
+  color: #00bfff !important;
+  font-size: 1rem !important;
 }
 
 .el-message-box__message {
-  text-align: center;
+  text-align: center !important;
 } 
 .el-radio__input.is-checked + .el-radio__label {
-  color: #00bfff;
+  color: #00bfff !important;
 }
 .el-radio__input.is-checked .el-radio__inner {
-  border-color: #00bfff;
-  background: #00bfff;
+  border-color: #00bfff !important;
+  background: #00bfff !important;
 }
 .el-radio__inner:hover {
-  border: 1px solid #00bfff;
+  border: 1px solid #00bfff !important;
 }
 .sk {
   color: rgba(102, 102, 102, 1);
@@ -165,42 +176,42 @@ display:inline-table;
   width: 100%;
 }
 .el-input__inner {
-  background-color: #000;
+  background-color: #000 !important;
 }
 
 .el-select .el-input.is-focus .el-input__inner {
-  border-color: #00bfff;
+  border-color: #00bfff !important;
 }
 .el-select .el-input__inner:focus {
-  border-color: #00bfff;
+  border-color: #00bfff !important;
 }
 .el-select-dropdown__item.selected {
-  color: #00bfff;
+  color: #00bfff !important;
 }
 .el-input.is-active .el-input__inner, .el-input__inner:focus {
-  border-color: #00bfff;
+  border-color: #00bfff !important;
 }
 .el-message-box__title{
- color: #00bfff;
- text-align: center;
+ color: #A6FF33 !important;
+ text-align: center !important;
 }
 
 .el-message-box__input {
-  text-align: center;
+  text-align: center !important;
 }
 
 .el-message-box__btns {
- text-align: center;
+ text-align: center !important;
 }
 .el-input {
- width: 240px;
- margin: 0 auto;
+ width: 240px !important;
+ margin: 0 auto !important;
 }
 .el-input__inner {
-  border-radius: 24px;
-  background-color: #2c3e50;
-  color: #A6FF33;
-  text-align:center
+  border-radius: 24px !important;
+  background-color: #2c3e50 !important;
+  color: #A6FF33 !important;
+  text-align: center !important;
   
 }
 </style>

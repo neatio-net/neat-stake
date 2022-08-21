@@ -79,7 +79,7 @@ export default {
           this.connectAccount();
         } else {
           
-          this.address = `☉  Neatio`
+          this.address = `☉  Neatio Network`
         }
 
       } catch (e) {
@@ -341,14 +341,14 @@ export default {
     }
 
     #connectButton {
-      width: 125px;
-      height: 30px;
+      width: 148px;
+      height: 32px;
 
       color: #000000;
       border: 1px solid #000;
       border-radius: 24px;
       background-color: #000;
-      font-size: 16px;
+      font-size: 14px;
       cursor: pointer;
     }
 
