@@ -18,6 +18,9 @@ export default {
   color: #00bfff;
   font-family: Helvetica;
 }
+
+
+
 .main {
   background-image:  url('assets/hero-bg-new.jpg');
   background-blend-mode: multiply;
@@ -48,9 +51,15 @@ margin: 0 auto;
 .boxes {
 display:inline-table;
 }
+
+.wallet-balance-available2 {
+  margin-top: 10px;
+  text-align: center;
+  font-size: small;
+}
+
 .boxe {
   width: 100vw;
-
   margin: 0 auto;
 }
 

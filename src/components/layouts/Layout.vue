@@ -21,11 +21,19 @@
 
 <style lang="scss">
   .layout {
-    background-color: #f9f9f9;
+    background-color: #000;
 
     .main {
-    margin: 0px auto;
-   	height: 100vh;
+    min-height: 100vh;
+
+
+
+    }
+
+    @media only screen {
+    .main {
+    margin: 0px auto; 
+    }
     }
 
   }
