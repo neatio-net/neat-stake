@@ -2,7 +2,6 @@
 <div class="dashboard" >
     <div class="boxe">
            <div class="box0">
-            <!-- <div class="dsbd">NEATIO STAKING DASHBOARD</div>  -->
           <div class="statsD">
               <div class="stats1"> 
                   <div class="itemsD">Block Height</div>
@@ -38,9 +37,7 @@
            <div class="boxes">
              <div class="box1" >
 
-           <!-- Pool1 --> 
             <div class="pools">
-              <!-- <div class="poolNo">#1 <div class="vAddy">{{ "Alex's Staking Pool" }}</div></div> -->
               <div class="vAddy" id="pool1"><span style="color:#a6ff33">#1 </span>{{ "NEATIO ASIA" }}
               <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> Alex </span></div>
               <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower3).toFixed(0) }} 
@@ -60,7 +57,6 @@
             </div>
      
 
-            <!-- Pool2 -->
             <div class="pools">
               <div class="vAddy" id="pool2"><span style="color:#a6ff33">#2 </span>{{ "NEATIO E.U." }}
               <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> MrTizu </span></div>
@@ -80,7 +76,6 @@
             </div>
             </div>
        
-          <!-- Pool3 -->     
           <div class="pools">
               <div class="vAddy" id="pool3"><span style="color:#a6ff33">#3 </span>{{ "BIG BOW POOL" }}
               <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> Zcode </span></div>
@@ -99,11 +94,10 @@
                 <button class="rippleUnstake" @click="unStake3">unstake</button>
             </div>
             </div>
-          
 
-          <!--Pool4-->
-          <!-- <div class="pools">
-              <div class="vAddy" id="pool3"><span style="color:#a6ff33">#4 </span>{{ "Silviu Pool" }}
+
+            <div class="pools">
+              <div class="vAddy" id="pool4"><span style="color:#a6ff33">#4 </span>{{ "SILVIU POOL" }}
               <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> Silviu </span></div>
               <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower6).toFixed(0) }} 
               <span style="color:#496785; font-size: small; font-weight: bold;"> NEAT</span></div>
@@ -114,14 +108,12 @@
                 <button class="rippleUnstake" @click="unStake1">unstake</button>
               </div>
 
-               <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO ASIA' && stakedTo != 'Cool Pool'">
-                <button class="rippleStake" >stake</button>                
-                <button class="rippleClaims" >claim</button>
-                <button class="rippleUnstake" >unstake</button>
+               <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO ASIA' && stakedTo != 'NEATIO E.U.' && stakedTo != 'BIG BOW POOL'">
+                <button class="rippleStake" @click="neatStake4">stake</button>                
+                <button class="rippleClaims" @click="claimRwd4">claim</button>
+                <button class="rippleUnstake" @click="unStake4">unstake</button>
             </div> 
-            </div> -->
-            
-          <!--Pool4 END-->
+            </div>
 
 
       </div>
@@ -152,25 +144,17 @@
           <div class="boxess">
               <div class="wallet-balance-available2">
                     <div class="wl"> <img src="../../assets/stake.png" alt="stake" class="walimgs"/></div>
-
                   <div> <span style="color:lightgrey; font-size: 14px;">Coins In Stake</span></div> 
                   <span style="color:#a6ff33">{{(+staking).toFixed(2)}} <span style="color:#496785; font-size: 14px; font-weight:bold;"> on</span> </span>
                   {{stakedTo}} 
               
                 </div>    
-
                   <div class="wallet-balance-available2">
                     <div class="wl"> <img src="../../assets/claim.png" alt="stake" class="walimgs"/></div>
                     <span style="color:lightgrey; font-size: 14px;">Stake Rewards</span>
-                  <span style="color:#a6ff33">{{(+rewards).toFixed(18)}}</span>  
-          
-                </div>
-                         
+                  <span style="color:#a6ff33">{{(+rewards).toFixed(18)}}</span>            
+                </div>                         
           </div>
-  
-
-
-
           </div>
             </div>        
       </div>
@@ -336,6 +320,9 @@ export default {
           }
           if (this.delegatedTo.hasOwnProperty("0x6f755798dc3fb59d3236b0814d4038a094c8db6e")){
           this.stakedTo = 'NEATIO ASIA';      
+          }          
+          if (this.delegatedTo.hasOwnProperty("0xc8b3706f2db85fd5a1590b2a1329ab5af70ef905")){
+          this.stakedTo = 'SILVIU POOL';      
           }
          })
         .catch( (error) => {
