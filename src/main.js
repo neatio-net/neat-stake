@@ -12,6 +12,7 @@ import './utils/iconfont'
 import api from './utils/api';
 import en from './lang/en'
 
+
 Vue.use(VueI18n)
 Vue.use(Element)
 Vue.use(api);

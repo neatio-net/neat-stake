@@ -11,9 +11,25 @@ export default {
 </script>
 
 <style>
+
+@font-face {
+  font-family: "Pirulen";
+  src: local("Pirulen"),
+   url(./fonts/pirulen.ttf) format("truetype");
+
+} 
+
+@font-face {
+  font-family: "Alien";
+  src: local("Alien"),
+   url(./fonts/alien.ttf) format("truetype");
+
+} 
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   text-align: center;
   color: #00bfff;
   font-family: Helvetica;
@@ -22,15 +38,15 @@ export default {
 
 
 .main {
-  background-image:  url('assets/hero-bg-new.jpg');
-  background-blend-mode: multiply;
-  background-color: #2c3e50;
+  /* background-image:  url('assets/hero-bg-new.jpg');
+  background-blend-mode: multiply; */
+  background-color: #000;
   background-size: cover;
 
 }
 
 .boxe {
-  width: 50%;
+  width: 1100px;
   margin: 0 auto;
 
 }
@@ -48,6 +64,9 @@ margin: 0 auto;
 
 }
 @media only screen and (max-width: 560px) {
+
+
+
 .boxes {
 display:inline-table;
 }
@@ -84,30 +103,44 @@ display:inline-table;
   width: auto;
   max-width: 1100px;  
   height: fit-content;
-  border-style: solid;
-  border-color: #000;
   border-width: 2px;
-  background: #1d2630;
-  border-radius: 24px;
-  margin: 10px 10px auto;  
+  background: transparent;
+  border-radius: 4px;
+  margin: 20px 10px auto;  
   padding: 0 10px; 
   align-content: center; 
   justify-content: center;
+  box-sizing: 1px;
+  border-radius: 10px;
+  padding: 24px 36px;
+  box-sizing: 1px;
+  border: none;
+  border: 1px solid #00ffff;
+  border-radius: 10px;
+  box-shadow: 0 0 40px #00bfff6e;
+
   
 }
+
+
 
 .box1 {
   width: auto;
   max-width: 600px;
   min-height: 300px;
   padding-top: 10px;
-  border-style: solid;
-  border-color: #2c3e50;
   border-width: 1px;  
   background: #000;
   display:grid;
-  border-radius: 24px;
-  margin: 20px 10px 0px 10px;
+  border-radius: 10px;
+  margin: 60px 10px 0px 10px;
+  box-sizing: 1px;
+  border: none;
+  padding: 30px 50px;
+  border: 1px solid #00ffff;
+  border-radius: 10px;
+  box-shadow: 0 0 40px #00bfff6e;
+
 }
 
 .box2 {
@@ -115,14 +148,16 @@ display:inline-table;
   max-width: 600px;
   min-height: 300px;
   padding-top: 10px;
-  border-style: solid;
-  border-color: #000;
-  border-width: 2px;
-  background: #1d2630;
+  border-width: 1px;
+  background: #000;
   display:grid;
   border-radius: 24px;
-  margin: 20px 10px 0px 10px;
-
+  margin: 60px 10px 0px 60px;
+  box-sizing: 4px;
+  padding: 30px 50px;
+  border: 1px solid #00ffff;
+  border-radius: 10px;
+  box-shadow: 0 0 40px #00bfff75;
 }
 
 

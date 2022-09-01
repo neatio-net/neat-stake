@@ -3,16 +3,22 @@
     <div class="nav-panel">
       <router-link tag="div" to="/" class="common-inline-block ii">
         <img
-          src="../../assets/logo-transparent.png"
+          src="../../assets/NEW-LOGO2.png"
           alt="neatio logo"
           class="nav-logo logo-neatio common-inline-block"
         />
       </router-link>
       <div class="common-inline-block ic" style="">
+        <router-link
+          to="/"
+          id="home"
+          :class="{ 'nav-active': $route.path === '/' }"
+          class="pgy"
+          >{{ $t("Stake") }}</router-link
+        >
 
-
-        <div class="connBtn">  
-          <button id="connectButton" @click=switchToEtheruemChain> <div class="conColor2">{{address}} </div> </button>
+        <div class="connBtn">
+          <button id="connectButton" @click=switchToEtheruemChain> <div class="conColor2">{{address}}</div> </button>
         </div>
    
       </div>
@@ -21,7 +27,8 @@
 </template>
 
 <script>
-
+import axios from "axios";
+import MetaMaskOnboarding from '@metamask/onboarding';
 
 export default {
   name: "NavPanel",
@@ -79,7 +86,7 @@ export default {
           this.connectAccount();
         } else {
           
-          this.address = `☉  Neatio Network`
+          this.address = `⦿ Neatio Mainnet`
         }
 
       } catch (e) {
@@ -147,35 +154,27 @@ export default {
 <style lang="scss">
 .nav-container {
   box-shadow: 0px 4px 8px 0px rgba(230, 230, 230, 0.6);
-  background-color: #24292f;
+  background-color: #000;
   height: auto;
-  
-  
   .nav-panel {
     text-align: left;
     box-sizing: border-box;
-    width: auto;
-    height: 48px;
-    max-width: 1100px;
+    width: 1200px;
     margin: 0 auto;
-
     .logo-neatio {
       width: 48px;
       height: auto;
-      float: left;
       /*margin-top: 20px*/
     }
     .ii {
       vertical-align: middle;
     }
     .ic {
-      margin-left: 10px;
-      width: auto;
-
-
+      
+      width: 1100px;
       & a {
         margin-right: 15px;
-        color: #fff;
+        color: #666666;
         text-decoration: none;
         font-weight: 500;
 
@@ -247,6 +246,8 @@ export default {
           }
         }
       }
+
+
       .vg {
         position: relative;
         top: -2px;
@@ -288,7 +289,11 @@ export default {
         }
       }
       .nav-active {
-        color: #00bfff;
+        color: #00ffff;
+        font-family: "Pirulen", Helvetica, Arial;
+        font-size: 18px;
+
+
       }
       .triangle-active {
         border-color: #00bfff transparent transparent !important;
@@ -303,7 +308,7 @@ export default {
       color:red;
     }
         .conColor2 {
-      color: #a6ff33;
+      color: #00ffff;
     }
     .iv {
       height: 52px;
@@ -341,35 +346,29 @@ export default {
     }
 
     #connectButton {
-      width: 148px;
-      height: 32px;
-
-      color: #000000;
-      border: 1px solid #000;
-      border-radius: 24px;
+      width: 165px;
+      height: 40px;
+      border: 1px solid #00ffff;
+      border-radius: 10px;
       background-color: #000;
-      font-size: 14px;
+      font-size: 16px;
       cursor: pointer;
     }
 
     #connectButton:hover {
-      background-color: #24292f;
+      background-color: #00bfff75;
     }
   }
 }
 .common-inline-block {
-  //display:flow-root; 
-
+  display: inline-block;  
   cursor: pointer; 
 }
 
 .connBtn {
   float: right;
-  margin: 10px 10px 0 0;
-  
+
 }
-.nameSite {
-  margin-top: 10px;
-}
+
 
 </style>

@@ -2,6 +2,7 @@
 <div class="dashboard" >
     <div class="boxe">
            <div class="box0">
+
           <div class="statsD">
               <div class="stats1"> 
                   <div class="itemsD">Block Height</div>
@@ -10,7 +11,7 @@
               
               <div class="stats1"> 
                   <div class="itemsD">Block Time</div>
-                  <div class="valueD">1.7 seconds</div>
+                  <div class="valueD">~1.8 sec</div>
               </div>
                   <div class="stats1"> 
               <div class="itemsD">Staking APY</div>
@@ -24,7 +25,7 @@
 
              <div class="stats1"> 
                   <div class="itemsD">Circ. Supply</div>
-                  <div class="valueD">{{"4,040,862"}}</div>
+                  <div class="valueD">{{"3,829,969"}}</div>
               </div>
 
   
@@ -37,7 +38,9 @@
            <div class="boxes">
              <div class="box1" >
 
+           <!-- Pool1 --> 
             <div class="pools">
+
               <div class="vAddy" id="pool1"><span style="color:#a6ff33">#1 </span>{{ "NEATIO ASIA" }}
               <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> Alex </span></div>
               <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower3).toFixed(0) }} 
@@ -49,7 +52,7 @@
                 <button class="rippleUnstake" @click="unStake1">unstake</button>
             </div>
 
-            <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO E.U.' && stakedTo != 'BIG BOW POOL'">
+            <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO E.U.' && stakedTo != 'BIG BOW POOL' && stakedTo != 'SILVIU POOL'">
                 <button class="rippleStake" @click="neatStake1">stake</button>                
                 <button class="rippleClaims" @click="claimRwd1">claim</button>
                 <button class="rippleUnstake" @click="unStake1">unstake</button>
@@ -57,6 +60,7 @@
             </div>
      
 
+            <!-- Pool2 -->
             <div class="pools">
               <div class="vAddy" id="pool2"><span style="color:#a6ff33">#2 </span>{{ "NEATIO E.U." }}
               <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> MrTizu </span></div>
@@ -69,13 +73,14 @@
                 <button class="rippleUnstake" @click="unStake1">unstake</button>
               </div>
 
-               <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO ASIA' && stakedTo != 'BIG BOW POOL'">
+               <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO ASIA' && stakedTo != 'BIG BOW POOL' && stakedTo != 'SILVIU POOL'">
                 <button class="rippleStake" @click="neatStake2">stake</button>                
                 <button class="rippleClaims" @click="claimRwd2">claim</button>
                 <button class="rippleUnstake" @click="unStake2">unstake</button>
             </div>
             </div>
        
+          <!-- Pool3 -->     
           <div class="pools">
               <div class="vAddy" id="pool3"><span style="color:#a6ff33">#3 </span>{{ "BIG BOW POOL" }}
               <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> Zcode </span></div>
@@ -88,15 +93,16 @@
                 <button class="rippleUnstake" @click="unStake1">unstake</button>
               </div>
 
-               <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO ASIA' && stakedTo != 'NEATIO E.U.'">
+               <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO ASIA' && stakedTo != 'NEATIO E.U.' && stakedTo != 'SILVIU POOL'">
                 <button class="rippleStake" @click="neatStake3">stake</button>                
                 <button class="rippleClaims" @click="claimRwd3">claim</button>
                 <button class="rippleUnstake" @click="unStake3">unstake</button>
             </div>
             </div>
+          
 
-
-            <div class="pools">
+          <!--Pool4-->
+          <div class="pools">
               <div class="vAddy" id="pool4"><span style="color:#a6ff33">#4 </span>{{ "SILVIU POOL" }}
               <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> Silviu </span></div>
               <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower6).toFixed(0) }} 
@@ -114,6 +120,8 @@
                 <button class="rippleUnstake" @click="unStake4">unstake</button>
             </div> 
             </div>
+            
+          <!--Pool4 END-->
 
 
       </div>
@@ -128,6 +136,7 @@
 
                     <div class="locked" v-show="address === ''">Wallet Locked!</div>
         <div class="neatStaking">
+
                   <div class="balance-details" v-show="address != ''">
                    <div class="wallet-balance" v-show="address !== ''">
                        <div class="wallet-address" v-show="address != ''">    <div class="address-title" v-show="address != ''">
@@ -144,17 +153,25 @@
           <div class="boxess">
               <div class="wallet-balance-available2">
                     <div class="wl"> <img src="../../assets/stake.png" alt="stake" class="walimgs"/></div>
+
                   <div> <span style="color:lightgrey; font-size: 14px;">Coins In Stake</span></div> 
                   <span style="color:#a6ff33">{{(+staking).toFixed(2)}} <span style="color:#496785; font-size: 14px; font-weight:bold;"> on</span> </span>
                   {{stakedTo}} 
               
                 </div>    
+
                   <div class="wallet-balance-available2">
                     <div class="wl"> <img src="../../assets/claim.png" alt="stake" class="walimgs"/></div>
                     <span style="color:lightgrey; font-size: 14px;">Stake Rewards</span>
-                  <span style="color:#a6ff33">{{(+rewards).toFixed(18)}}</span>            
-                </div>                         
+                  <span style="color:#a6ff33">{{(+rewards).toFixed(18)}}</span>  
+          
+                </div>
+                         
           </div>
+  
+
+
+
           </div>
             </div>        
       </div>
@@ -207,13 +224,16 @@ export default {
       addy3: null,
       addy4: null,
       addy5: null,
+      addy6: null,
       vPower3: null,
       vPower4: null,
       vPower5: null,
+      vPower6: null,
       vComm: "15%",
       pool1: null,
       pool2: null,
       pool3: null,
+      pool4: null,
       sPool: null,
       height: null,
       totalStake: '',
@@ -234,14 +254,10 @@ export default {
     this.getValidators();
     this.initialize();
     this.getHeight();
-
-
   },
 
 
   methods: {
-
-
     initialize () {
       ethereum.on("chainChanged", (_chainId) => {        
         this.getGasPrice();
@@ -259,7 +275,10 @@ export default {
     },
 
 
-    async connectAccount () {      
+    async connectAccount () {
+
+
+      
       try {
         const accounts = await ethereum.request({ method: "eth_requestAccounts" });
         this.address = accounts[0];
@@ -268,7 +287,10 @@ export default {
         this.getBalanceDetail();
         this.getGasPrice();
         this.getValidators();
-        this.getHeight();        
+        this.getHeight();
+       
+
+        
       } catch (e) {
         console.log("request accounts error:", e);
       }         
@@ -308,22 +330,32 @@ export default {
           this.staking = Utils.toNEAT(
               Nat.toString(response.data.result.delegateBalance)
           ),
+
           this.rewards = Utils.toNEAT(
               Nat.toString(response.data.result.rewardBalance)
           );
+
           this.delegatedTo = response.data.result.rewardDetail;
+
+
           if (this.delegatedTo.hasOwnProperty("0xaa38dfb4c9dd61e653bc865ff429f05b2db44977")){
           this.stakedTo = 'BIG BOW POOL';     
           }
+
           if (this.delegatedTo.hasOwnProperty("0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b")){
           this.stakedTo = "NEATIO E.U.";     
           }
+
           if (this.delegatedTo.hasOwnProperty("0x6f755798dc3fb59d3236b0814d4038a094c8db6e")){
           this.stakedTo = 'NEATIO ASIA';      
-          }          
+          }
+
           if (this.delegatedTo.hasOwnProperty("0xc8b3706f2db85fd5a1590b2a1329ab5af70ef905")){
           this.stakedTo = 'SILVIU POOL';      
           }
+
+          console.log(this.stakedTo);
+
          })
         .catch( (error) => {
             console.log('error', error)            
@@ -397,8 +429,6 @@ export default {
     this.addy4 = v4Addy;
     const vPower4 = Utils.toNEAT(Nat.toString(v4.votingPower));
     this.vPower4 = vPower4;
-
-
   
     const v5 = Object(validators)[4];
     const v5Addy = v5.address;
@@ -406,17 +436,20 @@ export default {
     const vPower5 = Utils.toNEAT(Nat.toString(v5.votingPower));
     this.vPower5 = vPower5;
 
-    const totalStakeHex = parseInt(v2.votingPower) + parseInt(v3.votingPower) + parseInt(v4.votingPower) + parseInt(v5.votingPower);
+    const v6 = Object(validators)[5];
+    const v6Addy = v6.address;
+    this.addy6 = v6Addy;
+    const vPower6 = Utils.toNEAT(Nat.toString(v6.votingPower));
+    this.vPower6 = vPower6;
+    console.log(v6Addy);
+
+    const totalStakeHex = parseInt(v2.votingPower) + parseInt(v3.votingPower) + parseInt(v4.votingPower) + parseInt(v5.votingPower) + parseInt(v6.votingPower);
     const totalStakeNEAT = totalStakeHex / 1e18;
     this.totalStake = totalStakeNEAT.toFixed(0);
 
-     this.stakingAPY =  (2964758 / parseInt(this.totalStake)) * 100 - 15;
+     this.stakingAPY =  (2964759 / parseInt(this.totalStake)) * 100 - 15;
 
     },
-
-
-
-    // STAKE DONE
       stringToHex(str) {
       var val = "0x";
       for (var i = 0; i < str.length; i++) {
@@ -429,6 +462,7 @@ export default {
       return val;
     },
 
+     
     neatStake1() {
       document.getElementById("pool1").click();
       const pool1 = this.addy3;
@@ -607,7 +641,7 @@ export default {
       document.getElementById("pool2").click();
       const pool2 = this.addy4;
       this.pool2 = pool2;
-      console.log(pool2);
+      //console.log(pool2);
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
         cancelButtonText: this.$t("CANCEL"),
@@ -777,7 +811,6 @@ export default {
       document.getElementById("pool3").click();
       const pool3 = this.addy5;
       this.pool3 = pool3;
-      console.log(pool3);
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
         cancelButtonText: this.$t("CANCEL"),
@@ -825,6 +858,7 @@ export default {
       });
     },
 
+    // UNSTAKE DONE
     unStake3() {
       document.getElementById("pool3").click();
       const pool3 = this.addy5;
@@ -942,6 +976,176 @@ export default {
           });
       });
     },
+    // Pool 4
+    neatStake4() {
+      document.getElementById("pool4").click();
+      const pool4 = this.addy6;
+      this.pool4 = pool4;
+      this.$prompt(this.$t("Amount To Stake"), "", {
+        confirmButtonText: this.$t("CONFIRM"),
+        cancelButtonText: this.$t("CANCEL"),
+        inputValidator: (val) => {
+          if (isNaN(val)) {
+            return this.$t("mNum");
+          }
+          if (+val <= 0) {
+            return this.$t("gt0");
+          }
+          if (+val + this.limit * this.price >= this.balance) {
+            return this.$t("notEnough");
+          }
+        },
+      }).then(({ value }) => {
+        let data = Abi.encodeParams(["address"], [this.pool4]);
+        let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
+        const params = [
+          {
+            from: this.address,
+            to: "0x0000000000000000000000000000000000000505",
+            gas: Utils.toHex(this.limit),
+            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+            value: Utils.toHex(Utils.fromNEAT(value)),
+            data: "0x" + functionSig + data.substring(2),
+          }
+        ];
+
+        ethereum
+          .request({
+            method: 'eth_sendTransaction',
+            params,
+          })
+          .then((result) => {
+
+            this.$alert("TX ID: " + result, "Staking Was Succesful!", {
+              confirmButtonText: this.$t("CLOSE"),
+              type: "success",
+            });
+
+          })
+          .catch((error) => {
+            console.log('tx error', error)
+          });
+      });
+    },
+
+
+    unStake4() {
+      document.getElementById("pool4").click();
+      const pool4 = this.addy6;
+      this.pool4 = pool4;
+      this.$prompt(this.$t("Amount To Unstake"), "", {
+        confirmButtonText: this.$t("confirm"),
+        cancelButtonText: this.$t("cancel"),
+        inputValidator: (val) => {
+          if (isNaN(val)) {
+            return this.$t("cmNum");
+          }
+          if (+val <= 0) {
+            return this.$t("cgt");
+          }
+
+          if (this.limit * this.price > this.balance) {
+            return this.$t("notEnough");
+          }
+          let surplusVotes = this.bn.minus(
+            this.bn.add(this.pool4.proxiedBalance, this.pool4.voted),
+            this.bn.add(this.pool4.pendingRefundBalance, this.pool4.val)
+          );
+          if (surplusVotes < 0) {
+            return this.$t("surplusVotes");
+          }
+        },
+      }).then(({ value }) => {
+        let data = Abi.encodeParams(["address", "uint256"], [this.pool4,"0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16)]);
+        let functionSig = Utilss
+          .sha3("UnDelegate(address,uint256)")
+          .substr(2, 8);
+
+        const params = [
+          {
+            from: this.address,
+            to: "0x0000000000000000000000000000000000000505",
+            gas: Utils.toHex(this.limit),
+            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+            value: "0x0",
+            data: "0x" + functionSig + data.substring(2),
+          }
+        ];
+
+        ethereum
+          .request({
+            method: 'eth_sendTransaction',
+            params,
+          })
+          .then((result) => {
+            console.log('hash', result);
+            this.$alert("TX ID: " + result, "You succesfully unstaked your coins!", {
+              confirmButtonText: this.$t("CLOSE"),
+              type: "success",
+            });
+          })
+          .catch((error) => {
+            console.log('tx error', error)
+          });
+
+      });
+    },
+      
+      claimRwd4() {
+      document.getElementById("pool4").click();
+      const pool4 = this.addy6;
+      this.pool4 = pool4;
+      this.$prompt(this.$t("Amount To Claim"), "", {
+        confirmButtonText: this.$t("confirm"),
+        cancelButtonText: this.$t("cancel"),
+        inputValidator: (val) => {
+          if (isNaN(val)) {
+            return this.$t("rewardNumber")
+          }
+
+          if (+val <= 0) {
+            return this.$t("rewardGt")
+          }
+
+          let leftReard = this.bn.minus(this.pool4.reward, val);
+          if (leftReard < 0) {
+            return this.$t("rewardNotEnough")
+          }
+        }
+      }).then(({ value }) => {
+        let data = Abi.encodeParams(["address", "uint256"], [this.pool4, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16)]);
+        let functionSig = Utilss
+          .sha3("WithdrawReward(address,uint256)")
+          .substr(2, 8);
+
+        const params = [
+          {
+            from: this.address,
+            to: "0x0000000000000000000000000000000000000505",
+            gas: Utils.toHex(this.limit),
+            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+            value: "0x0",
+            data: "0x" + functionSig + data.substring(2),
+          }
+        ];
+
+        ethereum
+          .request({
+            method: 'eth_sendTransaction',
+            params,
+          })
+          .then((result) => {
+            console.log('hash', result);
+            this.$alert("TX ID: " + result, "You succesfully claimed your rewards!", {
+              confirmButtonText: this.$t("confirm"),
+              type: "success",
+            });
+          })
+          .catch((error) => {
+            console.log('tx error', error)
+          });
+      });
+    },
 
     
        
@@ -951,13 +1155,10 @@ export default {
 
 <style scoped>
 
-.el-button {
-  border-radius: 24px;
-}
 
 button {
 	border: none;
-  min-width: 40px;
+  min-width: 36px;
 	font-family: Arial, Helvetica, sans-serif;
 	text-transform: uppercase;
 	cursor: pointer;
@@ -1020,7 +1221,7 @@ button {
 }
 
 .valueD {
-  color: #00BFFF;
+  color: #00FFFF;
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 5px;
@@ -1061,7 +1262,7 @@ button {
   
 .inputs {
     background-color: #000;
-    border-radius: 24px;
+    border-radius: 4px;
     width: 240px;
     margin: 20px auto;
     border: 1px solid #dcdfe6;
@@ -1096,7 +1297,6 @@ button {
 .wallet-balance-available2 {
   margin-top: 10px;
   text-align: center;
-
 }
 .wl {
   margin: 10px;
@@ -1133,17 +1333,23 @@ button {
 }
 
 
-
+.box-shadow {
+  box-sizing: 1px;
+  border: none;
+  border-radius: 20px;
+  padding: 30px 50px;
+  -webkit-box-shadow: 0px 5px 26px 8px #00bfff;
+}
   .rippleStake {
   font-size: 12px;
-  min-width: 80px;
+  min-width: 68px;
   height: 22px;
-  border-radius: 24px;
+  border-radius: 4px;
   font-weight: bold;
   color: #00bfff;
 	background-position: center;
 	transition: background 0.4s;
-  margin: 0 10px; 
+  margin: 0 auto; 
   }
 
   .rippleStake:hover {
@@ -1155,9 +1361,9 @@ button {
 
 .rippleClaims {
   font-size: 12px;
-  min-width: 80px;
+  min-width: 68px;
   height: 22px;
-  border-radius: 24px;
+  border-radius: 4px;
   font-weight: bold;
 	background-position: center;
 	transition: background 0.4s;
@@ -1182,7 +1388,7 @@ button {
   font-size: 12px;
   min-width: 80px;
   height: 22px;
-  border-radius: 24px;
+  border-radius: 4px;
   font-weight: bold;
   color: #00bfff;
 	background-position: center;
@@ -1203,7 +1409,7 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  /* margin: 12px 24px; */
+  padding: 40px 0px 20px 0px;
 }
 
 
@@ -1222,7 +1428,7 @@ button {
       height: 40px;
       color: #000000;
       border: 1px solid #000;
-      border-radius: 24px;
+      border-radius: 4px;
       background-color: #00bfff;
       font-size: 16px;
       cursor: pointer;
@@ -1238,7 +1444,7 @@ button {
       height: 20px;
       color: #000000;
       border: 1px solid #000;
-      border-radius: 24px;
+      border-radius: 4px;
       background-color: #00bfff;
       font-size: 12px;
       font-weight:bolder;
