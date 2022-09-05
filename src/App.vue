@@ -26,12 +26,19 @@ export default {
 
 } 
 
+@font-face {
+  font-family: "Computer";
+  src: local("Computer"),
+   url(./fonts/cmunbbx.ttf) format("truetype");
+
+} 
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   text-align: center;
-  color: #00bfff;
+  color: #00ffff;
   font-family: Helvetica;
 }
 
@@ -40,7 +47,7 @@ export default {
 .main {
   /* background-image:  url('assets/hero-bg-new.jpg');
   background-blend-mode: multiply; */
-  background-color: #000;
+  background-color: #18191f;   /* #18191f */
   background-size: cover;
 
 }
@@ -64,6 +71,25 @@ margin: 0 auto;
 
 }
 @media only screen and (max-width: 560px) {
+
+  .vAddy1 {
+  font-size: 12px;
+  font-weight: 100;
+  font-family: Pirulen, Arial, Helvetica, sans-serif;
+  color:#00ffff;
+  text-align: left;
+
+}
+
+
+
+.vAddy {
+  font-size: 12px;
+  color:#00ffff;
+  text-align: left;
+
+}
+
 
 
 
@@ -97,6 +123,14 @@ display:inline-table;
   width: 268px;
 }
 
+.box0 {
+  margin: 10px auto;
+}
+
+
+
+
+
 }
 
 .box0 {
@@ -104,7 +138,7 @@ display:inline-table;
   max-width: 1100px;  
   height: fit-content;
   border-width: 2px;
-  background: transparent;
+  background: #000;
   border-radius: 4px;
   margin: 20px 10px auto;  
   padding: 0 10px; 
@@ -112,12 +146,11 @@ display:inline-table;
   justify-content: center;
   box-sizing: 1px;
   border-radius: 10px;
-  padding: 24px 36px;
   box-sizing: 1px;
   border: none;
-  border: 1px solid #00ffff;
+  border: 1px solid #00ffffa4;
   border-radius: 10px;
-  box-shadow: 0 0 40px #00bfff6e;
+  box-shadow: 0 0 40px #00bfff31;
 
   
 }
@@ -136,10 +169,9 @@ display:inline-table;
   margin: 60px 10px 0px 10px;
   box-sizing: 1px;
   border: none;
-  padding: 30px 50px;
-  border: 1px solid #00ffff;
+  border: 1px solid #00ffffa4;
   border-radius: 10px;
-  box-shadow: 0 0 40px #00bfff6e;
+  box-shadow: 0 0 40px #00bfff31;
 
 }
 
@@ -155,9 +187,9 @@ display:inline-table;
   margin: 60px 10px 0px 60px;
   box-sizing: 4px;
   padding: 30px 50px;
-  border: 1px solid #00ffff;
+  border: 1px solid #00ffffa4;
   border-radius: 10px;
-  box-shadow: 0 0 40px #00bfff75;
+  box-shadow: 0 0 40px #00bfff31;
 }
 
 
@@ -177,7 +209,7 @@ display:inline-table;
 }
 
 .el-message-box__content {
-  color: #00bfff !important;
+  color: #00ffff !important;
   font-size: 1rem !important;
 }
 
@@ -185,14 +217,14 @@ display:inline-table;
   text-align: center !important;
 } 
 .el-radio__input.is-checked + .el-radio__label {
-  color: #00bfff !important;
+  color: #00ffff !important;
 }
 .el-radio__input.is-checked .el-radio__inner {
-  border-color: #00bfff !important;
-  background: #00bfff !important;
+  border-color: #00ffff !important;
+  background: #00ffff !important;
 }
 .el-radio__inner:hover {
-  border: 1px solid #00bfff !important;
+  border: 1px solid #00ffff !important;
 }
 .sk {
   color: rgba(102, 102, 102, 1);
@@ -224,19 +256,19 @@ display:inline-table;
 }
 
 .el-select .el-input.is-focus .el-input__inner {
-  border-color: #00bfff !important;
+  border-color: #00ffff !important;
 }
 .el-select .el-input__inner:focus {
-  border-color: #00bfff !important;
+  border-color: #00ffff !important;
 }
 .el-select-dropdown__item.selected {
-  color: #00bfff !important;
+  color: #00ffff !important;
 }
 .el-input.is-active .el-input__inner, .el-input__inner:focus {
-  border-color: #00bfff !important;
+  border-color: #00ffff !important;
 }
 .el-message-box__title{
- color: #A6FF33 !important;
+ color: #00ffff !important;
  text-align: center !important;
 }
 
@@ -254,8 +286,10 @@ display:inline-table;
 .el-input__inner {
   border-radius: 24px !important;
   background-color: #2c3e50 !important;
-  color: #A6FF33 !important;
+  color: #00ffff !important;
   text-align: center !important;
   
 }
+
+
 </style>

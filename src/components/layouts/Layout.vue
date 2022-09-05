@@ -27,14 +27,28 @@
     min-height: 100vh;
 
 
-
     }
 
     @media only screen {
     .main {
     margin: 0px auto; 
     }
+
+    .nav-container {
+      width: auto;
     }
+    }
+
+  
+      .box0 {
+  margin: 10px;
+
+    }
+
+
+
+
+
 
   }
 </style>

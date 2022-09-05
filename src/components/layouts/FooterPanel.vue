@@ -120,7 +120,7 @@
   
     height: auto;
 
-    background-color: #24292f; 
+    background-color: #000; 
   }
 .footer-box {
   width: auto;

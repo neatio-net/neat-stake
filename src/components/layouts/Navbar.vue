@@ -15,14 +15,12 @@
           :class="{ 'nav-active': $route.path === '/' }"
           class="pgy"
           >{{ $t("Stake") }}</router-link
-        >
-
-        <div class="connBtn">
-          <button id="connectButton" @click=switchToEtheruemChain> <div class="conColor2">{{address}}</div> </button>
-        </div>
-   
+        > 
       </div>
+      <button id="connectButton" @click=switchToNeatio class="netBtn"> <div class="conColor2" >{{address}}</div> </button>
+
     </div>
+    
   </div>
 </template>
 
@@ -41,7 +39,6 @@ export default {
       chainId: '0x203',
       testChainId: '0x20d',
       address: '',
-      isTestNetwork: true,
     };
   },
   created() {
@@ -86,7 +83,7 @@ export default {
           this.connectAccount();
         } else {
           
-          this.address = `⦿ Neatio Mainnet`
+          this.address = `Neatio Mainnet`
         }
 
       } catch (e) {
@@ -105,7 +102,7 @@ export default {
         console.log('request accounts error:', e);
       }
     },
-        async switchToEtheruemChain () {
+        async switchToNeatio () {
           let chainIds = '0x203';
           let rpc = 'https://rpc.neatio.net';
           let browser = 'https://scan.neatio.net';
@@ -152,10 +149,24 @@ export default {
 </script>
 
 <style lang="scss">
+
+
+
+
 .nav-container {
   box-shadow: 0px 4px 8px 0px rgba(230, 230, 230, 0.6);
   background-color: #000;
   height: auto;
+  margin: 0 auto;
+
+  @media only screen and (max-width: 560px) {
+  .nav-panel {
+    max-width: 320px;
+  }
+
+}
+
+
   .nav-panel {
     text-align: left;
     box-sizing: border-box;
@@ -171,7 +182,7 @@ export default {
     }
     .ic {
       
-      width: 1100px;
+      width: auto;
       & a {
         margin-right: 15px;
         color: #666666;
@@ -179,7 +190,7 @@ export default {
         font-weight: 500;
 
         &:hover {
-          color: #00bfff;
+          color: #00ffff;
           transition: all .3s ease-in-out;
         }
         span {
@@ -203,7 +214,7 @@ export default {
 
         &:hover{
           .m-title {
-            color: #00bfff;
+            color: #00ffff;
           }
           .nav-icon {
             transform: rotate(180deg);
@@ -240,7 +251,7 @@ export default {
             &:hover {
               background-color: #f3f3f3;
               & > a {
-                color: #00bfff;
+                color: #00ffff;
               }
             }
           }
@@ -258,7 +269,7 @@ export default {
         }
         .chain-dropdown {
           position: absolute;
-          width: 110px;
+
           top: 45px;
           box-shadow: 0px 6px 10px 0px #ccc;
           background-color: #000;
@@ -274,7 +285,7 @@ export default {
             margin-top: 8px;
           }
           .chain-dropdown-i:hover {
-            color: #00bfff;
+            color: #00ffff;
           }
         }
         .triangle {
@@ -296,13 +307,13 @@ export default {
 
       }
       .triangle-active {
-        border-color: #00bfff transparent transparent !important;
+        border-color: #00ffff transparent transparent !important;
       }
     }
     .help:hover {
-      color: #00bfff;
+      color: #00ffff;
       padding-bottom: 2px;
-      border-bottom: 2px solid #00bfff;
+      border-bottom: 2px solid #00ffff;
     }
     .conColor1 {
       color:red;
@@ -345,30 +356,37 @@ export default {
       }
     }
 
+    .netBtn {
+        float: right;
+    }
+
     #connectButton {
-      width: 165px;
-      height: 40px;
+      width: 122px;
+      height: 28px;
+      margin: 10px;
       border: 1px solid #00ffff;
       border-radius: 10px;
       background-color: #000;
-      font-size: 16px;
+      font-size: 14px;
       cursor: pointer;
+      text-align: center;
+
+      
     }
 
     #connectButton:hover {
-      background-color: #00bfff75;
+      background-color: #00ffff75;
     }
   }
 }
 .common-inline-block {
   display: inline-block;  
   cursor: pointer; 
-}
 
-.connBtn {
-  float: right;
 
 }
+
+
 
 
 </style>

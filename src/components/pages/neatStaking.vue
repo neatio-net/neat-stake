@@ -2,7 +2,7 @@
 <div class="dashboard" >
     <div class="boxe">
            <div class="box0">
-
+            <!-- <div class="dsbd">NEATIO STAKING DASHBOARD</div>  -->
           <div class="statsD">
               <div class="stats1"> 
                   <div class="itemsD">Block Height</div>
@@ -11,7 +11,7 @@
               
               <div class="stats1"> 
                   <div class="itemsD">Block Time</div>
-                  <div class="valueD">~1.8 sec</div>
+                  <div class="valueD">~1.5 sec</div>
               </div>
                   <div class="stats1"> 
               <div class="itemsD">Staking APY</div>
@@ -36,88 +36,86 @@
           </div>
            </div>
            <div class="boxes">
+
              <div class="box1" >
 
            <!-- Pool1 --> 
             <div class="pools">
+                <div class="poolbx">
+                      <div class="vAddy1" id="pool1"><span style="color:#496785;">1.</span>  {{ "NEATIO ASIA" }} 
+                        <span style="color:#496785"> Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
+                        <span style="color:#496785"> Voting Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ (+vPower3).toFixed(0) }}</span> <span style="color:#496785">NEAT</span>
+                     </div>
+            
 
-              <div class="vAddy" id="pool1"><span style="color:#a6ff33">#1 </span>{{ "NEATIO ASIA" }}
-              <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> Alex </span></div>
-              <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower3).toFixed(0) }} 
-              <span style="color:#496785; font-size: small; font-weight: bold;"> NEAT</span></div>
 
-             <div class="btns" v-show="sPool !== null">
-                <button class="rippleStake" @click="neatStake11">stake</button>                 
-                <button class="rippleClaims" @click="claimRwd1">claim</button>
-                <button class="rippleUnstake" @click="unStake1">unstake</button>
-            </div>
-
-            <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO E.U.' && stakedTo != 'BIG BOW POOL' && stakedTo != 'SILVIU POOL'">
-                <button class="rippleStake" @click="neatStake1">stake</button>                
-                <button class="rippleClaims" @click="claimRwd1">claim</button>
-                <button class="rippleUnstake" @click="unStake1">unstake</button>
-            </div>
-            </div>
+                  <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO E.U.' && stakedTo != 'BIG BOW POOL' && stakedTo != 'SILVIU POOL'">
+                    <div class="buttns">
+                      <button class="rippleStake" @click="neatStake1">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd1">claim</button>
+                      <button class="rippleClaims" @click="unStake1">unstake</button>
+                    </div>
+                  </div>
+                  </div>
+                </div>
      
 
-            <!-- Pool2 -->
-            <div class="pools">
-              <div class="vAddy" id="pool2"><span style="color:#a6ff33">#2 </span>{{ "NEATIO E.U." }}
-              <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> MrTizu </span></div>
-              <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ vPower4 }} 
-              <span style="color:#496785; font-size: small; font-weight: bold;"> NEAT</span></div>
 
-              <div class="btns" v-show="sPool !== null">
-                <button class="rippleStake" @click="neatStake11">stake</button>                
-                <button class="rippleClaims" @click="claimRwd1">claim</button>
-                <button class="rippleUnstake" @click="unStake1">unstake</button>
-              </div>
+            <div class="pools">
+              <div class="poolbx">
+                <div class="vAddy1" id="pool2"><span style="color:#496785;">2.</span>  {{ "NEATIO E.U." }} 
+                  <span style="color:#496785"> Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
+                  <span style="color:#496785"> Voting Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ (+vPower4).toFixed(0) }}</span> <span style="color:#496785">NEAT</span>
+                </div>
+
+
 
                <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO ASIA' && stakedTo != 'BIG BOW POOL' && stakedTo != 'SILVIU POOL'">
+                <div class="buttns">
                 <button class="rippleStake" @click="neatStake2">stake</button>                
                 <button class="rippleClaims" @click="claimRwd2">claim</button>
-                <button class="rippleUnstake" @click="unStake2">unstake</button>
+                <button class="rippleClaims" @click="unStake2">unstake</button>
+                </div>
             </div>
             </div>
+          </div>
        
           <!-- Pool3 -->     
           <div class="pools">
-              <div class="vAddy" id="pool3"><span style="color:#a6ff33">#3 </span>{{ "BIG BOW POOL" }}
-              <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> Zcode </span></div>
-              <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower5).toFixed(0) }} 
-              <span style="color:#496785; font-size: small; font-weight: bold;"> NEAT</span></div>
-
-              <div class="btns" v-show="sPool !== null">
-                <button class="rippleStake" @click="neatStake11">stake</button>                
-                <button class="rippleClaims" @click="claimRwd1">claim</button>
-                <button class="rippleUnstake" @click="unStake1">unstake</button>
+            <div class="poolbx">
+              <div class="vAddy1" id="pool3"><span style="color:#496785;">3.</span>  {{ "BIG BOW POOL" }} 
+                <span style="color:#496785"> Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
+                <span style="color:#496785"> Voting Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ (+vPower5).toFixed(0) }}</span> <span style="color:#496785">NEAT</span>
               </div>
 
+ 
+
                <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO ASIA' && stakedTo != 'NEATIO E.U.' && stakedTo != 'SILVIU POOL'">
+                <div class="buttns">
                 <button class="rippleStake" @click="neatStake3">stake</button>                
                 <button class="rippleClaims" @click="claimRwd3">claim</button>
-                <button class="rippleUnstake" @click="unStake3">unstake</button>
+                <button class="rippleClaims" @click="unStake3">unstake</button>
+                </div>
             </div>
             </div>
+          </div>
           
 
           <!--Pool4-->
           <div class="pools">
-              <div class="vAddy" id="pool4"><span style="color:#a6ff33">#4 </span>{{ "SILVIU POOL" }}
-              <span style="color:#496785"> - Owner<span style="color:#496785"> ⋮ </span></span> <span style="color:#496785; font-size:14px; font-weight: bold;"> Silviu </span></div>
-              <div class="vPower"><span style="color:#496785">Pool Fee: </span>{{ vComm }}  <span style="color:#a6ff33"> ⋮ </span>  <span style="color:#496785">Total Staked: </span>{{ (+vPower6).toFixed(0) }} 
-              <span style="color:#496785; font-size: small; font-weight: bold;"> NEAT</span></div>
+            <div class="vAddy1" id="pool4"><span style="color:#496785;">4.</span>  {{ "SILVIU25 POOL" }} 
+              <span style="color:#496785"> Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
+              <span style="color:#496785"> Voting Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ (+vPower6).toFixed(0) }}</span> <span style="color:#496785">NEAT</span>
+            </div>
 
-              <div class="btns" v-show="sPool !== null">
-                <button class="rippleStake" @click="neatStake11">stake</button>                
-                <button class="rippleClaims" @click="claimRwd1">claim</button>
-                <button class="rippleUnstake" @click="unStake1">unstake</button>
-              </div>
+
 
                <div class="btns" v-show="sPool === null && stakedTo != 'NEATIO ASIA' && stakedTo != 'NEATIO E.U.' && stakedTo != 'BIG BOW POOL'">
+                <div class="buttns">
                 <button class="rippleStake" @click="neatStake4">stake</button>                
                 <button class="rippleClaims" @click="claimRwd4">claim</button>
-                <button class="rippleUnstake" @click="unStake4">unstake</button>
+                <button class="rippleClaims" @click="unStake4">unstake</button>
+                </div>
             </div> 
             </div>
             
@@ -134,9 +132,9 @@
                   />
       </div>
 
-                    <div class="locked" v-show="address === ''">Wallet Locked!</div>
+                    <div class="locked" v-show="address === ''">Please unlock your wallet! </div>
         <div class="neatStaking">
-
+          <!-- <span style="color:lightgrey" >Connected Wallet</span>  -->
                   <div class="balance-details" v-show="address != ''">
                    <div class="wallet-balance" v-show="address !== ''">
                        <div class="wallet-address" v-show="address != ''">    <div class="address-title" v-show="address != ''">
@@ -155,7 +153,7 @@
                     <div class="wl"> <img src="../../assets/stake.png" alt="stake" class="walimgs"/></div>
 
                   <div> <span style="color:lightgrey; font-size: 14px;">Coins In Stake</span></div> 
-                  <span style="color:#a6ff33">{{(+staking).toFixed(2)}} <span style="color:#496785; font-size: 14px; font-weight:bold;"> on</span> </span>
+                  <span style="color:#00ffff">{{(+staking).toFixed(2)}} <span style="color:#496785; font-size: 14px; font-weight:bold;"> on</span> </span>
                   {{stakedTo}} 
               
                 </div>    
@@ -163,7 +161,7 @@
                   <div class="wallet-balance-available2">
                     <div class="wl"> <img src="../../assets/claim.png" alt="stake" class="walimgs"/></div>
                     <span style="color:lightgrey; font-size: 14px;">Stake Rewards</span>
-                  <span style="color:#a6ff33">{{(+rewards).toFixed(18)}}</span>  
+                  <span style="color:#00ffff">{{(+rewards).toFixed(18)}}</span>  
           
                 </div>
                          
@@ -263,13 +261,14 @@ export default {
         this.getGasPrice();
         this.getBalance ();
         this.getBalanceDetail();
-        this.checkA();
+
       });
 
       ethereum.on("accountsChanged", (_accounts) => {
         this.address = _accounts[0];
         this.getBalance ();
         this.getBalanceDetail();
+
         
       })
     },
@@ -288,6 +287,7 @@ export default {
         this.getGasPrice();
         this.getValidators();
         this.getHeight();
+
        
 
         
@@ -303,7 +303,7 @@ export default {
           params: [this.address]        
         })      
         .then( (result) => {
-
+     
           this.balance = Utils.toNEAT(result)
         }
         )    
@@ -330,7 +330,7 @@ export default {
           this.staking = Utils.toNEAT(
               Nat.toString(response.data.result.delegateBalance)
           ),
-
+    
           this.rewards = Utils.toNEAT(
               Nat.toString(response.data.result.rewardBalance)
           );
@@ -397,6 +397,7 @@ export default {
     
     },
 
+    
     async getValidators() {
      
     const DATA = {
@@ -450,6 +451,8 @@ export default {
      this.stakingAPY =  (2964759 / parseInt(this.totalStake)) * 100 - 15;
 
     },
+
+
       stringToHex(str) {
       var val = "0x";
       for (var i = 0; i < str.length; i++) {
@@ -462,7 +465,7 @@ export default {
       return val;
     },
 
-     
+
     neatStake1() {
       document.getElementById("pool1").click();
       const pool1 = this.addy3;
@@ -514,7 +517,7 @@ export default {
       });
     },
 
-    // UNSTAKE DONE
+
     unStake1() {
       document.getElementById("pool1").click();
       const pool1 = this.addy3;
@@ -641,7 +644,7 @@ export default {
       document.getElementById("pool2").click();
       const pool2 = this.addy4;
       this.pool2 = pool2;
-      //console.log(pool2);
+
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
         cancelButtonText: this.$t("CANCEL"),
@@ -858,7 +861,7 @@ export default {
       });
     },
 
-    // UNSTAKE DONE
+
     unStake3() {
       document.getElementById("pool3").click();
       const pool3 = this.addy5;
@@ -976,7 +979,7 @@ export default {
           });
       });
     },
-    // Pool 4
+
     neatStake4() {
       document.getElementById("pool4").click();
       const pool4 = this.addy6;
@@ -1162,7 +1165,7 @@ button {
 	font-family: Arial, Helvetica, sans-serif;
 	text-transform: uppercase;
 	cursor: pointer;
-	color: #00BFFF;
+	color: #00ffff;
 	background-color: #273546;
   border-radius: 4px;
 	outline: none;
@@ -1170,32 +1173,22 @@ button {
   margin: 10px auto;
   }
 
-.pool-address {
-  text-align: center;
-  color:#fff;
-  font-size: 14px;
-  
+.poolbx{
+  border-bottom: 1px solid #00ffffa4;
+
 }
-.btns {
-  display:inline-block;
-  }
-.pool-address-title {
-  text-align: center;
-  color:rgb(158, 158, 158);
-  size: 12px;
-  margin-bottom: 5px;
-}
+
+
   
-.info {
-  display: inline-block;
-  margin-left: 10px;
-  margin-top: 50px;
+.buttns{
+ margin: 10px 0;
+ display: inline-block;
 }
 
 .locked {
   text-align: center;
   margin: 20px;
-  color:#a6ff33;
+  color:#00ffff;
 }
 
 .lockked {
@@ -1207,6 +1200,7 @@ button {
   width: 124px;
   height: auto;
   display: block;
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
 
@@ -1214,23 +1208,41 @@ button {
 }
 
 .itemsD {
+  font-family: Pirulen, Arial, Helvetica, sans-serif;
   color: #496785;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 400;
   margin-bottom: 5px;
 }
 
 .valueD {
+  font-family: Helvetica, sans-serif;
   color: #00FFFF;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight:lighter;
   margin-bottom: 5px;
 }
 
 
 .vAddy {
-  font-size: 0.8rem;
-  color:#00bfff;
+  font-size: 12px;
+  color:#00ffff;
+  text-align: left;
+  margin-left: 20px;
+  display: inline-block;
+  min-width: 100px;
+
+}
+
+.vAddy1 {
+  font-size: 12px;
+  font-weight: 100;
+  font-family: Pirulen, Arial, Helvetica, sans-serif;
+  color:#00ffff;
+  text-align: left;
+  display: inline-block;
+  min-width: 140px;
+
 }
 
 .address-title {
@@ -1248,34 +1260,16 @@ button {
   text-align: center;
 
 }
-.del-to{
- margin-top: 5px;
-}
   
 .walBalT {
-  color:#a6ff33;
+  color:#00ffff;
   margin: 10px;
   font-size:28px;
   font-weight: 400;
 
   }
-  
-.inputs {
-    background-color: #000;
-    border-radius: 4px;
-    width: 240px;
-    margin: 20px auto;
-    border: 1px solid #dcdfe6;
-    box-sizing: border-box;
-    font-size: inherit;
-    height: 40px;
-    line-height: 40px;
-    outline: 0;
-    color: #a6ff33;
-    padding: 15px;
-    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-    text-align: center;
-}
+
+
 
 .neatStaking {
   text-align: left;
@@ -1310,43 +1304,24 @@ button {
 }
  .dashboard{
     font-weight: bold;
-    color: #00bfFf;
+    color: #00ffff;
     padding-top: 10px;
  }
 .pools {
   margin: 10px;
 }
 
-.poolz {
-  margin: 10px;
-  background-color: #496785;
-}
-
-.vPower {
-  color:#fff;
-  margin-top: 5px;
-  font-size: 14px;
-}
-
-.vComm {
-  color:#ddd;
-}
 
 
-.box-shadow {
-  box-sizing: 1px;
-  border: none;
-  border-radius: 20px;
-  padding: 30px 50px;
-  -webkit-box-shadow: 0px 5px 26px 8px #00bfff;
-}
   .rippleStake {
   font-size: 12px;
   min-width: 68px;
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  color: #00bfff;
+  color: #00ffff;
+  border: 1px solid #00ffffa4;
+  background-color: transparent;
 	background-position: center;
 	transition: background 0.4s;
   margin: 0 auto; 
@@ -1355,34 +1330,33 @@ button {
   .rippleStake:hover {
   color: #000;  
 	text-transform: uppercase;
-	background: #a6ff33 radial-gradient(circle, transparent 1%, red 1%) 
+	background: #00ffff radial-gradient(circle, transparent 1%, red 1%) 
 	center/15000%; 
   }
 
 .rippleClaims {
+ 
   font-size: 12px;
   min-width: 68px;
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
+  border: 1px solid #00ffffa4;
+  background-color: transparent;
 	background-position: center;
 	transition: background 0.4s;
-  margin: 0 10px;
+  margin: 0 auto;
   }
 
   .rippleClaims:hover {
   color: #000;  
 	text-transform: uppercase;
 
-	background: #00BFFF radial-gradient(circle, transparent 1%, #00BFFF 1%) 
+	background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%) 
 	center/15000%; 
   }
 
-  .ripple:active {
-	background-color: #00BFFF;
-	background-size: 100%;
-	transition: background 0s;
-  }
+
 
   .rippleUnstake {
   font-size: 12px;
@@ -1390,7 +1364,9 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  color: #00bfff;
+  color: #00ffff;
+  border: 1px solid #00ffffa4;
+  background-color: transparent;
 	background-position: center;
 	transition: background 0.4s;
   margin: 10px; 
@@ -1412,55 +1388,27 @@ button {
   padding: 40px 0px 20px 0px;
 }
 
-
- .dsbd {
-  color: #fff;
-  margin: 10px;
-  font-size: 16px;
-  font-weight: 400;
- }
-
-.btn {
-  display: flex;
+@media only screen and (max-width: 560px) {
+  .valueD {
+  font-family: Helvetica, sans-serif;
+  color: #00FFFF;
+  font-size: 12px;
+  font-weight:lighter;
+  margin-bottom: 5px;
 }
-    #gtButton {
-      width: 140px;
-      height: 40px;
-      color: #000000;
-      border: 1px solid #000;
-      border-radius: 4px;
-      background-color: #00bfff;
-      font-size: 16px;
-      cursor: pointer;
-      margin: 0 auto;
-      margin-top: 50px;
-    }
-    #gtButton:hover {
-      background-color: #a6ff33;
+
+.box2 {
+      margin: 60px 10px;
+
     }
 
-        #selectBtn {
-      width: 80px;
-      height: 20px;
-      color: #000000;
-      border: 1px solid #000;
-      border-radius: 4px;
-      background-color: #00bfff;
-      font-size: 12px;
-      font-weight:bolder;
-      cursor: pointer;
-    }
-    #selectBtn:hover {
-      background-color: #a6ff33;
-    }
+
+
+}
+
+
+
 
 </style>
 
-<style>
-.el-message-box__message p {
-  margin: 0;
-  line-height: 24px;
-  word-break: break-all;
-}
-</style>
 
