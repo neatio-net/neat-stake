@@ -94,6 +94,7 @@ margin: 0 auto;
 
 
 .boxes {
+
 display:inline-table;
 }
 
@@ -124,7 +125,7 @@ display:inline-table;
 }
 
 .box0 {
-  margin: 10px auto;
+  margin: 20px auto;
 }
 
 
@@ -140,7 +141,7 @@ display:inline-table;
   border-width: 2px;
   background: #000;
   border-radius: 4px;
-  margin: 20px 10px auto;  
+  margin: 20px 10px 20px 10px;  
   padding: 0 10px; 
   align-content: center; 
   justify-content: center;
@@ -186,7 +187,6 @@ display:inline-table;
   border-radius: 24px;
   margin: 60px 10px 0px 60px;
   box-sizing: 4px;
-  padding: 30px 50px;
   border: 1px solid #00ffffa4;
   border-radius: 10px;
   box-shadow: 0 0 40px #00bfff31;

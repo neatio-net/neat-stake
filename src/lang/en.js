@@ -14,7 +14,7 @@ export default {
     withdrawReward: 'Withdraw Reward',
     errPublicKey: 'Validator Public Key is wrong or missing!',
     errCommission: 'The commission can only be 0 to 100',
-    wrongNetwork: 'Wrong Network',
+    wrongNetwork: 'Wrong Chain',
     unBanned: 'UnBanned',
     vote: 'Vote',
     stake: 'Stake',
