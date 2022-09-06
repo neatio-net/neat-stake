@@ -1,1 +1,1 @@
-# staking-UI
+# Neatio Staking Interface
