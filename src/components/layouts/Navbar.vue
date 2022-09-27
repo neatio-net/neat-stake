@@ -15,18 +15,18 @@
           :class="{ 'nav-active': $route.path === '/' }"
           class="pgy"
           >{{ $t("Stake") }}</router-link
-        >
+        > 
       </div>
-      <button id="connectButton" @click="switchToNeatio" class="netBtn">
-        <div class="conColor2">{{ address }}</div>
-      </button>
+      <button id="connectButton" @click=switchToNeatio class="netBtn"> <div class="conColor2" >{{address}}</div> </button>
+
     </div>
+    
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import MetaMaskOnboarding from "@metamask/onboarding";
+import MetaMaskOnboarding from '@metamask/onboarding';
 
 export default {
   name: "NavPanel",
@@ -35,10 +35,10 @@ export default {
       curNav: "Home",
       searchContent: "",
       otherSearch: "",
-      currentChainId: "",
-      chainId: "0x203",
-      testChainId: "0x20d",
-      address: "",
+      currentChainId: '',
+      chainId: '0x203',
+      testChainId: '0x20d',
+      address: '',
     };
   },
   created() {
@@ -60,100 +60,99 @@ export default {
     },
 
     getLocaction() {
-      this.isTestNetwork =
-        window.location.hostname.substr(0, 4) === "test" ||
-        window.location.hostname.substr(0, 4) === "loca";
+      this.isTestNetwork = window.location.hostname.substr(0, 4) === "test" || window.location.hostname.substr(0, 4) === "loca";
     },
 
-    async initialize() {
-      this.currentChainId = await ethereum.request({ method: "eth_chainId" });
+    async initialize () {
+      this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
 
-      ethereum.on("chainChanged", (_chainId) => {
-        this.connectAccount(_chainId);
+      ethereum.on('chainChanged', (_chainId) => {
+        this.connectAccount(_chainId)
       });
 
-      ethereum.on("accountsChanged", (_accounts) => {
-        this.requestAccount();
+      ethereum.on('accountsChanged', (_accounts) => {
+        this.requestAccount()
       });
 
       this.requestAccount();
     },
-    async requestAccount() {
-      this.currentChainId = await ethereum.request({ method: "eth_chainId" });
+    async requestAccount () {
+      this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
       try {
         if (this.currentChainId !== this.chainId) {
           this.connectAccount();
         } else {
-          this.address = `☉ Neatio`;
+          
+          this.address = `☉ Neatio`
         }
+
       } catch (e) {
-        console.log("request accounts error:", e);
+        console.log('request accounts error:', e);
       }
     },
-    async connectAccount() {
+    async connectAccount () {
       try {
         if (this.currentChainId !== this.chainId) {
-          this.address = this.$t("wrongNetwork");
-        } else {
-          const accounts = await ethereum.request({ method: "eth_accounts" });
-          this.address = `${accounts[0].substr(0, 6)}...${accounts[0].slice(
-            -4
-          )}`;
+          this.address = this.$t('wrongNetwork');
+        }else {
+          const accounts = await ethereum.request({ method: 'eth_accounts' });
+          this.address = `${accounts[0].substr(0, 6)}...${accounts[0].slice(-4)}`;
         }
       } catch (e) {
-        console.log("request accounts error:", e);
+        console.log('request accounts error:', e);
       }
     },
-    async switchToNeatio() {
-      let chainIds = "0x203";
-      let rpc = "https://rpc.neatio.net";
-      let browser = "https://scan.neatio.net";
-      let chainName = "Neatio Mainnet";
+        async switchToNeatio () {
+          let chainIds = '0x203';
+          let rpc = 'https://rpc.neatio.net';
+          let browser = 'https://scan.neatio.net';
+          let chainName = 'Neatio Mainnet';
 
-      try {
-        this.currentChainId = await ethereum.request({ method: "eth_chainId" });
-        if (this.currentChainId === chainIds) {
-          window.alert("Neatio Network has been added to Metamask.");
-        }
-
-        await ethereum.request({
-          method: "wallet_switchEthereumChain",
-          params: [{ chainId: chainIds }],
-        });
-      } catch (e) {
-        if (e.code === 4902) {
           try {
-            await ethereum.request({
-              method: "wallet_addEthereumChain",
-              params: [
-                {
-                  chainId: chainIds,
-                  chainName: chainName,
-                  nativeCurrency: {
-                    name: "NEAT",
-                    symbol: "NEAT",
-                    decimals: 18,
-                  },
-                  rpcUrls: [rpc],
-                  blockExplorerUrls: [browser],
-                },
-              ],
-            });
+            this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
+            if (this.currentChainId === chainIds) {
+              window.alert("Neatio Network has been added to Metamask.")
+            }
 
-            this.currentChainId = await ethereum.request({
-              method: "eth_chainId",
-            });
+            await ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: chainIds}]
+            })
+
           } catch (e) {
-            console.log("add network error", e);
+            if (e.code === 4902) {
+              try {
+                await ethereum.request({
+                  method: 'wallet_addEthereumChain',
+                  params: [{
+                    chainId: chainIds,
+                    chainName: chainName,
+                    nativeCurrency: {
+                      name: "NEAT",
+                      symbol: "NEAT",
+                      decimals: 18
+                    },
+                    rpcUrls: [rpc],
+                    blockExplorerUrls: [browser]
+                  }]
+                })
+
+                this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
+              } catch (e) {
+                console.log('add network error', e)
+              }
+            }
           }
-        }
-      }
-    },
+        },
   },
 };
 </script>
 
 <style lang="scss">
+
+
+
+
 .nav-container {
   box-shadow: 0px 4px 8px 0px rgba(230, 230, 230, 0.6);
   background-color: #000;
@@ -161,10 +160,12 @@ export default {
   margin: 0 auto;
 
   @media only screen and (max-width: 560px) {
-    .nav-panel {
-      max-width: 320px;
-    }
+  .nav-panel {
+    max-width: 320px;
   }
+
+}
+
 
   .nav-panel {
     text-align: left;
@@ -180,6 +181,7 @@ export default {
       vertical-align: middle;
     }
     .ic {
+      
       width: auto;
       & a {
         margin-right: 15px;
@@ -189,7 +191,7 @@ export default {
 
         &:hover {
           color: #00ffff;
-          transition: all 0.3s ease-in-out;
+          transition: all .3s ease-in-out;
         }
         span {
           vertical-align: middle;
@@ -207,10 +209,10 @@ export default {
           font-weight: bold;
           margin-left: 5px;
           vertical-align: middle;
-          transition: all 0.3s;
+          transition: all .3s;
         }
 
-        &:hover {
+        &:hover{
           .m-title {
             color: #00ffff;
           }
@@ -233,9 +235,9 @@ export default {
           overflow: hidden;
           /*width: 150px;*/
           background: #ffffff;
-          box-shadow: 0 0 8px 0 rgb(230, 230, 230);
+          box-shadow:0 0 8px 0 rgb(230,230,230);
           z-index: 100;
-          transition: all 0.5s;
+          transition: all .5s;
           .menu-item {
             height: 25px;
             line-height: 25px;
@@ -255,6 +257,7 @@ export default {
           }
         }
       }
+
 
       .vg {
         position: relative;
@@ -300,6 +303,8 @@ export default {
         color: #00ffff;
         font-family: "Pirulen", Helvetica, Arial;
         font-size: 18px;
+
+
       }
       .triangle-active {
         border-color: #00ffff transparent transparent !important;
@@ -311,9 +316,9 @@ export default {
       border-bottom: 2px solid #00ffff;
     }
     .conColor1 {
-      color: red;
+      color:red;
     }
-    .conColor2 {
+        .conColor2 {
       color: #00ffff;
       font-family: Pirulen, Arial, Helvetica, sans-serif;
     }
@@ -353,7 +358,7 @@ export default {
     }
 
     .netBtn {
-      float: right;
+        float: right;
     }
 
     #connectButton {
@@ -366,6 +371,8 @@ export default {
       font-size: 12px;
       cursor: pointer;
       text-align: center;
+
+      
     }
 
     #connectButton:hover {
@@ -374,7 +381,13 @@ export default {
   }
 }
 .common-inline-block {
-  display: inline-block;
-  cursor: pointer;
+  display: inline-block;  
+  cursor: pointer; 
+
+
 }
+
+
+
+
 </style>

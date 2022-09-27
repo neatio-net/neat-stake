@@ -45,9 +45,8 @@ export default {
 
 
 .main {
-  /* background-image:  url('assets/hero-bg-new.jpg');
-  background-blend-mode: multiply; */
-  background-color: #18191f;   /* #18191f */
+  background-image:  url('assets/hero-back.png');
+  background-blend-mode: multiply;
   background-size: cover;
 
 }
@@ -65,12 +64,28 @@ export default {
 }
 .boxes {
 display: grid;
-grid-template-columns: 1fr 1fr;
-width: 100%;
-margin: 0 auto;
+grid-template-columns: 1.5fr 1fr;
 
 }
 @media only screen and (max-width: 560px) {
+
+  .box1 {
+  width: auto;
+
+  min-height: 300px;
+  padding-top: 10px;
+  border-width: 1px;  
+  background: #000;
+  display:grid;
+  border-radius: 10px;
+  margin: 50px 30px 0px 10px;
+  box-sizing: 1px;
+  border: none;
+  border: 1px solid #00ffffa4;
+  border-radius: 10px;
+  box-shadow: 0 0 40px #00bfff31;
+
+}
 
   .vAddy1 {
   font-size: 12px;
@@ -89,6 +104,7 @@ margin: 0 auto;
   text-align: left;
 
 }
+
 
 
 
@@ -132,6 +148,7 @@ display:inline-table;
 
 
 
+
 }
 
 .box0 {
@@ -160,14 +177,13 @@ display:inline-table;
 
 .box1 {
   width: auto;
-  max-width: 600px;
   min-height: 300px;
   padding-top: 10px;
   border-width: 1px;  
   background: #000;
   display:grid;
   border-radius: 10px;
-  margin: 60px 10px 0px 10px;
+  margin: 50px 30px 0px 10px;
   box-sizing: 1px;
   border: none;
   border: 1px solid #00ffffa4;
@@ -178,14 +194,14 @@ display:inline-table;
 
 .box2 {
   width: auto;
-  max-width: 600px;
+  max-width: 400px;
   min-height: 300px;
   padding-top: 10px;
   border-width: 1px;
   background: #000;
   display:grid;
   border-radius: 24px;
-  margin: 60px 10px 0px 60px;
+  margin: 50px 10px 0px 30px;
   box-sizing: 4px;
   border: 1px solid #00ffffa4;
   border-radius: 10px;
@@ -199,11 +215,12 @@ display:inline-table;
 }
 
 .el-button {
-  border-radius: 24px !important;
+  border-radius: 10px !important;
   font-weight: bold !important;
+  font-family: Pirulen, Helvetica !important;
 }
 .el-message-box {
-  border-radius: 24px !important;
+  border-radius: 10px !important;
   background-color: #000 !important;
   font-family: Arial, Helvetica, sans-serif !important;
 }
@@ -270,6 +287,11 @@ display:inline-table;
 .el-message-box__title{
  color: #00ffff !important;
  text-align: center !important;
+ font-family: Pirulen, Helvetica !important;
+}
+
+.el-message-box__container {
+  font-family: Pirulen, Helvetica !important;
 }
 
 .el-message-box__input {
@@ -284,7 +306,7 @@ display:inline-table;
  margin: 0 auto !important;
 }
 .el-input__inner {
-  border-radius: 24px !important;
+  border-radius: 10px !important;
   background-color: #2c3e50 !important;
   color: #00ffff !important;
   text-align: center !important;
