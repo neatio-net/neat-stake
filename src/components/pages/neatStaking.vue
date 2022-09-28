@@ -57,8 +57,9 @@
  <div class="pools">
            <div class="vAddy11" id="pool1"><span style="color:#496785;">1.</span>  {{ "NEATIO - ASIA -" }} 
              <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
-             <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ (+vPower3).toFixed(0) }}</span>
-             <button class="rippleSelect"  @click="select1">SELECT1</button>
+             <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ v3Pwr }}</span>
+             <button class="rippleSelect" v-show="staking == 0" @click="select1">SELECT1</button>
+             <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
            </div>
 
        <div class="sep"></div>
@@ -70,8 +71,9 @@
    
      <div class="vAddy1" id="pool2"><span style="color:#496785;">2.</span>  {{ "RO NEAT POOL" }} 
        <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
-       <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ (+vPower4).toFixed(0) }}</span>
-       <button class="rippleSelect"  @click="select2">SELECT2</button>
+       <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ v4Pwr}}</span>
+       <button class="rippleSelect" v-show="staking == 0" @click="select2">SELECT2</button>
+       <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
      </div>
  <div class="sep"></div>
 </div>
@@ -81,8 +83,9 @@
 
    <div class="vAddy1" id="pool3"><span style="color:#496785;">3.</span>  {{ "BIG BOW POOL" }} 
      <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
-     <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ (+vPower5).toFixed(0) }}</span>
-     <button class="rippleSelect"  @click="select3">SELECT3</button>
+     <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ v5Pwr}}</span>
+     <button class="rippleSelect" v-show="staking == 0" @click="select3">SELECT3</button>
+     <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
    </div>
    
  <div class="sep"></div>
@@ -95,8 +98,9 @@
 
 <div class="vAddy1" id="pool4"><span style="color:#496785;">4.</span>  {{ "SILVIU25 POOL" }} 
   <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
-  <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ (+vPower6).toFixed(0) }}</span>
-  <button class="rippleSelect"  @click="select4">SELECT4</button>
+  <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ v6Pwr }}</span>
+  <button class="rippleSelect" v-show="staking == 0" @click="select4">SELECT4</button>
+  <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
 </div>
 
 <div class="sep"></div>
@@ -106,10 +110,11 @@
 <!-- POOL 5 -->     
 <div class="pools">
 
-<div class="vAddy1" id="pool5"><span style="color:#496785;">5.</span>  {{ "KINGNODE - EU" }} 
+<div class="vAddy2" id="pool5"><span style="color:#496785;">5.</span>  {{ "KINGNODE - EU" }} 
   <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
-  <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ (+vPower7).toFixed(0) }}</span>
-  <button class="rippleSelect"  @click="select5">SELECT5</button>
+  <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ v7Pwr}}</span>
+  <button class="rippleSelect" v-show="staking == 0" @click="select5">SELECT5</button>
+  <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
 </div>
 
 </div>
@@ -250,19 +255,14 @@
             </div> -->
           <div class="noSel" v-show="selectedPool == null && staking < 1 && rewards < 1"> select a pool if you wish to stake your coins </div>
 
-          <div class="deleg" v-show="staking !=0">
-                       Your coins are delegated to  
-                  </div>
-    
-                    <div class="deleg" v-show="stakedTo > 1">
-                       You have unclaimed rewards on {{stakedTo}} 
-                  </div>
                   <div><span style="font-size: 16px; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div>
           <div class="noSel1" v-show="selectedPool != null"> </div>
 
-          <div class="deleg" v-show="selectedPool != null "> selected pool </div>
+          <div class="deleg" v-show="selectedPool != null "> Selected pool <span style="font-size: 14px; color:#00ffff; font-weight:normal; font-family: Pirulen, Helvetica;">{{selectedPool}}</span> </div>
+          <div class="deleg" v-show="staking > 0 "> Staking on <span style="font-size: 14px; color:#00ffff; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div>
+          <div class="deleg" v-show="stakedTo > 0 "> Rewards on <span style="font-size: 14px; color:#00ffff; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div>
           
-          <div><span style="font-size: 16px; font-weight:normal; font-family: Pirulen, Helvetica;">{{selectedPool}}</span> </div>
+          <!-- <div><span style="font-size: 16px; font-weight:normal; font-family: Pirulen, Helvetica;">{{selectedPool}}</span> </div> -->
 
 
           <div class="btnss" v-show="staking != null && selectedPool == 'NEATIO - ASIA -' || staking != null && stakedTo == 'NEATIO - ASIA -'">
@@ -375,10 +375,15 @@ export default {
       addy6: null,
       addy7: null,
       vPower3: null,
+      v3Pwr: "",
       vPower4: null,
+      v4Pwr: "",
       vPower5: null,
+      v5Pwr: "",
       vPower6: null,
+      v6Pwr: "",
       vPower7: null,
+      v7Pwr: "",
       vComm: "15%",
       pool1: null,
       pool2: null,
@@ -392,7 +397,6 @@ export default {
       stakingAPY:'',
       stakedTo: null,
       selectedPool: null,
-      nodes: [],
 
     };
   },
@@ -582,31 +586,43 @@ export default {
     const v3Addy = v3.address;
     this.addy3 = v3Addy;
     const vPower3 = Utils.toNEAT(Nat.toString(v3.votingPower));
-    this.vPower3 = vPower3;
-    
+    this.vPower3 = Number(vPower3);
+    const v3Pwr = this.vPower3.toLocaleString("en-US");
+    this.v3Pwr = v3Pwr;
+
+  
     const v4 = Object(validators)[3];
     const v4Addy = v4.address;
     this.addy4 = v4Addy;
     const vPower4 = Utils.toNEAT(Nat.toString(v4.votingPower));
-    this.vPower4 = vPower4;
+    this.vPower4 = Number(vPower4);
+    const v4Pwr = this.vPower4.toLocaleString("en-US");
+    this.v4Pwr = v4Pwr;
   
     const v5 = Object(validators)[4];
     const v5Addy = v5.address;
     this.addy5 = v5Addy;
     const vPower5 = Utils.toNEAT(Nat.toString(v5.votingPower));
-    this.vPower5 = vPower5;
+    this.vPower5 = Number(vPower5);
+    const v5Pwr = this.vPower5.toLocaleString("en-US");
+    this.v5Pwr = v5Pwr;
 
     const v6 = Object(validators)[5];
     const v6Addy = v6.address;
     this.addy6 = v6Addy;
     const vPower6 = Utils.toNEAT(Nat.toString(v6.votingPower));
-    this.vPower6 = vPower6;
+    this.vPower6 = Number(vPower6);
+    const v6Pwr = this.vPower6.toLocaleString("en-US");
+    this.v6Pwr = v6Pwr;
  
     const v7 = Object(validators)[6];
     const v7Addy = v7.address;
     this.addy7 = v7Addy;
     const vPower7 = Utils.toNEAT(Nat.toString(v7.votingPower));
-    this.vPower7 = vPower7;
+    this.vPower7 = Number(vPower7);
+    const v7Pwr = this.vPower7.toLocaleString("en-US");
+    this.v7Pwr = v7Pwr;
+ 
 
     const totalStakeHex = parseInt(v2.votingPower) + parseInt(v3.votingPower) + parseInt(v4.votingPower) + parseInt(v5.votingPower) + parseInt(v6.votingPower) + parseInt(v7.votingPower);
     const totalStakeNEAT = totalStakeHex / 1e18;
@@ -1588,7 +1604,7 @@ button {
   }
 
 .sep{
-  padding-bottom: 36px;
+  padding-bottom: 24px;
   border-bottom: 1px solid #00ffffa4;
 }
 
@@ -1671,6 +1687,20 @@ button {
   min-width: 140px;
 
 }
+
+.vAddy2 {
+  font-size: 12px;
+  font-weight: 100;
+  font-family: Pirulen, Arial, Helvetica, sans-serif;
+  color:#00ffff;
+  text-align: center;
+  display: inline-block;
+  min-width: 140px;
+  margin-bottom: 24px;
+
+}
+
+
 
 .vAddy11 {
   font-size: 12px;
