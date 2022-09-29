@@ -58,7 +58,7 @@
            <div class="vAddy11" id="pool1"><span style="color:#496785;">1.</span>  {{ "NEATIO - ASIA -" }} 
              <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
              <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ v3Pwr }}</span>
-             <button class="rippleSelect" v-show="staking == 0" @click="select1">SELECT1</button>
+             <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select1">SELECT</button>
              <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
            </div>
 
@@ -72,7 +72,7 @@
      <div class="vAddy1" id="pool2"><span style="color:#496785;">2.</span>  {{ "RO NEAT POOL" }} 
        <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
        <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ v4Pwr}}</span>
-       <button class="rippleSelect" v-show="staking == 0" @click="select2">SELECT2</button>
+       <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select2">SELECT</button>
        <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
      </div>
  <div class="sep"></div>
@@ -84,7 +84,7 @@
    <div class="vAddy1" id="pool3"><span style="color:#496785;">3.</span>  {{ "BIG BOW POOL" }} 
      <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
      <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ v5Pwr}}</span>
-     <button class="rippleSelect" v-show="staking == 0" @click="select3">SELECT3</button>
+     <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select3">SELECT</button>
      <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
    </div>
    
@@ -99,7 +99,7 @@
 <div class="vAddy1" id="pool4"><span style="color:#496785;">4.</span>  {{ "SILVIU25 POOL" }} 
   <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
   <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ v6Pwr }}</span>
-  <button class="rippleSelect" v-show="staking == 0" @click="select4">SELECT4</button>
+  <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select4">SELECT</button>
   <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
 </div>
 
@@ -113,7 +113,7 @@
 <div class="vAddy2" id="pool5"><span style="color:#496785;">5.</span>  {{ "KINGNODE - EU" }} 
   <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
   <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ v7Pwr}}</span>
-  <button class="rippleSelect" v-show="staking == 0" @click="select5">SELECT5</button>
+  <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select5">SELECT</button>
   <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
 </div>
 
@@ -253,55 +253,55 @@
          
                          
             </div> -->
-          <div class="noSel" v-show="selectedPool == null && staking < 1 && rewards < 1"> select a pool if you wish to stake your coins </div>
+          <div class="noSel" v-show="selectedPool == null && staking == 0 && rewards == 0"> select a pool if you wish to stake your coins </div>
 
-                  <div><span style="font-size: 16px; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div>
-          <div class="noSel1" v-show="selectedPool != null"> </div>
+                  <!-- <div><span style="font-size: 16px; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div> -->
+          <!-- <div class="noSel1" v-show="selectedPool != null"> </div> -->
 
           <div class="deleg" v-show="selectedPool != null "> Selected pool <span style="font-size: 14px; color:#00ffff; font-weight:normal; font-family: Pirulen, Helvetica;">{{selectedPool}}</span> </div>
-          <div class="deleg" v-show="staking > 0 "> Staking on <span style="font-size: 14px; color:#00ffff; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div>
-          <div class="deleg" v-show="stakedTo > 0 "> Rewards on <span style="font-size: 14px; color:#00ffff; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div>
+          <div class="deleg" v-show="staking != 0 && rewards != 0"> Staking on: <span style="font-size: 14px; color:#00ffff; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div>
+          <div class="deleg" v-show="rewards > 0 "> Rewards on: <span style="font-size: 14px; color:#00ffff; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div>
           
           <!-- <div><span style="font-size: 16px; font-weight:normal; font-family: Pirulen, Helvetica;">{{selectedPool}}</span> </div> -->
 
 
-          <div class="btnss" v-show="staking != null && selectedPool == 'NEATIO - ASIA -' || staking != null && stakedTo == 'NEATIO - ASIA -'">
+          <div class="btnss" v-show="staking != null && selectedPool == 'NEATIO - ASIA -' || staking != null && stakedTo == 'NEATIO - ASIA -' || stakedTo == 'NEATIO - ASIA -'">
                     <div class="buttns">
-                      <button class="rippleStake" @click="neatStake1">stake1</button>                
-                      <button class="rippleClaims" @click="claimRwd1">claim1</button>
-                      <button class="rippleClaims" @click="unStake1">unstake1</button>
+                      <button class="rippleStake" @click="neatStake1">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd1">claim</button>
+                      <button class="rippleClaims" @click="unStake1">unstake</button>
                     </div>
                   </div>
 
-                  <div class="btnss" v-show="staking != null && selectedPool == 'RO NEAT POOL' || staking != null && stakedTo == 'RO NEAT POOL'">
+                  <div class="btnss" v-show="staking != null && selectedPool == 'RO NEAT POOL' || staking != null && stakedTo == 'RO NEAT POOL' || stakedTo == 'RO NEAT POOL'">
                     <div class="buttns">
-                      <button class="rippleStake" @click="neatStake2">stake2</button>                
-                      <button class="rippleClaims" @click="claimRwd2">claim2</button>
-                      <button class="rippleClaims" @click="unStake2">unstake2</button>
+                      <button class="rippleStake" @click="neatStake2">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd2">claim</button>
+                      <button class="rippleClaims" @click="unStake2">unstake</button>
                     </div>
                   </div>
 
-                  <div class="btnss" v-show="staking != null && selectedPool == 'BIG BOW POOL' || staking != null && stakedTo == 'BIG BOW POOL'">
+                  <div class="btnss" v-show="staking != null && selectedPool == 'BIG BOW POOL' || staking != null && stakedTo == 'BIG BOW POOL' || stakedTo == 'BIG BOW POOL'">                    
                     <div class="buttns">
-                      <button class="rippleStake" @click="neatStake3">stake3</button>                
-                      <button class="rippleClaims" @click="claimRwd3">claim3</button>
-                      <button class="rippleClaims" @click="unStake3">unstake3</button>
+                      <button class="rippleStake" @click="neatStake3">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd3">claim</button>
+                      <button class="rippleClaims" @click="unStake3">unstake</button>
                     </div>
                   </div>
 
-                  <div class="btnss" v-show="staking != null && selectedPool == 'SILVIU25 POOL' || staking != null && stakedTo == 'SILVIU25 POOL'">
+                  <div class="btnss" v-show="staking != null && selectedPool == 'SILVIU25 POOL' || staking != null && stakedTo == 'SILVIU25 POOL' || stakedTo == 'SILVIU25 POOL'">
                     <div class="buttns">
-                      <button class="rippleStake" @click="neatStake4">stake4</button>                
-                      <button class="rippleClaims" @click="claimRwd4">claim4</button>
-                      <button class="rippleClaims" @click="unStake4">unstake4</button>
+                      <button class="rippleStake" @click="neatStake4">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd4">claim</button>
+                      <button class="rippleClaims" @click="unStake4">unstake</button>
                     </div>
                   </div>
 
-                  <div class="btnss" v-show="staking != null && selectedPool == 'KINGNODE - EU' || staking != null && stakedTo == 'KINGNODE - EU'">
+                  <div class="btnss" v-show="staking != null && selectedPool == 'KINGNODE - EU' || staking != null && stakedTo == 'KINGNODE - EU' || stakedTo == 'KINGNODE - EU'">
                     <div class="buttns">
-                      <button class="rippleStake" @click="neatStake5">stake5</button>                
-                      <button class="rippleClaims" @click="claimRwd5">claim5</button>
-                      <button class="rippleClaims" @click="unStake5">unstake5</button>
+                      <button class="rippleStake" @click="neatStake5">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd5">claim</button>
+                      <button class="rippleClaims" @click="unStake5">unstake</button>
                     </div>
                   </div>
 
@@ -365,6 +365,7 @@ export default {
       privateKey: "",
       staking: null,
       rewards: null,
+      rewardBalance:null,
       amount:"",
       limit: "21000",
       addry: null,
@@ -492,12 +493,10 @@ export default {
               Nat.toString(response.data.result.rewardBalance)
           );
 
-          this.delegatedTo = response.data.result;
-
-          // console.log(this.delegatedTo);
+          this.delegatedTo = response.data.result.rewardDetail;
         
 
-          if (this.delegatedTo.hasOwnProperty("0xaa38dfb4c9dd61e653bc865ff429f05b2db44977")){
+          if (this.delegatedTo.hasOwnProperty("0x6f755798dc3fb59d3236b0814d4038a094c8db6e")){
           this.stakedTo = 'NEATIO - ASIA -';     
           }
 
@@ -505,7 +504,7 @@ export default {
           this.stakedTo = 'RO NEAT POOL';     
           }
 
-          if (this.delegatedTo.hasOwnProperty("0x6f755798dc3fb59d3236b0814d4038a094c8db6e")){
+          if (this.delegatedTo.hasOwnProperty("0xaa38dfb4c9dd61e653bc865ff429f05b2db44977")){
           this.stakedTo = 'BIG BOW POOL';      
           }
 
@@ -1616,7 +1615,7 @@ button {
 
   
 .buttns{
- margin: 20px;
+ margin: 10px 0 20px 0;
  display: inline-block;
 }
 
