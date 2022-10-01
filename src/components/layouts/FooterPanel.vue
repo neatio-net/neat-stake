@@ -38,7 +38,7 @@
               <!-- TWITTER -->
               <li class="">
                 <a
-                  href="https://twitter.com/neat_io"
+                  href="https://twitter.com/neatio_network"
                   target="_blank"
                   rel="noopener"
                   ><img
