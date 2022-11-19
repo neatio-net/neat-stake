@@ -11,7 +11,7 @@
               
               <div class="stats1"> 
                   <div class="itemsD">Block Time</div>
-                  <div class="valueD">1.7 sec</div>
+                  <div class="valueD">1.2 sec</div>
               </div>
                   <div class="stats1"> 
               <div class="itemsD">Staking APY</div>
@@ -25,7 +25,7 @@
 
              <div class="stats1"> 
                   <div class="itemsD">Circ. Supply</div>
-                  <div class="valueD">{{"3,829,969"}}</div>
+                  <div class="valueD">{{"3,273,600"}}</div>
               </div>
 
   
