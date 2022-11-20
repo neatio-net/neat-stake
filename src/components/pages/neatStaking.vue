@@ -11,7 +11,7 @@
               
               <div class="stats1"> 
                   <div class="itemsD">Block Time</div>
-                  <div class="valueD">1.2 sec</div>
+                  <div class="valueD">1.5 sec</div>
               </div>
                   <div class="stats1"> 
               <div class="itemsD">Staking APY</div>
@@ -19,26 +19,55 @@
               </div>
 
               <div class="stats1"> 
-                  <div class="itemsD">Total Locked</div>
+                  <div class="itemsD">Locked Coins</div>
                   <div class="valueD">{{ (+totalStake).toLocaleString() }}</div>
               </div>
 
-             <div class="stats1"> 
-                  <div class="itemsD">Circ. Supply</div>
-                  <div class="valueD">{{"3,273,600"}}</div>
+              <div class="stats1"> 
+                  <div class="itemsD">Of Total</div>
+                  <div class="valueD">{{(+percentLock).toFixed(2)}} %</div>
               </div>
 
+             <div class="stats1"> 
+                  <div class="itemsD">Circulating</div>
+                  <div class="valueD">{{(+circcc).toLocaleString()}}</div>
+              </div>
+
+              <div class="stats1"> 
+                  <div class="itemsD">Total Coins</div>
+                  <div class="valueD">{{(+totalSupp).toLocaleString()}}</div>
+              </div>
+
+              <div class="stats1"> 
+                  <div class="itemsD">Of max</div>
+                  <div class="valueD">{{(+percentMax).toFixed(2)}} %</div>
+              </div>
   
               <div class="stats1"> 
                   <div class="itemsD">Max Supply</div>
                   <div class="valueD">50,000,000</div>
               </div>
+
+              <div class="stats1"> 
+                  <div class="itemsD">NEAT Price</div>
+                  <div class="valueD">$ {{(+priceUSD).toFixed(4)}}</div>
+              </div>
+
+              
+              <div class="stats1"> 
+                  <div class="itemsD">24h Change</div>
+                  <div class="valueD">{{(+price24h).toFixed(2)}} %</div>
+              </div>
+
+              <div class="stats1"> 
+                  <div class="itemsD">Market CAP</div>
+                  <div class="valueD">$ {{(+marketCap).toLocaleString()}}</div>
+
+              </div>
+
           </div>
            </div>
-           <div class="boxes">
-
-
-          
+           <div class="boxes">     
 
 
 
@@ -142,7 +171,6 @@
 
         <div class="locked" v-show="address === ''">Please unlock your wallet! </div>
         <div class="neatStaking">
-          <!-- <span style="color:lightgrey" >Connected Wallet</span>  -->
                   <div class="balance-details" v-show="address != ''">
                    <div class="wallet-balance" v-show="address !== ''">
 
@@ -206,63 +234,14 @@
                 
               </div>
 
-<!-- 
-          <div class="boxess" >
-                 <div class="spinnerr">
+        
 
-                    <div class="spinr" ><orbit-spinner :animation-duration="1200" :size="55" color="#00ffff" alt="stake" class="walimgs"/></div>
-
-                  
-                 
-                
-                 
-              
-                </div>    
-
-                  <div class="staking-name">
-                    <div class="wallet-balance-available2">
-
-                  <div>
-                    <span
-                      style="
-                        color: #496785;
-                        font-weight: lighter;
-                        font-size: 11px;
-                        font-family: Pirulen, Helvetica;
-                      "
-                      >Coins In Stake</span
-                    >
-                  </div>
-                  <span style="color: #496785; font-family: Helvetica">{{
-                    (+staking).toFixed(2)
-                  }}</span>
-                </div>
-          
-                </div>
-
-                <div class="staking-values">
-
-<div class="stake-detail2">
-  <div>  <span style="color:#496785; font-family: Helvetica;">{{(+staking).toFixed(6)}}</span></div> 
-
-  <div>  <span style="color:#496785; font-family: Helvetica;">{{(+rewards).toFixed(6)}}</span>  </div> 
-</div>
-
-</div>
-
-         
-                         
-            </div> -->
           <div class="noSel" v-show="selectedPool == null && staking == 0 && rewards == 0"> select a pool if you wish to stake your coins </div>
-
-                  <!-- <div><span style="font-size: 16px; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div> -->
-          <!-- <div class="noSel1" v-show="selectedPool != null"> </div> -->
 
           <div class="deleg" v-show="selectedPool != null "> Selected pool <span style="font-size: 14px; color:#00ffff; font-weight:normal; font-family: Pirulen, Helvetica;">{{selectedPool}}</span> </div>
           <div class="deleg" v-show="staking != 0 && rewards != 0"> Staking on: <span style="font-size: 14px; color:#00ffff; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div>
           <div class="deleg" v-show="rewards > 0 "> Rewards on: <span style="font-size: 14px; color:#00ffff; font-weight:normal; font-family: Pirulen, Helvetica;">{{stakedTo}}</span> </div>
           
-          <!-- <div><span style="font-size: 16px; font-weight:normal; font-family: Pirulen, Helvetica;">{{selectedPool}}</span> </div> -->
 
 
           <div class="btnss" v-show="staking != null && selectedPool == 'NEATIO - ASIA -' || staking != null && stakedTo == 'NEATIO - ASIA -' || stakedTo == 'NEATIO - ASIA -'">
@@ -394,10 +373,13 @@ export default {
       height: null,
       totalStake: '',
       circulating: '',
-      totalSupply: '',
+      circcc:'',
+      totalCoins:'',
       stakingAPY:'',
       stakedTo: null,
       selectedPool: null,
+      priceUSD:'',
+      price24h:'',
 
     };
   },
@@ -414,6 +396,33 @@ export default {
     this.getValidators();
     this.initialize();
     this.getHeight();
+    this.getPrice();
+    this.getCirc();
+    this.get24h();
+
+
+  },
+
+  computed: {
+    totalSupp: function() {
+      return parseInt(this.circcc) + parseInt(this.totalStake);
+    },
+    
+
+    percentLock: function() {
+      return parseInt(this.totalStake) * 100 / this.totalSupp;      
+    },
+
+    percentMax: function() {
+      return parseInt(this.totalSupp) * 100 / 50000000;      
+    },
+
+    marketCap: function() {
+      const mCap = parseInt(this.totalSupp) * this.priceUSD;
+      return mCap.toFixed(2);      
+    }
+
+
   },
 
 
@@ -462,7 +471,7 @@ export default {
           params: [this.address]        
         })      
         .then( (result) => {
-          // console.log("balance", result);
+
           this.balance = Utils.toNEAT(result)
         }
         )    
@@ -552,13 +561,32 @@ export default {
       };
     axios
       .post(URL, DATA)
-      .then((response) => this.height = Nat.toString(response.data.result));
-
-
-    
+      .then((response) => this.height = Nat.toString(response.data.result));    
     },
 
-   
+       // PRICE
+
+  async getPrice() {
+        const cpURL = 'https://api.coinpaprika.com/v1/tickers/neat-neatio';
+        await axios.get(cpURL).then((response) => (this.priceUSD = response.data.quotes.USD.price));
+
+  },
+
+  async get24h() {
+        const cpURL = 'https://api.coinpaprika.com/v1/tickers/neat-neatio';
+        await axios.get(cpURL).then((response) => (this.price24h = response.data.quotes.USD.percent_change_24h));
+
+
+  },
+
+  async getCirc() {
+        const cpURL = 'https://scan.neatio.net/api?module=stats&action=coinsupply';
+        await axios.get(cpURL).then((response) => (this.circulating = response.data));
+        const circulating = this.circulating;
+        const circc = parseInt(circulating).toFixed(0);
+        this.circcc = circc;
+  },
+
     
     async getValidators() {
      
@@ -626,10 +654,10 @@ export default {
     const totalStakeHex = parseInt(v2.votingPower) + parseInt(v3.votingPower) + parseInt(v4.votingPower) + parseInt(v5.votingPower) + parseInt(v6.votingPower) + parseInt(v7.votingPower);
     const totalStakeNEAT = totalStakeHex / 1e18;
     this.totalStake = totalStakeNEAT.toFixed(0);
-
      this.stakingAPY =  (2964759 / parseInt(this.totalStake)) * 100 - 15;
 
     },
+
 
 
 
@@ -644,55 +672,6 @@ export default {
         }
       }
       return val;
-    },
-
-     
-    
-    neatStake11() {
-
-     this.$prompt(this.$t("Amount To Stake"), "", {
-        confirmButtonText: this.$t("CONFIRM"),
-        cancelButtonText: this.$t("CANCEL"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("mNum");
-          }
-          if (+val <= 0) {
-            return this.$t("gt0");
-          }
-          if (+val + this.limit * this.price >= this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-
-        const params = [
-          {
-            from: this.address,
-            to: "0xbC5282967825FE36F7956bd4247B9d4540051EFC",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: Utils.toHex(Utils.fromNEAT(value)),
-          
-          }
-        ];
-
-        ethereum
-          .request({
-            method: 'eth_sendTransaction',
-            params,
-          })
-          .then((result) => {
-              this.$alert("TX ID: " + result, "You succesfully staked your coins!", {
-              confirmButtonText: this.$t("CLOSE"),
-              type: "success",
-            });
-
-          })
-          .catch((error) => {
-            console.log('tx error', error)
-          });
-      });
     },
 
     select1() {
