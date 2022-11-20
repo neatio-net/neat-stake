@@ -10,7 +10,7 @@
               </div>
               
               <div class="stats1"> 
-                  <div class="itemsD">Block Time</div>
+                  <div class="itemsD">Avg. Block Time</div>
                   <div class="valueD">1.5 sec</div>
               </div>
                   <div class="stats1"> 
@@ -24,22 +24,22 @@
               </div>
 
               <div class="stats1"> 
-                  <div class="itemsD">Of Total</div>
+                  <div class="itemsD">Pct. Of Total</div>
                   <div class="valueD">{{(+percentLock).toFixed(2)}} %</div>
               </div>
 
              <div class="stats1"> 
-                  <div class="itemsD">Circulating</div>
+                  <div class="itemsD">Circ. Supply</div>
                   <div class="valueD">{{(+circcc).toLocaleString()}}</div>
               </div>
 
               <div class="stats1"> 
-                  <div class="itemsD">Total Coins</div>
+                  <div class="itemsD">Total Supply</div>
                   <div class="valueD">{{(+totalSupp).toLocaleString()}}</div>
               </div>
 
               <div class="stats1"> 
-                  <div class="itemsD">Of max</div>
+                  <div class="itemsD">Pct. of Max</div>
                   <div class="valueD">{{(+percentMax).toFixed(2)}} %</div>
               </div>
   
@@ -49,7 +49,7 @@
               </div>
 
               <div class="stats1"> 
-                  <div class="itemsD">NEAT Price</div>
+                  <div class="itemsD">NEAT coin Price</div>
                   <div class="valueD">$ {{(+priceUSD).toFixed(4)}}</div>
               </div>
 
@@ -443,10 +443,7 @@ export default {
     },
 
 
-    async connectAccount () {
-
-
-      
+    async connectAccount () {      
       try {
         const accounts = await ethereum.request({ method: "eth_requestAccounts" });
         this.address = accounts[0];
@@ -455,8 +452,7 @@ export default {
         this.getBalanceDetail();
         this.getGasPrice();
         this.getValidators();
-        this.getHeight();
-       
+        this.getHeight();      
 
         
       } catch (e) {
