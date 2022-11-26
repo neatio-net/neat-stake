@@ -11,7 +11,7 @@
               
               <div class="stats1"> 
                   <div class="itemsD">Avg. Block Time</div>
-                  <div class="valueD">1.5 sec</div>
+                  <div class="valueD">1.2 seconds</div>
               </div>
                   <div class="stats1"> 
               <div class="itemsD">Staking APY</div>
@@ -81,7 +81,7 @@
 
 
             <div class="box1" >
-              <!-- Pool0 --> 
+    <!-- Pool0 --> 
       <div class="pools">
                 <div class="vAddy11" id="pool0"><span style="color:#496785;">1.</span>  {{ "DAMUN 8 POOL" }} 
                   <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
@@ -121,7 +121,7 @@
 <!-- POOL 3 -->     
 <div class="pools">
 
-   <div class="vAddy1" id="pool3"><span style="color:#496785;">4.</span>  {{ "BIG BOW POOL" }} 
+   <div class="vAddy1" id="pool3"><span style="color:#496785;">4.</span>  {{ "SILVIU25 POOL" }} 
      <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
      <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ (+v55power).toLocaleString()}}</span>
      <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select3">SELECT</button>
@@ -136,19 +136,19 @@
 <!-- POOL 4 -->     
 <div class="pools">
 
-<div class="vAddy1" id="pool4"><span style="color:#496785;">5.</span>  {{ "SILVIU25 POOL" }} 
+<div class="vAddy2" id="pool4"><span style="color:#496785;">5.</span>  {{ "KINGNODE - EU" }} 
   <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
   <span style="color:#496785">Staking Power:</span>  <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ (+v66power).toLocaleString() }}</span>
   <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select4">SELECT</button>
   <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
 </div>
 
-<div class="sep"></div>
+<!-- <div class="sep"></div> -->
 </div>
 <!-- 4 END -->
 
 <!-- POOL 5 -->     
-<div class="pools">
+<!-- <div class="pools">
 
 <div class="vAddy2" id="pool5"><span style="color:#496785;">6.</span>  {{ "KINGNODE - EU" }} 
   <span style="color:#496785">Pool Fee:</span> <span style="font-family:Helvetica; font-weight:normal; font-size:14px;">{{ vComm }}</span>
@@ -157,7 +157,7 @@
   <span v-show="staking != 0" style="color:#496785; font-size: 14px; font-weight:normal; font-family: Pirulen, Helvetica;"> NEAT</span>
 </div>
 
-</div>
+</div> -->
 <!-- 5 END -->
 
 
@@ -255,54 +255,54 @@
           
           
           
-          <div class="btnss" v-show="staking != null && selectedPool == 'DAMUN 88 POOL'">
+          <div class="btnss" v-show="staking != null && selectedPool == 'DAMUN 8 POOL' || staking != null && stakedTo == 'DAMUN 8 POOL' || stakedTo == 'DAMUN 8 POOL'">
                     <div class="buttns">
-                      <button class="rippleStake" @click="neatStake0">stake0</button>                
-                      <button class="rippleClaims" @click="claimRwd0">claim0</button>
-                      <button class="rippleClaims" @click="unStake0">unstake0</button>
+                      <button class="rippleStake" @click="neatStake0">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd0">claim</button>
+                      <button class="rippleClaims" @click="unStake0">unstake</button>
                     </div>
                   </div>
 
 
           <div class="btnss" v-show="staking != null && selectedPool == 'NEATIO - ASIA -' || staking != null && stakedTo == 'NEATIO - ASIA -' || stakedTo == 'NEATIO - ASIA -'">
                     <div class="buttns">
-                      <button class="rippleStake" @click="neatStake1">stake1</button>                
-                      <button class="rippleClaims" @click="claimRwd1">claim1</button>
-                      <button class="rippleClaims" @click="unStake1">unstake1</button>
+                      <button class="rippleStake" @click="neatStake1">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd1">claim</button>
+                      <button class="rippleClaims" @click="unStake1">unstake</button>
                     </div>
                   </div>
 
                   <div class="btnss" v-show="staking != null && selectedPool == 'RO NEAT POOL' || staking != null && stakedTo == 'RO NEAT POOL' || stakedTo == 'RO NEAT POOL'">
                     <div class="buttns">
-                      <button class="rippleStake" @click="neatStake2">stake2</button>                
-                      <button class="rippleClaims" @click="claimRwd2">claim2</button>
-                      <button class="rippleClaims" @click="unStake2">unstake2</button>
+                      <button class="rippleStake" @click="neatStake2">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd2">claim</button>
+                      <button class="rippleClaims" @click="unStake2">unstake</button>
                     </div>
                   </div>
 
-                  <div class="btnss" v-show="staking != null && selectedPool == 'BIG BOW POOL' || staking != null && stakedTo == 'BIG BOW POOL' || stakedTo == 'BIG BOW POOL'">                    
+                  <div class="btnss" v-show="staking != null && selectedPool == 'SILVIU25 POOL' || staking != null && stakedTo == 'SILVIU25 POOL' || stakedTo == 'SILVIU25 POOL'">                    
                     <div class="buttns">
-                      <button class="rippleStake" @click="neatStake3">stake3</button>                
-                      <button class="rippleClaims" @click="claimRwd3">claim3</button>
-                      <button class="rippleClaims" @click="unStake3">unstake3</button>
-                    </div>
-                  </div>
-
-                  <div class="btnss" v-show="staking != null && selectedPool == 'SILVIU25 POOL' || staking != null && stakedTo == 'SILVIU25 POOL' || stakedTo == 'SILVIU25 POOL'">
-                    <div class="buttns">
-                      <button class="rippleStake" @click="neatStake4">stake4</button>                
-                      <button class="rippleClaims" @click="claimRwd4">claim4</button>
-                      <button class="rippleClaims" @click="unStake4">unstake4</button>
+                      <button class="rippleStake" @click="neatStake3">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd3">claim</button>
+                      <button class="rippleClaims" @click="unStake3">unstake</button>
                     </div>
                   </div>
 
                   <div class="btnss" v-show="staking != null && selectedPool == 'KINGNODE - EU' || staking != null && stakedTo == 'KINGNODE - EU' || stakedTo == 'KINGNODE - EU'">
                     <div class="buttns">
-                      <button class="rippleStake" @click="neatStake5">stake5</button>                
-                      <button class="rippleClaims" @click="claimRwd5">claim5</button>
-                      <button class="rippleClaims" @click="unStake5">unstake5</button>
+                      <button class="rippleStake" @click="neatStake4">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd4">claim</button>
+                      <button class="rippleClaims" @click="unStake4">unstake</button>
                     </div>
                   </div>
+
+                  <!-- <div class="btnss" v-show="staking != null && selectedPool == 'KINGNODE - EU'">
+                    <div class="buttns">
+                      <button class="rippleStake" @click="neatStake5">stake</button>                
+                      <button class="rippleClaims" @click="claimRwd5">claim</button>
+                      <button class="rippleClaims" @click="unStake5">unstake</button>
+                    </div>
+                  </div> -->
 
 
 
@@ -531,7 +531,7 @@ export default {
           this.delegatedTo = response.data.result.rewardDetail;
 
           if (this.delegatedTo.hasOwnProperty("0xa5ed22086ee9a68cdb3fd469d31316d40546c9c6")){
-          this.stakedTo = 'DAMUN 88 POOL';     
+          this.stakedTo = 'DAMUN 8 POOL';     
           }        
 
           if (this.delegatedTo.hasOwnProperty("0x6f755798dc3fb59d3236b0814d4038a094c8db6e")){
@@ -542,9 +542,9 @@ export default {
           this.stakedTo = 'RO NEAT POOL';     
           }
 
-          if (this.delegatedTo.hasOwnProperty("0xaa38dfb4c9dd61e653bc865ff429f05b2db44977")){
-          this.stakedTo = 'BIG BOW POOL';      
-          }
+          // if (this.delegatedTo.hasOwnProperty("0xaa38dfb4c9dd61e653bc865ff429f05b2db44977")){
+          // this.stakedTo = 'BIG BOW POOL';      
+          // }
 
           if (this.delegatedTo.hasOwnProperty("0xc8b3706f2db85fd5a1590b2a1329ab5af70ef905")){
           this.stakedTo = 'SILVIU25 POOL';      
@@ -631,6 +631,7 @@ export default {
       .then((response) => (this.array = response.data.result));
 
     const validators = this.array;
+    console.log(validators);
 
     const v2 = Object(validators)[1];
     const v2Addy = v2.address;
@@ -677,18 +678,24 @@ export default {
     const v6Pwr = this.vPower6;
     this.v6Pwr = v6Pwr.toFixed(0);
     this.v66power = parseInt(this.v6Pwr);
- 
-    const v7 = Object(validators)[6];
-    const v7Addy = v7.address;
-    this.addy7 = v7Addy;
-    const vPower7 = Utils.toNEAT(Nat.toString(v7.votingPower));
-    this.vPower7 = Number(vPower7);
-    const v7Pwr = this.vPower7;
-    this.v7Pwr = v7Pwr.toFixed(0);
-    this.v77power = parseInt(this.v7Pwr);
+
+    // const v7 = Object(validators)[6];
+    // const validator6 = validators[6].address;
+    // this.addy7 = validator6;
+    // const vPower7 = Utils.toNEAT(Nat.toString(v7.votingPower));
+    // this.vPower7 = Number(vPower7);
+    // const v7Pwr = this.vPower7;
+    // this.v7Pwr = v7Pwr.toFixed(0);
+    // this.v77power = parseInt(this.v7Pwr);
+
+    // // const validator6 = validators[5].address;
+    // // console.log(validator6);
+
+
  
 
-    const totalStakeHex = parseInt(v2.votingPower) + parseInt(v3.votingPower) + parseInt(v4.votingPower) + parseInt(v5.votingPower) + parseInt(v6.votingPower) + parseInt(v7.votingPower);
+
+    const totalStakeHex = parseInt(v2.votingPower) + parseInt(v3.votingPower) + parseInt(v4.votingPower) + parseInt(v5.votingPower) + parseInt(v6.votingPower);
     const totalStakeNEAT = totalStakeHex / 1e18;
     this.totalStake = totalStakeNEAT.toFixed(0);
      this.stakingAPY =  (2964759 / parseInt(this.totalStake)) * 100 - 15;
@@ -920,7 +927,6 @@ export default {
       document.getElementById("pool1").click();
       const pool1 = this.addy3;
       this.pool1 = pool1;
-      //console.log(pool1);
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
         cancelButtonText: this.$t("CANCEL"),
@@ -1602,175 +1608,175 @@ export default {
     },
 
     // Pool 5
-      neatStake5() {
-      document.getElementById("pool5").click();
-      const pool5 = this.addy7;
-      this.pool5 = pool5;
-      this.$prompt(this.$t("Amount To Stake"), "", {
-        confirmButtonText: this.$t("CONFIRM"),
-        cancelButtonText: this.$t("CANCEL"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("mNum");
-          }
-          if (+val <= 0) {
-            return this.$t("gt0");
-          }
-          if (+val + this.limit * this.price >= this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(["address"], [this.pool5]);
-        let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: Utils.toHex(Utils.fromNEAT(value)),
-            data: "0x" + functionSig + data.substring(2),
-          }
-        ];
+    //   neatStake5() {
+    //   document.getElementById("pool5").click();
+    //   const pool5 = this.addy7;
+    //   this.pool5 = pool5;
+    //   this.$prompt(this.$t("Amount To Stake"), "", {
+    //     confirmButtonText: this.$t("CONFIRM"),
+    //     cancelButtonText: this.$t("CANCEL"),
+    //     inputValidator: (val) => {
+    //       if (isNaN(val)) {
+    //         return this.$t("mNum");
+    //       }
+    //       if (+val <= 0) {
+    //         return this.$t("gt0");
+    //       }
+    //       if (+val + this.limit * this.price >= this.balance) {
+    //         return this.$t("notEnough");
+    //       }
+    //     },
+    //   }).then(({ value }) => {
+    //     let data = Abi.encodeParams(["address"], [this.pool5]);
+    //     let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
+    //     const params = [
+    //       {
+    //         from: this.address,
+    //         to: "0x0000000000000000000000000000000000000505",
+    //         gas: Utils.toHex(this.limit),
+    //         gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+    //         value: Utils.toHex(Utils.fromNEAT(value)),
+    //         data: "0x" + functionSig + data.substring(2),
+    //       }
+    //     ];
 
-        ethereum
-          .request({
-            method: 'eth_sendTransaction',
-            params,
-          })
-          .then((result) => {
+    //     ethereum
+    //       .request({
+    //         method: 'eth_sendTransaction',
+    //         params,
+    //       })
+    //       .then((result) => {
 
-            this.$alert("TX ID: " + result, "Staking Was Succesful!", {
-              confirmButtonText: this.$t("CLOSE"),
-              type: "success",
-            });
+    //         this.$alert("TX ID: " + result, "Staking Was Succesful!", {
+    //           confirmButtonText: this.$t("CLOSE"),
+    //           type: "success",
+    //         });
 
-          })
-          .catch((error) => {
-            console.log('tx error', error)
-          });
-      });
-    },
+    //       })
+    //       .catch((error) => {
+    //         console.log('tx error', error)
+    //       });
+    //   });
+    // },
 
 
-    unStake5() {
-      document.getElementById("pool5").click();
-      const pool5 = this.addy7;
-      this.pool5 = pool5;
-      this.$prompt(this.$t("Amount To Unstake"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("cmNum");
-          }
-          if (+val <= 0) {
-            return this.$t("cgt");
-          }
+    // unStake5() {
+    //   document.getElementById("pool5").click();
+    //   const pool5 = this.addy7;
+    //   this.pool5 = pool5;
+    //   this.$prompt(this.$t("Amount To Unstake"), "", {
+    //     confirmButtonText: this.$t("confirm"),
+    //     cancelButtonText: this.$t("cancel"),
+    //     inputValidator: (val) => {
+    //       if (isNaN(val)) {
+    //         return this.$t("cmNum");
+    //       }
+    //       if (+val <= 0) {
+    //         return this.$t("cgt");
+    //       }
 
-          if (this.limit * this.price > this.balance) {
-            return this.$t("notEnough");
-          }
-          let surplusVotes = this.bn.minus(
-            this.bn.add(this.pool5.proxiedBalance, this.pool5.voted),
-            this.bn.add(this.pool5.pendingRefundBalance, this.pool5.val)
-          );
-          if (surplusVotes < 0) {
-            return this.$t("surplusVotes");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(["address", "uint256"], [this.pool5,"0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16)]);
-        let functionSig = Utilss
-          .sha3("UnDelegate(address,uint256)")
-          .substr(2, 8);
+    //       if (this.limit * this.price > this.balance) {
+    //         return this.$t("notEnough");
+    //       }
+    //       let surplusVotes = this.bn.minus(
+    //         this.bn.add(this.pool5.proxiedBalance, this.pool5.voted),
+    //         this.bn.add(this.pool5.pendingRefundBalance, this.pool5.val)
+    //       );
+    //       if (surplusVotes < 0) {
+    //         return this.$t("surplusVotes");
+    //       }
+    //     },
+    //   }).then(({ value }) => {
+    //     let data = Abi.encodeParams(["address", "uint256"], [this.pool5,"0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16)]);
+    //     let functionSig = Utilss
+    //       .sha3("UnDelegate(address,uint256)")
+    //       .substr(2, 8);
 
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          }
-        ];
+    //     const params = [
+    //       {
+    //         from: this.address,
+    //         to: "0x0000000000000000000000000000000000000505",
+    //         gas: Utils.toHex(this.limit),
+    //         gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+    //         value: "0x0",
+    //         data: "0x" + functionSig + data.substring(2),
+    //       }
+    //     ];
 
-        ethereum
-          .request({
-            method: 'eth_sendTransaction',
-            params,
-          })
-          .then((result) => {
-            console.log('hash', result);
-            this.$alert("TX ID: " + result, "You succesfully unstaked your coins!", {
-              confirmButtonText: this.$t("CLOSE"),
-              type: "success",
-            });
-          })
-          .catch((error) => {
-            console.log('tx error', error)
-          });
+    //     ethereum
+    //       .request({
+    //         method: 'eth_sendTransaction',
+    //         params,
+    //       })
+    //       .then((result) => {
+    //         console.log('hash', result);
+    //         this.$alert("TX ID: " + result, "You succesfully unstaked your coins!", {
+    //           confirmButtonText: this.$t("CLOSE"),
+    //           type: "success",
+    //         });
+    //       })
+    //       .catch((error) => {
+    //         console.log('tx error', error)
+    //       });
 
-      });
-    },
+    //   });
+    // },
       
-      claimRwd5() {
-      document.getElementById("pool5").click();
-      const pool5 = this.addy7;
-      this.pool5 = pool5;
-      this.$prompt(this.$t("Amount To Claim"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("rewardNumber")
-          }
+    //   claimRwd5() {
+    //   document.getElementById("pool5").click();
+    //   const pool5 = this.addy7;
+    //   this.pool5 = pool5;
+    //   this.$prompt(this.$t("Amount To Claim"), "", {
+    //     confirmButtonText: this.$t("confirm"),
+    //     cancelButtonText: this.$t("cancel"),
+    //     inputValidator: (val) => {
+    //       if (isNaN(val)) {
+    //         return this.$t("rewardNumber")
+    //       }
 
-          if (+val <= 0) {
-            return this.$t("rewardGt")
-          }
+    //       if (+val <= 0) {
+    //         return this.$t("rewardGt")
+    //       }
 
-          let leftReard = this.bn.minus(this.pool5.reward, val);
-          if (leftReard < 0) {
-            return this.$t("rewardNotEnough")
-          }
-        }
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(["address", "uint256"], [this.pool5, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16)]);
-        let functionSig = Utilss
-          .sha3("WithdrawReward(address,uint256)")
-          .substr(2, 8);
+    //       let leftReard = this.bn.minus(this.pool5.reward, val);
+    //       if (leftReard < 0) {
+    //         return this.$t("rewardNotEnough")
+    //       }
+    //     }
+    //   }).then(({ value }) => {
+    //     let data = Abi.encodeParams(["address", "uint256"], [this.pool5, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16)]);
+    //     let functionSig = Utilss
+    //       .sha3("WithdrawReward(address,uint256)")
+    //       .substr(2, 8);
 
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          }
-        ];
+    //     const params = [
+    //       {
+    //         from: this.address,
+    //         to: "0x0000000000000000000000000000000000000505",
+    //         gas: Utils.toHex(this.limit),
+    //         gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+    //         value: "0x0",
+    //         data: "0x" + functionSig + data.substring(2),
+    //       }
+    //     ];
 
-        ethereum
-          .request({
-            method: 'eth_sendTransaction',
-            params,
-          })
-          .then((result) => {
-            console.log('hash', result);
-            this.$alert("TX ID: " + result, "You succesfully claimed your rewards!", {
-              confirmButtonText: this.$t("confirm"),
-              type: "success",
-            });
-          })
-          .catch((error) => {
-            console.log('tx error', error)
-          });
-      });
-    },
+    //     ethereum
+    //       .request({
+    //         method: 'eth_sendTransaction',
+    //         params,
+    //       })
+    //       .then((result) => {
+    //         console.log('hash', result);
+    //         this.$alert("TX ID: " + result, "You succesfully claimed your rewards!", {
+    //           confirmButtonText: this.$t("confirm"),
+    //           type: "success",
+    //         });
+    //       })
+    //       .catch((error) => {
+    //         console.log('tx error', error)
+    //       });
+    //   });
+    // },
 
     // Pool 5 END
 
