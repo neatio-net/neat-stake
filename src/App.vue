@@ -83,7 +83,7 @@ grid-template-columns: 1.5fr 1fr;
   border: none;
   border: 1px solid #00ffffa4;
   border-radius: 10px;
-  box-shadow: 0 0 40px #00bfff31;
+  box-shadow: 0 0 40px #00bfff93;
 
 }
 
