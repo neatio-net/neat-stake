@@ -478,11 +478,12 @@ export default {
       limit: "21000",
       addry: null,
       price: "",
-      addy2: null,
-      addy3: null,
-      addy4: null,
-      addy5: null,
-      addy6: null,
+      pool1: null,
+      pool2: null,
+      pool3: null,
+      pool4: null,
+      pool5: null,
+      pool6: null,
       addy7: null,
       vPower2: null,
       v2Pwr: "",
@@ -753,7 +754,7 @@ export default {
 
       const v2 = Object(validators)[1]; 
       const v2Addy = v2.address;
-      this.addy2 = v2Addy; // Pool 1 
+      this.pool1 = v2Addy; // Pool 1 
       const vPower2 = Utils.toNEAT(Nat.toString(v2.votingPower));
       this.vPower2 = Number(vPower2);
       const v2Pwr = this.vPower2;
@@ -762,7 +763,7 @@ export default {
 
       const v3 = Object(validators)[2]; 
       const v3Addy = v3.address;
-      this.addy3 = v3Addy; // Pool 2
+      this.pool2 = v3Addy; // Pool 2
       const vPower3 = Utils.toNEAT(Nat.toString(v3.votingPower));
       this.vPower3 = Number(vPower3);
       const v3Pwr = this.vPower3;
@@ -771,7 +772,7 @@ export default {
 
       const v4 = Object(validators)[3]; 
       const v4Addy = v4.address;
-      this.addy4 = v4Addy; // Pool 3 
+      this.pool3 = v4Addy; // Pool 3 
       const vPower4 = Utils.toNEAT(Nat.toString(v4.votingPower));
       this.vPower4 = Number(vPower4);
       const v4Pwr = this.vPower4;
@@ -780,7 +781,7 @@ export default {
 
       const v5 = Object(validators)[4];
       const v5Addy = v5.address;
-      this.addy5 = v5Addy; //Pool 4 
+      this.pool4 = v5Addy; //Pool 4 
       const vPower5 = Utils.toNEAT(Nat.toString(v5.votingPower));
       this.vPower5 = Number(vPower5);
       const v5Pwr = this.vPower5;
@@ -789,7 +790,7 @@ export default {
 
       const v6 = Object(validators)[5];
       const v6Addy = v6.address;
-      this.addy6 = v6Addy; // Pool 5
+      this.pool5 = v6Addy; // Pool 5
       const vPower6 = Utils.toNEAT(Nat.toString(v6.votingPower));
       this.vPower6 = Number(vPower6);
       const v6Pwr = this.vPower6;
@@ -798,7 +799,7 @@ export default {
 
       const v7 = Object(validators)[6];
       const v7Addy = v7.address;
-      this.addy7 = v7Addy; // Pool 6
+      this.pool6 = v7Addy; // Pool 6
       const vPower7 = Utils.toNEAT(Nat.toString(v7.votingPower));
       this.vPower7 = Number(vPower7);
       const v7Pwr = this.vPower7;
@@ -856,7 +857,8 @@ export default {
 
     neatStake1() {
       document.getElementById("pool1").click();
-      const pool1 = this.addy1;
+      const pool1 = this.pool1;
+      console.log(pool1);
       this.pool1 = pool1;
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
@@ -905,7 +907,7 @@ export default {
 
     unStake1() {
       document.getElementById("pool1").click();
-      const pool1 = this.addy1;
+      const pool1 = this.pool1;
       this.pool1 = pool1;
       this.$prompt(this.$t("Amount To Unstake"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -943,7 +945,7 @@ export default {
 
     claimRwd1() {
       document.getElementById("pool1").click();
-      const pool1 = this.addy1;
+      const pool1 = this.pool1;
       this.pool1 = pool1;
       this.$prompt(this.$t("Amount To Claim"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -982,7 +984,8 @@ export default {
 
     neatStake2() {
       document.getElementById("pool2").click();
-      const pool2 = this.addy2;
+      const pool2 = this.pool2;
+      console.log(pool2);
       this.pool2 = pool2;
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
@@ -1031,7 +1034,7 @@ export default {
 
     unStake2() {
       document.getElementById("pool2").click();
-      const pool2 = this.addy2;
+      const pool2 = this.pool2;
       this.pool2 = pool2;
       this.$prompt(this.$t("Amount To Unstake"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -1097,7 +1100,7 @@ export default {
 
     claimRwd2() {
       document.getElementById("pool2").click();
-      const pool2 = this.addy2;
+      const pool2 = this.pool2;
       this.pool2 = pool2;
       this.$prompt(this.$t("Amount To Claim"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -1166,7 +1169,8 @@ export default {
 
     neatStake3() {
       document.getElementById("pool3").click();
-      const pool3 = this.addy3;
+      const pool3 = this.pool3;
+      console.log(pool3);
       this.pool3 = pool3;
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
@@ -1215,7 +1219,7 @@ export default {
 
     unStake3() {
       document.getElementById("pool3").click();
-      const pool3 = this.addy3;
+      const pool3 = this.pool3;
       this.pool3 = pool3;
       this.$prompt(this.$t("Amount To Unstake"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -1276,7 +1280,7 @@ export default {
 
     claimRwd3() {
       document.getElementById("pool3").click();
-      const pool3 = this.addy3;
+      const pool3 = this.pool3;
       this.pool3 = pool3;
       this.$prompt(this.$t("Amount To Claim"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -1339,7 +1343,8 @@ export default {
 
     neatStake4() {
       document.getElementById("pool4").click();
-      const pool4 = this.addy4;
+      const pool4 = this.pool4;
+      console.log(pool4);
       this.pool4 = pool4;
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
@@ -1388,7 +1393,7 @@ export default {
 
     unStake4() {
       document.getElementById("pool4").click();
-      const pool4 = this.addy4;
+      const pool4 = this.pool4;
       this.pool4 = pool4;
       this.$prompt(this.$t("Amount To Unstake"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -1454,7 +1459,7 @@ export default {
 
     claimRwd4() {
       document.getElementById("pool4").click();
-      const pool4 = this.addy4;
+      const pool4 = this.pool4;
       this.pool4 = pool4;
       this.$prompt(this.$t("Amount To Claim"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -1522,7 +1527,8 @@ export default {
 
     neatStake5() {
       document.getElementById("pool5").click();
-      const pool5 = this.addy5;
+      const pool5 = this.pool5;
+      console.log(pool5);
       this.pool5 = pool5;
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
@@ -1571,7 +1577,8 @@ export default {
 
     unStake5() {
       document.getElementById("pool5").click();
-      const pool5 = this.addy5;
+      const pool5 = this.pool5;
+
       this.pool5 = pool5;
       this.$prompt(this.$t("Amount To Unstake"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -1637,7 +1644,7 @@ export default {
 
     claimRwd5() {
       document.getElementById("pool5").click();
-      const pool5 = this.addy5;
+      const pool5 = this.pool5;
       this.pool5 = pool5;
       this.$prompt(this.$t("Amount To Claim"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -1707,7 +1714,8 @@ export default {
 
     neatStake6() {
       document.getElementById("pool6").click();
-      const pool6 = this.addy6;
+      const pool6 = this.pool6;
+      console.log(pool6);
       this.pool6 = pool6;
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
@@ -1756,7 +1764,7 @@ export default {
 
     unStake6() {
       document.getElementById("pool6").click();
-      const pool6 = this.addy6;
+      const pool6 = this.pool6;
       this.pool6 = pool6;
       this.$prompt(this.$t("Amount To Unstake"), "", {
         confirmButtonText: this.$t("confirm"),
@@ -1822,7 +1830,7 @@ export default {
 
     claimRwd6() {
       document.getElementById("pool6").click();
-      const pool6 = this.addy6;
+      const pool6 = this.pool6;
       this.pool6 = pool6;
       this.$prompt(this.$t("Amount To Claim"), "", {
         confirmButtonText: this.$t("confirm"),
