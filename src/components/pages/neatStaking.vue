@@ -133,80 +133,25 @@
             <img src="../../assets/lock.png" alt="Lock" class="lockimg" />
           </div>
 
-          <div class="locked" v-show="address === ''">
-            Please unlock your wallet!
-          </div>
+          <div class="locked" v-show="address === ''">Please unlock your wallet!</div>
           <div class="neatStaking">
             <div class="balance-details" v-show="address != ''">
               <div class="wallet-balance" v-show="address !== ''">
                 <div class="addry-w">{{ addry }}</div>
-                <div class="walBalT">
-                  {{ (+balance).toFixed(6)
-                  }}<span
-                    style="
-                      color: #496785;
-                      font-size: 22px;
-                      font-weight: normal;
-                      font-family: Pirulen, Helvetica;
-                    "
-                  >
-                    NEAT</span
-                  >
+                <div class="walBalT">{{ (+balance).toFixed(6)}}<span style="color: #496785;font-size: 22px;font-weight: normal;font-family: Pirulen, Helvetica;">NEAT</span>
                 </div>
               </div>
-
               <div class="sep"></div>
-
               <div class="boxess">
                 <div class="wallet-balance-available2">
-                  <div class="wl">
-                    <img
-                      src="../../assets/claim.png"
-                      alt="stake"
-                      class="walimg"
-                    />
-                  </div>
-
-                  <div>
-                    <span
-                      style="
-                        color: #496785;
-                        font-weight: lighter;
-                        font-size: 11px;
-                        font-family: Pirulen, Helvetica;
-                      "
-                      >Coins In Stake</span
-                    >
-                  </div>
-                  <span style="color: #496785; font-family: Helvetica">{{
-                    (+staking).toFixed(6)
-                  }}</span>
+                  <div class="wl"><img src="../../assets/claim.png" alt="stake" class="walimg"/></div>
+                  <div><span style="color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Coins In Stake</span></div>
+                  <span style="color: #496785; font-family: Helvetica">{{   (+staking).toFixed(6)}}</span>
                 </div>
-
                 <div class="wallet-balance-available2">
-                  <div class="wl">
-                    <div class="spinr">
-                      <orbit-spinner
-                        :animation-duration="1200"
-                        :size="55"
-                        color="#00ffff"
-                        alt="stake"
-                      />
-                    </div>
-                  </div>
-                  <span
-                    style="
-                      color: #496785;
-
-                      font-weight: lighter;
-                      font-size: 11px;
-                      font-family: Pirulen, Helvetica;
-                    "
-                    >Unclaimed Rewards</span
-                  >
-                  <span style="color: #496785; font-family: Helvetica">{{
-                    (+rewards).toFixed(18)
-                  }}</span>
+                  <div class="wl"><div class="spinr"><orbit-spinner :animation-duration="1200" :size="55" color="#00ffff" alt="stake" /></div></div>
+                  <span style=" color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Unclaimed Rewards</span>
+                  <span style="color: #496785; font-family: Helvetica">{{(+rewards).toFixed(18)}}</span>
                 </div>
               </div>
 
