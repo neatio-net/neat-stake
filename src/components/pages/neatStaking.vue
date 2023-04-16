@@ -107,44 +107,11 @@
           </div>
 
           <div class="pools">
-            <div class="vAddy1" id="pool5">
-              <span style="color: #496785">5.</span> {{ "KINGNODE - EU" }}
-              <span style="color: #496785">Pool Fee:</span>
-              <span
-                style="
-                  font-family: Helvetica;
-                  font-weight: normal;
-                  font-size: 14px;
-                "
-                >{{ vComm }}</span
-              >
-              <span style="color: #496785">Staking Power:</span>
-              <span
-                style="
-                  font-family: Helvetica;
-                  font-weight: normal;
-                  font-size: 14px;
-                "
-                >{{ (+v66power).toLocaleString() }}</span
-              >
-              <button
-                class="rippleSelect"
-                v-show="staking == 0 && rewards == 0"
-                @click="select5"
-              >
-                SELECT
-              </button>
-              <span
-                v-show="staking != 0"
-                style="
-                  color: #496785;
-                  font-size: 14px;
-                  font-weight: normal;
-                  font-family: Pirulen, Helvetica;
-                "
-              >
-                NEAT</span
-              >
+            <div class="vAddy1" id="pool5"><span style="color: #496785">5.</span> {{ "KINGNODE - EU" }}<span style="color: #496785">Pool Fee:</span>
+              <span style=" font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ vComm }}</span>
+              <span style="color: #496785">Staking Power:</span><span style=" font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ (+v66power).toLocaleString() }}</span>
+              <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select5">SELECT</button>
+              <span v-show="staking != 0" style="color: #496785;font-size: 14px;font-weight: normal;font-family: Pirulen, Helvetica;">NEAT</span>
             </div>
             <div class="sep"></div>
           </div>
@@ -153,8 +120,7 @@
             <div class="vAddy2" id="pool6">
               <span style="color: #496785">6.</span> {{ "NEATIO EUROPE" }}
               <span style="color: #496785">Pool Fee:</span>
-              <span style=" font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ vComm }}</span>
-              <span style="color: #496785">Staking Power:</span>
+              <span style=" font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ vComm }}</span> <span style="color: #496785">Staking Power:</span>
               <span style="font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ (+v77power).toLocaleString() }}</span>
               <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select6"> SELECT </button>
               <span v-show="staking != 0" style="color: #496785;  font-size: 14px; font-weight: normal; font-family: Pirulen, Helvetica;"> NEAT</span>
