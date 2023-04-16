@@ -154,102 +154,21 @@
                   <span style="color: #496785; font-family: Helvetica">{{(+rewards).toFixed(18)}}</span>
                 </div>
               </div>
+              <div class="noSel" v-show="selectedPool == null && staking == 0 && rewards == 0">select a pool if you wish to stake your coins</div>
+              <div class="deleg" v-show="selectedPool != null">Selected pool<span style=" font-size: 14px; color: #00ffff; font-weight: normal; font-family: Pirulen, Helvetica;">{{ selectedPool }}</span></div>
+              <div class="deleg" v-show="staking != 0 && rewards != 0">Staking on:<span style=" font-size: 14px;color: #00ffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
+              <div class="deleg" v-show="rewards > 0">Rewards on:<span style="font-size: 14px;color: #00ffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
+              <div class="btnss" v-show="(staking != null && selectedPool == 'DANNY M POOL') || (staking != null && stakedTo == 'DANNY M POOL') || stakedTo == 'DANNY M POOL'"><div class="buttns">
+              <button class="rippleStake" @click="neatStake1">stake</button><button class="rippleClaims" @click="claimRwd1">claim</button><button class="rippleClaims" @click="unStake1">unstake</button></div>
+              </div><div class="btnss" v-show="(staking != null && selectedPool == 'NEATIO - ASIA -') || (staking != null && stakedTo == 'NEATIO - ASIA -') || stakedTo == 'NEATIO - ASIA -'">
+              <div class="buttns"><button class="rippleStake" @click="neatStake2">stake</button><button class="rippleClaims" @click="claimRwd2">claim</button>
 
-              <div
-                class="noSel"
-                v-show="selectedPool == null && staking == 0 && rewards == 0"
-              >
-                select a pool if you wish to stake your coins
-              </div>
-
-              <div class="deleg" v-show="selectedPool != null">
-                Selected pool
-                <span
-                  style="
-                    font-size: 14px;
-                    color: #00ffff;
-                    font-weight: normal;
-                    font-family: Pirulen, Helvetica;
-                  "
-                  >{{ selectedPool }}</span
-                >
-              </div>
-              <div class="deleg" v-show="staking != 0 && rewards != 0">
-                Staking on:
-                <span
-                  style="
-                    font-size: 14px;
-                    color: #00ffff;
-                    font-weight: normal;
-                    font-family: Pirulen, Helvetica;
-                  "
-                  >{{ stakedTo }}</span
-                >
-              </div>
-              <div class="deleg" v-show="rewards > 0">
-                Rewards on:
-                <span
-                  style="
-                    font-size: 14px;
-                    color: #00ffff;
-                    font-weight: normal;
-                    font-family: Pirulen, Helvetica;
-                  "
-                  >{{ stakedTo }}</span
-                >
-              </div>
-
-              <div
-                class="btnss"
-                v-show="
-                  (staking != null && selectedPool == 'DANNY M POOL') ||
-                  (staking != null && stakedTo == 'DANNY M POOL') ||
-                  stakedTo == 'DANNY M POOL'
-                "
-              >
+              <button class="rippleClaims" @click="unStake2">unstake</button></div></div><div class="btnss" v-show="(staking != null && selectedPool == 'ROMANIA POOL') ||
+               (staking != null && stakedTo == 'ROMANIA POOL') || stakedTo == 'ROMANIA POOL'">
                 <div class="buttns">
-                  <button class="rippleStake" @click="neatStake1">stake
-                  </button>
-                  <button class="rippleClaims" @click="claimRwd1">claim
-                  </button>
-                  <button class="rippleClaims" @click="unStake1">unstake
-                  </button>
-                </div>
-              </div>
-
-              <div
-                class="btnss"
-                v-show="
-                  (staking != null && selectedPool == 'NEATIO - ASIA -') ||
-                  (staking != null && stakedTo == 'NEATIO - ASIA -') ||
-                  stakedTo == 'NEATIO - ASIA -'
-                "
-              >
-                <div class="buttns">
-                  <button class="rippleStake" @click="neatStake2">stake
-                  </button>
-                  <button class="rippleClaims" @click="claimRwd2">claim
-                  </button>
-                  <button class="rippleClaims" @click="unStake2">unstake                
-                  </button>
-                </div>
-              </div>
-
-              <div
-                class="btnss"
-                v-show="
-                  (staking != null && selectedPool == 'ROMANIA POOL') ||
-                  (staking != null && stakedTo == 'ROMANIA POOL') ||
-                  stakedTo == 'ROMANIA POOL'
-                "
-              >
-                <div class="buttns">
-                  <button class="rippleStake" @click="neatStake3">stake
-                  </button>
-                  <button class="rippleClaims" @click="claimRwd3">claim
-                  </button>
-                  <button class="rippleClaims" @click="unStake3">unstake
-                  </button>
+                  <button class="rippleStake" @click="neatStake3">stake</button>
+                  <button class="rippleClaims" @click="claimRwd3">claim</button>
+                  <button class="rippleClaims" @click="unStake3">unstake</button>
                 </div>
               </div>
 
@@ -262,12 +181,9 @@
                 "
               >
                 <div class="buttns">
-                  <button class="rippleStake" @click="neatStake4">stake
-                  </button>
-                  <button class="rippleClaims" @click="claimRwd4">claim
-                  </button>
-                  <button class="rippleClaims" @click="unStake4">unstake
-                  </button>
+                  <button class="rippleStake" @click="neatStake4">stake</button>
+                  <button class="rippleClaims" @click="claimRwd4">claim</button>
+                  <button class="rippleClaims" @click="unStake4">unstake</button>
                 </div>
               </div>
 
