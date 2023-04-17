@@ -163,7 +163,9 @@
               </div><div class="btnss" v-show="(staking != null && selectedPool == 'NEATIO - ASIA -') || (staking != null && stakedTo == 'NEATIO - ASIA -') || stakedTo == 'NEATIO - ASIA -'">
               <div class="buttns"><button class="rippleStake" @click="neatStake2">stake</button><button class="rippleClaims" @click="claimRwd2">claim</button>
 
-              <button class="rippleClaims" @click="unStake2">unstake</button></div></div><div class="btnss" v-show="(staking != null && selectedPool == 'ROMANIA POOL') ||
+              <button class="rippleClaims" @click="unStake2">unstake</button></div></div>
+              <div class="btnss" v-show="
+               (staking != null && selectedPool == 'ROMANIA POOL') ||
                (staking != null && stakedTo == 'ROMANIA POOL') || stakedTo == 'ROMANIA POOL'">
                 <div class="buttns">
                   <button class="rippleStake" @click="neatStake3">stake</button>
@@ -172,14 +174,10 @@
                 </div>
               </div>
 
-              <div
-                class="btnss"
-                v-show="
+              <div class="btnss" v-show="
                   (staking != null && selectedPool == 'SILVIU25 POOL') ||
                   (staking != null && stakedTo == 'SILVIU25 POOL') ||
-                  stakedTo == 'SILVIU25 POOL'
-                "
-              >
+                  stakedTo == 'SILVIU25 POOL'">
                 <div class="buttns">
                   <button class="rippleStake" @click="neatStake4">stake</button>
                   <button class="rippleClaims" @click="claimRwd4">claim</button>
@@ -187,21 +185,14 @@
                 </div>
               </div>
 
-              <div
-                class="btnss"
-                v-show="
+              <div class="btnss" v-show=" 
                   (staking != null && selectedPool == 'KINGNODE - EU') ||
                   (staking != null && stakedTo == 'KINGNODE - EU') ||
-                  stakedTo == 'KINGNODE - EU'
-                "
-              >
+                  stakedTo == 'KINGNODE - EU'">
                 <div class="buttns">
-                  <button class="rippleStake" @click="neatStake5">stake
-                  </button>
-                  <button class="rippleClaims" @click="claimRwd5">claim
-                  </button>
-                  <button class="rippleClaims" @click="unStake5">unstake
-                  </button>
+                  <button class="rippleStake" @click="neatStake5">stake</button>
+                  <button class="rippleClaims" @click="claimRwd5">claim</button>
+                  <button class="rippleClaims" @click="unStake5">unstake</button>
                 </div>
               </div>
 
@@ -210,16 +201,11 @@
                 v-show="
                   (staking != null && selectedPool == 'NEATIO EUROPE') ||
                   (staking != null && stakedTo == 'NEATIO EUROPE') ||
-                  stakedTo == 'NEATIO EUROPE'
-                "
-              >
+                  stakedTo == 'NEATIO EUROPE'">
                 <div class="buttns">
-                  <button class="rippleStake" @click="neatStake6">stake
-                  </button>
-                  <button class="rippleClaims" @click="claimRwd6">claim
-                  </button>
-                  <button class="rippleClaims" @click="unStake6">unstake
-                  </button>
+                  <button class="rippleStake" @click="neatStake6">stake</button>
+                  <button class="rippleClaims" @click="claimRwd6">claim</button>
+                  <button class="rippleClaims" @click="unStake6">unstake</button>
                 </div>
               </div>
             </div>
