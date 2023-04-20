@@ -633,7 +633,6 @@ export default {
     neatStake1() {
       document.getElementById("pool1").click();
       const pool1 = this.pool1;
-      console.log(pool1);
       this.pool1 = pool1;
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
@@ -664,19 +663,9 @@ export default {
         ];
 
         ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            this.$alert("TX ID: " + result, "Staking Was Succesful!", {
-              confirmButtonText: this.$t("CLOSE"),
-              type: "success",
-            });
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
+          .request({method: "eth_sendTransaction", params,  })
+          .then((result) => {this.$alert("TX ID: " + result, "Staking Was Succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", }); })
+          .catch((error) => { console.log("tx error", error); });
       });
     },
 
