@@ -71,8 +71,8 @@
 
           <div class="pools">
             <div class="vAddy1" id="pool1">
-              <span style="color: #496785">1.</span> {{ "DANNY M POOL" }}<span style="color: #496785">Pool Fee:</span><span style="font-family: Helvetica;font-weight: normal;font-size: 14px;">{{ vComm }}</span>
-              <span style="color: #496785">Staking Power:</span><span style="font-family:Helvetica;font-weight:normal;font-size: 14px;">{{ (+v22power).toLocaleString() }}</span>
+              <span style="color: #496785">1.</span> {{ "DANNY M POOL" }}<span style="color: #496785"> Pool Fee: </span><span style="font-family: Helvetica;font-weight: normal;font-size: 14px;">{{ vComm }}</span>
+              <span style="color: #496785"> Staking Power:</span><span style="font-family:Helvetica;font-weight:normal;font-size: 14px;"> {{ (+v22power).toLocaleString() }}</span>
               <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select1">SELECT</button>
               <span v-show="staking != 0" style="color: #496785;font-size: 14px;font-weight: normal;font-family: Pirulen, Helvetica;">NEAT</span>
             </div> <div class="sep"></div>
@@ -80,8 +80,8 @@
 
           <div class="pools">
             <div class="vAddy1" id="pool2">
-              <span style="color: #496785">2.</span> {{ "NEATIO - ASIA -" }}<span style="color: #496785">Pool Fee:</span><span style="font-family: Helvetica;font-weight:normal;font-size:14px;">{{ vComm }}</span>
-              <span style="color: #496785">Staking Power:</span><span style="font-family: Helvetica;font-weight: normal;font-size: 14px;">{{ (+v33power).toLocaleString() }}</span>
+              <span style="color: #496785">2.</span> {{ "NEATIO - ASIA -" }}<span style="color: #496785"> Pool Fee: </span><span style="font-family: Helvetica;font-weight:normal;font-size:14px;">{{ vComm }}</span>
+              <span style="color: #496785"> Staking Power:</span><span style="font-family: Helvetica;font-weight: normal;font-size: 14px;"> {{ (+v33power).toLocaleString() }}</span>
               <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select2">SELECT</button>
               <span v-show="staking != 0" style="color: #496785;font-size:14px;font-weight:normal;font-family: Pirulen, Helvetica;">NEAT</span>
             </div><div class="sep"></div>
@@ -90,26 +90,26 @@
 
           <div class="pools">
             <div class="vAddy1" id="pool3">
-              <span style="color: #496785">3.</span> {{ "ROMANIA POOL" }}<span style="color: #496785">Pool Fee:</span><span style="font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ vComm }}</span>
-              <span style="color: #496785">Staking Power:</span><span style="font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ (+v44power).toLocaleString() }}</span>
+              <span style="color: #496785">3.</span> {{ "ROMANIA POOL" }}<span style="color: #496785"> Pool Fee: </span><span style="font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ vComm }}</span>
+              <span style="color: #496785"> Staking Power:</span><span style="font-family: Helvetica; font-weight: normal; font-size: 14px;"> {{ (+v44power).toLocaleString() }}</span>
                <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select3"> SELECT </button>
               <span v-show="staking != 0" style=" color: #496785; font-size: 14px; font-weight: normal; font-family: Pirulen, Helvetica;">NEAT</span>
             </div><div class="sep"></div>
           </div>
 
           <div class="pools">
-            <div class="vAddy1" id="pool4"><span style="color: #496785">4.</span> {{ "SILVIU25 POOL" }}<span style="color: #496785">Pool Fee:</span>
-              <span style="font-family: Helvetica; font-weight: normal; font-size: 14px; ">{{ vComm }}</span><span style="color: #496785">Staking Power:</span>
-              <span style="font-family: Helvetica; font-weight: normal; font-size: 14px; ">{{ (+v55power).toLocaleString() }}</span>
+            <div class="vAddy1" id="pool4"><span style="color: #496785">4.</span> {{ " SILVIU25   POOL" }}<span style="color: #496785">   Pool Fee:</span>
+              <span style="font-family: Helvetica; font-weight: normal; font-size: 14px; ">{{ vComm }}</span><span style="color: #496785">   Staking Power:</span>
+              <span style="font-family: Helvetica; font-weight: normal; font-size: 14px; ">  {{ (+v55power).toLocaleString() }}</span>
               <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select4">SELECT</button>
               <span v-show="staking != 0"  style=" color: #496785; font-size: 14px; font-weight: normal; font-family: Pirulen, Helvetica;">NEAT</span></div>
             <div class="sep"></div>
           </div>
 
           <div class="pools">
-            <div class="vAddy1" id="pool5"><span style="color: #496785">5.</span> {{ "KINGNODE - EU" }}<span style="color: #496785">Pool Fee:</span>
+            <div class="vAddy1" id="pool5"><span style="color: #496785">5.</span> <div class="stian">StianNOR - EU</div><span style="color: #496785">Pool Fee:</span>
               <span style=" font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ vComm }}</span>
-              <span style="color: #496785">Staking Power:</span><span style=" font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ (+v66power).toLocaleString() }}</span>
+              <span style="color: #496785">Staking Power:</span><span style=" font-family: Helvetica; font-weight: normal; font-size: 14px;">  {{ (+v66power).toLocaleString() }}</span>
               <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select5">SELECT</button>
               <span v-show="staking != 0" style="color: #496785;font-size: 14px;font-weight: normal;font-family: Pirulen, Helvetica;">NEAT</span>
             </div>
@@ -121,7 +121,7 @@
               <span style="color: #496785">6.</span> {{ "NEATIO EUROPE" }}
               <span style="color: #496785">Pool Fee:</span>
               <span style=" font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ vComm }}</span> <span style="color: #496785">Staking Power:</span>
-              <span style="font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ (+v77power).toLocaleString() }}</span>
+              <span style="font-family: Helvetica; font-weight: normal; font-size: 14px;"> {{ (+v77power).toLocaleString() }}</span>
               <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select6"> SELECT </button>
               <span v-show="staking != 0" style="color: #496785;  font-size: 14px; font-weight: normal; font-family: Pirulen, Helvetica;"> NEAT</span>
             </div>
@@ -186,9 +186,9 @@
               </div>
 
               <div class="btnss" v-show=" 
-                  (staking != null && selectedPool == 'KINGNODE - EU') ||
-                  (staking != null && stakedTo == 'KINGNODE - EU') ||
-                  stakedTo == 'KINGNODE - EU'">
+                  (staking != null && selectedPool == 'StianNOR - EU') ||
+                  (staking != null && stakedTo == 'StianNOR - EU') ||
+                  stakedTo == 'StianNOR - EU'">
                 <div class="buttns">
                   <button class="rippleStake" @click="neatStake5">stake</button>
                   <button class="rippleClaims" @click="claimRwd5">claim</button>
@@ -442,7 +442,7 @@ export default {
               "0xe98ef881833ff63bca2ea3e92636e7cb7c19d283"
             )
           ) {
-            this.stakedTo = "KINGNODE - EU";
+            this.stakedTo = "StianNOR - EU";
           }
 
           if (
@@ -621,7 +621,7 @@ export default {
 
     select5() {
       document.getElementById("pool5").click();
-      this.selectedPool = "KINGNODE - EU";
+      this.selectedPool = "StianNOR - EU";
     },
 
     select6() {
@@ -1739,6 +1739,16 @@ button {
   font-size: 12px;
   font-weight: 100;
   font-family: Pirulen, Arial, Helvetica, sans-serif;
+  color: #00ffff;
+  text-align: center;
+  display: inline-block;
+  min-width: 140px;
+}
+
+.stian {
+  font-size: 15px;
+  font-weight: 100;
+  font-family: Anita, Arial, Helvetica, sans-serif !important;
   color: #00ffff;
   text-align: center;
   display: inline-block;
