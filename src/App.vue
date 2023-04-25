@@ -27,6 +27,13 @@ export default {
 } 
 
 @font-face {
+  font-family: "Anita";
+  src: local("Anita"),
+   url(./fonts/anita.ttf) format("truetype");
+
+} 
+
+@font-face {
   font-family: "Computer";
   src: local("Computer"),
    url(./fonts/cmunbbx.ttf) format("truetype");
