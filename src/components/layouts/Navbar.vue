@@ -301,7 +301,7 @@ export default {
       }
       .nav-active {
         color: #00ffff;
-        font-family: "Pirulen", Helvetica, Arial;
+        font-family: "Anita", Helvetica, Arial;
         font-size: 18px;
 
 
@@ -320,7 +320,7 @@ export default {
     }
         .conColor2 {
       color: #00ffff;
-      font-family: Pirulen, Arial, Helvetica, sans-serif;
+      font-family: Anita, Arial, Helvetica, sans-serif;
     }
     .iv {
       height: 52px;
