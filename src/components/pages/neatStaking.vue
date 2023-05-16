@@ -10,7 +10,7 @@
 
           <div class="stats1">
             <div class="itemsD">Avg. Block Time</div>
-            <div class="valueD">1.2 seconds</div>
+            <div class="valueD">1.7 seconds</div>
           </div>
           <div class="stats1">
             <div class="itemsD">Staking APY</div>
@@ -44,7 +44,7 @@
 
           <div class="stats1">
             <div class="itemsD">Max Supply</div>
-            <div class="valueD">50,000,000</div>
+            <div class="valueD">49,996,654</div>
           </div>
 
           <div class="stats1">
@@ -318,7 +318,7 @@ export default {
 
   computed: {
     totalSupp: function () {
-      return parseInt(this.circcc) + parseInt(this.totalStake);
+      return parseInt(this.circcc) + parseInt(this.totalStake) - 3346;
     },
 
     percentLock: function () {
@@ -507,7 +507,7 @@ export default {
       await axios
         .get(cpURL)
         .then((response) => (this.circulating = response.data));
-      const circulating = this.circulating;
+      const circulating = this.circulating - 3346;
       const circc = parseInt(circulating).toFixed(0);
       this.circcc = circc;
     },
