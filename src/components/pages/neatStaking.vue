@@ -17,16 +17,6 @@
             <div class="valueD">{{ (+stakingAPY).toFixed(2) + " %" }}</div>
           </div>
 
-          <!-- <div class="stats1">
-            <div class="itemsD">Locked Coins</div>
-            <div class="valueD">{{ (+totalStake).toLocaleString() }}</div>
-          </div> -->
-<!-- 
-          <div class="stats1">
-            <div class="itemsD">Pct. Of Total</div>
-            <div class="valueD">{{ (+percentLock).toFixed(2) }} %</div>
-          </div> -->
-
           <div class="stats1">
             <div class="itemsD">Circ. Supply</div>
             <div class="valueD">{{ (+circcc).toLocaleString() }}</div>
@@ -37,31 +27,10 @@
             <div class="valueD">{{ (+totalSupp).toLocaleString() }}</div>
           </div>
 
-          <!-- <div class="stats1">
-            <div class="itemsD">Pct. of Max</div>
-            <div class="valueD">{{ (+percentMax).toFixed(2) }} %</div>
-          </div> -->
-
           <div class="stats1">
             <div class="itemsD">Max Supply</div>
             <div class="valueD">50,000,000</div>
           </div>
-
-          <!-- <div class="stats1">
-            <div class="itemsD">NEAT coin Price</div>
-            <div class="valueD">$ {{ (+priceUSD).toFixed(4) }}</div>
-          </div>
-
-          <div class="stats1">
-            <div class="itemsD">24h Change</div>
-            <div class="valueD">{{ (+price24h).toFixed(2) }} %</div>
-          </div>
-
-          <div class="stats1">
-            <div class="itemsD">Market CAP</div>
-            <div class="valueD">$ {{ (+marketCap).toLocaleString() }}</div>
-          </div> -->
-
           
 
         </div>
