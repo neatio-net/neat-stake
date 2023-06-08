@@ -31,59 +31,221 @@
             <div class="itemsD">Max Supply</div>
             <div class="valueD">50,000,000</div>
           </div>
-          
-
         </div>
-
-
-
       </div>
       <div class="boxes">
         <div class="box1">
-
           <div class="pools">
             <div class="vAddy1" id="pool1">
-              <span style="color: #496785">1.</span> {{ "DANNY M POOL" }}<span style="color: #496785"> Pool Fee: </span><span style="font-family: Helvetica;font-weight: normal;font-size: 14px;">{{ vComm }}</span>
-              <span style="color: #496785"> Staking Power:</span><span style="font-family:Helvetica;font-weight:normal;font-size: 14px;"> {{ (+v22power).toLocaleString() }}</span>
-              <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select1">SELECT</button>
-              <span v-show="staking != 0" style="color: #496785;font-size: 14px;font-weight: normal;font-family: Pirulen, Helvetica;">NEAT</span>
-            </div> <div class="sep"></div>
-          </div>
-
-          <div class="pools">
-            <div class="vAddy1" id="pool2">
-              <span style="color: #496785">2.</span> {{ "NEATIO - ASIA -" }}<span style="color: #496785"> Pool Fee: </span><span style="font-family: Helvetica;font-weight:normal;font-size:14px;">{{ vComm }}</span>
-              <span style="color: #496785"> Staking Power:</span><span style="font-family: Helvetica;font-weight: normal;font-size: 14px;"> {{ (+v33power).toLocaleString() }}</span>
-              <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select2">SELECT</button>
-              <span v-show="staking != 0" style="color: #496785;font-size:14px;font-weight:normal;font-family: Pirulen, Helvetica;">NEAT</span>
-            </div><div class="sep"></div>
-          </div>
-
-
-          <div class="pools">
-            <div class="vAddy1" id="pool3">
-              <span style="color: #496785">3.</span> {{ "ROMANIA POOL" }}<span style="color: #496785"> Pool Fee: </span><span style="font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ vComm }}</span>
-              <span style="color: #496785"> Staking Power:</span><span style="font-family: Helvetica; font-weight: normal; font-size: 14px;"> {{ (+v44power).toLocaleString() }}</span>
-               <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select3"> SELECT </button>
-              <span v-show="staking != 0" style=" color: #496785; font-size: 14px; font-weight: normal; font-family: Pirulen, Helvetica;">NEAT</span>
-            </div><div class="sep"></div>
-          </div>
-
-          <div class="pools">
-            <div class="vAddy1" id="pool4"><span style="color: #496785">4.</span> {{ " SILVIU25   POOL" }}<span style="color: #496785">   Pool Fee:</span>
-              <span style="font-family: Helvetica; font-weight: normal; font-size: 14px; ">{{ vComm }}</span><span style="color: #496785">   Staking Power:</span>
-              <span style="font-family: Helvetica; font-weight: normal; font-size: 14px; ">  {{ (+v55power).toLocaleString() }}</span>
-              <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select4">SELECT</button>
-              <span v-show="staking != 0"  style=" color: #496785; font-size: 14px; font-weight: normal; font-family: Pirulen, Helvetica;">NEAT</span></div>
+              <span style="color: #496785">1.</span> {{ "DANNY M POOL"
+              }}<span style="color: #496785"> Pool Fee: </span
+              ><span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+                >{{ vComm }}</span
+              >
+              <span style="color: #496785"> Staking Power:</span
+              ><span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+              >
+                {{ (+v22power).toLocaleString() }}</span
+              >
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0"
+                @click="select1"
+              >
+                SELECT
+              </button>
+              <span
+                v-show="staking != 0"
+                style="
+                  color: #496785;
+                  font-size: 14px;
+                  font-weight: normal;
+                  font-family: Pirulen, Helvetica;
+                "
+                >NEAT</span
+              >
+            </div>
             <div class="sep"></div>
           </div>
 
           <div class="pools">
-            <div class="vAddy1" id="pool5"><span style="color: #496785">5.</span> <div class="stian">StianNOR - EU</div><span style="color: #496785">Pool Fee:</span>
-              <span style=" font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ vComm }}</span>
-              <span style="color: #496785">Staking Power:</span><span style=" font-family: Helvetica; font-weight: normal; font-size: 14px;">  {{ (+v66power).toLocaleString() }}</span>
-              <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select5">SELECT</button>
-              <span v-show="staking != 0" style="color: #496785;font-size: 14px;font-weight: normal;font-family: Pirulen, Helvetica;">NEAT</span>
+            <div class="vAddy1" id="pool2">
+              <span style="color: #496785">2.</span> {{ "NEATIO - ASIA -"
+              }}<span style="color: #496785"> Pool Fee: </span
+              ><span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+                >{{ vComm }}</span
+              >
+              <span style="color: #496785"> Staking Power:</span
+              ><span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+              >
+                {{ (+v33power).toLocaleString() }}</span
+              >
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0"
+                @click="select2"
+              >
+                SELECT
+              </button>
+              <span
+                v-show="staking != 0"
+                style="
+                  color: #496785;
+                  font-size: 14px;
+                  font-weight: normal;
+                  font-family: Pirulen, Helvetica;
+                "
+                >NEAT</span
+              >
+            </div>
+            <div class="sep"></div>
+          </div>
+
+          <div class="pools">
+            <div class="vAddy1" id="pool3">
+              <span style="color: #496785">3.</span> {{ "ROMANIA POOL"
+              }}<span style="color: #496785"> Pool Fee: </span
+              ><span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+                >{{ vComm }}</span
+              >
+              <span style="color: #496785"> Staking Power:</span
+              ><span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+              >
+                {{ (+v44power).toLocaleString() }}</span
+              >
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0"
+                @click="select3"
+              >
+                SELECT
+              </button>
+              <span
+                v-show="staking != 0"
+                style="
+                  color: #496785;
+                  font-size: 14px;
+                  font-weight: normal;
+                  font-family: Pirulen, Helvetica;
+                "
+                >NEAT</span
+              >
+            </div>
+            <div class="sep"></div>
+          </div>
+
+          <div class="pools">
+            <div class="vAddy1" id="pool4">
+              <span style="color: #496785">4.</span> {{ " SILVIU25   POOL"
+              }}<span style="color: #496785"> Pool Fee:</span>
+              <span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+                >{{ vComm }}</span
+              ><span style="color: #496785"> Staking Power:</span>
+              <span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+              >
+                {{ (+v55power).toLocaleString() }}</span
+              >
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0"
+                @click="select4"
+              >
+                SELECT
+              </button>
+              <span
+                v-show="staking != 0"
+                style="
+                  color: #496785;
+                  font-size: 14px;
+                  font-weight: normal;
+                  font-family: Pirulen, Helvetica;
+                "
+                >NEAT</span
+              >
+            </div>
+            <div class="sep"></div>
+          </div>
+
+          <div class="pools">
+            <div class="vAddy1" id="pool5">
+              <span style="color: #496785">5.</span>
+              <div class="stian">StianNOR - EU</div>
+              <span style="color: #496785">Pool Fee:</span>
+              <span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+                >{{ vComm }}</span
+              >
+              <span style="color: #496785">Staking Power:</span
+              ><span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+              >
+                {{ (+v66power).toLocaleString() }}</span
+              >
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0"
+                @click="select5"
+              >
+                SELECT
+              </button>
+              <span
+                v-show="staking != 0"
+                style="
+                  color: #496785;
+                  font-size: 14px;
+                  font-weight: normal;
+                  font-family: Pirulen, Helvetica;
+                "
+                >NEAT</span
+              >
             </div>
             <div class="sep"></div>
           </div>
@@ -92,79 +254,242 @@
             <div class="vAddy2" id="pool6">
               <span style="color: #496785">6.</span> {{ "NEATIO EUROPE" }}
               <span style="color: #496785">Pool Fee:</span>
-              <span style=" font-family: Helvetica; font-weight: normal; font-size: 14px;">{{ vComm }}</span> <span style="color: #496785">Staking Power:</span>
-              <span style="font-family: Helvetica; font-weight: normal; font-size: 14px;"> {{ (+v77power).toLocaleString() }}</span>
-              <button class="rippleSelect" v-show="staking == 0 && rewards == 0" @click="select6"> SELECT </button>
-              <span v-show="staking != 0" style="color: #496785;  font-size: 14px; font-weight: normal; font-family: Pirulen, Helvetica;"> NEAT</span>
+              <span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+                >{{ vComm }}</span
+              >
+              <span style="color: #496785">Staking Power:</span>
+              <span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+              >
+                {{ (+v77power).toLocaleString() }}</span
+              >
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0"
+                @click="select6"
+              >
+                SELECT
+              </button>
+              <span
+                v-show="staking != 0"
+                style="
+                  color: #496785;
+                  font-size: 14px;
+                  font-weight: normal;
+                  font-family: Pirulen, Helvetica;
+                "
+              >
+                NEAT</span
+              >
             </div>
           </div>
-
         </div>
         <div class="box2">
           <div class="lockked" v-show="address === ''">
             <img src="../../assets/lock.png" alt="Lock" class="lockimg" />
           </div>
 
-          <div class="locked" v-show="address === ''">Please unlock your wallet!</div>
+          <div class="locked" v-show="address === ''">
+            Please unlock your wallet!
+          </div>
           <div class="neatStaking">
             <div class="balance-details" v-show="address != ''">
               <div class="wallet-balance" v-show="address !== ''">
                 <div class="addry-w">{{ addry }}</div>
-                <div class="walBalT">{{ (+balance).toFixed(6)}}<span style="color: #496785;font-size: 22px;font-weight: normal;font-family: Pirulen, Helvetica;">NEAT</span>
+                <div class="walBalT">
+                  {{ (+balance).toFixed(6)
+                  }}<span
+                    style="
+                      color: #496785;
+                      font-size: 22px;
+                      font-weight: normal;
+                      font-family: Pirulen, Helvetica;
+                    "
+                    >NEAT</span
+                  >
                 </div>
               </div>
               <div class="sep"></div>
               <div class="boxess">
                 <div class="wallet-balance-available2">
-                  <div class="wl"><img src="../../assets/claim.png" alt="stake" class="walimg"/></div>
-                  <div><span style="color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Coins In Stake</span></div>
-                  <span style="color: #496785; font-family: Helvetica">{{   (+staking).toFixed(6)}}</span>
+                  <div class="wl">
+                    <img
+                      src="../../assets/claim.png"
+                      alt="stake"
+                      class="walimg"
+                    />
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        color: #496785;
+                        font-weight: lighter;
+                        font-size: 11px;
+                        font-family: Pirulen, Helvetica;
+                      "
+                      >Coins In Stake</span
+                    >
+                  </div>
+                  <span style="color: #496785; font-family: Helvetica">{{
+                    (+staking).toFixed(6)
+                  }}</span>
                 </div>
                 <div class="wallet-balance-available2">
-                  <div class="wl"><div class="spinr"><orbit-spinner :animation-duration="1200" :size="55" color="#00ffff" alt="stake" /></div></div>
-                  <span style=" color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Unclaimed Rewards</span>
-                  <span style="color: #496785; font-family: Helvetica">{{(+rewards).toFixed(18)}}</span>
+                  <div class="wl">
+                    <div class="spinr">
+                      <orbit-spinner
+                        :animation-duration="1200"
+                        :size="55"
+                        color="#00ffff"
+                        alt="stake"
+                      />
+                    </div>
+                  </div>
+                  <span
+                    style="
+                      color: #496785;
+                      font-weight: lighter;
+                      font-size: 11px;
+                      font-family: Pirulen, Helvetica;
+                    "
+                    >Unclaimed Rewards</span
+                  >
+                  <span style="color: #496785; font-family: Helvetica">{{
+                    (+rewards).toFixed(18)
+                  }}</span>
                 </div>
               </div>
-              <div class="noSel" v-show="selectedPool == null && staking == 0 && rewards == 0">select a pool if you wish to stake your coins</div>
-              <div class="deleg" v-show="selectedPool != null">Selected pool<span style=" font-size: 14px; color: #00ffff; font-weight: normal; font-family: Pirulen, Helvetica;">{{ selectedPool }}</span></div>
-              <div class="deleg" v-show="staking != 0 && rewards != 0">Staking on:<span style=" font-size: 14px;color: #00ffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
-              <div class="deleg" v-show="rewards > 0">Rewards on:<span style="font-size: 14px;color: #00ffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
-              <div class="btnss" v-show="(staking != null && selectedPool == 'DANNY M POOL') || (staking != null && stakedTo == 'DANNY M POOL') || stakedTo == 'DANNY M POOL'"><div class="buttns">
-              <button class="rippleStake" @click="neatStake1">stake</button><button class="rippleClaims" @click="claimRwd1">claim</button><button class="rippleClaims" @click="unStake1">unstake</button></div>
-              </div><div class="btnss" v-show="(staking != null && selectedPool == 'NEATIO - ASIA -') || (staking != null && stakedTo == 'NEATIO - ASIA -') || stakedTo == 'NEATIO - ASIA -'">
-              <div class="buttns"><button class="rippleStake" @click="neatStake2">stake</button><button class="rippleClaims" @click="claimRwd2">claim</button>
+              <div
+                class="noSel"
+                v-show="selectedPool == null && staking == 0 && rewards == 0"
+              >
+                select a pool if you wish to stake your coins
+              </div>
+              <div class="deleg" v-show="selectedPool != null">
+                Selected pool<span
+                  style="
+                    font-size: 14px;
+                    color: #00ffff;
+                    font-weight: normal;
+                    font-family: Pirulen, Helvetica;
+                  "
+                  >{{ selectedPool }}</span
+                >
+              </div>
+              <div class="deleg" v-show="staking != 0 && rewards != 0">
+                Staking on:<span
+                  style="
+                    font-size: 14px;
+                    color: #00ffff;
+                    font-weight: normal;
+                    font-family: Pirulen, Helvetica;
+                  "
+                  >{{ stakedTo }}</span
+                >
+              </div>
+              <div class="deleg" v-show="rewards > 0">
+                Rewards on:<span
+                  style="
+                    font-size: 14px;
+                    color: #00ffff;
+                    font-weight: normal;
+                    font-family: Pirulen, Helvetica;
+                  "
+                  >{{ stakedTo }}</span
+                >
+              </div>
+              <div
+                class="btnss"
+                v-show="
+                  (staking != null && selectedPool == 'DANNY M POOL') ||
+                  (staking != null && stakedTo == 'DANNY M POOL') ||
+                  stakedTo == 'DANNY M POOL'
+                "
+              >
+                <div class="buttns">
+                  <button class="rippleStake" @click="neatStake1">stake</button
+                  ><button class="rippleClaims" @click="claimRwd1">claim</button
+                  ><button class="rippleClaims" @click="unStake1">
+                    unstake
+                  </button>
+                </div>
+              </div>
+              <div
+                class="btnss"
+                v-show="
+                  (staking != null && selectedPool == 'NEATIO - ASIA -') ||
+                  (staking != null && stakedTo == 'NEATIO - ASIA -') ||
+                  stakedTo == 'NEATIO - ASIA -'
+                "
+              >
+                <div class="buttns">
+                  <button class="rippleStake" @click="neatStake2">stake</button
+                  ><button class="rippleClaims" @click="claimRwd2">
+                    claim
+                  </button>
 
-              <button class="rippleClaims" @click="unStake2">unstake</button></div></div>
-              <div class="btnss" v-show="
-               (staking != null && selectedPool == 'ROMANIA POOL') ||
-               (staking != null && stakedTo == 'ROMANIA POOL') || stakedTo == 'ROMANIA POOL'">
+                  <button class="rippleClaims" @click="unStake2">
+                    unstake
+                  </button>
+                </div>
+              </div>
+              <div
+                class="btnss"
+                v-show="
+                  (staking != null && selectedPool == 'ROMANIA POOL') ||
+                  (staking != null && stakedTo == 'ROMANIA POOL') ||
+                  stakedTo == 'ROMANIA POOL'
+                "
+              >
                 <div class="buttns">
                   <button class="rippleStake" @click="neatStake3">stake</button>
                   <button class="rippleClaims" @click="claimRwd3">claim</button>
-                  <button class="rippleClaims" @click="unStake3">unstake</button>
+                  <button class="rippleClaims" @click="unStake3">
+                    unstake
+                  </button>
                 </div>
               </div>
 
-              <div class="btnss" v-show="
+              <div
+                class="btnss"
+                v-show="
                   (staking != null && selectedPool == 'SILVIU25 POOL') ||
                   (staking != null && stakedTo == 'SILVIU25 POOL') ||
-                  stakedTo == 'SILVIU25 POOL'">
+                  stakedTo == 'SILVIU25 POOL'
+                "
+              >
                 <div class="buttns">
                   <button class="rippleStake" @click="neatStake4">stake</button>
                   <button class="rippleClaims" @click="claimRwd4">claim</button>
-                  <button class="rippleClaims" @click="unStake4">unstake</button>
+                  <button class="rippleClaims" @click="unStake4">
+                    unstake
+                  </button>
                 </div>
               </div>
 
-              <div class="btnss" v-show=" 
+              <div
+                class="btnss"
+                v-show="
                   (staking != null && selectedPool == 'StianNOR - EU') ||
                   (staking != null && stakedTo == 'StianNOR - EU') ||
-                  stakedTo == 'StianNOR - EU'">
+                  stakedTo == 'StianNOR - EU'
+                "
+              >
                 <div class="buttns">
                   <button class="rippleStake" @click="neatStake5">stake</button>
                   <button class="rippleClaims" @click="claimRwd5">claim</button>
-                  <button class="rippleClaims" @click="unStake5">unstake</button>
+                  <button class="rippleClaims" @click="unStake5">
+                    unstake
+                  </button>
                 </div>
               </div>
 
@@ -173,11 +498,15 @@
                 v-show="
                   (staking != null && selectedPool == 'NEATIO EUROPE') ||
                   (staking != null && stakedTo == 'NEATIO EUROPE') ||
-                  stakedTo == 'NEATIO EUROPE'">
+                  stakedTo == 'NEATIO EUROPE'
+                "
+              >
                 <div class="buttns">
                   <button class="rippleStake" @click="neatStake6">stake</button>
                   <button class="rippleClaims" @click="claimRwd6">claim</button>
-                  <button class="rippleClaims" @click="unStake6">unstake</button>
+                  <button class="rippleClaims" @click="unStake6">
+                    unstake
+                  </button>
                 </div>
               </div>
             </div>
@@ -195,7 +524,7 @@
 <script>
 import { OrbitSpinner } from "epic-spinners";
 import { LoopingRhombusesSpinner } from "epic-spinners";
-import VideoBackground from 'vue-responsive-video-background-player';
+import VideoBackground from "vue-responsive-video-background-player";
 import { Socket } from "vue-loading-spinner";
 import Access from "./modules/access";
 import EyeInput from "./modules/eyeInput";
@@ -497,18 +826,18 @@ export default {
         .then((response) => (this.array = response.data.result));
 
       const validators = this.array;
-     // console.log(validators);
+      // console.log(validators);
 
-      const v2 = Object(validators)[1]; 
+      const v2 = Object(validators)[1];
       const v2Addy = v2.address;
-      this.pool1 = v2Addy; // Pool 1 
+      this.pool1 = v2Addy; // Pool 1
       const vPower2 = Utils.toNEAT(Nat.toString(v2.votingPower));
       this.vPower2 = Number(vPower2);
       const v2Pwr = this.vPower2;
       this.v2Pwr = v2Pwr.toFixed(0);
       this.v22power = parseInt(this.v2Pwr);
 
-      const v3 = Object(validators)[2]; 
+      const v3 = Object(validators)[2];
       const v3Addy = v3.address;
       this.pool2 = v3Addy; // Pool 2
       const vPower3 = Utils.toNEAT(Nat.toString(v3.votingPower));
@@ -517,9 +846,9 @@ export default {
       this.v3Pwr = v3Pwr.toFixed(0);
       this.v33power = parseInt(this.v3Pwr);
 
-      const v4 = Object(validators)[3]; 
+      const v4 = Object(validators)[3];
       const v4Addy = v4.address;
-      this.pool3 = v4Addy; // Pool 3 
+      this.pool3 = v4Addy; // Pool 3
       const vPower4 = Utils.toNEAT(Nat.toString(v4.votingPower));
       this.vPower4 = Number(vPower4);
       const v4Pwr = this.vPower4;
@@ -528,7 +857,7 @@ export default {
 
       const v5 = Object(validators)[4];
       const v5Addy = v5.address;
-      this.pool4 = v5Addy; //Pool 4 
+      this.pool4 = v5Addy; //Pool 4
       const vPower5 = Utils.toNEAT(Nat.toString(v5.votingPower));
       this.vPower5 = Number(vPower5);
       const v5Pwr = this.vPower5;
@@ -553,7 +882,13 @@ export default {
       this.v7Pwr = v7Pwr.toFixed(0);
       this.v77power = parseInt(this.v7Pwr);
 
-      const totalStakeHex = parseInt(v2.votingPower) + parseInt(v3.votingPower) + parseInt(v4.votingPower) + parseInt(v5.votingPower) + parseInt(v6.votingPower) + parseInt(v7.votingPower);
+      const totalStakeHex =
+        parseInt(v2.votingPower) +
+        parseInt(v3.votingPower) +
+        parseInt(v4.votingPower) +
+        parseInt(v5.votingPower) +
+        parseInt(v6.votingPower) +
+        parseInt(v7.votingPower);
       const totalStakeNEAT = totalStakeHex / 1e18;
       this.totalStake = totalStakeNEAT.toFixed(0);
       this.stakingAPY = (2964759 / parseInt(this.totalStake)) * 100 - 15;
@@ -601,7 +936,6 @@ export default {
       this.selectedPool = "NEATIO EUROPE";
     },
 
-
     neatStake1() {
       document.getElementById("pool1").click();
       const pool1 = this.pool1;
@@ -635,9 +969,16 @@ export default {
         ];
 
         ethereum
-          .request({method: "eth_sendTransaction", params,  })
-          .then((result) => {this.$alert("TX ID: " + result, "Staking Was Succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", }); })
-          .catch((error) => { console.log("tx error", error); });
+          .request({ method: "eth_sendTransaction", params })
+          .then((result) => {
+            this.$alert("TX ID: " + result, "Staking Was Succesful!", {
+              confirmButtonText: this.$t("CLOSE"),
+              type: "success",
+            });
+          })
+          .catch((error) => {
+            console.log("tx error", error);
+          });
       });
     },
 
@@ -661,21 +1002,41 @@ export default {
           }
         },
       }).then(({ value }) => {
-        let data = Abi.encodeParams(["address", "uint256"], [ this.pool1, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16), ] );
-        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(2,8);
-        const params = [{
+        let data = Abi.encodeParams(
+          ["address", "uint256"],
+          [
+            this.pool1,
+            "0x" +
+              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+          ]
+        );
+        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(
+          2,
+          8
+        );
+        const params = [
+          {
             from: this.address,
             to: "0x0000000000000000000000000000000000000505",
             gas: Utils.toHex(this.limit),
             gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
             value: "0x0",
             data: "0x" + functionSig + data.substring(2),
-          },];
-        ethereum.request({method: "eth_sendTransaction", params, })
-          .then((result) => { console.log("hash", result);  this.$alert(
-              "TX ID: " + result,"You succesfully unstaked your coins!",  { confirmButtonText: this.$t("CLOSE"), type: "success",    }    );
+          },
+        ];
+        ethereum
+          .request({ method: "eth_sendTransaction", params })
+          .then((result) => {
+            console.log("hash", result);
+            this.$alert(
+              "TX ID: " + result,
+              "You succesfully unstaked your coins!",
+              { confirmButtonText: this.$t("CLOSE"), type: "success" }
+            );
           })
-          .catch((error) => {   console.log("tx error", error); });
+          .catch((error) => {
+            console.log("tx error", error);
+          });
       });
     },
 
@@ -701,22 +1062,43 @@ export default {
           }
         },
       }).then(({ value }) => {
-        let data = Abi.encodeParams(["address", "uint256"], [this.pool1, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
-        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(2,8);
-        const params = [{
+        let data = Abi.encodeParams(
+          ["address", "uint256"],
+          [
+            this.pool1,
+            "0x" +
+              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+          ]
+        );
+        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(
+          2,
+          8
+        );
+        const params = [
+          {
             from: this.address,
             to: "0x0000000000000000000000000000000000000505",
             gas: Utils.toHex(this.limit),
             gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
             value: "0x0",
             data: "0x" + functionSig + data.substring(2),
-          },];
-        ethereum.request({ method: "eth_sendTransaction",params, }).then((result) => {console.log("hash", result);
-            this.$alert("TX ID: " + result, "You succesfully claimed your rewards!",{confirmButtonText: this.$t("confirm"), type: "success", });
-          }).catch((error) => {console.log("tx error", error);});
+          },
+        ];
+        ethereum
+          .request({ method: "eth_sendTransaction", params })
+          .then((result) => {
+            console.log("hash", result);
+            this.$alert(
+              "TX ID: " + result,
+              "You succesfully claimed your rewards!",
+              { confirmButtonText: this.$t("confirm"), type: "success" }
+            );
+          })
+          .catch((error) => {
+            console.log("tx error", error);
+          });
       });
     },
-
 
     neatStake2() {
       document.getElementById("pool2").click();
@@ -901,7 +1283,6 @@ export default {
           });
       });
     },
-
 
     neatStake3() {
       document.getElementById("pool3").click();
@@ -1444,8 +1825,6 @@ export default {
             console.log("tx error", error);
           });
       });
-
-      
     },
 
     neatStake6() {
@@ -1629,9 +2008,8 @@ export default {
           .catch((error) => {
             console.log("tx error", error);
           });
-      });      
+      });
     },
-    // END
   },
 };
 </script>
