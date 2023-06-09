@@ -45,6 +45,13 @@
             <div class="itemsD">Max Supply</div>
             <div class="valueD">50,000,000</div>
           </div>
+
+          <div class="stats1">
+            <div class="itemsD">NEAT coin Price</div>
+            <div class="valueD">$ {{ (+priceUSD).toFixed(4) }}</div>
+          </div>
+
+
         </div>
       </div>
       <div class="boxes">
