@@ -18,10 +18,15 @@
           </div>
 
           <div class="stats1">
+            <div class="itemsD">Locked Coins</div>
+            <div class="valueD">{{ (+totalStake).toLocaleString() }}</div>
+          </div>
+
+
+          <div class="stats1">
             <div class="itemsD">Circ. Supply</div>
             <div class="valueD">{{ (+circcc).toLocaleString() }}</div>
           </div>
-
           <div class="stats1">
             <div class="itemsD">Total Supply</div>
             <div class="valueD">{{ (+totalSupp).toLocaleString() }}</div>
