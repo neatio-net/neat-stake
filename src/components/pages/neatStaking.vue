@@ -50,8 +50,13 @@
             <div class="itemsD">NEAT coin Price</div>
             <div class="valueD">$ {{ (+priceUSD).toFixed(4) }}</div>
           </div>
+          <div class="stats1">
+            <div class="itemsD">24h Change</div>
+            <div class="valueD">{{ (+price24h).toFixed(2) }} %</div>
+          </div>
 
 
+          
         </div>
       </div>
       <div class="boxes">
