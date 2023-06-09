@@ -22,6 +22,10 @@
             <div class="valueD">{{ (+totalStake).toLocaleString() }}</div>
           </div>
 
+          <div class="stats1">
+            <div class="itemsD">Pct. Of Total</div>
+            <div class="valueD">{{ (+percentLock).toFixed(2) }} %</div>
+          </div>
 
           <div class="stats1">
             <div class="itemsD">Circ. Supply</div>
