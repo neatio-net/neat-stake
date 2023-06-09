@@ -37,6 +37,11 @@
           </div>
 
           <div class="stats1">
+            <div class="itemsD">Pct. of Max</div>
+            <div class="valueD">{{ (+percentMax).toFixed(2) }} %</div>
+          </div>
+
+          <div class="stats1">
             <div class="itemsD">Max Supply</div>
             <div class="valueD">50,000,000</div>
           </div>
