@@ -54,7 +54,10 @@
             <div class="itemsD">24h Change</div>
             <div class="valueD">{{ (+price24h).toFixed(2) }} %</div>
           </div>
-
+          <div class="stats1">
+            <div class="itemsD">Market CAP</div>
+            <div class="valueD">$ {{ (+marketCap).toLocaleString() }}</div>
+          </div>
 
           
         </div>
