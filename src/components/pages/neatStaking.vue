@@ -47,7 +47,7 @@
           </div>
 
           <div class="stats1">
-            <div class="itemsD">NEAT coin Price</div>
+            <div class="itemsD">NIO Price</div>
             <div class="valueD">$ {{ (+priceUSD).toFixed(4) }}</div>
           </div>
           <div class="stats1">
@@ -101,7 +101,7 @@
                   font-weight: normal;
                   font-family: Pirulen, Helvetica;
                 "
-                >NEAT</span
+                > NIO</span
               >
             </div>
             <div class="sep"></div>
@@ -144,7 +144,7 @@
                   font-weight: normal;
                   font-family: Pirulen, Helvetica;
                 "
-                >NEAT</span
+                > NIO</span
               >
             </div>
             <div class="sep"></div>
@@ -187,7 +187,7 @@
                   font-weight: normal;
                   font-family: Pirulen, Helvetica;
                 "
-                >NEAT</span
+                > NIO</span
               >
             </div>
             <div class="sep"></div>
@@ -229,7 +229,7 @@
                   font-weight: normal;
                   font-family: Pirulen, Helvetica;
                 "
-                >NEAT</span
+                > NIO</span
               >
             </div>
             <div class="sep"></div>
@@ -273,7 +273,7 @@
                   font-weight: normal;
                   font-family: Pirulen, Helvetica;
                 "
-                >NEAT</span
+                > NIO</span
               >
             </div>
             <div class="sep"></div>
@@ -317,7 +317,7 @@
                   font-family: Pirulen, Helvetica;
                 "
               >
-                NEAT</span
+                 NIO</span
               >
             </div>
           </div>
@@ -343,7 +343,7 @@
                       font-weight: normal;
                       font-family: Pirulen, Helvetica;
                     "
-                    >NEAT</span
+                    > NIO</span
                   >
                 </div>
               </div>
