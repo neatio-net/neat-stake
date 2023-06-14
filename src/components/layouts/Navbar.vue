@@ -128,8 +128,8 @@ export default {
                     chainId: chainIds,
                     chainName: chainName,
                     nativeCurrency: {
-                      name: "NEAT",
-                      symbol: "NEAT",
+                      name: "NIO",
+                      symbol: "NIO",
                       decimals: 18
                     },
                     rpcUrls: [rpc],
