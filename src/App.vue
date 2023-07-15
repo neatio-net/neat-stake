@@ -13,8 +13,8 @@ export default {
 <style>
 
 @font-face {
-  font-family: "Pirulen";
-  src: local("Pirulen"),
+  font-family: "Anita";
+  src: local("Anita"),
    url(./fonts/pirulen.ttf) format("truetype");
 
 } 
@@ -45,14 +45,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 
   text-align: center;
-  color: #00ffff;
+  color: #46bbf4;
   font-family: Helvetica;
 }
 
 
 
 .main {
-  background-image:  url('assets/hero-back.png');
+  /* background-image:  url('assets/hero-back.png'); */
+  background: linear-gradient(to left,#243B55,  #212226);
   background-blend-mode: multiply;
   background-size: cover;
 
@@ -88,7 +89,7 @@ grid-template-columns: 1.5fr 1fr;
   margin: 50px 30px 0px 10px;
   box-sizing: 1px;
   border: none;
-  border: 1px solid #00ffffa4;
+  border: 1px solid #46bbf4a4;
   border-radius: 10px;
   box-shadow: 0 0 40px #00bfff93;
 
@@ -97,8 +98,8 @@ grid-template-columns: 1.5fr 1fr;
   .vAddy1 {
   font-size: 12px;
   font-weight: 100;
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color:#00ffff;
+  font-family: Anita, Arial, Helvetica, sans-serif;
+  color:#46bbf4;
   text-align: left;
 
 }
@@ -107,7 +108,7 @@ grid-template-columns: 1.5fr 1fr;
 
 .vAddy {
   font-size: 12px;
-  color:#00ffff;
+  color:#46bbf4;
   text-align: left;
 
 }
@@ -173,7 +174,7 @@ display:inline-table;
   border-radius: 10px;
   box-sizing: 1px;
   border: none;
-  border: 1px solid #00ffffa4;
+  border: 1px solid #46bbf4a4;
   border-radius: 10px;
   box-shadow: 0 0 40px #00bfff31;
 
@@ -193,7 +194,7 @@ display:inline-table;
   margin: 50px 30px 0px 10px;
   box-sizing: 1px;
   border: none;
-  border: 1px solid #00ffffa4;
+  border: 1px solid #46bbf4a4;
   border-radius: 10px;
   box-shadow: 0 0 40px #00bfff31;
 
@@ -210,7 +211,7 @@ display:inline-table;
   border-radius: 24px;
   margin: 50px 10px 0px 30px;
   box-sizing: 4px;
-  border: 1px solid #00ffffa4;
+  border: 1px solid #46bbf4a4;
   border-radius: 10px;
   box-shadow: 0 0 40px #00bfff31;
 }
@@ -224,7 +225,7 @@ display:inline-table;
 .el-button {
   border-radius: 10px !important;
   font-weight: bold !important;
-  font-family: Pirulen, Helvetica !important;
+  font-family: Anita, Helvetica !important;
 }
 .el-message-box {
   border-radius: 10px !important;
@@ -233,7 +234,7 @@ display:inline-table;
 }
 
 .el-message-box__content {
-  color: #00ffff !important;
+  color: #46bbf4 !important;
   font-size: 1rem !important;
 }
 
@@ -241,14 +242,14 @@ display:inline-table;
   text-align: center !important;
 } 
 .el-radio__input.is-checked + .el-radio__label {
-  color: #00ffff !important;
+  color: #46bbf4 !important;
 }
 .el-radio__input.is-checked .el-radio__inner {
-  border-color: #00ffff !important;
-  background: #00ffff !important;
+  border-color: #46bbf4 !important;
+  background: #46bbf4 !important;
 }
 .el-radio__inner:hover {
-  border: 1px solid #00ffff !important;
+  border: 1px solid #46bbf4 !important;
 }
 .sk {
   color: rgba(102, 102, 102, 1);
@@ -280,25 +281,25 @@ display:inline-table;
 }
 
 .el-select .el-input.is-focus .el-input__inner {
-  border-color: #00ffff !important;
+  border-color: #46bbf4 !important;
 }
 .el-select .el-input__inner:focus {
-  border-color: #00ffff !important;
+  border-color: #46bbf4 !important;
 }
 .el-select-dropdown__item.selected {
-  color: #00ffff !important;
+  color: #46bbf4 !important;
 }
 .el-input.is-active .el-input__inner, .el-input__inner:focus {
-  border-color: #00ffff !important;
+  border-color: #46bbf4 !important;
 }
 .el-message-box__title{
- color: #00ffff !important;
+ color: #46bbf4 !important;
  text-align: center !important;
- font-family: Pirulen, Helvetica !important;
+ font-family: Anita, Helvetica !important;
 }
 
 .el-message-box__container {
-  font-family: Pirulen, Helvetica !important;
+  font-family: Anita, Helvetica !important;
 }
 
 .el-message-box__input {
@@ -315,7 +316,7 @@ display:inline-table;
 .el-input__inner {
   border-radius: 10px !important;
   background-color: #2c3e50 !important;
-  color: #00ffff !important;
+  color: #46bbf4 !important;
   text-align: center !important;
   
 }
