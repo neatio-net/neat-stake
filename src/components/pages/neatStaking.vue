@@ -9,7 +9,7 @@
           </div>
 
           <div class="stats1">
-            <div class="itemsD">Avg. Block Time</div>
+            <div class="itemsD">Block Time</div>
             <div class="valueD">1.7 seconds</div>
           </div>
           <div class="stats1">
@@ -66,8 +66,8 @@
         <div class="box1">
           <div class="pools">
             <div class="vAddy1" id="pool1">
-              <span style="color: #496785">1.</span> {{ "DANNY M POOL"
-              }}<span style="color: #496785"> Pool Fee: </span
+              <span style="color: #2472fc">1.</span> {{ "DANNY M POOL"
+              }}<span style="color: #2472fc"> Pool Fee: </span
               ><span
                 style="
                   font-family: Helvetica;
@@ -76,7 +76,7 @@
                 "
                 >{{ vComm }}</span
               >
-              <span style="color: #496785"> Staking Power:</span
+              <span style="color: #2472fc"> Staking Power:</span
               ><span
                 style="
                   font-family: Helvetica;
@@ -96,10 +96,10 @@
               <span
                 v-show="staking != 0"
                 style="
-                  color: #496785;
+                  color: #2472fc;
                   font-size: 14px;
                   font-weight: normal;
-                  font-family: Pirulen, Helvetica;
+                  font-family: Anita, Helvetica;
                 "
                 > NIO</span
               >
@@ -109,8 +109,8 @@
 
           <div class="pools">
             <div class="vAddy1" id="pool2">
-              <span style="color: #496785">2.</span> {{ "NEATIO - ASIA -"
-              }}<span style="color: #496785"> Pool Fee: </span
+              <span style="color: #2472fc">2.</span> {{ "NEATIO - ASIA -"
+              }}<span style="color: #2472fc"> Pool Fee: </span
               ><span
                 style="
                   font-family: Helvetica;
@@ -119,7 +119,7 @@
                 "
                 >{{ vComm }}</span
               >
-              <span style="color: #496785"> Staking Power:</span
+              <span style="color: #2472fc"> Staking Power:</span
               ><span
                 style="
                   font-family: Helvetica;
@@ -139,10 +139,10 @@
               <span
                 v-show="staking != 0"
                 style="
-                  color: #496785;
+                  color: #2472fc;
                   font-size: 14px;
                   font-weight: normal;
-                  font-family: Pirulen, Helvetica;
+                  font-family: Anita, Helvetica;
                 "
                 > NIO</span
               >
@@ -152,8 +152,8 @@
 
           <div class="pools">
             <div class="vAddy1" id="pool3">
-              <span style="color: #496785">3.</span> {{ "ROMANIA POOL"
-              }}<span style="color: #496785"> Pool Fee: </span
+              <span style="color: #2472fc">3.</span> {{ "ROMANIA POOL"
+              }}<span style="color: #2472fc"> Pool Fee: </span
               ><span
                 style="
                   font-family: Helvetica;
@@ -162,7 +162,7 @@
                 "
                 >{{ vComm }}</span
               >
-              <span style="color: #496785"> Staking Power:</span
+              <span style="color: #2472fc"> Staking Power:</span
               ><span
                 style="
                   font-family: Helvetica;
@@ -182,10 +182,10 @@
               <span
                 v-show="staking != 0"
                 style="
-                  color: #496785;
+                  color: #2472fc;
                   font-size: 14px;
                   font-weight: normal;
-                  font-family: Pirulen, Helvetica;
+                  font-family: Anita, Helvetica;
                 "
                 > NIO</span
               >
@@ -195,8 +195,8 @@
 
           <div class="pools">
             <div class="vAddy1" id="pool4">
-              <span style="color: #496785">4.</span> {{ " SILVIU25   POOL"
-              }}<span style="color: #496785"> Pool Fee:</span>
+              <span style="color: #2472fc">4.</span> {{ " SILVIU25   POOL"
+              }}<span style="color: #2472fc"> Pool Fee:</span>
               <span
                 style="
                   font-family: Helvetica;
@@ -204,7 +204,7 @@
                   font-size: 14px;
                 "
                 >{{ vComm }}</span
-              ><span style="color: #496785"> Staking Power:</span>
+              ><span style="color: #2472fc"> Staking Power:</span>
               <span
                 style="
                   font-family: Helvetica;
@@ -224,10 +224,10 @@
               <span
                 v-show="staking != 0"
                 style="
-                  color: #496785;
+                  color: #2472fc;
                   font-size: 14px;
                   font-weight: normal;
-                  font-family: Pirulen, Helvetica;
+                  font-family: Anita, Helvetica;
                 "
                 > NIO</span
               >
@@ -237,9 +237,9 @@
 
           <div class="pools">
             <div class="vAddy1" id="pool5">
-              <span style="color: #496785">5.</span>
+              <span style="color: #2472fc">5.</span>
               <div class="stian">StianNOR - EU</div>
-              <span style="color: #496785">Pool Fee:</span>
+              <span style="color: #2472fc">Pool Fee:</span>
               <span
                 style="
                   font-family: Helvetica;
@@ -248,7 +248,7 @@
                 "
                 >{{ vComm }}</span
               >
-              <span style="color: #496785">Staking Power:</span
+              <span style="color: #2472fc">Staking Power:</span
               ><span
                 style="
                   font-family: Helvetica;
@@ -268,10 +268,10 @@
               <span
                 v-show="staking != 0"
                 style="
-                  color: #496785;
+                  color: #2472fc;
                   font-size: 14px;
                   font-weight: normal;
-                  font-family: Pirulen, Helvetica;
+                  font-family: Anita, Helvetica;
                 "
                 > NIO</span
               >
@@ -281,8 +281,8 @@
 
           <div class="pools">
             <div class="vAddy2" id="pool6">
-              <span style="color: #496785">6.</span> {{ "NEATIO EUROPE" }}
-              <span style="color: #496785">Pool Fee:</span>
+              <span style="color: #2472fc">6.</span> {{ "NEATIO EUROPE" }}
+              <span style="color: #2472fc">Pool Fee:</span>
               <span
                 style="
                   font-family: Helvetica;
@@ -291,7 +291,7 @@
                 "
                 >{{ vComm }}</span
               >
-              <span style="color: #496785">Staking Power:</span>
+              <span style="color: #2472fc">Staking Power:</span>
               <span
                 style="
                   font-family: Helvetica;
@@ -311,10 +311,10 @@
               <span
                 v-show="staking != 0"
                 style="
-                  color: #496785;
+                  color: #2472fc;
                   font-size: 14px;
                   font-weight: normal;
-                  font-family: Pirulen, Helvetica;
+                  font-family: Anita, Helvetica;
                 "
               >
                  NIO</span
@@ -338,10 +338,10 @@
                   {{ (+balance).toFixed(6)
                   }}<span
                     style="
-                      color: #496785;
+                      color: #2472fc;
                       font-size: 22px;
                       font-weight: normal;
-                      font-family: Pirulen, Helvetica;
+                      font-family: Anita, Helvetica;
                     "
                     > NIO</span
                   >
@@ -360,15 +360,15 @@
                   <div>
                     <span
                       style="
-                        color: #496785;
+                        color: #2472fc;
                         font-weight: lighter;
                         font-size: 11px;
-                        font-family: Pirulen, Helvetica;
+                        font-family: Anita, Helvetica;
                       "
                       >Coins In Stake</span
                     >
                   </div>
-                  <span style="color: #496785; font-family: Helvetica">{{
+                  <span style="color: #2472fc; font-family: Helvetica">{{
                     (+staking).toFixed(6)
                   }}</span>
                 </div>
@@ -378,21 +378,21 @@
                       <orbit-spinner
                         :animation-duration="1200"
                         :size="55"
-                        color="#00ffff"
+                        color="#46bbf4"
                         alt="stake"
                       />
                     </div>
                   </div>
                   <span
                     style="
-                      color: #496785;
+                      color: #2472fc;
                       font-weight: lighter;
                       font-size: 11px;
-                      font-family: Pirulen, Helvetica;
+                      font-family: Anita, Helvetica;
                     "
                     >Unclaimed Rewards</span
                   >
-                  <span style="color: #496785; font-family: Helvetica">{{
+                  <span style="color: #2472fc; font-family: Helvetica">{{
                     (+rewards).toFixed(18)
                   }}</span>
                 </div>
@@ -407,9 +407,9 @@
                 Selected pool<span
                   style="
                     font-size: 14px;
-                    color: #00ffff;
+                    color: #46bbf4;
                     font-weight: normal;
-                    font-family: Pirulen, Helvetica;
+                    font-family: Anita, Helvetica;
                   "
                   >{{ selectedPool }}</span
                 >
@@ -418,9 +418,9 @@
                 Staking on:<span
                   style="
                     font-size: 14px;
-                    color: #00ffff;
+                    color: #46bbf4;
                     font-weight: normal;
-                    font-family: Pirulen, Helvetica;
+                    font-family: Anita, Helvetica;
                   "
                   >{{ stakedTo }}</span
                 >
@@ -429,9 +429,9 @@
                 Rewards on:<span
                   style="
                     font-size: 14px;
-                    color: #00ffff;
+                    color: #46bbf4;
                     font-weight: normal;
-                    font-family: Pirulen, Helvetica;
+                    font-family: Anita, Helvetica;
                   "
                   >{{ stakedTo }}</span
                 >
@@ -2050,7 +2050,7 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   cursor: pointer;
-  color: #00ffff;
+  color: #46bbf4;
   background-color: #273546;
   border-radius: 4px;
   outline: none;
@@ -2060,7 +2060,7 @@ button {
 
 .sep {
   padding-bottom: 24px;
-  border-bottom: 1px solid #00ffffa4;
+  border-bottom: 1px solid #46bbf4a4;
 }
 
 .sep1 {
@@ -2076,9 +2076,9 @@ button {
 .locked {
   text-align: center;
   margin: 20px;
-  color: #00ffff;
+  color: #46bbf4;
   font-weight: 200;
-  font-family: Pirulen, Helvetica, sans-serif;
+  font-family: Anita, Helvetica, sans-serif;
 }
 
 .lockked {
@@ -2095,16 +2095,16 @@ button {
 }
 
 .itemsD {
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #496785;
-  font-size: 10px;
+  font-family: Anita, Arial, Helvetica, sans-serif;
+  color: #2472fc;
+  font-size: 17px;
   font-weight: 400;
   margin-bottom: 5px;
 }
 
 .valueD {
   font-family: Helvetica, sans-serif;
-  color: #00ffff;
+  color: #46bbf4;
   font-size: 16px;
   font-weight: lighter;
   margin-bottom: 5px;
@@ -2117,8 +2117,8 @@ button {
 .vAddy1 {
   font-size: 12px;
   font-weight: 100;
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  font-family: Anita, Arial, Helvetica, sans-serif;
+  color: #46bbf4;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -2128,7 +2128,7 @@ button {
   font-size: 15px;
   font-weight: 100;
   font-family: Anita, Arial, Helvetica, sans-serif !important;
-  color: #00ffff;
+  color: #46bbf4;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -2137,8 +2137,8 @@ button {
 .vAddy2 {
   font-size: 12px;
   font-weight: 100;
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  font-family: Anita, Arial, Helvetica, sans-serif;
+  color: #46bbf4;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -2149,15 +2149,15 @@ button {
   font-size: 12px;
   font-weight: 100;
   padding-top: 10px;
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  font-family: Anita, Arial, Helvetica, sans-serif;
+  color: #46bbf4;
   text-align: center;
   display: inline-block;
   min-width: 140px;
 }
 
 .walBalT {
-  color: #00ffff;
+  color: #46bbf4;
   margin: 10px;
   font-size: 28px;
   font-weight: 400;
@@ -2189,7 +2189,7 @@ button {
 }
 .dashboard {
   font-weight: bold;
-  color: #00ffff;
+  color: #46bbf4;
   padding-top: 10px;
 }
 .pools {
@@ -2210,8 +2210,8 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  color: #00ffff;
-  border: 1px solid #00ffffa4;
+  color: #46bbf4;
+  border: 1px solid #46bbf4a4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -2221,7 +2221,7 @@ button {
 .rippleStake:hover {
   color: #000;
   text-transform: uppercase;
-  background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
+  background: #46bbf4 radial-gradient(circle, transparent 1%, red 1%)
     center/15000%;
 }
 
@@ -2231,8 +2231,8 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  color: #00ffff;
-  border: 1px solid #00ffffa4;
+  color: #46bbf4;
+  border: 1px solid #46bbf4a4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -2242,7 +2242,7 @@ button {
 .rippleSelect:hover {
   color: #000;
   text-transform: uppercase;
-  background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
+  background: #46bbf4 radial-gradient(circle, transparent 1%, red 1%)
     center/15000%;
 }
 
@@ -2252,7 +2252,7 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  border: 1px solid #00ffffa4;
+  border: 1px solid #46bbf4a4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -2263,7 +2263,7 @@ button {
   color: #000;
   text-transform: uppercase;
 
-  background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%)
+  background: #46bbf4 radial-gradient(circle, transparent 1%, #46bbf4 1%)
     center/15000%;
 }
 
@@ -2272,8 +2272,8 @@ button {
   margin: 10px 0px;
   font-size: 13px;
   font-weight: 100;
-  color: #496785;
-  font-family: Pirulen, Helvetica, sans-serif;
+  color: #2472fc;
+  font-family: Anita, Helvetica, sans-serif;
 }
 
 .noSel {
@@ -2282,8 +2282,8 @@ button {
   margin: 10px 0px;
   font-size: 16px;
   font-weight: 100;
-  color: #496785;
-  font-family: Pirulen, Helvetica, sans-serif;
+  color: #2472fc;
+  font-family: Anita, Helvetica, sans-serif;
 }
 
 .addry-w {
@@ -2291,8 +2291,8 @@ button {
 
   font-size: 16px;
   font-weight: 100;
-  color: #496785;
-  font-family: Pirulen, Helvetica, sans-serif;
+  color: #2472fc;
+  font-family: Anita, Helvetica, sans-serif;
 }
 
 .boxess {
@@ -2314,14 +2314,14 @@ button {
     margin: 50px 10px 0px 10px;
     box-sizing: 1px;
     border: none;
-    border: 1px solid #00ffffa4;
+    border: 1px solid #46bbf4a4;
     border-radius: 10px;
     box-shadow: 0 0 40px #00bfff31;
   }
 
   .valueD {
     font-family: Helvetica, sans-serif;
-    color: #00ffff;
+    color: #46bbf4;
     font-size: 12px;
     font-weight: lighter;
     margin-bottom: 5px;
@@ -2339,8 +2339,8 @@ button {
     height: 22px;
     border-radius: 4px;
     font-weight: bold;
-    color: #00ffff;
-    border: 1px solid #00ffffa4;
+    color: #46bbf4;
+    border: 1px solid #46bbf4a4;
     background-color: transparent;
     background-position: center;
     transition: background 0.4s;
@@ -2350,7 +2350,7 @@ button {
   .rippleStake:hover {
     color: #000;
     text-transform: uppercase;
-    background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
+    background: #46bbf4 radial-gradient(circle, transparent 1%, red 1%)
       center/15000%;
   }
 
@@ -2360,7 +2360,7 @@ button {
     height: 22px;
     border-radius: 4px;
     font-weight: bold;
-    border: 1px solid #00ffffa4;
+    border: 1px solid #46bbf4a4;
     background-color: transparent;
     background-position: center;
     transition: background 0.4s;
@@ -2371,7 +2371,7 @@ button {
     color: #000;
     text-transform: uppercase;
 
-    background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%)
+    background: #46bbf4 radial-gradient(circle, transparent 1%, #46bbf4 1%)
       center/15000%;
   }
 
