@@ -5,7 +5,7 @@
                   href="https://neatio.net/pages/terms.html"
                   target="_blank"
                   rel="noopener"
-                  ><span style="color:#ddd">Terms</span></a> © 2022 Neatio</div>
+                  ><span style="color:#ddd">Terms</span></a> © 2023 Neatio</div>
 
       <div class="social">
         <ul>
