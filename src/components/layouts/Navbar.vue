@@ -190,7 +190,7 @@ export default {
         font-weight: 500;
 
         &:hover {
-          color: #46bbf4;
+          color: #985eff;
           transition: all .3s ease-in-out;
         }
         span {
@@ -214,7 +214,7 @@ export default {
 
         &:hover{
           .m-title {
-            color: #46bbf4;
+            color: #985eff;
           }
           .nav-icon {
             transform: rotate(180deg);
@@ -242,7 +242,7 @@ export default {
             height: 25px;
             line-height: 25px;
             padding: 5px 10px;
-            font-size: 16px;
+            font-size: 21px;
             & > a {
               display: inline-block;
               width: 100%;
@@ -251,7 +251,7 @@ export default {
             &:hover {
               background-color: #f3f3f3;
               & > a {
-                color: #46bbf4;
+                color: #985eff;
               }
             }
           }
@@ -275,7 +275,7 @@ export default {
           background-color: #000;
           padding: 10px 15px;
           left: -16px;
-          font-size: 14px;
+          font-size: 18px;
           display: none;
           z-index: 1000;
           .chain-dropdown-i {
@@ -285,7 +285,7 @@ export default {
             margin-top: 8px;
           }
           .chain-dropdown-i:hover {
-            color: #46bbf4;
+            color: #985eff;
           }
         }
         .triangle {
@@ -300,26 +300,26 @@ export default {
         }
       }
       .nav-active {
-        color: #46bbf4;
+        color: #985eff;
         font-family: "Anita", Helvetica, Arial;
         font-size: 18px;
 
 
       }
       .triangle-active {
-        border-color: #46bbf4 transparent transparent !important;
+        border-color: #985eff transparent transparent !important;
       }
     }
     .help:hover {
-      color: #46bbf4;
+      color: #985eff;
       padding-bottom: 2px;
-      border-bottom: 2px solid #46bbf4;
+      border-bottom: 2px solid #985eff;
     }
     .conColor1 {
       color:red;
     }
         .conColor2 {
-      color: #46bbf4;
+      color: #985eff;
       font-family: Anita, Arial, Helvetica, sans-serif;
     }
     .iv {
@@ -365,10 +365,10 @@ export default {
       width: auto;
       height: 28px;
       margin: 10px;
-      border: 1px solid #46bbf4;
+      border: 1px solid #985eff;
       border-radius: 10px;
       background-color: #000;
-      font-size: 12px;
+       font-size: 19px;
       cursor: pointer;
       text-align: center;
 
@@ -376,7 +376,7 @@ export default {
     }
 
     #connectButton:hover {
-      background-color: #46bbf475;
+      background-color: #985eff75;
     }
   }
 }
