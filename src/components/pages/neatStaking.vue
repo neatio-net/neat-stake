@@ -72,7 +72,7 @@
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
                 >{{ vComm }}</span
               >
@@ -81,7 +81,7 @@
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
               >
                 {{ (+v22power).toLocaleString() }}</span
@@ -97,7 +97,7 @@
                 v-show="staking != 0"
                 style="
                   color: #2472fc;
-                  font-size: 14px;
+                  font-size: 18px;
                   font-weight: normal;
                   font-family: Anita, Helvetica;
                 "
@@ -109,13 +109,13 @@
 
           <div class="pools">
             <div class="vAddy1" id="pool2">
-              <span style="color: #2472fc">2.</span> {{ "NEATIO - ASIA -"
+              <span style="color: #2472fc">2.</span> {{ "NEATIO - ASIA"
               }}<span style="color: #2472fc"> Pool Fee: </span
               ><span
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
                 >{{ vComm }}</span
               >
@@ -124,7 +124,7 @@
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
               >
                 {{ (+v33power).toLocaleString() }}</span
@@ -140,7 +140,7 @@
                 v-show="staking != 0"
                 style="
                   color: #2472fc;
-                  font-size: 14px;
+                  font-size: 18px;
                   font-weight: normal;
                   font-family: Anita, Helvetica;
                 "
@@ -158,7 +158,7 @@
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
                 >{{ vComm }}</span
               >
@@ -167,7 +167,7 @@
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
               >
                 {{ (+v44power).toLocaleString() }}</span
@@ -183,7 +183,7 @@
                 v-show="staking != 0"
                 style="
                   color: #2472fc;
-                  font-size: 14px;
+                  font-size: 18px;
                   font-weight: normal;
                   font-family: Anita, Helvetica;
                 "
@@ -201,7 +201,7 @@
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
                 >{{ vComm }}</span
               ><span style="color: #2472fc"> Staking Power:</span>
@@ -209,7 +209,7 @@
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
               >
                 {{ (+v55power).toLocaleString() }}</span
@@ -225,7 +225,7 @@
                 v-show="staking != 0"
                 style="
                   color: #2472fc;
-                  font-size: 14px;
+                  font-size: 18px;
                   font-weight: normal;
                   font-family: Anita, Helvetica;
                 "
@@ -244,7 +244,7 @@
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
                 >{{ vComm }}</span
               >
@@ -253,7 +253,7 @@
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
               >
                 {{ (+v66power).toLocaleString() }}</span
@@ -269,7 +269,7 @@
                 v-show="staking != 0"
                 style="
                   color: #2472fc;
-                  font-size: 14px;
+                  font-size: 18px;
                   font-weight: normal;
                   font-family: Anita, Helvetica;
                 "
@@ -287,7 +287,7 @@
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
                 >{{ vComm }}</span
               >
@@ -296,7 +296,7 @@
                 style="
                   font-family: Helvetica;
                   font-weight: normal;
-                  font-size: 14px;
+                  font-size: 18px;
                 "
               >
                 {{ (+v77power).toLocaleString() }}</span
@@ -312,7 +312,7 @@
                 v-show="staking != 0"
                 style="
                   color: #2472fc;
-                  font-size: 14px;
+                  font-size: 18px;
                   font-weight: normal;
                   font-family: Anita, Helvetica;
                 "
@@ -378,7 +378,7 @@
                       <orbit-spinner
                         :animation-duration="1200"
                         :size="55"
-                        color="#46bbf4"
+                        color="#985eff"
                         alt="stake"
                       />
                     </div>
@@ -406,8 +406,8 @@
               <div class="deleg" v-show="selectedPool != null">
                 Selected pool<span
                   style="
-                    font-size: 14px;
-                    color: #46bbf4;
+                    font-size: 18px;
+                    color: #985eff;
                     font-weight: normal;
                     font-family: Anita, Helvetica;
                   "
@@ -417,8 +417,8 @@
               <div class="deleg" v-show="staking != 0 && rewards != 0">
                 Staking on:<span
                   style="
-                    font-size: 14px;
-                    color: #46bbf4;
+                    font-size: 18px;
+                    color: #985eff;
                     font-weight: normal;
                     font-family: Anita, Helvetica;
                   "
@@ -428,8 +428,8 @@
               <div class="deleg" v-show="rewards > 0">
                 Rewards on:<span
                   style="
-                    font-size: 14px;
-                    color: #46bbf4;
+                    font-size: 18px;
+                    color: #985eff;
                     font-weight: normal;
                     font-family: Anita, Helvetica;
                   "
@@ -2050,7 +2050,7 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   cursor: pointer;
-  color: #46bbf4;
+  color: #985eff;
   background-color: #273546;
   border-radius: 4px;
   outline: none;
@@ -2060,7 +2060,7 @@ button {
 
 .sep {
   padding-bottom: 24px;
-  border-bottom: 1px solid #46bbf4a4;
+  border-bottom: 1px solid #985effa4;
 }
 
 .sep1 {
@@ -2076,7 +2076,7 @@ button {
 .locked {
   text-align: center;
   margin: 20px;
-  color: #46bbf4;
+  color: #985eff;
   font-weight: 200;
   font-family: Anita, Helvetica, sans-serif;
 }
@@ -2104,8 +2104,8 @@ button {
 
 .valueD {
   font-family: Helvetica, sans-serif;
-  color: #46bbf4;
-  font-size: 16px;
+  color: #985eff;
+  font-size: 21px;
   font-weight: lighter;
   margin-bottom: 5px;
 }
@@ -2115,30 +2115,30 @@ button {
 }
 
 .vAddy1 {
-  font-size: 12px;
-  font-weight: 100;
+   font-size: 19px;
+   /* font-weight: 100; */ 
   font-family: Anita, Arial, Helvetica, sans-serif;
-  color: #46bbf4;
+  color: #985eff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
 }
 
 .stian {
-  font-size: 15px;
-  font-weight: 100;
+  /* font-size: 15px; */
+    /* font-weight: 100; */
   font-family: Anita, Arial, Helvetica, sans-serif !important;
-  color: #46bbf4;
+  color: #985eff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
 }
 
 .vAddy2 {
-  font-size: 12px;
-  font-weight: 100;
+   font-size: 19px;
+    /* font-weight: 100; */
   font-family: Anita, Arial, Helvetica, sans-serif;
-  color: #46bbf4;
+  color: #985eff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -2146,18 +2146,18 @@ button {
 }
 
 .vAddy11 {
-  font-size: 12px;
-  font-weight: 100;
+   font-size: 19px;
+    /* font-weight: 100; */
   padding-top: 10px;
   font-family: Anita, Arial, Helvetica, sans-serif;
-  color: #46bbf4;
+  color: #985eff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
 }
 
 .walBalT {
-  color: #46bbf4;
+  color: #985eff;
   margin: 10px;
   font-size: 28px;
   font-weight: 400;
@@ -2189,7 +2189,7 @@ button {
 }
 .dashboard {
   font-weight: bold;
-  color: #46bbf4;
+  color: #985eff;
   padding-top: 10px;
 }
 .pools {
@@ -2205,13 +2205,13 @@ button {
 }
 
 .rippleStake {
-  font-size: 12px;
+   font-size: 19px;
   min-width: 68px;
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  color: #46bbf4;
-  border: 1px solid #46bbf4a4;
+  color: #985eff;
+  border: 1px solid #985effa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -2221,18 +2221,18 @@ button {
 .rippleStake:hover {
   color: #000;
   text-transform: uppercase;
-  background: #46bbf4 radial-gradient(circle, transparent 1%, red 1%)
+  background: #985eff radial-gradient(circle, transparent 1%, red 1%)
     center/15000%;
 }
 
 .rippleSelect {
-  font-size: 12px;
+   font-size: 19px;
   min-width: 68px;
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  color: #46bbf4;
-  border: 1px solid #46bbf4a4;
+  color: #985eff;
+  border: 1px solid #985effa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -2242,17 +2242,17 @@ button {
 .rippleSelect:hover {
   color: #000;
   text-transform: uppercase;
-  background: #46bbf4 radial-gradient(circle, transparent 1%, red 1%)
+  background: #985eff radial-gradient(circle, transparent 1%, red 1%)
     center/15000%;
 }
 
 .rippleClaims {
-  font-size: 12px;
+   font-size: 19px;
   min-width: 68px;
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  border: 1px solid #46bbf4a4;
+  border: 1px solid #985effa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -2263,7 +2263,7 @@ button {
   color: #000;
   text-transform: uppercase;
 
-  background: #46bbf4 radial-gradient(circle, transparent 1%, #46bbf4 1%)
+  background: #985eff radial-gradient(circle, transparent 1%, #985eff 1%)
     center/15000%;
 }
 
@@ -2271,7 +2271,7 @@ button {
   text-align: center;
   margin: 10px 0px;
   font-size: 13px;
-  font-weight: 100;
+    /* font-weight: 100; */
   color: #2472fc;
   font-family: Anita, Helvetica, sans-serif;
 }
@@ -2280,8 +2280,8 @@ button {
   text-align: center;
 
   margin: 10px 0px;
-  font-size: 16px;
-  font-weight: 100;
+  font-size: 21px;
+    /* font-weight: 100; */
   color: #2472fc;
   font-family: Anita, Helvetica, sans-serif;
 }
@@ -2289,8 +2289,8 @@ button {
 .addry-w {
   text-align: center;
 
-  font-size: 16px;
-  font-weight: 100;
+  font-size: 21px;
+    /* font-weight: 100; */
   color: #2472fc;
   font-family: Anita, Helvetica, sans-serif;
 }
@@ -2314,15 +2314,15 @@ button {
     margin: 50px 10px 0px 10px;
     box-sizing: 1px;
     border: none;
-    border: 1px solid #46bbf4a4;
+    border: 1px solid #985effa4;
     border-radius: 10px;
     box-shadow: 0 0 40px #00bfff31;
   }
 
   .valueD {
     font-family: Helvetica, sans-serif;
-    color: #46bbf4;
-    font-size: 12px;
+    color: #895eff;
+     font-size: 19px;
     font-weight: lighter;
     margin-bottom: 5px;
   }
@@ -2334,13 +2334,13 @@ button {
   }
 
   .rippleStake {
-    font-size: 12px;
+     font-size: 19px;
     min-width: 68px;
     height: 22px;
     border-radius: 4px;
     font-weight: bold;
-    color: #46bbf4;
-    border: 1px solid #46bbf4a4;
+    color: #985eff;
+    border: 1px solid #985effa4;
     background-color: transparent;
     background-position: center;
     transition: background 0.4s;
@@ -2350,17 +2350,17 @@ button {
   .rippleStake:hover {
     color: #000;
     text-transform: uppercase;
-    background: #46bbf4 radial-gradient(circle, transparent 1%, red 1%)
+    background: #985eff radial-gradient(circle, transparent 1%, red 1%)
       center/15000%;
   }
 
   .rippleClaims {
-    font-size: 12px;
+     font-size: 19px;
     min-width: 68px;
     height: 22px;
     border-radius: 4px;
     font-weight: bold;
-    border: 1px solid #46bbf4a4;
+    border: 1px solid #985effa4;
     background-color: transparent;
     background-position: center;
     transition: background 0.4s;
@@ -2371,7 +2371,7 @@ button {
     color: #000;
     text-transform: uppercase;
 
-    background: #46bbf4 radial-gradient(circle, transparent 1%, #46bbf4 1%)
+    background: #985eff radial-gradient(circle, transparent 1%, #985eff 1%)
       center/15000%;
   }
 
