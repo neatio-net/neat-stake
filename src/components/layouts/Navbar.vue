@@ -3,7 +3,7 @@
     <div class="nav-panel">
       <router-link tag="div" to="/" class="common-inline-block ii">
         <img
-          src="../../assets/NEW-LOGO2.png"
+          src="../../assets/nio-logo.png"
           alt="neatio logo"
           class="nav-logo logo-neatio common-inline-block"
         />
@@ -14,7 +14,7 @@
           id="home"
           :class="{ 'nav-active': $route.path === '/' }"
           class="pgy"
-          >{{ $t("Stake") }}</router-link
+          >{{ $t("NeatStake") }}</router-link
         > 
       </div>
       <button id="connectButton" @click=switchToNeatio class="netBtn"> <div class="conColor2" >{{address}}</div> </button>
@@ -190,7 +190,7 @@ export default {
         font-weight: 500;
 
         &:hover {
-          color: #00ffff;
+          color: #46bbf4;
           transition: all .3s ease-in-out;
         }
         span {
@@ -214,7 +214,7 @@ export default {
 
         &:hover{
           .m-title {
-            color: #00ffff;
+            color: #46bbf4;
           }
           .nav-icon {
             transform: rotate(180deg);
@@ -251,7 +251,7 @@ export default {
             &:hover {
               background-color: #f3f3f3;
               & > a {
-                color: #00ffff;
+                color: #46bbf4;
               }
             }
           }
@@ -285,7 +285,7 @@ export default {
             margin-top: 8px;
           }
           .chain-dropdown-i:hover {
-            color: #00ffff;
+            color: #46bbf4;
           }
         }
         .triangle {
@@ -300,26 +300,26 @@ export default {
         }
       }
       .nav-active {
-        color: #00ffff;
+        color: #46bbf4;
         font-family: "Anita", Helvetica, Arial;
         font-size: 18px;
 
 
       }
       .triangle-active {
-        border-color: #00ffff transparent transparent !important;
+        border-color: #46bbf4 transparent transparent !important;
       }
     }
     .help:hover {
-      color: #00ffff;
+      color: #46bbf4;
       padding-bottom: 2px;
-      border-bottom: 2px solid #00ffff;
+      border-bottom: 2px solid #46bbf4;
     }
     .conColor1 {
       color:red;
     }
         .conColor2 {
-      color: #00ffff;
+      color: #46bbf4;
       font-family: Anita, Arial, Helvetica, sans-serif;
     }
     .iv {
@@ -365,7 +365,7 @@ export default {
       width: auto;
       height: 28px;
       margin: 10px;
-      border: 1px solid #00ffff;
+      border: 1px solid #46bbf4;
       border-radius: 10px;
       background-color: #000;
       font-size: 12px;
@@ -376,7 +376,7 @@ export default {
     }
 
     #connectButton:hover {
-      background-color: #00ffff75;
+      background-color: #46bbf475;
     }
   }
 }
