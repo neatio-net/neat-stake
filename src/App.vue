@@ -45,7 +45,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 
   text-align: center;
-  color: #46bbf4;
+ 
   font-family: Helvetica;
 }
 
@@ -60,7 +60,7 @@ export default {
 }
 
 .boxe {
-  width: 1100px;
+  width: 1280px;
   margin: 0 auto;
 
 }
@@ -89,17 +89,17 @@ grid-template-columns: 1.5fr 1fr;
   margin: 50px 30px 0px 10px;
   box-sizing: 1px;
   border: none;
-  border: 1px solid #46bbf4a4;
+  border: 1px solid #985effa4;
   border-radius: 10px;
   box-shadow: 0 0 40px #00bfff93;
 
 }
 
   .vAddy1 {
-  font-size: 12px;
-  font-weight: 100;
+   font-size: 19px;
+  /*   /* font-weight: 100; */ */
   font-family: Anita, Arial, Helvetica, sans-serif;
-  color:#46bbf4;
+  color:#985eff;
   text-align: left;
 
 }
@@ -107,8 +107,8 @@ grid-template-columns: 1.5fr 1fr;
 
 
 .vAddy {
-  font-size: 12px;
-  color:#46bbf4;
+   font-size: 19px;
+  color:#985eff;
   text-align: left;
 
 }
@@ -161,7 +161,7 @@ display:inline-table;
 
 .box0 {
   width: auto;
-  max-width: 1100px;  
+  max-width: 1300px;  
   height: fit-content;
   border-width: 2px;
   background: #000;
@@ -174,7 +174,7 @@ display:inline-table;
   border-radius: 10px;
   box-sizing: 1px;
   border: none;
-  border: 1px solid #46bbf4a4;
+  border: 1px solid #985effa4;
   border-radius: 10px;
   box-shadow: 0 0 40px #00bfff31;
 
@@ -191,27 +191,26 @@ display:inline-table;
   background: #000;
   display:grid;
   border-radius: 10px;
-  margin: 50px 30px 0px 10px;
+  margin: 20px 10px 0px 10px;
   box-sizing: 1px;
   border: none;
-  border: 1px solid #46bbf4a4;
+  border: 1px solid #006eff;
   border-radius: 10px;
-  box-shadow: 0 0 40px #00bfff31;
 
 }
 
 .box2 {
   width: auto;
-  max-width: 400px;
+  max-width: 600px;
   min-height: 300px;
   padding-top: 10px;
   border-width: 1px;
   background: #000;
   display:grid;
   border-radius: 24px;
-  margin: 50px 10px 0px 30px;
+  margin: 20px 10px 0px 30px;
   box-sizing: 4px;
-  border: 1px solid #46bbf4a4;
+  border: 1px solid #985effa4;
   border-radius: 10px;
   box-shadow: 0 0 40px #00bfff31;
 }
@@ -234,7 +233,7 @@ display:inline-table;
 }
 
 .el-message-box__content {
-  color: #46bbf4 !important;
+  color: #985eff !important;
   font-size: 1rem !important;
 }
 
@@ -242,18 +241,18 @@ display:inline-table;
   text-align: center !important;
 } 
 .el-radio__input.is-checked + .el-radio__label {
-  color: #46bbf4 !important;
+  color: #985eff !important;
 }
 .el-radio__input.is-checked .el-radio__inner {
-  border-color: #46bbf4 !important;
-  background: #46bbf4 !important;
+  border-color: #985eff !important;
+  background: #985eff !important;
 }
 .el-radio__inner:hover {
-  border: 1px solid #46bbf4 !important;
+  border: 1px solid #985eff !important;
 }
 .sk {
   color: rgba(102, 102, 102, 1);
-  font-size: 16px;
+  font-size: 21px;
   font-weight: bold;
   margin-top: 30px;
 }
@@ -266,7 +265,7 @@ display:inline-table;
   cursor: pointer;
   color: #ddd;
   text-align: center;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 
@@ -281,19 +280,19 @@ display:inline-table;
 }
 
 .el-select .el-input.is-focus .el-input__inner {
-  border-color: #46bbf4 !important;
+  border-color: #985eff !important;
 }
 .el-select .el-input__inner:focus {
-  border-color: #46bbf4 !important;
+  border-color: #985eff !important;
 }
 .el-select-dropdown__item.selected {
-  color: #46bbf4 !important;
+  color: #985eff !important;
 }
 .el-input.is-active .el-input__inner, .el-input__inner:focus {
-  border-color: #46bbf4 !important;
+  border-color: #985eff !important;
 }
 .el-message-box__title{
- color: #46bbf4 !important;
+ color: #985eff !important;
  text-align: center !important;
  font-family: Anita, Helvetica !important;
 }
@@ -316,7 +315,7 @@ display:inline-table;
 .el-input__inner {
   border-radius: 10px !important;
   background-color: #2c3e50 !important;
-  color: #46bbf4 !important;
+  color: #985eff !important;
   text-align: center !important;
   
 }
