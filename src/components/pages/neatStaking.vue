@@ -2096,7 +2096,10 @@ button {
 
 .itemsD {
   font-family: Anita, Arial, Helvetica, sans-serif;
-  color: linear-gradient(to left,#8711c1, #2472fc);
+  /* color: linear-gradient(to left,#8711c1, #2472fc); */
+  background: -webkit-linear-gradient( #8711c1, #2472fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 17px;
   font-weight: 400;
   margin-bottom: 5px;
