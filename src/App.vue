@@ -53,7 +53,7 @@ export default {
 
 .main {
   /* background-image:  url('assets/hero-back.png'); */
-  background: linear-gradient(to left,#243B55,  #212226);
+  background: linear-gradient(to left,#243B55, #141E30);
   background-blend-mode: multiply;
   background-size: cover;
 
@@ -97,7 +97,7 @@ grid-template-columns: 1.5fr 1fr;
 
   .vAddy1 {
    font-size: 19px;
-  /*   /* font-weight: 100; */ */
+  /* font-weight: 100; */
   font-family: Anita, Arial, Helvetica, sans-serif;
   color:#985eff;
   text-align: left;
