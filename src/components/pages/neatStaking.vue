@@ -2096,7 +2096,7 @@ button {
 
 .itemsD {
   font-family: Anita, Arial, Helvetica, sans-serif;
-  color: #2472fc;
+  color: linear-gradient(to left,#8711c1, #2472fc);
   font-size: 17px;
   font-weight: 400;
   margin-bottom: 5px;
