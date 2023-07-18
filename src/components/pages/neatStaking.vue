@@ -2095,19 +2095,20 @@ button {
 }
 
 .itemsD {
-  font-family: Anita, Arial, Helvetica, sans-serif;
-  /* color: linear-gradient(to left,#8711c1, #2472fc); */
-  background: -webkit-linear-gradient( #8711c1, #2472fc);
+  font-size: 1.2rem;
+  background-color: #00bfff;
+  background-image: linear-gradient(90deg, #8711c1, #00ffff);
+  background-size: 100%;
+  background-repeat: repeat;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 17px;
-  font-weight: 400;
-  margin-bottom: 5px;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
 }
 
 .valueD {
   font-family: Helvetica, sans-serif;
-  color: #985eff;
+  color: #46bbf4;
   font-size: 21px;
   font-weight: lighter;
   margin-bottom: 5px;
