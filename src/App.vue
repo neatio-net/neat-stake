@@ -83,7 +83,7 @@ grid-template-columns: 1.5fr 1fr;
   min-height: 300px;
   padding-top: 10px;
   border-width: 1px;  
-  background: #000;
+  background: transparent;
   display:grid;
   border-radius: 10px;
   margin: 50px 30px 0px 10px;
@@ -164,7 +164,7 @@ display:inline-table;
   max-width: 1300px;  
   height: fit-content;
   border-width: 2px;
-  background: #000;
+  background: transparent;
   border-radius: 4px;
   margin: 20px 10px 20px 10px;  
   padding: 0 10px; 
@@ -176,7 +176,7 @@ display:inline-table;
   border: none;
   border: 1px solid #985effa4;
   border-radius: 10px;
-  box-shadow: 0 0 40px #00bfff31;
+  box-shadow: 0 0 40px #000;
 
   
 }
@@ -188,7 +188,7 @@ display:inline-table;
   min-height: 300px;
   padding-top: 10px;
   border-width: 1px;  
-  background: #000;
+  background: transparent;
   display:grid;
   border-radius: 10px;
   margin: 20px 10px 0px 10px;
@@ -196,6 +196,7 @@ display:inline-table;
   border: none;
   border: 1px solid #006eff;
   border-radius: 10px;
+  box-shadow: 0 20px 40px #000;
 
 }
 
@@ -205,14 +206,14 @@ display:inline-table;
   min-height: 300px;
   padding-top: 10px;
   border-width: 1px;
-  background: #000;
+  background: transparent;
   display:grid;
   border-radius: 24px;
   margin: 20px 10px 0px 30px;
   box-sizing: 4px;
   border: 1px solid #985effa4;
   border-radius: 10px;
-  box-shadow: 0 0 40px #00bfff31;
+  box-shadow: 0 20px 40px #000;
 }
 
 
