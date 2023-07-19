@@ -74,22 +74,12 @@
                 /></a>
               </li>
 
-              <!-- BITCOINTALK -->
-              <li class="">
-                <a href="https://bitcointalk.org/index.php?topic=5377414" 
-                target="_blank" 
-                rel="noopener"
-                  ><img
-                    src="../../assets/images/social/bt-icon.png"
-                    alt=""
-                    width="24"
-                /></a>
-              </li>
+
 
               <!-- GITHUB -->
               <li class="">
                 <a
-                  href="https://github.com/neatio-network/neatio"
+                  href="https://github.com/nio-net"
                   target="_blank"
                   rel="noopener"
                   ><img
@@ -98,22 +88,7 @@
                     width="24"
                 /></a>
               </li>
-
-              <!-- NOMICS -->
-              <li class="">
-                <a
-                  href="https://nomics.com/assets/neat-neatio"
-                  target="_blank"
-                  rel="noopener"
-                  ><img
-                    src="../../assets/images/social/nomics.png"
-                    alt=""
-                    width="24"
-                /></a>
-              </li>
-
-
-              
+         
 
 
 
@@ -134,7 +109,7 @@
   
     height: auto;
 
-    background-color: #000; 
+    background-color: #181616; 
   }
 .footer-box {
   width: auto;
