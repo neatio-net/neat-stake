@@ -2096,8 +2096,8 @@ button {
 
 .itemsD {
   font-size: 1.2rem;
-  background-color: #00bfff;
-  background-image: linear-gradient(90deg, #8711c1, #1AA7EC);
+  background-color: #00dbde;
+  background-image: linear-gradient(45deg, #aa29ff, #00dbde);
   background-size: 100%;
   background-repeat: repeat;
   -webkit-background-clip: text;
