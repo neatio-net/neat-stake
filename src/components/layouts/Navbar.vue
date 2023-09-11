@@ -176,7 +176,6 @@ export default {
     .logo-neatio {
       width: 48px;
       height: auto;
-      /*margin-top: 20px*/
     }
     .ii {
       vertical-align: middle;
