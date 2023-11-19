@@ -52,15 +52,19 @@ export default {
 
 
 .main {
-  background-image:  url('assets/hero-back.png');
+  background: linear-gradient(to left,#24243e, #302b63, #24243e);
   background-blend-mode: multiply;
   background-size: cover;
+  
 
 }
 
 .boxe {
-  width: 1100px;
+  width: 1440px;
   margin: 0 auto;
+
+  
+
 
 }
 .statsD {
@@ -76,21 +80,33 @@ grid-template-columns: 1.5fr 1fr;
 }
 @media only screen and (max-width: 560px) {
 
-  .box1 {
-  width: auto;
+  .boxw {
+    display: flex;
+    justify-content: center;
+    width: 480px;
+    height:240px;
+    padding: 36px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px #000;
+    border-radius: 10px;
+    border: 1px solid #00bfff;
+    margin: 20px 40px 0px 40px;
+    background-color: transparent;
 
-  min-height: 300px;
-  padding-top: 10px;
-  border-width: 1px;  
-  background: #000;
-  display:grid;
-  border-radius: 10px;
-  margin: 50px 30px 0px 10px;
-  box-sizing: 1px;
-  border: none;
-  border: 1px solid #00ffffa4;
-  border-radius: 10px;
-  box-shadow: 0 0 40px #00bfff93;
+}
+
+.boxw {
+  display: flex;
+    justify-content: center;
+    width: 480px;
+    height:240px;
+    padding: 36px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px #000;
+    border-radius: 10px;
+    border: 1px solid #00bfff;
+    margin: 20px 40px 0px 40px;
+    background-color: transparent;
 
 }
 
@@ -141,7 +157,11 @@ display:inline-table;
 
 .dashboard {
    width: 100%;
-  margin: 0 auto;
+   margin: 0 auto;
+   position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
   }
 .el-message-box {
   width: 268px;
@@ -182,37 +202,33 @@ display:inline-table;
 
 
 
-.box1 {
-  width: auto;
-  min-height: 300px;
-  padding-top: 10px;
-  border-width: 1px;  
-  background: #000;
-  display:grid;
-  border-radius: 10px;
-  margin: 50px 30px 0px 10px;
-  box-sizing: 1px;
-  border: none;
-  border: 1px solid #00ffffa4;
-  border-radius: 10px;
-  box-shadow: 0 0 40px #00bfff31;
+.boxw {
+    display: flex;
+    justify-content: center;
+    width: 36rem;
+    height: 24rem;
+    padding: 36px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px #000;
+    border-radius: 10px;
+    /* border: 1px solid #00bfff; */
+    margin: 20px 40px 0px 40px;
+    background-color: transparent;
 
 }
 
 .box2 {
   width: auto;
-  max-width: 400px;
   min-height: 300px;
-  padding-top: 10px;
-  border-width: 1px;
-  background: #000;
+  padding-top: 10px; 
+  background: transparent;
   display:grid;
-  border-radius: 24px;
-  margin: 50px 10px 0px 30px;
-  box-sizing: 4px;
-  border: 1px solid #00ffffa4;
   border-radius: 10px;
-  box-shadow: 0 0 40px #00bfff31;
+  margin: 50px 30px 0px 10px;
+  box-sizing: 1px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 40px #000;
 }
 
 
