@@ -36,8 +36,8 @@ export default {
       searchContent: "",
       otherSearch: "",
       currentChainId: '',
-      chainId: '0x203',
-      testChainId: '0x20d',
+      chainId: '0x3e9',
+      testChainId: '0x3ea',
       address: '',
     };
   },
