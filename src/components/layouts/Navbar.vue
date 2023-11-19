@@ -3,7 +3,7 @@
     <div class="nav-panel">
       <router-link tag="div" to="/" class="common-inline-block ii">
         <img
-          src="../../assets/NEW-LOGO2.png"
+          src="../../assets/nio-logo.png"
           alt="neatio logo"
           class="nav-logo logo-neatio common-inline-block"
         />
@@ -14,7 +14,7 @@
           id="home"
           :class="{ 'nav-active': $route.path === '/' }"
           class="pgy"
-          >{{ $t("Stake") }}</router-link
+          >{{ $t("NeatStake") }}</router-link
         > 
       </div>
       <button id="connectButton" @click=switchToNeatio class="netBtn"> <div class="conColor2" >{{address}}</div> </button>
@@ -83,7 +83,7 @@ export default {
           this.connectAccount();
         } else {
           
-          this.address = `☉ Neatio`
+          this.address = `Neatio`
         }
 
       } catch (e) {
@@ -128,8 +128,8 @@ export default {
                     chainId: chainIds,
                     chainName: chainName,
                     nativeCurrency: {
-                      name: "NEAT",
-                      symbol: "NEAT",
+                      name: "NIO",
+                      symbol: "NIO",
                       decimals: 18
                     },
                     rpcUrls: [rpc],
@@ -155,13 +155,14 @@ export default {
 
 .nav-container {
   box-shadow: 0px 4px 8px 0px rgba(230, 230, 230, 0.6);
-  background-color: #000;
-  height: auto;
+  background-color: #181616;
+
   margin: 0 auto;
 
   @media only screen and (max-width: 560px) {
   .nav-panel {
     max-width: 320px;
+
   }
 
 }
@@ -175,7 +176,6 @@ export default {
     .logo-neatio {
       width: 48px;
       height: auto;
-      /*margin-top: 20px*/
     }
     .ii {
       vertical-align: middle;
@@ -190,7 +190,7 @@ export default {
         font-weight: 500;
 
         &:hover {
-          color: #00ffff;
+          color: #1AA7EC;
           transition: all .3s ease-in-out;
         }
         span {
@@ -214,7 +214,7 @@ export default {
 
         &:hover{
           .m-title {
-            color: #00ffff;
+            color: #1AA7EC;
           }
           .nav-icon {
             transform: rotate(180deg);
@@ -242,7 +242,7 @@ export default {
             height: 25px;
             line-height: 25px;
             padding: 5px 10px;
-            font-size: 16px;
+            font-size: 21px;
             & > a {
               display: inline-block;
               width: 100%;
@@ -251,7 +251,7 @@ export default {
             &:hover {
               background-color: #f3f3f3;
               & > a {
-                color: #00ffff;
+                color: #1AA7EC;
               }
             }
           }
@@ -275,7 +275,7 @@ export default {
           background-color: #000;
           padding: 10px 15px;
           left: -16px;
-          font-size: 14px;
+          font-size: 18px;
           display: none;
           z-index: 1000;
           .chain-dropdown-i {
@@ -285,7 +285,7 @@ export default {
             margin-top: 8px;
           }
           .chain-dropdown-i:hover {
-            color: #00ffff;
+            color: #1AA7EC;
           }
         }
         .triangle {
@@ -300,26 +300,26 @@ export default {
         }
       }
       .nav-active {
-        color: #00ffff;
+        color: #1AA7EC;
         font-family: "Anita", Helvetica, Arial;
         font-size: 18px;
 
 
       }
       .triangle-active {
-        border-color: #00ffff transparent transparent !important;
+        border-color: #1AA7EC transparent transparent !important;
       }
     }
     .help:hover {
-      color: #00ffff;
+      color: #1AA7EC;
       padding-bottom: 2px;
-      border-bottom: 2px solid #00ffff;
+      border-bottom: 2px solid #1AA7EC;
     }
     .conColor1 {
       color:red;
     }
         .conColor2 {
-      color: #00ffff;
+      color: #1AA7EC;
       font-family: Anita, Arial, Helvetica, sans-serif;
     }
     .iv {
@@ -359,16 +359,18 @@ export default {
 
     .netBtn {
         float: right;
+        padding: 5px;
     }
 
     #connectButton {
       width: auto;
-      height: 28px;
+      height: 36px;
       margin: 10px;
-      border: 1px solid #00ffff;
+      padding: 0 10px;
+      border: 1px solid #1AA7EC;
       border-radius: 10px;
       background-color: #000;
-      font-size: 12px;
+       font-size: 16px;
       cursor: pointer;
       text-align: center;
 
@@ -376,7 +378,7 @@ export default {
     }
 
     #connectButton:hover {
-      background-color: #00ffff75;
+      background-color: #1AA7EC75;
     }
   }
 }

@@ -29,7 +29,7 @@ export default {
     etWalletPwd: 'Please enter your wallet password',
     unlock: 'Unlock',
     etPrivakey: 'Please enter your wallet private key',
-    neatBalance: 'NEAT Balance',
+    neatBalance: 'NIO Balance',
     contractNotEnough: 'Contract balance not enough',
     votes: 'Votes',
     myVote: 'Votes',
