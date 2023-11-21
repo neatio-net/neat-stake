@@ -5,10 +5,7 @@
       <div class="common-inline-block ic" >
         <router-link
           to="/"
-          id="home"
-          :class="{ 'nav-active': $route.path === '/' }"
-          class="pgy"
-          >
+                  >
           <img
           src="../../assets/logo.png"
           alt="Neatio Wallet"
@@ -16,7 +13,7 @@
         /></router-link
         > 
       </div>
-      <button id="connectButton" @click=switchToNeatio class="netBtn"> <div class="conColor2" >{{address}}</div> </button>
+   
 
     </div>
     
@@ -102,7 +99,7 @@ export default {
       }
     },
         async switchToNeatio () {
-          let chainIds = '0x203';
+          let chainIds = '0x3e9';
           let rpc = 'https://rpc.neatio.net';
           let browser = 'https://scan.neatio.net';
           let chainName = 'Neatio Mainnet';
