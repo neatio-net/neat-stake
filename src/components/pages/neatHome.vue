@@ -1,62 +1,43 @@
 <template>
   <div class="dashboard">
- 
+
     <div class="center-box">
       <div class="wallet-description">
-      Neatio Wallet is a simple, secure, non-custodial browser wallet.
+        Neatio Wallet is a simple, secure, non-custodial browser wallet.
+      </div>
+
+      <div class="boxe">
+        <div class="boxes">
+          <div class="boxw">
+            <div class="lockked">
+              <img src="../../assets/access.png" alt="Lock" class="lockimg" />
+                </div>
+            <div class="locked">Access your existing wallet</div>
+     
+            <router-link to="/access"><button class="ripp">ACCESS</button></router-link>
+          </div>
+          <div class="boxw">
+            <div class="lockked">
+             
+              <img src="../../assets/create.png" alt="Lock" class="lockimg" />
+            </div>
+            <div class="locked">Create a brand new wallet</div>
+            <router-link to="/access"><button class="ripp">CREATE</button></router-link>
+          </div>
+        </div>
+        <div v-if="step == 1">
+          <Access @unlock="unlock"></Access>
+        </div>
+        <div v-if="step == 2" style="padding-bottom: 90px"></div>
+      </div>
+      <div class="wallet-terms">
+        By using this application you agree to the
+        <router-link to="/terms">
+          <button1 class="terms-of-use">Terms Of Use.</button1>
+        </router-link>.
+      </div>
     </div>
-   
-    <div class="boxe">
-
-
-
-<div class="boxes">
-
-  <div class="boxw">
-
-    <div class="locked">Access your existing wallet</div>
-
-    <div class="lockked" >
-      <img src="../../assets/lock.png" alt="Lock" class="lockimg" />
-    </div>
-
-    <router-link to="/access"
-                  ><button class="ripple">ACCESS</button></router-link
-                >
-
-
-
-
-
-</div>
-
-
-
-  <div class="boxw">
-    <div class="lockked" >
-
-      <div class="locked">Create a brand new wallet</div>
-      <img src="../../assets/lock.png" alt="Lock" class="lockimg" />
-    </div>
-    <router-link to="/access"
-                  ><button class="ripple">CREATE</button></router-link
-                >
   </div>
-</div>
-<div v-if="step == 1">
-  <Access @unlock="unlock"></Access>
-</div>
-<div v-if="step == 2" style="padding-bottom: 90px"></div>
-</div>
-<div class="wallet-terms">
-By using this application you agree to the
-<router-link to="/terms"
-  ><button1 class="terms-of-use">Terms Of Use.</button1></router-link
->.
-</div>
-</div>
-  </div>
-  
 </template>
 
 <script>
@@ -364,9 +345,9 @@ export default {
         .then((response) => (this.array = response.data.result));
 
       const validators = this.array;
-     // console.log(validators);
+      // console.log(validators);
 
-      const v2 = Object(validators)[1]; 
+      const v2 = Object(validators)[1];
       const v2Addy = v2.address;
       this.pool1 = v2Addy; // Pool 1 
       const vPower2 = Utils.toNEAT(Nat.toString(v2.votingPower));
@@ -375,7 +356,7 @@ export default {
       this.v2Pwr = v2Pwr.toFixed(0);
       this.v22power = parseInt(this.v2Pwr);
 
-      const v3 = Object(validators)[2]; 
+      const v3 = Object(validators)[2];
       const v3Addy = v3.address;
       this.pool2 = v3Addy; // Pool 2
       const vPower3 = Utils.toNEAT(Nat.toString(v3.votingPower));
@@ -384,7 +365,7 @@ export default {
       this.v3Pwr = v3Pwr.toFixed(0);
       this.v33power = parseInt(this.v3Pwr);
 
-      const v4 = Object(validators)[3]; 
+      const v4 = Object(validators)[3];
       const v4Addy = v4.address;
       this.pool3 = v4Addy; // Pool 3 
       const vPower4 = Utils.toNEAT(Nat.toString(v4.votingPower));
@@ -502,8 +483,8 @@ export default {
         ];
 
         ethereum
-          .request({method: "eth_sendTransaction", params,  })
-          .then((result) => {this.$alert("TX ID: " + result, "Staking Was Succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", }); })
+          .request({ method: "eth_sendTransaction", params, })
+          .then((result) => { this.$alert("TX ID: " + result, "Staking Was Succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", }); })
           .catch((error) => { console.log("tx error", error); });
       });
     },
@@ -528,21 +509,22 @@ export default {
           }
         },
       }).then(({ value }) => {
-        let data = Abi.encodeParams(["address", "uint256"], [ this.pool1, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16), ] );
-        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(2,8);
+        let data = Abi.encodeParams(["address", "uint256"], [this.pool1, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
+        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(2, 8);
         const params = [{
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },];
-        ethereum.request({method: "eth_sendTransaction", params, })
-          .then((result) => { console.log("hash", result);  this.$alert(
-              "TX ID: " + result,"You succesfully unstaked your coins!",  { confirmButtonText: this.$t("CLOSE"), type: "success",    }    );
+          from: this.address,
+          to: "0x0000000000000000000000000000000000000505",
+          gas: Utils.toHex(this.limit),
+          gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+          value: "0x0",
+          data: "0x" + functionSig + data.substring(2),
+        },];
+        ethereum.request({ method: "eth_sendTransaction", params, })
+          .then((result) => {
+            console.log("hash", result); this.$alert(
+              "TX ID: " + result, "You succesfully unstaked your coins!", { confirmButtonText: this.$t("CLOSE"), type: "success", });
           })
-          .catch((error) => {   console.log("tx error", error); });
+          .catch((error) => { console.log("tx error", error); });
       });
     },
 
@@ -569,18 +551,19 @@ export default {
         },
       }).then(({ value }) => {
         let data = Abi.encodeParams(["address", "uint256"], [this.pool1, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
-        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(2,8);
+        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(2, 8);
         const params = [{
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },];
-        ethereum.request({ method: "eth_sendTransaction",params, }).then((result) => {console.log("hash", result);
-            this.$alert("TX ID: " + result, "You succesfully claimed your rewards!",{confirmButtonText: this.$t("confirm"), type: "success", });
-          }).catch((error) => {console.log("tx error", error);});
+          from: this.address,
+          to: "0x0000000000000000000000000000000000000505",
+          gas: Utils.toHex(this.limit),
+          gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+          value: "0x0",
+          data: "0x" + functionSig + data.substring(2),
+        },];
+        ethereum.request({ method: "eth_sendTransaction", params, }).then((result) => {
+          console.log("hash", result);
+          this.$alert("TX ID: " + result, "You succesfully claimed your rewards!", { confirmButtonText: this.$t("confirm"), type: "success", });
+        }).catch((error) => { console.log("tx error", error); });
       });
     },
 
@@ -660,7 +643,7 @@ export default {
           [
             this.pool2,
             "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+            new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
           ]
         );
         let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(
@@ -728,7 +711,7 @@ export default {
           [
             this.pool2,
             "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+            new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
           ]
         );
         let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(
@@ -845,7 +828,7 @@ export default {
           [
             this.pool3,
             "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+            new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
           ]
         );
         let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(
@@ -908,7 +891,7 @@ export default {
           [
             this.pool3,
             "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+            new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
           ]
         );
         let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(
@@ -1019,7 +1002,7 @@ export default {
           [
             this.pool4,
             "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+            new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
           ]
         );
         let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(
@@ -1087,7 +1070,7 @@ export default {
           [
             this.pool3,
             "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+            new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
           ]
         );
         let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(
@@ -1204,7 +1187,7 @@ export default {
           [
             this.pool5,
             "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+            new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
           ]
         );
         let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(
@@ -1272,7 +1255,7 @@ export default {
           [
             this.pool5,
             "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+            new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
           ]
         );
         let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(
@@ -1312,7 +1295,7 @@ export default {
           });
       });
 
-      
+
     },
 
     neatStake6() {
@@ -1390,7 +1373,7 @@ export default {
           [
             this.pool6,
             "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+            new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
           ]
         );
         let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(
@@ -1458,7 +1441,7 @@ export default {
           [
             this.pool6,
             "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
+            new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
           ]
         );
         let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(
@@ -1496,7 +1479,7 @@ export default {
           .catch((error) => {
             console.log("tx error", error);
           });
-      });      
+      });
     },
     // END
   },
@@ -1545,6 +1528,7 @@ button {
   align-items: center;
   justify-content: center;
 }
+
 .lockimg {
   width: 124px;
   height: auto;
@@ -1556,11 +1540,11 @@ button {
 
 .center-box {
   text-align: center;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .valueD {
@@ -1572,7 +1556,7 @@ button {
 }
 
 .wallet-terms {
-color: #496785;
+  color: #496785;
 }
 
 .vAddy1 {
@@ -1628,6 +1612,7 @@ color: #496785;
   text-align: left;
   margin: 10px;
 }
+
 .walimgs {
   width: 28px;
   height: auto;
@@ -1648,11 +1633,13 @@ color: #496785;
   text-align: center;
   margin-top: 10px;
 }
+
 .dashboard {
   font-weight: bold;
   color: #00ffff;
   padding-top: 10px;
 }
+
 .pools {
   margin: 10px auto;
 }
@@ -1663,6 +1650,26 @@ color: #496785;
 
 .btns4 {
   margin-bottom: -20px;
+}
+
+.ripp {
+  font-size: 1.2rem;
+  font-family: Anita, Helvetica, sans-serif;
+  width: 12rem;
+  height: 4rem;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #000;
+  background: linear-gradient(to right,#6519c9,#2472fc);
+  background-position: center;
+  transition: background 0.4s;
+  margin: 40px;
+}
+
+.ripp:hover {
+  color: #000000;
+  text-transform: uppercase;
+  background: #2472fc;
 }
 
 .rippleStake {
@@ -1682,8 +1689,7 @@ color: #496785;
 .rippleStake:hover {
   color: #000;
   text-transform: uppercase;
-  background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
-    center/15000%;
+  background: #00ffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
 }
 
 .rippleSelect {
@@ -1703,8 +1709,7 @@ color: #496785;
 .rippleSelect:hover {
   color: #000;
   text-transform: uppercase;
-  background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
-    center/15000%;
+  background: #00ffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
 }
 
 .rippleClaims {
@@ -1724,8 +1729,7 @@ color: #496785;
   color: #000;
   text-transform: uppercase;
 
-  background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%)
-    center/15000%;
+  background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%) center/15000%;
 }
 
 .deleg {
@@ -1763,12 +1767,31 @@ color: #496785;
   padding: 20px 0px;
 }
 
+.boxw {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    width: 36rem;
+    height: 12rempx;
+    padding: 36px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px #000;
+    border-radius: 10px;
+    margin: 20px 40px 0px 40px;
+    background-color: transparent;
+
+  }
+
+
 @media only screen and (max-width: 560px) {
   .boxw {
     display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: row;
     width: 480px;
-    height:240px;
+    height: 240px;
     padding: 36px;
     border-radius: 10px;
     box-shadow: 0 10px 40px #000;
@@ -1803,8 +1826,7 @@ color: #496785;
   .rippleStake:hover {
     color: #000;
     text-transform: uppercase;
-    background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
-      center/15000%;
+    background: #00ffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
   }
 
   .rippleClaims {
@@ -1824,8 +1846,7 @@ color: #496785;
     color: #000;
     text-transform: uppercase;
 
-    background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%)
-      center/15000%;
+    background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%) center/15000%;
   }
 
   #myGrid {
