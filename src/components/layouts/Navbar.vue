@@ -1,22 +1,22 @@
 <template>
   <div class="nav-container">
     <div class="nav-panel">
-      <router-link tag="div" to="/" class="common-inline-block ii">
+      <router-link tag="div" to="/" class="nav-logo">
         <img
-          src="../../assets/nio-logo.png"
+          src="../../assets/logo.png"
           alt="neatio logo"
           class="nav-logo logo-neatio common-inline-block"
         />
       </router-link>
-      <div class="common-inline-block ic" style="">
+      <!-- <div class="common-inline-block ic" >
         <router-link
           to="/"
           id="home"
           :class="{ 'nav-active': $route.path === '/' }"
           class="pgy"
-          >{{ $t("NeatStake") }}</router-link
+          >{{ $t("wallet") }}</router-link
         > 
-      </div>
+      </div> -->
       <button id="connectButton" @click=switchToNeatio class="netBtn"> <div class="conColor2" >{{address}}</div> </button>
 
     </div>
@@ -152,7 +152,9 @@ export default {
 
 
 
-
+.nav-logo {
+  height: 4rem;
+}
 .nav-container {
   box-shadow: 0px 4px 8px 0px rgba(230, 230, 230, 0.6);
   background-color: #181616;
@@ -181,13 +183,14 @@ export default {
       vertical-align: middle;
     }
     .ic {
-      
+     
       width: auto;
       & a {
         margin-right: 15px;
-        color: #666666;
+        color: #46bbf4;
         text-decoration: none;
         font-weight: 500;
+        font-size: 3rem;
 
         &:hover {
           color: #1AA7EC;
