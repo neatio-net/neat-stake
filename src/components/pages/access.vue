@@ -8,9 +8,10 @@
     
      
 Recommended!
-<router-link to="/access"
-                  ><button class="ripple">ACCESS</button></router-link
-                >
+<button id="connectButton" @click=switchToNeatio class="netBtn"> <div class="conColor2" >{{address}}</div> </button>
+
+
+
               </div>
   
 
@@ -323,6 +324,49 @@ export default {
         console.log("request accounts error:", e);
       }
     },
+
+    async switchToNeatio () {
+          let chainIds = '0x3e9';
+          let rpc = 'https://rpc.neatio.net';
+          let browser = 'https://scan.neatio.net';
+          let chainName = 'Neatio Mainnet';
+
+          try {
+            this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
+            if (this.currentChainId === chainIds) {
+              window.alert("Neatio Network has been added to Metamask.")
+            }
+
+            await ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: chainIds}]
+            })
+
+          } catch (e) {
+            if (e.code === 4902) {
+              try {
+                await ethereum.request({
+                  method: 'wallet_addEthereumChain',
+                  params: [{
+                    chainId: chainIds,
+                    chainName: chainName,
+                    nativeCurrency: {
+                      name: "NIO",
+                      symbol: "NIO",
+                      decimals: 18
+                    },
+                    rpcUrls: [rpc],
+                    blockExplorerUrls: [browser]
+                  }]
+                })
+
+                this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
+              } catch (e) {
+                console.log('add network error', e)
+              }
+            }
+          }
+        },
 
     getBalance() {
       ethereum
