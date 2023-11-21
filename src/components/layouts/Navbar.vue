@@ -1,22 +1,21 @@
 <template>
   <div class="nav-container">
     <div class="nav-panel">
-      <router-link tag="div" to="/" class="nav-logo">
-        <img
-          src="../../assets/logo.png"
-          alt="neatio logo"
-          class="nav-logo logo-neatio common-inline-block"
-        />
-      </router-link>
-      <!-- <div class="common-inline-block ic" >
+
+      <div class="common-inline-block ic" >
         <router-link
           to="/"
           id="home"
           :class="{ 'nav-active': $route.path === '/' }"
           class="pgy"
-          >{{ $t("wallet") }}</router-link
+          >
+          <img
+          src="../../assets/logo.png"
+          alt="Neatio Wallet"
+          class="nav-logo"
+        /></router-link
         > 
-      </div> -->
+      </div>
       <button id="connectButton" @click=switchToNeatio class="netBtn"> <div class="conColor2" >{{address}}</div> </button>
 
     </div>
@@ -153,7 +152,8 @@ export default {
 
 
 .nav-logo {
-  height: 4rem;
+  height: 2.6rem;
+  margin: 1rem;
 }
 .nav-container {
   box-shadow: 0px 4px 8px 0px rgba(230, 230, 230, 0.6);
@@ -322,7 +322,7 @@ export default {
       color:red;
     }
         .conColor2 {
-      color: #1AA7EC;
+      color: #000;
       font-family: Anita, Arial, Helvetica, sans-serif;
     }
     .iv {
@@ -363,17 +363,18 @@ export default {
     .netBtn {
         float: right;
         padding: 5px;
+        margin-top: 10px;
     }
 
     #connectButton {
-      width: auto;
-      height: 36px;
-      margin: 10px;
-      padding: 0 10px;
-      border: 1px solid #1AA7EC;
+      width: 6rem;
+      height: 2.6rem;
+      margin-top: 1.2rem;
+      text-transform: uppercase;
+      padding: 10px;  
       border-radius: 10px;
-      background-color: #000;
-       font-size: 16px;
+      background: linear-gradient(to right,#6519c9,#2472fc);
+      font-size: 16px;
       cursor: pointer;
       text-align: center;
 
@@ -381,7 +382,9 @@ export default {
     }
 
     #connectButton:hover {
-      background-color: #1AA7EC75;
+      color: #000000;
+  text-transform: uppercase;
+  background: #2472fc;
     }
   }
 }
