@@ -149,8 +149,9 @@ export default {
 
 
 .nav-logo {
-  height: 2.6rem;
-  margin: 1rem;
+  width: auto;
+  height: 4rem;
+  margin: 0 0.2rem;
 }
 .nav-container {
   box-shadow: 0px 4px 8px 0px rgba(230, 230, 230, 0.6);
