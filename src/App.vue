@@ -217,6 +217,30 @@ display:inline-table;
 
 }
 
+.boxd {
+  max-width: 1440px;
+  min-height: 640px;
+  padding-top: 10px; 
+  background: transparent;
+  display: flex;
+  border-radius: 10px;
+  margin: 0 auto;
+  box-sizing: 1px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 40px #000;
+}
+
+.box-btn {
+  margin: 4rem auto;
+  width: 16em;
+  height: 24em;
+  box-sizing: 1px;
+  border: 1px solid ;
+  border-radius: 10px;
+
+}
+
 .box2 {
   width: auto;
   min-height: 300px;
