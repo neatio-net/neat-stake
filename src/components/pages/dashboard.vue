@@ -1,28 +1,37 @@
 <template>
   <div class="dashboard">
+
+<div class="boxe">
+  <div class="wallet-description">
+    Please make sure the URL is: <span style="color: #8d80ff">wallet.neatio.net</span>
+      </div>
+</div>
+
+
+ 
+
        <div class="boxd">
         <div class="boxwb">
             <div class="lockked">
-              <img src="../../assets/metamask-logo.png" alt="Metamask" class="lockimg" />
+              <img src="../../assets/metamask.png" alt="Metamask" class="lockimg" />
                 </div>
             <div class="locked">Metamask</div>
      
-            <button class="rippleStake" @click="connectAccount" >OPEN</button>
+            <button class="rippleSelectM" @click="connectAccount" >OPEN</button>
           </div>
           <div class="boxwb">
             <div class="lockked">
               <img src="../../assets/unencrypted.png" alt="Private Key" class="lockimg" />
                 </div>
             <div class="locked">Private Key</div>
-     
-            <button class="rippleStake" @click="connectAccount" v-show="address != ''">OPEN</button>
+            <button class="rippleSelectM" @click="connectAccount" >IMPORT</button>
           </div>
           <div class="boxwb">
             <div class="lockked">
               <img src="../../assets/encrypted.png" alt="Keystore File" class="lockimg" />
                 </div>
             <div class="locked">Keystore File</div>
-     
+            <button class="rippleSelectM" @click="connectAccount" >SELECT</button>
             <button class="rippleStake" @click="connectAccount" v-show="address != ''">OPEN</button>
           </div>
 
@@ -55,15 +64,15 @@
                   <span style="color: #496785; font-family: Helvetica">{{   (+staking).toFixed(6)}}</span>
                 </div>
                 <div class="wallet-balance-available2">
-                  <div class="wl"><div class="spinr"><orbit-spinner :animation-duration="1200" :size="55" color="#00ffff" alt="stake" /></div></div>
+                  <div class="wl"><div class="spinr"><orbit-spinner :animation-duration="1200" :size="55" color="#ffffff" alt="stake" /></div></div>
                   <span style=" color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Unclaimed Rewards</span>
                   <span style="color: #496785; font-family: Helvetica">{{(+rewards).toFixed(18)}}</span>
                 </div>
               </div>
               <div class="noSel" v-show="selectedPool == null && staking == 0 && rewards == 0">select a pool if you wish to stake your coins</div>
-              <div class="deleg" v-show="selectedPool != null">Selected pool<span style=" font-size: 14px; color: #00ffff; font-weight: normal; font-family: Pirulen, Helvetica;">{{ selectedPool }}</span></div>
-              <div class="deleg" v-show="staking != 0 && rewards != 0">Staking on:<span style=" font-size: 14px;color: #00ffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
-              <div class="deleg" v-show="rewards > 0">Rewards on:<span style="font-size: 14px;color: #00ffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
+              <div class="deleg" v-show="selectedPool != null">Selected pool<span style=" font-size: 14px; color: #ffffff; font-weight: normal; font-family: Pirulen, Helvetica;">{{ selectedPool }}</span></div>
+              <div class="deleg" v-show="staking != 0 && rewards != 0">Staking on:<span style=" font-size: 14px;color: #ffffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
+              <div class="deleg" v-show="rewards > 0">Rewards on:<span style="font-size: 14px;color: #ffffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
               <div class="btnss" v-show="(staking != null && selectedPool == 'DANNY M POOL') || (staking != null && stakedTo == 'DANNY M POOL') || stakedTo == 'DANNY M POOL'"><div class="buttns">
               <button class="rippleStake" @click="neatStake1">stake</button><button class="rippleClaims" @click="claimRwd1">claim</button><button class="rippleClaims" @click="unStake1">unstake</button></div>
               </div><div class="btnss" v-show="(staking != null && selectedPool == 'NEATIO - ASIA -') || (staking != null && stakedTo == 'NEATIO - ASIA -') || stakedTo == 'NEATIO - ASIA -'">
@@ -1572,7 +1581,7 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   cursor: pointer;
-  color: #00ffff;
+  color: #ffffff;
   background-color: #273546;
   border-radius: 4px;
   outline: none;
@@ -1582,7 +1591,15 @@ button {
 
 .sep {
   padding-bottom: 24px;
-  border-bottom: 1px solid #00ffffa4;
+  border-bottom: 1px solid #ffffffa4;
+}
+
+.wallet-description {
+  padding: 2em;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #ffffff;
+  font-family: Anita, Helvetica, sans-serif;
 }
 
 .sep1 {
@@ -1597,8 +1614,8 @@ button {
 
 .locked {
   text-align: center;
-  margin: 20px;
-  color: #00ffff;
+  margin-bottom: 6rem;
+  color: #ffffff;
   font-weight: 200;
   font-family: Pirulen, Helvetica, sans-serif;
 }
@@ -1608,12 +1625,12 @@ button {
   justify-content: center;
 }
 .lockimg {
-  width: 124px;
+  width: 6rem;
   height: auto;
   display: block;
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-top: 40px; */
+  margin: -4rem auto 1rem auto;
+
 }
 
 
@@ -1636,7 +1653,7 @@ button {
 
 .valueD {
   font-family: Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   font-size: 16px;
   font-weight: lighter;
   margin-bottom: 5px;
@@ -1650,7 +1667,7 @@ button {
   font-size: 12px;
   font-weight: 100;
   font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -1660,7 +1677,7 @@ button {
   font-size: 15px;
   font-weight: 100;
   font-family: Anita, Arial, Helvetica, sans-serif !important;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -1670,7 +1687,7 @@ button {
   font-size: 12px;
   font-weight: 100;
   font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -1682,14 +1699,14 @@ button {
   font-weight: 100;
   padding-top: 10px;
   font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
 }
 
 .walBalT {
-  color: #00ffff;
+  color: #ffffff;
   margin: 10px;
   font-size: 28px;
   font-weight: 400;
@@ -1721,7 +1738,7 @@ button {
 }
 .dashboard {
   font-weight: bold;
-  color: #00ffff;
+  color: #ffffff;
   padding-top: 10px;
 }
 .pools {
@@ -1742,8 +1759,8 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  color: #00ffff;
-  border: 1px solid #00ffffa4;
+  color: #ffffff;
+  border: 1px solid #ffffffa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -1753,28 +1770,27 @@ button {
 .rippleStake:hover {
   color: #000;
   text-transform: uppercase;
-  background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
+  background: #ffffff radial-gradient(circle, transparent 1%, #00bfff 1%)
     center/15000%;
 }
 
-.rippleSelect {
-  font-size: 12px;
-  min-width: 68px;
-  height: 22px;
-  border-radius: 4px;
-  font-weight: bold;
-  color: #00ffff;
-  border: 1px solid #00ffffa4;
-  background-color: transparent;
+.rippleSelectM {
+  font-size: 1.4rem;
+  font-family: Anita, Helvetica, sans-serif;
+  width: 10rem;
+  height: 3.2rem;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(to right, #24243e, #302b63, #24243e);
   background-position: center;
-  transition: background 0.4s;
+
   margin: 0 10px;
 }
 
-.rippleSelect:hover {
-  color: #000;
+.rippleSelectM:hover {
+  color: #fff;
   text-transform: uppercase;
-  background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
+  background: #443490 radial-gradient(circle, transparent 1%, #00bfff 1%)
     center/15000%;
 }
 
@@ -1784,7 +1800,7 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  border: 1px solid #00ffffa4;
+  border: 1px solid #ffffffa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -1795,7 +1811,7 @@ button {
   color: #000;
   text-transform: uppercase;
 
-  background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%)
+  background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%)
     center/15000%;
 }
 
@@ -1841,12 +1857,12 @@ button {
     justify-content: center;
     flex-direction:column;
     vertical-align: center;
-    width: 24rem;
-    height: 36rem;
+    width: 20em;
+    height: 30rem;
     border-radius: 10px;
     margin: auto;
-    background: linear-gradient(to left, #212226, #4A00E0);
-
+    background: linear-gradient(to bottom,#11001e,#786afb);
+    /* filter: brightness(70%); */
   }
 
 @media only screen and (max-width: 560px) {
@@ -1866,7 +1882,7 @@ button {
 
   .valueD {
     font-family: Helvetica, sans-serif;
-    color: #00ffff;
+    color: #ffffff;
     font-size: 12px;
     font-weight: lighter;
     margin-bottom: 5px;
@@ -1898,8 +1914,8 @@ button {
     height: 22px;
     border-radius: 4px;
     font-weight: bold;
-    color: #00ffff;
-    border: 1px solid #00ffffa4;
+    color: #ffffff;
+    border: 1px solid #ffffffa4;
     background-color: transparent;
     background-position: center;
     transition: background 0.4s;
@@ -1909,7 +1925,7 @@ button {
   .rippleStake:hover {
     color: #000;
     text-transform: uppercase;
-    background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
+    background: #ffffff radial-gradient(circle, transparent 1%, red 1%)
       center/15000%;
   }
 
@@ -1921,7 +1937,7 @@ button {
     height: 22px;
     border-radius: 4px;
     font-weight: bold;
-    border: 1px solid #00ffffa4;
+    border: 1px solid #ffffffa4;
     background-color: transparent;
     background-position: center;
     transition: background 0.4s;
@@ -1932,7 +1948,7 @@ button {
     color: #000;
     text-transform: uppercase;
 
-    background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%)
+    background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%)
       center/15000%;
   }
 

@@ -121,15 +121,15 @@
                   <span style="color: #496785; font-family: Helvetica">{{   (+staking).toFixed(6)}}</span>
                 </div>
                 <div class="wallet-balance-available2">
-                  <div class="wl"><div class="spinr"><orbit-spinner :animation-duration="1200" :size="55" color="#00ffff" alt="stake" /></div></div>
+                  <div class="wl"><div class="spinr"><orbit-spinner :animation-duration="1200" :size="55" color="#ffffff" alt="stake" /></div></div>
                   <span style=" color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Unclaimed Rewards</span>
                   <span style="color: #496785; font-family: Helvetica">{{(+rewards).toFixed(18)}}</span>
                 </div>
               </div>
               <div class="noSel" v-show="selectedPool == null && staking == 0 && rewards == 0">select a pool if you wish to stake your coins</div>
-              <div class="deleg" v-show="selectedPool != null">Selected pool<span style=" font-size: 14px; color: #00ffff; font-weight: normal; font-family: Pirulen, Helvetica;">{{ selectedPool }}</span></div>
-              <div class="deleg" v-show="staking != 0 && rewards != 0">Staking on:<span style=" font-size: 14px;color: #00ffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
-              <div class="deleg" v-show="rewards > 0">Rewards on:<span style="font-size: 14px;color: #00ffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
+              <div class="deleg" v-show="selectedPool != null">Selected pool<span style=" font-size: 14px; color: #ffffff; font-weight: normal; font-family: Pirulen, Helvetica;">{{ selectedPool }}</span></div>
+              <div class="deleg" v-show="staking != 0 && rewards != 0">Staking on:<span style=" font-size: 14px;color: #ffffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
+              <div class="deleg" v-show="rewards > 0">Rewards on:<span style="font-size: 14px;color: #ffffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
               <div class="btnss" v-show="(staking != null && selectedPool == 'DANNY M POOL') || (staking != null && stakedTo == 'DANNY M POOL') || stakedTo == 'DANNY M POOL'"><div class="buttns">
               <button class="rippleStake" @click="neatStake1">stake</button><button class="rippleClaims" @click="claimRwd1">claim</button><button class="rippleClaims" @click="unStake1">unstake</button></div>
               </div><div class="btnss" v-show="(staking != null && selectedPool == 'NEATIO - ASIA -') || (staking != null && stakedTo == 'NEATIO - ASIA -') || stakedTo == 'NEATIO - ASIA -'">
@@ -1643,7 +1643,7 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   cursor: pointer;
-  color: #00ffff;
+  color: #ffffff;
   background-color: #273546;
   border-radius: 4px;
   outline: none;
@@ -1653,7 +1653,7 @@ button {
 
 .sep {
   padding-bottom: 24px;
-  border-bottom: 1px solid #00ffffa4;
+  border-bottom: 1px solid #ffffffa4;
 }
 
 .sep1 {
@@ -1669,7 +1669,7 @@ button {
 .locked {
   text-align: center;
   margin: 20px;
-  color: #00ffff;
+  color: #ffffff;
   font-weight: 200;
   font-family: Pirulen, Helvetica, sans-serif;
 }
@@ -1697,7 +1697,7 @@ button {
 
 .valueD {
   font-family: Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   font-size: 16px;
   font-weight: lighter;
   margin-bottom: 5px;
@@ -1711,7 +1711,7 @@ button {
   font-size: 12px;
   font-weight: 100;
   font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -1721,7 +1721,7 @@ button {
   font-size: 15px;
   font-weight: 100;
   font-family: Anita, Arial, Helvetica, sans-serif !important;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -1731,7 +1731,7 @@ button {
   font-size: 12px;
   font-weight: 100;
   font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -1743,14 +1743,14 @@ button {
   font-weight: 100;
   padding-top: 10px;
   font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
 }
 
 .walBalT {
-  color: #00ffff;
+  color: #ffffff;
   margin: 10px;
   font-size: 28px;
   font-weight: 400;
@@ -1782,7 +1782,7 @@ button {
 }
 .dashboard {
   font-weight: bold;
-  color: #00ffff;
+  color: #ffffff;
   padding-top: 10px;
 }
 .pools {
@@ -1803,8 +1803,8 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  color: #00ffff;
-  border: 1px solid #00ffffa4;
+  color: #ffffff;
+  border: 1px solid #ffffffa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -1814,7 +1814,7 @@ button {
 .rippleStake:hover {
   color: #000;
   text-transform: uppercase;
-  background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
+  background: #ffffff radial-gradient(circle, transparent 1%, red 1%)
     center/15000%;
 }
 
@@ -1824,8 +1824,8 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  color: #00ffff;
-  border: 1px solid #00ffffa4;
+  color: #ffffff;
+  border: 1px solid #ffffffa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -1835,7 +1835,7 @@ button {
 .rippleSelect:hover {
   color: #000;
   text-transform: uppercase;
-  background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
+  background: #ffffff radial-gradient(circle, transparent 1%, red 1%)
     center/15000%;
 }
 
@@ -1845,7 +1845,7 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  border: 1px solid #00ffffa4;
+  border: 1px solid #ffffffa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -1856,7 +1856,7 @@ button {
   color: #000;
   text-transform: uppercase;
 
-  background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%)
+  background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%)
     center/15000%;
 }
 
@@ -1907,14 +1907,14 @@ button {
     margin: 50px 10px 0px 10px;
     box-sizing: 1px;
     border: none;
-    border: 1px solid #00ffffa4;
+    border: 1px solid #ffffffa4;
     border-radius: 10px;
     box-shadow: 0 0 40px #00bfff31;
   }
 
   .valueD {
     font-family: Helvetica, sans-serif;
-    color: #00ffff;
+    color: #ffffff;
     font-size: 12px;
     font-weight: lighter;
     margin-bottom: 5px;
@@ -1932,8 +1932,8 @@ button {
     height: 22px;
     border-radius: 4px;
     font-weight: bold;
-    color: #00ffff;
-    border: 1px solid #00ffffa4;
+    color: #ffffff;
+    border: 1px solid #ffffffa4;
     background-color: transparent;
     background-position: center;
     transition: background 0.4s;
@@ -1943,7 +1943,7 @@ button {
   .rippleStake:hover {
     color: #000;
     text-transform: uppercase;
-    background: #00ffff radial-gradient(circle, transparent 1%, red 1%)
+    background: #ffffff radial-gradient(circle, transparent 1%, red 1%)
       center/15000%;
   }
 
@@ -1953,7 +1953,7 @@ button {
     height: 22px;
     border-radius: 4px;
     font-weight: bold;
-    border: 1px solid #00ffffa4;
+    border: 1px solid #ffffffa4;
     background-color: transparent;
     background-position: center;
     transition: background 0.4s;
@@ -1964,7 +1964,7 @@ button {
     color: #000;
     text-transform: uppercase;
 
-    background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%)
+    background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%)
       center/15000%;
   }
 

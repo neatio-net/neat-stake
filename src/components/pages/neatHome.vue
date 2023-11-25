@@ -86,7 +86,7 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   cursor: pointer;
-  color: #00ffff;
+  color: #ffffff;
   background-color: #273546;
   border-radius: 4px;
   outline: none;
@@ -110,7 +110,7 @@ button {
 .locked {
   text-align: center;
   margin: 20px;
-  color: #00ffff;
+  color: #ffffff;
   font-weight: 200;
   font-size: 1.4rem;
   font-family: Anita, Helvetica, sans-serif;
@@ -142,7 +142,7 @@ button {
 
 .valueD {
   font-family: Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   font-size: 16px;
   font-weight: lighter;
   margin-bottom: 5px;
@@ -156,7 +156,7 @@ button {
   font-size: 12px;
   font-weight: 100;
   font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -166,7 +166,7 @@ button {
   font-size: 15px;
   font-weight: 100;
   font-family: Anita, Arial, Helvetica, sans-serif !important;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -176,7 +176,7 @@ button {
   font-size: 12px;
   font-weight: 100;
   font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
@@ -188,14 +188,14 @@ button {
   font-weight: 100;
   padding-top: 10px;
   font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #00ffff;
+  color: #ffffff;
   text-align: center;
   display: inline-block;
   min-width: 140px;
 }
 
 .walBalT {
-  color: #00ffff;
+  color: #ffffff;
   margin: 10px;
   font-size: 28px;
   font-weight: 400;
@@ -229,7 +229,7 @@ button {
 
 .dashboard {
   font-weight: bold;
-  color: #00ffff;
+  color: #ffffff;
   padding-top: 10px;
 }
 
@@ -246,23 +246,22 @@ button {
 }
 
 .ripp {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-family: Anita, Helvetica, sans-serif;
   width: 12rem;
   height: 4rem;
   border-radius: 10px;
-  font-weight: bold;
-  color: #000;
-  background: linear-gradient(to right,#6519c9,#2472fc);
+  color: #fff;
+  background: linear-gradient(to right,#3d00b9,#8d80ff);
   background-position: center;
-  transition: background 0.4s;
+
   margin: 40px;
 }
 
 .ripp:hover {
-  color: #000000;
+  color: #fff;
   text-transform: uppercase;
-  background: #2472fc;
+  background: #5340af;
 }
 
 .rippleStake {
@@ -271,8 +270,8 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  color: #00ffff;
-  border: 1px solid #00ffffa4;
+  color: #ffffff;
+  border: 1px solid #ffffffa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -282,7 +281,7 @@ button {
 .rippleStake:hover {
   color: #000;
   text-transform: uppercase;
-  background: #00ffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
+  background: #ffffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
 }
 
 .rippleSelect {
@@ -291,8 +290,8 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  color: #00ffff;
-  border: 1px solid #00ffffa4;
+  color: #ffffff;
+  border: 1px solid #ffffffa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -302,7 +301,7 @@ button {
 .rippleSelect:hover {
   color: #000;
   text-transform: uppercase;
-  background: #00ffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
+  background: #ffffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
 }
 
 .rippleClaims {
@@ -311,7 +310,7 @@ button {
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
-  border: 1px solid #00ffffa4;
+  border: 1px solid #ffffffa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
@@ -322,7 +321,7 @@ button {
   color: #000;
   text-transform: uppercase;
 
-  background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%) center/15000%;
+  background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%) center/15000%;
 }
 
 .deleg {
@@ -408,8 +407,8 @@ button {
     height: 22px;
     border-radius: 4px;
     font-weight: bold;
-    color: #00ffff;
-    border: 1px solid #00ffffa4;
+    color: #ffffff;
+    border: 1px solid #ffffffa4;
     background-color: transparent;
     background-position: center;
     transition: background 0.4s;
@@ -419,7 +418,7 @@ button {
   .rippleStake:hover {
     color: #000;
     text-transform: uppercase;
-    background: #00ffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
+    background: #ffffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
   }
 
   .rippleClaims {
@@ -428,7 +427,7 @@ button {
     height: 22px;
     border-radius: 4px;
     font-weight: bold;
-    border: 1px solid #00ffffa4;
+    border: 1px solid #ffffffa4;
     background-color: transparent;
     background-position: center;
     transition: background 0.4s;
@@ -439,7 +438,7 @@ button {
     color: #000;
     text-transform: uppercase;
 
-    background: #00ffff radial-gradient(circle, transparent 1%, #00ffff 1%) center/15000%;
+    background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%) center/15000%;
   }
 
   #myGrid {
