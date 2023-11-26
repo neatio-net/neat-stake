@@ -35,16 +35,6 @@
         
       <!-- DASHBOARD OPEN-->
 
-
-       <!-- <div class="box-btn">
-      <div class="box7" v-show="address !== null">
-        <button2 class="sendButton" id="rpp1" @click="swStake">Send</button2>
-      </div>
-
-      <div class="box8" v-show="address !== null">
-        <button2 class="stakeButton" id="rpp2" @click="swStake">Stake</button2>
-      </div>
-    </div> -->
     
 
           <div class="balance-box" > 
@@ -53,11 +43,13 @@
             <div class="balance-details" >
               <div class="wallet-balance" >
                 
-                <div class="walBalT">{{ (+balance).toFixed(6)}}
-                  NIO
+                <div class="walBalT">{{ (+balance).toFixed(2)}} 
+                  <!-- <span style="color:#9989eb;font-weight: lighter;font-size: 2rem;font-family: Anita, Helvetica;">NIO</span> -->
+                  <div class="test-nio">NIO</div>
                 </div>
-                <div class="separator"></div>
-                <div> {{ address }}</div>
+                
+               <div class="separator"></div>
+                <div class="wallet-address"> {{ address }}</div>
                
               </div>        
       
@@ -66,7 +58,14 @@
         </div>
 
 
+        <app-tabs class="wallet-tabs" :tabList="tabList">
+      <template v-slot:tabPanel-1>         
+        <div class="action-box" >    
+              <div class="neatStaking">
 
+              </div>
+            </div> </template>
+      <template v-slot:tabPanel-2> 
         <div class="action-box" >    
               <div class="neatStaking">
                 <div class="balance-details" >                               
@@ -99,6 +98,11 @@
               </div>
               </div>
             </div>
+      </template>
+          >
+            </app-tabs>
+
+
 
 
 
@@ -123,6 +127,7 @@ import Access from "./modules/access";
 import EyeInput from "./modules/eyeInput";
 import BigNumber from "bignumber.js";
 import axios from "axios";
+import AppTabs from "./modules/appTabs";
 
 const Utils = require("neatioapi").utils;
 const Nat = require("neatioapi").nat;
@@ -183,6 +188,8 @@ export default {
       selectedPool: null,
       priceUSD: "",
       price24h: "",
+      tabList: ["Transfer", "Staking"],
+
     };
   },
   components: {
@@ -192,6 +199,7 @@ export default {
     LoopingRhombusesSpinner,
     VideoBackground,
     Socket,
+    AppTabs,
   },
 
   async mounted() {
@@ -1516,8 +1524,35 @@ button {
 }
 
 .separator {
-  padding: 2rem;
-  border-bottom: 1px solid #000;
+   margin: 1.2rem auto;
+   max-width: 42rem;
+  border-bottom: 3px solid #000;
+}
+
+.test-nio {
+  font-family: Anita, Helvetica, sans-serif;
+  font-size: 2rem;
+  display: inline;
+
+  background-color: #ffffff;
+  background-size: 100%;
+  background-repeat: repeat;
+  background-image: linear-gradient(45deg,#a044ff,#46bbf4,#2472fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.wallet-address {
+  font-family: Lato, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  display: inline;
+  background-color: #ffffff;
+  background-size: 100%;
+  background-repeat: repeat;
+  background-image: linear-gradient(to right,#a044ff,#46bbf4,#2472fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent
+
 }
 
 .wallet-description {
@@ -1528,10 +1563,6 @@ button {
   font-family: Anita, Helvetica, sans-serif;
 }
 
-.sep1 {
-  padding-bottom: 20px;
-  border-bottom: transparent;
-}
 
 .buttns {
   margin: 10px 0 20px 0;
@@ -1546,6 +1577,8 @@ button {
   font-family: Pirulen, Helvetica, sans-serif;
 }
 
+
+
 .lockked {
   align-items: center;
   justify-content: center;
@@ -1559,95 +1592,11 @@ button {
 
 }
 
-
-.box-image{
-  width: 6rem;
-  height: auto;
-  display: block;
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto
-}
-
-.itemsD {
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #496785;
-  font-size: 10px;
-  font-weight: 400;
-  margin-bottom: 5px;
-}
-
-.valueD {
-  font-family: Helvetica, sans-serif;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: lighter;
-  margin-bottom: 5px;
-}
-
-.statsD {
-  margin: 20px;
-}
-
-.hero-bal {
-  font-family: "Anita";
-    font-weight: 480;
-    line-height: 1.3;
-    margin-top: -4em; 
-    position: relative;
-    color:#fff;
-    border-radius: 10px;
-    box-sizing: 1px;
-    box-shadow: 0 4px 60px #000;
-}
-
-
-.vAddy1 {
-  font-size: 12px;
-  font-weight: 100;
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #ffffff;
-  text-align: center;
-  display: inline-block;
-  min-width: 140px;
-}
-
-.stian {
-  font-size: 15px;
-  font-weight: 100;
-  font-family: Anita, Arial, Helvetica, sans-serif !important;
-  color: #ffffff;
-  text-align: center;
-  display: inline-block;
-  min-width: 140px;
-}
-
-.vAddy2 {
-  font-size: 12px;
-  font-weight: 100;
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #ffffff;
-  text-align: center;
-  display: inline-block;
-  min-width: 140px;
-  margin-bottom: 24px;
-}
-
-.vAddy11 {
-  font-size: 12px;
-  font-weight: 100;
-  padding-top: 10px;
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #ffffff;
-  text-align: center;
-  display: inline-block;
-  min-width: 140px;
-}
-
 .walBalT {
   color: #ffffff;
-  margin: 10px;
-  font-size: 28px;
+  font-family: Anita, Helvetica, sans-serif;
+   padding: 0.6rem;
+  font-size: 3rem;
   font-weight: 400;
 }
 
@@ -1669,6 +1618,12 @@ button {
 .spinr {
   margin: 0 auto;
   display: inline-block;
+}
+
+.wallet-tabs{
+  max-width: 80em;
+  margin: 0 auto;
+  font-family: Anita, Helvetica, sans-serif;
 }
 
 .balance-details {
