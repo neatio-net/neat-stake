@@ -7,6 +7,7 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
+import "tailwindcss/dist/tailwind.css";
 import './utils/iconfont'
 import api from './utils/api';
 import en from './lang/en'
