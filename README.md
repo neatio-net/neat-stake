@@ -1,1 +1,1 @@
-# Neatio Staking Interface
+# Neatio Wallet
