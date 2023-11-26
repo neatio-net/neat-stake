@@ -255,6 +255,34 @@ display:inline-table;
   box-shadow: 0 0 40px #000;
 }
 
+.balance-box {
+  width: 80em;
+  height: 10em;
+  padding-top: 10px; 
+  background: transparent;
+  display:grid;
+  border-radius: 10px;
+  margin: 2rem auto;
+  box-sizing: 1px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 40px #000;
+}
+
+.action-box {
+  width: 80em;
+  min-height: 300px;
+  padding-top: 10px; 
+  background: transparent;
+  display:grid;
+  border-radius: 10px;
+  margin: 4rem auto;
+  box-sizing: 1px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 40px #000;
+}
+
 
 .aw {
   color: rgba(102, 102, 102, 1);
