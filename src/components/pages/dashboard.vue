@@ -1,132 +1,110 @@
 <template>
   <div class="dashboard">
 
-<div class="boxe">
-  <div class="wallet-description">
-    Please make sure the URL is: <span style="color: #8d80ff">wallet.neatio.net</span>
-      </div>
-</div>
 
-
- 
-
-       <div class="boxd">
-        <div class="boxwb">
-            <div class="lockked">
-              <img src="../../assets/metamask.png" alt="Metamask" class="lockimg" />
-                </div>
-            <div class="locked">Metamask</div>
-     
-            <button class="rippleSelectM" @click="connectAccount" >OPEN</button>
-          </div>
-          <div class="boxwb">
-            <div class="lockked">
-              <img src="../../assets/unencrypted.png" alt="Private Key" class="lockimg" />
-                </div>
-            <div class="locked">Private Key</div>
-            <button class="rippleSelectM" @click="connectAccount" >IMPORT</button>
-          </div>
-          <div class="boxwb">
-            <div class="lockked">
-              <img src="../../assets/encrypted.png" alt="Keystore File" class="lockimg" />
-                </div>
-            <div class="locked">Keystore File</div>
-            <button class="rippleSelectM" @click="connectAccount" >SELECT</button>
-            <button class="rippleStake" @click="connectAccount" v-show="address != ''">OPEN</button>
-          </div>
-
-
-
-
-
+        <div v-show="address == ''">
+          <div class="boxe">
+              <div class="wallet-description">
+                Please make sure the URL is: <span style="color: #8d80ff">wallet.neatio.net</span>
+                  </div>
+            </div> 
+          <div class="boxd">
+            <div class="boxwb">
+                <div class="lockked">
+                  <img src="../../assets/metamask.png" alt="Metamask" class="lockimg" />
+                    </div>
+                <div class="locked">Metamask</div>        
+                <button class="rippleSelectM" @click="connectAccount" >OPEN</button>
+              </div>
+              <div class="boxwb">
+                <div class="lockked">
+                  <img src="../../assets/unencrypted.png" alt="Private Key" class="lockimg" />
+                    </div>
+                <div class="locked">Private Key</div>
+                <button class="rippleSelectM" @click="connectAccount" >IMPORT</button>
+              </div>
+              <div class="boxwb">
+                <div class="lockked">
+                  <img src="../../assets/encrypted.png" alt="Keystore File" class="lockimg" />
+                    </div>
+                <div class="locked">Keystore File</div>
+                <button class="rippleSelectM" @click="connectAccount" >SELECT</button>                
+              </div>
+        </div>
        </div>
-       
-      <div class="boxes" v-show="address !== ''">
+        
+      <!-- DASHBOARD OPEN-->
 
-        <div class="box2" v-show="address === ''">
-          <div class="lockked" v-show="address === ''">
-            <img src="../../assets/lock.png" alt="Lock" class="lockimg" />
-          </div>
 
-          <div class="locked" v-show="address === ''">Please unlock your wallet!</div>
+       <!-- <div class="box-btn">
+      <div class="box7" v-show="address !== null">
+        <button2 class="sendButton" id="rpp1" @click="swStake">Send</button2>
+      </div>
+
+      <div class="box8" v-show="address !== null">
+        <button2 class="stakeButton" id="rpp2" @click="swStake">Stake</button2>
+      </div>
+    </div> -->
+    
+
+          <div class="balance-box" > 
+   
           <div class="neatStaking">
-            <div class="balance-details" v-show="address != ''">
-              <div class="wallet-balance" v-show="address !== ''">
-                <div class="addry-w">{{ addry }}</div>
-                <div class="walBalT">{{ (+balance).toFixed(6)}}<span style="color: #496785;font-size: 22px;font-weight: normal;font-family: Pirulen, Helvetica;">NEAT</span>
+            <div class="balance-details" >
+              <div class="wallet-balance" >
+                
+                <div class="walBalT">{{ (+balance).toFixed(6)}}
+                  NIO
                 </div>
-              </div>
-              <div class="sep"></div>
-              <div class="boxess">
-                <div class="wallet-balance-available2">
-                  <div class="wl"><img src="../../assets/claim.png" alt="stake" class="walimg"/></div>
-                  <div><span style="color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Coins In Stake</span></div>
-                  <span style="color: #496785; font-family: Helvetica">{{   (+staking).toFixed(6)}}</span>
-                </div>
-                <div class="wallet-balance-available2">
-                  <div class="wl"><div class="spinr"><orbit-spinner :animation-duration="1200" :size="55" color="#ffffff" alt="stake" /></div></div>
-                  <span style=" color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Unclaimed Rewards</span>
-                  <span style="color: #496785; font-family: Helvetica">{{(+rewards).toFixed(18)}}</span>
-                </div>
-              </div>
-              <div class="noSel" v-show="selectedPool == null && staking == 0 && rewards == 0">select a pool if you wish to stake your coins</div>
-              <div class="deleg" v-show="selectedPool != null">Selected pool<span style=" font-size: 14px; color: #ffffff; font-weight: normal; font-family: Pirulen, Helvetica;">{{ selectedPool }}</span></div>
-              <div class="deleg" v-show="staking != 0 && rewards != 0">Staking on:<span style=" font-size: 14px;color: #ffffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
-              <div class="deleg" v-show="rewards > 0">Rewards on:<span style="font-size: 14px;color: #ffffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
-              <div class="btnss" v-show="(staking != null && selectedPool == 'DANNY M POOL') || (staking != null && stakedTo == 'DANNY M POOL') || stakedTo == 'DANNY M POOL'"><div class="buttns">
-              <button class="rippleStake" @click="neatStake1">stake</button><button class="rippleClaims" @click="claimRwd1">claim</button><button class="rippleClaims" @click="unStake1">unstake</button></div>
-              </div><div class="btnss" v-show="(staking != null && selectedPool == 'NEATIO - ASIA -') || (staking != null && stakedTo == 'NEATIO - ASIA -') || stakedTo == 'NEATIO - ASIA -'">
-              <div class="buttns"><button class="rippleStake" @click="neatStake2">stake</button><button class="rippleClaims" @click="claimRwd2">claim</button>
-
-              <button class="rippleClaims" @click="unStake2">unstake</button></div></div>
-              <div class="btnss" v-show="
-               (staking != null && selectedPool == 'ROMANIA POOL') ||
-               (staking != null && stakedTo == 'ROMANIA POOL') || stakedTo == 'ROMANIA POOL'">
-                <div class="buttns">
-                  <button class="rippleStake" @click="neatStake3">stake</button>
-                  <button class="rippleClaims" @click="claimRwd3">claim</button>
-                  <button class="rippleClaims" @click="unStake3">unstake</button>
-                </div>
-              </div>
-
-              <div class="btnss" v-show="
-                  (staking != null && selectedPool == 'SILVIU25 POOL') ||
-                  (staking != null && stakedTo == 'SILVIU25 POOL') ||
-                  stakedTo == 'SILVIU25 POOL'">
-                <div class="buttns">
-                  <button class="rippleStake" @click="neatStake4">stake</button>
-                  <button class="rippleClaims" @click="claimRwd4">claim</button>
-                  <button class="rippleClaims" @click="unStake4">unstake</button>
-                </div>
-              </div>
-
-              <div class="btnss" v-show=" 
-                  (staking != null && selectedPool == 'StianNOR - EU') ||
-                  (staking != null && stakedTo == 'StianNOR - EU') ||
-                  stakedTo == 'StianNOR - EU'">
-                <div class="buttns">
-                  <button class="rippleStake" @click="neatStake5">stake</button>
-                  <button class="rippleClaims" @click="claimRwd5">claim</button>
-                  <button class="rippleClaims" @click="unStake5">unstake</button>
-                </div>
-              </div>
-
-              <div
-                class="btnss"
-                v-show="
-                  (staking != null && selectedPool == 'NEATIO EUROPE') ||
-                  (staking != null && stakedTo == 'NEATIO EUROPE') ||
-                  stakedTo == 'NEATIO EUROPE'">
-                <div class="buttns">
-                  <button class="rippleStake" @click="neatStake6">stake</button>
-                  <button class="rippleClaims" @click="claimRwd6">claim</button>
-                  <button class="rippleClaims" @click="unStake6">unstake</button>
-                </div>
-              </div>
-            </div>
+                <div class="separator"></div>
+                <div> {{ address }}</div>
+               
+              </div>        
+      
+          </div>
           </div>
         </div>
-      </div>
+
+
+
+        <div class="action-box" >    
+              <div class="neatStaking">
+                <div class="balance-details" >                               
+                  <div class="boxess">
+                    <div class="wallet-balance-available2">
+                      <div class="wl"><img src="../../assets/claim.png" alt="stake" class="walimg"/></div>
+                      <div><span style="color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Coins In Stake</span></div>
+                      <span style="color: #496785; font-family: Helvetica">{{   (+staking).toFixed(6)}}</span>
+                    </div>
+                    <div class="wallet-balance-available2">
+                      <div class="wl"><div class="spinr"><orbit-spinner :animation-duration="1200" :size="55" color="#ffffff" alt="stake" /></div></div>
+                      <span style=" color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Unclaimed Rewards</span>
+                      <span style="color: #496785; font-family: Helvetica">{{(+rewards).toFixed(18)}}</span>
+                    </div>
+                  </div>
+                  <div class="deleg" v-show="rewards > 0">Rewards on:<span style="font-size: 14px;color: #ffffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
+                  <div class="btnss" v-show="(staking != null && selectedPool == 'DANNY M POOL') || (staking != null && stakedTo == 'DANNY M POOL') || stakedTo == 'DANNY M POOL'"><div class="buttns">
+                  <button class="rippleStake" @click="neatStake1">stake</button><button class="rippleClaims" @click="claimRwd1">claim</button><button class="rippleClaims" @click="unStake1">unstake</button></div>
+                  </div><div class="btnss" v-show="(staking != null && selectedPool == 'NEATIO - ASIA -') || (staking != null && stakedTo == 'NEATIO - ASIA -') || stakedTo == 'NEATIO - ASIA -'">
+                  <div class="buttns"><button class="rippleStake" @click="neatStake2">stake</button><button class="rippleClaims" @click="claimRwd2">claim</button>
+
+                  <button class="rippleClaims" @click="unStake2">unstake</button></div></div>
+                  <div class="btnss">
+                    <div class="buttns">
+                      <button class="rippleStake" @click="neatStake3">stake</button>
+                      <button class="rippleClaims" @click="claimRwd3">claim</button>
+                      <button class="rippleClaims" @click="unStake3">unstake</button>
+                    </div>
+                  </div> 
+              </div>
+              </div>
+            </div>
+
+
+
+
+
+
       <div v-if="step == 1">
         <Access @unlock="unlock"></Access>
       </div>
@@ -169,12 +147,6 @@ export default {
       limit: "21000",
       addry: null,
       price: "",
-      pool1: null,
-      pool2: null,
-      pool3: null,
-      pool4: null,
-      pool5: null,
-      pool6: null,
       addy7: null,
       vPower2: null,
       v2Pwr: "",
@@ -223,7 +195,7 @@ export default {
   },
 
   async mounted() {
-    // this.connectAccount();
+    this.connectAccount();
     // this.getValidators();
     this.initialize();
     // this.getHeight();
@@ -364,53 +336,7 @@ export default {
 
           this.delegatedTo = response.data.result.rewardDetail;
 
-          if (
-            this.delegatedTo.hasOwnProperty(
-              "0xa5ed22086ee9a68cdb3fd469d31316d40546c9c6"
-            )
-          ) {
-            this.stakedTo = "DANNY M POOL";
-          }
-
-          if (
-            this.delegatedTo.hasOwnProperty(
-              "0x6f755798dc3fb59d3236b0814d4038a094c8db6e"
-            )
-          ) {
-            this.stakedTo = "NEATIO - ASIA -";
-          }
-
-          if (
-            this.delegatedTo.hasOwnProperty(
-              "0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b"
-            )
-          ) {
-            this.stakedTo = "ROMANIA POOL";
-          }
-
-          if (
-            this.delegatedTo.hasOwnProperty(
-              "0xc8b3706f2db85fd5a1590b2a1329ab5af70ef905"
-            )
-          ) {
-            this.stakedTo = "SILVIU25 POOL";
-          }
-
-          if (
-            this.delegatedTo.hasOwnProperty(
-              "0xe98ef881833ff63bca2ea3e92636e7cb7c19d283"
-            )
-          ) {
-            this.stakedTo = "StianNOR - EU";
-          }
-
-          if (
-            this.delegatedTo.hasOwnProperty(
-              "0xacc7d6d3d745f1f2791a5c42c48da3aa9931f329"
-            )
-          ) {
-            this.stakedTo = "NEATIO EUROPE";
-          }
+          
         })
         .catch((error) => {
           console.log("error", error);
@@ -1589,9 +1515,9 @@ button {
   margin: 10px auto;
 }
 
-.sep {
-  padding-bottom: 24px;
-  border-bottom: 1px solid #ffffffa4;
+.separator {
+  padding: 2rem;
+  border-bottom: 1px solid #000;
 }
 
 .wallet-description {
@@ -1662,6 +1588,19 @@ button {
 .statsD {
   margin: 20px;
 }
+
+.hero-bal {
+  font-family: "Anita";
+    font-weight: 480;
+    line-height: 1.3;
+    margin-top: -4em; 
+    position: relative;
+    color:#fff;
+    border-radius: 10px;
+    box-sizing: 1px;
+    box-shadow: 0 4px 60px #000;
+}
+
 
 .vAddy1 {
   font-size: 12px;
