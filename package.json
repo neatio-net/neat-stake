@@ -40,9 +40,11 @@
     "safe-buffer": "^5.2.0",
     "scrypt.js": "^0.3.0",
     "socket.io-client": "^2.1.1",
+    "tailwindcss": "^2.2.15",
     "uuid": "^3.3.3",
     "vue": "^2.5.2",
     "vue-class-component": "^7.2.6",
+    "@vue/cli-plugin-babel": "4.1.1",
     "vue-i18n": "^8.0.0",
     "vue-loading-spinner": "^1.0.11",
     "vue-property-decorator": "^9.1.2",
@@ -53,6 +55,11 @@
     "xhr-request-promise": "^0.1.2"
   },
   "devDependencies": {
+    "@vue/cli-plugin-eslint": "4.1.1",
+    "@vue/cli-service": "4.1.1",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.0.1",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
