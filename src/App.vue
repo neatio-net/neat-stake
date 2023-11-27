@@ -40,6 +40,13 @@ export default {
 
 } 
 
+@font-face {
+  font-family:"Lato";
+  src: local("Lato"),
+   url(./fonts/lato.ttf) format("truetype");
+
+} 
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -110,6 +117,8 @@ grid-template-columns: 1.5fr 1fr;
 
 }
 
+
+
   .vAddy1 {
   font-size: 12px;
   font-weight: 100;
@@ -119,6 +128,33 @@ grid-template-columns: 1.5fr 1fr;
 
 }
 
+.box-btn{
+  display:flex;
+padding-top: 4em;
+}
+.box3 {
+  border-top-right-radius: 8px; 
+  border-top-left-radius: 8px;
+  width: auto;
+  height: 48px;
+  margin-top: 25px;
+  margin-left: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.box4{
+  border-top-right-radius: 8px; 
+  border-top-left-radius: 8px;
+  width: auto;
+  height: 48px;
+  margin-top: 25px;
+  margin-left: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
 
 
 .vAddy {
@@ -257,7 +293,6 @@ display:inline-table;
 
 .balance-box {
   width: 80em;
-  height: 10em;
   padding-top: 10px; 
   background: transparent;
   display:grid;
@@ -272,11 +307,11 @@ display:inline-table;
 .action-box {
   width: 80em;
   min-height: 300px;
-  padding-top: 10px; 
+  /* padding-top: 10px;  */
   background: transparent;
   display:grid;
   border-radius: 10px;
-  margin: 4rem auto;
+  margin: 0 auto;
   box-sizing: 1px;
   border: none;
   border-radius: 10px;
