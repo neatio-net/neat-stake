@@ -60,13 +60,29 @@
 
         <app-tabs class="wallet-tabs" :tabList="tabList">
       <template v-slot:tabPanel-1>         
-        <div class="action-box" >    
-              <div class="neatStaking">
-
+        <div class="action-box1" >    
+              <div class="neatSending">
+                          <div class="hero__title" >
+                  <input
+                    type="text"
+                    class="send-input1"
+                    v-model="addressToSend"
+                    placeholder="Address"
+                  />
+                </div>
+                <div class="hero__title" >
+                  <input
+                    type="text"
+                    class="send-input2"
+                    v-model="amountToSend"
+                    placeholder="Amount"
+                  />
+                </div>
+                <button class="rippleSelectM" @click="neatSend" >SEND</button>
               </div>
             </div> </template>
       <template v-slot:tabPanel-2> 
-        <div class="action-box" >    
+        <div class="action-box2" >    
               <div class="neatStaking">
                 <div class="balance-details" >                               
                   <div class="boxess">
@@ -90,9 +106,9 @@
                   <button class="rippleClaims" @click="unStake2">unstake</button></div></div>
                   <div class="btnss">
                     <div class="buttns">
-                      <button class="rippleStake" @click="neatStake3">stake</button>
-                      <button class="rippleClaims" @click="claimRwd3">claim</button>
-                      <button class="rippleClaims" @click="unStake3">unstake</button>
+                      <button class="rippleStake" @click="neatStake">stake</button>
+                      <button class="rippleClaims" @click="claimRwd">claim</button>
+                      <button class="rippleClaims" @click="unStake">unstake</button>
                     </div>
                   </div> 
               </div>
@@ -148,36 +164,14 @@ export default {
       staking: null,
       rewards: null,
       rewardBalance: null,
+      addressToSend: '',
+      amountToSend: null,
       amount: "",
-      limit: "21000",
+      limit: "25000",
       addry: null,
       price: "",
-      addy7: null,
-      vPower2: null,
-      v2Pwr: "",
-      v22power: "",
-      vPower3: null,
-      v3Pwr: "",
-      v33power: "",
-      vPower4: null,
-      v4Pwr: "",
-      v44power: "",
-      vPower5: null,
-      v5Pwr: "",
-      v55power: "",
-      vPower6: null,
-      v6Pwr: "",
-      v66power: "",
-      vPower7: null,
-      v7Pwr: "",
-      v77power: "",
       vComm: "15%",
-      pool1: null,
-      pool2: null,
-      pool3: null,
-      pool4: null,
-      pool5: null,
-      pool6: null,
+      pool1: null,   
       height: null,
       totalStake: "",
       circulating: "",
@@ -443,41 +437,7 @@ export default {
       return val;
     },
 
-    select1() {
-      document.getElementById("pool1").click();
-      this.selectedPool = "DANNY M POOL";
-    },
-
-    select2() {
-      document.getElementById("pool2").click();
-      this.selectedPool = "NEATIO - ASIA -";
-    },
-
-    select3() {
-      document.getElementById("pool3").click();
-      this.selectedPool = "ROMANIA POOL";
-    },
-
-    select4() {
-      document.getElementById("pool4").click();
-      this.selectedPool = "SILVIU25 POOL";
-    },
-
-    select5() {
-      document.getElementById("pool5").click();
-      this.selectedPool = "StianNOR - EU";
-    },
-
-    select6() {
-      document.getElementById("pool6").click();
-      this.selectedPool = "NEATIO EUROPE";
-    },
-
-
-    neatStake1() {
-      document.getElementById("pool1").click();
-      const pool1 = this.pool1;
-      this.pool1 = pool1;
+    neatStake() {
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
         cancelButtonText: this.$t("CANCEL"),
@@ -498,7 +458,7 @@ export default {
         const params = [
           {
             from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
+            to: "0x0000000000000000000000000000000000001001",
             gas: Utils.toHex(this.limit),
             gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
             value: Utils.toHex(Utils.fromNEAT(value)),
@@ -513,10 +473,7 @@ export default {
       });
     },
 
-    unStake1() {
-      document.getElementById("pool1").click();
-      const pool1 = this.pool1;
-      this.pool1 = pool1;
+    unStake() {
       this.$prompt(this.$t("Amount To Unstake"), "", {
         confirmButtonText: this.$t("confirm"),
         cancelButtonText: this.$t("cancel"),
@@ -537,7 +494,7 @@ export default {
         let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(2,8);
         const params = [{
             from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
+            to: "0x0000000000000000000000000000000000001001",
             gas: Utils.toHex(this.limit),
             gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
             value: "0x0",
@@ -551,10 +508,7 @@ export default {
       });
     },
 
-    claimRwd1() {
-      document.getElementById("pool1").click();
-      const pool1 = this.pool1;
-      this.pool1 = pool1;
+    claimRwd() {
       this.$prompt(this.$t("Amount To Claim"), "", {
         confirmButtonText: this.$t("confirm"),
         cancelButtonText: this.$t("cancel"),
@@ -577,7 +531,7 @@ export default {
         let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(2,8);
         const params = [{
             from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
+            to: "0x0000000000000000000000000000000000001001",
             gas: Utils.toHex(this.limit),
             gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
             value: "0x0",
@@ -589,921 +543,55 @@ export default {
       });
     },
 
+    async neatSend() {
+     
+      if (!Utils.isAddress(this.addressToSend)) {
+        this.info("error", this.$t("errAddr"));
+        return;
+      }
+      if (isNaN(this.amountToSend) || this.amountToSend <= 0) {
+        this.info("error", this.$t("errAmount"));
+        return;
+      }
+      if (isNaN(this.limit) || this.limit <= 0) {
+        this.info("error", this.$t("errLimit"));
+        return;
+      }
 
-    neatStake2() {
-      document.getElementById("pool2").click();
-      const pool2 = this.pool2;
-      console.log(pool2);
-      this.pool2 = pool2;
-      this.$prompt(this.$t("Amount To Stake"), "", {
-        confirmButtonText: this.$t("CONFIRM"),
-        cancelButtonText: this.$t("CANCEL"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("mNum");
-          }
-          if (+val <= 0) {
-            return this.$t("gt0");
-          }
-          if (+val + this.limit * this.price >= this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(["address"], [this.pool2]);
-        let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
-        const params = [
-          {
+      if (this.price != 0.0000004) {
+        this.price = '0.0000004'
+      }
+
+      if (this.limit < 21000) {
+        this.info("error", this.$t("errLimitLess"));
+        return;
+      }
+
+      if (isNaN(this.price) || this.price < 0) {
+        this.info("error", this.$t("errPrice"));
+        return;
+      }
+
+      if (this.price > 0.00005) {
+        this.info("error", this.$t("errPriceBig"));
+        return;
+      }
+
+          const params = [{
             from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
+            to: this.addressToSend,
             gas: Utils.toHex(this.limit),
             gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: Utils.toHex(Utils.fromNEAT(value)),
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
+            value: Utils.toHex(Utils.fromNEAT(this.amountToSend)),
+          },];
+          ethereum.request({method: "eth_sendTransaction", params, })
+          .then((result) => { console.log("hash", result);  this.$alert(
+          "Coins were sent!",  { confirmButtonText: this.$t("CLOSE"), type: "success",    }    );
+          })
+          .catch((error) => {   console.log("tx error", error); });
 
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            this.$alert("TX ID: " + result, "Staking Was Succesful!", {
-              confirmButtonText: this.$t("CLOSE"),
-              type: "success",
-            });
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
     },
 
-    unStake2() {
-      document.getElementById("pool2").click();
-      const pool2 = this.pool2;
-      this.pool2 = pool2;
-      this.$prompt(this.$t("Amount To Unstake"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("cmNum");
-          }
-          if (+val <= 0) {
-            return this.$t("cgt");
-          }
-
-          if (this.limit * this.price > this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(
-          ["address", "uint256"],
-          [
-            this.pool2,
-            "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
-          ]
-        );
-        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(
-          2,
-          8
-        );
-
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            console.log("hash", result);
-            this.$alert(
-              "TX ID: " + result,
-              "You succesfully unstaked your coins!",
-              {
-                confirmButtonText: this.$t("CLOSE"),
-                type: "success",
-              }
-            );
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-    claimRwd2() {
-      document.getElementById("pool2").click();
-      const pool2 = this.pool2;
-      this.pool2 = pool2;
-      this.$prompt(this.$t("Amount To Claim"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("rewardNumber");
-          }
-
-          if (+val <= 0) {
-            return this.$t("rewardGt");
-          }
-
-          let leftReard = this.bn.minus(this.pool2.reward, val);
-          if (leftReard < 0) {
-            return this.$t("rewardNotEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(
-          ["address", "uint256"],
-          [
-            this.pool2,
-            "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
-          ]
-        );
-        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(
-          2,
-          8
-        );
-
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            console.log("hash", result);
-            this.$alert(
-              "TX ID: " + result,
-              "You succesfully claimed your rewards!",
-              {
-                confirmButtonText: this.$t("confirm"),
-                type: "success",
-              }
-            );
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-
-    neatStake3() {
-      document.getElementById("pool3").click();
-      const pool3 = this.pool3;
-      console.log(pool3);
-      this.pool3 = pool3;
-      this.$prompt(this.$t("Amount To Stake"), "", {
-        confirmButtonText: this.$t("CONFIRM"),
-        cancelButtonText: this.$t("CANCEL"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("mNum");
-          }
-          if (+val <= 0) {
-            return this.$t("gt0");
-          }
-          if (+val + this.limit * this.price >= this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(["address"], [this.pool3]);
-        let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: Utils.toHex(Utils.fromNEAT(value)),
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            this.$alert("TX ID: " + result, "Staking Was Succesful!", {
-              confirmButtonText: this.$t("CLOSE"),
-              type: "success",
-            });
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-    unStake3() {
-      document.getElementById("pool3").click();
-      const pool3 = this.pool3;
-      this.pool3 = pool3;
-      this.$prompt(this.$t("Amount To Unstake"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("cmNum");
-          }
-          if (+val <= 0) {
-            return this.$t("cgt");
-          }
-
-          if (this.limit * this.price > this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(
-          ["address", "uint256"],
-          [
-            this.pool3,
-            "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
-          ]
-        );
-        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(
-          2,
-          8
-        );
-
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            this.$alert("TX ID: " + result, "UnStake Was Succesful!", {
-              confirmButtonText: this.$t("CLOSE"),
-              type: "success",
-            });
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-    claimRwd3() {
-      document.getElementById("pool3").click();
-      const pool3 = this.pool3;
-      this.pool3 = pool3;
-      this.$prompt(this.$t("Amount To Claim"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("rewardNumber");
-          }
-
-          if (+val <= 0) {
-            return this.$t("rewardGt");
-          }
-
-          let leftReard = this.bn.minus(this.pool3.reward, val);
-          if (leftReard < 0) {
-            return this.$t("rewardNotEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(
-          ["address", "uint256"],
-          [
-            this.pool3,
-            "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
-          ]
-        );
-        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(
-          2,
-          8
-        );
-
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            this.$alert("TX: " + result, "Claim Was Succesful!", {
-              confirmButtonText: this.$t("CLOSE"),
-              type: "success",
-            });
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-    neatStake4() {
-      document.getElementById("pool4").click();
-      const pool4 = this.pool4;
-      console.log(pool4);
-      this.pool4 = pool4;
-      this.$prompt(this.$t("Amount To Stake"), "", {
-        confirmButtonText: this.$t("CONFIRM"),
-        cancelButtonText: this.$t("CANCEL"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("mNum");
-          }
-          if (+val <= 0) {
-            return this.$t("gt0");
-          }
-          if (+val + this.limit * this.price >= this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(["address"], [this.pool4]);
-        let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: Utils.toHex(Utils.fromNEAT(value)),
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            this.$alert("TX ID: " + result, "Staking Was Succesful!", {
-              confirmButtonText: this.$t("CLOSE"),
-              type: "success",
-            });
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-    unStake4() {
-      document.getElementById("pool4").click();
-      const pool4 = this.pool4;
-      this.pool4 = pool4;
-      this.$prompt(this.$t("Amount To Unstake"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("cmNum");
-          }
-          if (+val <= 0) {
-            return this.$t("cgt");
-          }
-
-          if (this.limit * this.price > this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(
-          ["address", "uint256"],
-          [
-            this.pool4,
-            "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
-          ]
-        );
-        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(
-          2,
-          8
-        );
-
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            console.log("hash", result);
-            this.$alert(
-              "TX ID: " + result,
-              "You succesfully unstaked your coins!",
-              {
-                confirmButtonText: this.$t("CLOSE"),
-                type: "success",
-              }
-            );
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-    claimRwd4() {
-      document.getElementById("pool4").click();
-      const pool4 = this.pool4;
-      this.pool4 = pool4;
-      this.$prompt(this.$t("Amount To Claim"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("rewardNumber");
-          }
-
-          if (+val <= 0) {
-            return this.$t("rewardGt");
-          }
-
-          let leftReard = this.bn.minus(this.pool4.reward, val);
-          if (leftReard < 0) {
-            return this.$t("rewardNotEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(
-          ["address", "uint256"],
-          [
-            this.pool3,
-            "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
-          ]
-        );
-        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(
-          2,
-          8
-        );
-
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            console.log("hash", result);
-            this.$alert(
-              "TX ID: " + result,
-              "You succesfully claimed your rewards!",
-              {
-                confirmButtonText: this.$t("confirm"),
-                type: "success",
-              }
-            );
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-    neatStake5() {
-      document.getElementById("pool5").click();
-      const pool5 = this.pool5;
-      console.log(pool5);
-      this.pool5 = pool5;
-      this.$prompt(this.$t("Amount To Stake"), "", {
-        confirmButtonText: this.$t("CONFIRM"),
-        cancelButtonText: this.$t("CANCEL"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("mNum");
-          }
-          if (+val <= 0) {
-            return this.$t("gt0");
-          }
-          if (+val + this.limit * this.price >= this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(["address"], [this.pool5]);
-        let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: Utils.toHex(Utils.fromNEAT(value)),
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            this.$alert("TX ID: " + result, "Staking Was Succesful!", {
-              confirmButtonText: this.$t("CLOSE"),
-              type: "success",
-            });
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-    unStake5() {
-      document.getElementById("pool5").click();
-      const pool5 = this.pool5;
-
-      this.pool5 = pool5;
-      this.$prompt(this.$t("Amount To Unstake"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("cmNum");
-          }
-          if (+val <= 0) {
-            return this.$t("cgt");
-          }
-
-          if (this.limit * this.price > this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(
-          ["address", "uint256"],
-          [
-            this.pool5,
-            "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
-          ]
-        );
-        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(
-          2,
-          8
-        );
-
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            console.log("hash", result);
-            this.$alert(
-              "TX ID: " + result,
-              "You succesfully unstaked your coins!",
-              {
-                confirmButtonText: this.$t("CLOSE"),
-                type: "success",
-              }
-            );
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-    claimRwd5() {
-      document.getElementById("pool5").click();
-      const pool5 = this.pool5;
-      this.pool5 = pool5;
-      this.$prompt(this.$t("Amount To Claim"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("rewardNumber");
-          }
-
-          if (+val <= 0) {
-            return this.$t("rewardGt");
-          }
-
-          let leftReard = this.bn.minus(this.pool5.reward, val);
-          if (leftReard < 0) {
-            return this.$t("rewardNotEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(
-          ["address", "uint256"],
-          [
-            this.pool5,
-            "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
-          ]
-        );
-        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(
-          2,
-          8
-        );
-
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            console.log("hash", result);
-            this.$alert(
-              "TX ID: " + result,
-              "You succesfully claimed your rewards!",
-              {
-                confirmButtonText: this.$t("confirm"),
-                type: "success",
-              }
-            );
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-
-      
-    },
-
-    neatStake6() {
-      document.getElementById("pool6").click();
-      const pool6 = this.pool6;
-      console.log(pool6);
-      this.pool6 = pool6;
-      this.$prompt(this.$t("Amount To Stake"), "", {
-        confirmButtonText: this.$t("CONFIRM"),
-        cancelButtonText: this.$t("CANCEL"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("mNum");
-          }
-          if (+val <= 0) {
-            return this.$t("gt0");
-          }
-          if (+val + this.limit * this.price >= this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(["address"], [this.pool6]);
-        let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: Utils.toHex(Utils.fromNEAT(value)),
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            this.$alert("TX ID: " + result, "Staking Was Succesful!", {
-              confirmButtonText: this.$t("CLOSE"),
-              type: "success",
-            });
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-    unStake6() {
-      document.getElementById("pool6").click();
-      const pool6 = this.pool6;
-      this.pool6 = pool6;
-      this.$prompt(this.$t("Amount To Unstake"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("cmNum");
-          }
-          if (+val <= 0) {
-            return this.$t("cgt");
-          }
-
-          if (this.limit * this.price > this.balance) {
-            return this.$t("notEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(
-          ["address", "uint256"],
-          [
-            this.pool6,
-            "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
-          ]
-        );
-        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(
-          2,
-          8
-        );
-
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            console.log("hash", result);
-            this.$alert(
-              "TX ID: " + result,
-              "You succesfully unstaked your coins!",
-              {
-                confirmButtonText: this.$t("CLOSE"),
-                type: "success",
-              }
-            );
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });
-    },
-
-    claimRwd6() {
-      document.getElementById("pool6").click();
-      const pool6 = this.pool6;
-      this.pool6 = pool6;
-      this.$prompt(this.$t("Amount To Claim"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("rewardNumber");
-          }
-
-          if (+val <= 0) {
-            return this.$t("rewardGt");
-          }
-
-          let leftReard = this.bn.minus(this.pool6.reward, val);
-          if (leftReard < 0) {
-            return this.$t("rewardNotEnough");
-          }
-        },
-      }).then(({ value }) => {
-        let data = Abi.encodeParams(
-          ["address", "uint256"],
-          [
-            this.pool6,
-            "0x" +
-              new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),
-          ]
-        );
-        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(
-          2,
-          8
-        );
-
-        const params = [
-          {
-            from: this.address,
-            to: "0x0000000000000000000000000000000000000505",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },
-        ];
-
-        ethereum
-          .request({
-            method: "eth_sendTransaction",
-            params,
-          })
-          .then((result) => {
-            console.log("hash", result);
-            this.$alert(
-              "TX ID: " + result,
-              "You succesfully claimed your rewards!",
-              {
-                confirmButtonText: this.$t("confirm"),
-                type: "success",
-              }
-            );
-          })
-          .catch((error) => {
-            console.log("tx error", error);
-          });
-      });      
-    },
-    // END
   },
 };
 </script>
@@ -1523,6 +611,9 @@ button {
   margin: 10px auto;
 }
 
+.el-message-box {
+  
+}
 .separator {
    margin: 1.2rem auto;
    max-width: 42rem;
@@ -1543,8 +634,8 @@ button {
 }
 
 .wallet-address {
-  font-family: Lato, Helvetica, sans-serif;
-  font-size: 1.8rem;
+  font-family: Anita, Helvetica, sans-serif;
+  font-size: 1.4rem;
   display: inline;
   background-color: #ffffff;
   background-size: 100%;
@@ -1554,7 +645,40 @@ button {
   -webkit-text-fill-color: transparent
 
 }
+.send-input1 {
+  
+    margin: 4rem auto 0 auto;
+    width: 75vw;
+    max-width: 740px;
+    font-family: "Anita";
+    font-size: 1.4rem;
+    background-color: #1f2331 ;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #000;
+    box-sizing: 1px;
+    text-align: center;
+    line-height: 1.8;
+    position: relative;
+    color: #fff;    
+  }
 
+  .send-input2 {
+    margin: 2rem auto;
+    width: 54vw;
+    max-width: 540px;
+    font-family: "Anita";
+    font-size: 1.4rem;
+    background-color: #1f2331 ;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #000;
+    box-sizing: 1px;
+    text-align: center;
+    line-height: 1.8;
+    position: relative;
+    color: #fff;    
+  }
 .wallet-description {
   padding: 2em;
   font-size: 1.6rem;
@@ -1591,6 +715,8 @@ button {
   margin: -4rem auto 1rem auto;
 
 }
+
+
 
 .walBalT {
   color: #ffffff;
@@ -1684,7 +810,7 @@ button {
 .rippleSelectM:hover {
   color: #fff;
   text-transform: uppercase;
-  background: #443490 radial-gradient(circle, transparent 1%, #00bfff 1%)
+  background: #6f5fff radial-gradient(circle, transparent 1%, #00bfff 1%)
     center/15000%;
 }
 
