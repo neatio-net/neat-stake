@@ -74,7 +74,7 @@
   color: #000000;
   font-size: 1.4rem;
   font-weight: 300;
-  background: linear-gradient(to right,#3d00b9,#8d80ff);
+  background-color:#6f5fff;
 }
 
 .cursor-pointer {
