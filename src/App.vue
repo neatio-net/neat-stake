@@ -304,11 +304,23 @@ display:inline-table;
   box-shadow: 0 0 40px #000;
 }
 
-.action-box {
+.action-box1 {
   width: 80em;
   min-height: 300px;
-  /* padding-top: 10px;  */
-  background: transparent;
+  background: linear-gradient(to top,#3d00b9,#6f5fff);
+  display:grid;
+  border-radius: 10px;
+  margin: 0 auto;
+  box-sizing: 1px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 40px #000;
+}
+
+.action-box2 {
+  width: 80em;
+  min-height: 300px;
+  background: linear-gradient(to top,#3d00b9,#6f5fff);
   display:grid;
   border-radius: 10px;
   margin: 0 auto;
@@ -326,18 +338,21 @@ display:inline-table;
 
 .el-button {
   border-radius: 10px !important;
-  font-weight: bold !important;
+  font-weight:normal !important;
   font-family: Pirulen, Helvetica !important;
 }
 .el-message-box {
   border-radius: 10px !important;
-  background-color: #000 !important;
-  font-family: Arial, Helvetica, sans-serif !important;
+  background: linear-gradient(to right,#6519c9,#2472fc) !important;
+  font-family: Anita, Helvetica, sans-serif !important;
+  border: none;
+  box-shadow: 0 0 40px #000;
 }
 
 .el-message-box__content {
-  color: #ffffff !important;
+  color: #000000 !important;
   font-size: 1rem !important;
+  font-weight:normal !important;
 }
 
 .el-message-box__message {
@@ -356,7 +371,7 @@ display:inline-table;
 .sk {
   color: rgba(102, 102, 102, 1);
   font-size: 16px;
-  font-weight: bold;
+  font-weight:normal;
   margin-top: 30px;
 }
 .skbtn {
@@ -421,6 +436,20 @@ display:inline-table;
   color: #ffffff !important;
   text-align: center !important;
   
+}
+
+.el-button--primary {
+  font-size: 1rem;
+  font-family: Anita, Helvetica, sans-serif;
+  width: 8rem;
+  font-weight: 200;
+  height: 2.4rem;
+  border-radius: 10px;
+  color: #46bbf4;
+  background: linear-gradient(to right, #24243e, #302b63, #24243e);
+  background-position: center;
+  margin: 0 10px;
+  border: none;
 }
 
 
