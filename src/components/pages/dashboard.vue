@@ -44,7 +44,7 @@
               <div class="wallet-balance" >
                 
                 <div class="walBalT">{{ (+balance).toFixed(2)}} 
-                  <!-- <span style="color:#9989eb;font-weight: lighter;font-size: 2rem;font-family: Anita, Helvetica;">NIO</span> -->
+      
                   <div class="test-nio">NIO</div>
                 </div>
                 
@@ -59,62 +59,103 @@
 
 
         <app-tabs class="wallet-tabs" :tabList="tabList">
-      <template v-slot:tabPanel-1>         
-        <div class="action-box1" >    
-              <div class="neatSending">
-                          <div class="hero__title" >
-                  <input
-                    type="text"
-                    class="send-input1"
-                    v-model="addressToSend"
-                    placeholder="Address"
-                  />
-                </div>
-                <div class="hero__title" >
-                  <input
-                    type="text"
-                    class="send-input2"
-                    v-model="amountToSend"
-                    placeholder="Amount"
-                  />
-                </div>
-                <button class="rippleSelectM" @click="neatSend" >SEND</button>
-              </div>
-            </div> </template>
-      <template v-slot:tabPanel-2> 
-        <div class="action-box2" >    
-              <div class="neatStaking">
-                <div class="balance-details" >                               
-                  <div class="boxess">
-                    <div class="wallet-balance-available2">
-                      <div class="wl"><img src="../../assets/claim.png" alt="stake" class="walimg"/></div>
-                      <div><span style="color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Coins In Stake</span></div>
-                      <span style="color: #496785; font-family: Helvetica">{{   (+staking).toFixed(6)}}</span>
+          <template v-slot:tabPanel-1>         
+            <div class="action-box1" >    
+                  <div class="neatSending">
+                              <div class="hero__title" >
+                      <input
+                        type="text"
+                        class="send-input1"
+                        v-model="addressToSend"
+                        placeholder="Destination Address"
+                      />
                     </div>
-                    <div class="wallet-balance-available2">
-                      <div class="wl"><div class="spinr"><orbit-spinner :animation-duration="1200" :size="55" color="#ffffff" alt="stake" /></div></div>
-                      <span style=" color: #496785;font-weight: lighter;font-size: 11px;font-family: Pirulen, Helvetica;">Unclaimed Rewards</span>
-                      <span style="color: #496785; font-family: Helvetica">{{(+rewards).toFixed(18)}}</span>
+                    <div class="hero__title" >
+                      <input
+                        type="text"
+                        class="send-input2"
+                        v-model="amountToSend"
+                        placeholder="Amount"
+                      />
                     </div>
+                    <button class="rippleSelectM" @click="neatSend" >SEND</button>
                   </div>
-                  <div class="deleg" v-show="rewards > 0">Rewards on:<span style="font-size: 14px;color: #ffffff;font-weight: normal;font-family: Pirulen, Helvetica;">{{ stakedTo }}</span></div>
-                  <div class="btnss" v-show="(staking != null && selectedPool == 'DANNY M POOL') || (staking != null && stakedTo == 'DANNY M POOL') || stakedTo == 'DANNY M POOL'"><div class="buttns">
-                  <button class="rippleStake" @click="neatStake1">stake</button><button class="rippleClaims" @click="claimRwd1">claim</button><button class="rippleClaims" @click="unStake1">unstake</button></div>
-                  </div><div class="btnss" v-show="(staking != null && selectedPool == 'NEATIO - ASIA -') || (staking != null && stakedTo == 'NEATIO - ASIA -') || stakedTo == 'NEATIO - ASIA -'">
-                  <div class="buttns"><button class="rippleStake" @click="neatStake2">stake</button><button class="rippleClaims" @click="claimRwd2">claim</button>
+                </div> 
+          </template>
+          <template v-slot:tabPanel-2> 
+            <div class="action-box2" >    
+                  <div class="neatStaking">
+                    <div class="balance-details" >  
+                          
+                      <div class="boxess-left">
+                        <div class="balance-staked1">
+                       
+                      
+                       <div class="wl-stake"><img src="../../assets/stake.png" alt="Stake" class="stake-image" /></div>
+                       <div class="earn-text">Earn up to 10% per year</div>    
+                       <div><button class="rippleStakeNew" @click="neatStake">STAKE</button></div> 
+                      
+                     </div>
+                        
 
-                  <button class="rippleClaims" @click="unStake2">unstake</button></div></div>
-                  <div class="btnss">
-                    <div class="buttns">
-                      <button class="rippleStake" @click="neatStake">stake</button>
-                      <button class="rippleClaims" @click="claimRwd">claim</button>
-                      <button class="rippleClaims" @click="unStake">unstake</button>
+                        <div class="boxess-right">
+
+                          <div class="balance-staked">
+                       
+                       <div class="wl"><div class="spinr"><pixel-spinner :animation-duration="2000" :size="70"  color="#000000"/></div></div>
+                       
+                       <div>Coins In Stake</div>
+                         <div>{{(+staking).toFixed(2)}}</div>     
+                         <div><button class="rippleUnStakeNew" @click="unStake">UNSTAKE</button></div>    
+                     </div>
+                     <div class="unclaimed-rewards">                         
+                      
+                       <div class="wl"><div class="spinr"><self-building-square-spinner  :animation-duration="6000"  :size="40"  color="#000000"/></div></div>
+                       <div>Unclaimed Rewards</div> 
+                        <div>{{(+rewards).toFixed(2)}}</div>
+                        <div><button class="rippleClaimNew" @click="claimRwd">CLAIM</button></div>
+                     </div>
+
+               
+               
+                              
+      
+                  
+                      </div>
+                      </div>
+
+                   
+                    
+                    
+
+                  
+                  </div>
+                  </div>
+                </div>
+           </template>
+           <template v-slot:tabPanel-3>         
+            <div class="action-box1" >    
+                  <div class="neatSending">
+                              <div class="hero__title" >
+                      <input
+                        type="text"
+                        class="send-input1"
+                        v-model="addressToSend"
+                        placeholder="Address"
+                      />
                     </div>
-                  </div> 
-              </div>
-              </div>
-            </div>
-      </template>
+                    <div class="hero__title" >
+                      <input
+                        type="text"
+                        class="send-input2"
+                        v-model="amountToSend"
+                        placeholder="Amount"
+                      />
+                    </div>
+                    <button class="rippleSelectM" @click="neatSend" >SEND</button>
+                  </div>
+                </div> 
+          </template>
           >
             </app-tabs>
 
@@ -135,9 +176,10 @@
 
 <script>
 import MetaMaskOnboarding from '@metamask/onboarding';
+import { PixelSpinner } from 'epic-spinners'
 import { OrbitSpinner } from "epic-spinners";
+import { SelfBuildingSquareSpinner  } from 'epic-spinners'
 import { LoopingRhombusesSpinner } from "epic-spinners";
-import VideoBackground from 'vue-responsive-video-background-player';
 import { Socket } from "vue-loading-spinner";
 import Access from "./modules/access";
 import EyeInput from "./modules/eyeInput";
@@ -190,8 +232,9 @@ export default {
     Access,
     EyeInput,
     OrbitSpinner,
+    PixelSpinner,
     LoopingRhombusesSpinner,
-    VideoBackground,
+    SelfBuildingSquareSpinner,
     Socket,
     AppTabs,
   },
@@ -612,7 +655,7 @@ button {
 }
 
 .el-message-box {
-  
+
 }
 .separator {
    margin: 1.2rem auto;
@@ -716,7 +759,39 @@ button {
 
 }
 
+.stake-image {
+  width: 6rem;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 
+}
+
+.sepr{
+  width: 2px;
+  background-color: #000000;
+}
+
+.staking-side{
+  color: #000000;
+ }
+
+.balance-staked{
+
+  color: #000000;
+ }
+ .balance-staked2{
+  display: flexbox;
+  vertical-align: middle;
+  padding-top: 3rem;
+  border-right: #000 3px solid;
+
+ }
+
+ .unclaimed-rewards{
+  color: #000000;
+  margin-top: 1.4rem;
+ }
 
 .walBalT {
   color: #ffffff;
@@ -803,7 +878,6 @@ button {
   color: #fff;
   background: linear-gradient(to right, #24243e, #302b63, #24243e);
   background-position: center;
-
   margin: 0 10px;
 }
 
@@ -814,24 +888,67 @@ button {
     center/15000%;
 }
 
-.rippleClaims {
-  font-size: 12px;
-  min-width: 68px;
-  height: 22px;
-  border-radius: 4px;
-  font-weight: bold;
-  border: 1px solid #ffffffa4;
-  background-color: transparent;
-  background-position: center;
-  transition: background 0.4s;
-  margin: 0 10px;
+
+.earn-text{
+  margin: 1rem;
+  font-size: 1.2rem;
+  color: #000000;
 }
 
-.rippleClaims:hover {
-  color: #000;
-  text-transform: uppercase;
+.rippleStakeNew {
+  font-size: 1.4rem;
+  font-family: Anita, Helvetica, sans-serif;
+  width: 20rem;
+  height: 3.2rem;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(to right, #24243e, #302b63, #24243e);
+  background-position: center;
+  margin: 1rem;
+}
 
-  background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%)
+.rippleStakeNew:hover {
+  color: #fff;
+  text-transform: uppercase;
+  background: #000000 radial-gradient(circle, transparent 1%, #00bfff 1%)
+    center/15000%;
+}
+
+.rippleUnStakeNew {
+  font-size: 1rem;
+  font-family: Anita, Helvetica, sans-serif;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(to right, #24243e, #302b63, #24243e);
+  background-position: center;
+  margin: 1rem;
+}
+
+.rippleUnStakeNew:hover {
+  color: #fff;
+  text-transform: uppercase;
+  background: #000000 radial-gradient(circle, transparent 1%, #00bfff 1%)
+    center/15000%;
+}
+
+.rippleClaimNew {
+  font-size: 1rem;
+  font-family: Anita, Helvetica, sans-serif;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(to right, #24243e, #302b63, #24243e);
+  background-position: center;
+  margin: 1rem;
+}
+
+.rippleClaimNew:hover {
+  color: #fff;
+  text-transform: uppercase;
+  background: #000000 radial-gradient(circle, transparent 1%, #00bfff 1%)
     center/15000%;
 }
 
@@ -863,12 +980,18 @@ button {
   font-family: Pirulen, Helvetica, sans-serif;
 }
 
-.boxess {
+.boxess-left {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  padding: 20px 0px;
-  
+  padding: 20px 0px;  
+}
+
+.boxess-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 20px 0px;  
 }
 
 .boxwb {
@@ -948,7 +1071,26 @@ button {
     background: #ffffff radial-gradient(circle, transparent 1%, red 1%)
       center/15000%;
   }
+  .rippleUnstake {
+    font-size: 12px;
+    min-width: 68px;
+    height: 22px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #ffffff;
+    border: 1px solid #ffffffa4;
+    background-color: transparent;
+    background-position: center;
+    transition: background 0.4s;
+    margin: 0 auto;
+  }
 
+  .rippleUnstake:hover {
+    color: #000;
+    text-transform: uppercase;
+    background: #ffffff radial-gradient(circle, transparent 1%, red 1%)
+      center/15000%;
+  }
 
 
   .rippleClaims {
