@@ -33,7 +33,7 @@
       <div class="wallet-terms">
         By using this application you agree to the
         <router-link to="/terms">
-          <button class="terms-of-use">Terms Of Use.</button>
+          <button class="terms-of-use">Terms Of Use</button>
         </router-link>.
       </div>
     </div>
@@ -149,7 +149,7 @@ button {
 }
 
 .wallet-terms {
-  color: #496785;
+  color: #46bbf4;
 }
 
 .vAddy1 {
@@ -264,21 +264,20 @@ button {
   background: #5340af;
 }
 
-.rippleStake {
+.terms-of-use {
   font-size: 12px;
-  min-width: 68px;
+  width: 6rem;
   height: 22px;
   border-radius: 4px;
   font-weight: bold;
   color: #ffffff;
-  border: 1px solid #ffffffa4;
   background-color: transparent;
   background-position: center;
   transition: background 0.4s;
-  margin: 0 10px;
+
 }
 
-.rippleStake:hover {
+.terms-of-use:hover {
   color: #000;
   text-transform: uppercase;
   background: #ffffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
