@@ -2,7 +2,7 @@
   <div class="dashboard">
 
 
-    <div v-show="address == ''">
+    <div v-show="address == null">
       <div class="boxe">
         <div class="wallet-description">
           Please make sure the URL is: <span style="color: #8d80ff">wallet.neatio.net</span>
@@ -21,14 +21,14 @@
             <img src="../../assets/unencrypted.png" alt="Private Key" class="lockimg" />
           </div>
           <div class="locked">Private Key</div>
-          <button class="rippleSelectM" @click="connectAccount2">IMPORT</button>
+          <button class="rippleSelectM" >IMPORT</button>
         </div>
         <div class="boxwb">
           <div class="lockked">
             <img src="../../assets/encrypted.png" alt="Keystore File" class="lockimg" />
           </div>
           <div class="locked">Keystore File</div>
-          <button class="rippleSelectM" @click="connectAccount3">SELECT</button>
+          <button class="rippleSelectM" >SELECT</button>
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@
 
 
 
-    <div class="balance-box">
+    <div class="balance-box" v-show="address != null">
 
       <div class="neatStaking">
         <div class="balance-details">
@@ -58,7 +58,7 @@
     </div>
 
 
-    <app-tabs class="wallet-tabs" :tabList="tabList">
+    <app-tabs class="wallet-tabs" :tabList="tabList" v-show="address != null">
       <template v-slot:tabPanel-1>
         <div class="action-box1">
           <div class="neatSending">
@@ -169,7 +169,7 @@ export default {
       step: 2,
       balance: "",
       fullbalance: "",
-      address: '',
+      address: null,
       privateKey: "",
       staking: null,
       rewards: null,
