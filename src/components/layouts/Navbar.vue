@@ -1,8 +1,7 @@
 <template>
   <div class="nav-container">
     <div class="nav-panel">
-
-      <div class="common-inline-block ic" >
+    
         <router-link
           to="/"
                   >
@@ -10,9 +9,8 @@
           src="../../assets/logo.png"
           alt="Neatio Wallet"
           class="nav-logo"
-        /></router-link
-        > 
-      </div>
+        /></router-link> 
+
    
 
     </div>
@@ -150,19 +148,19 @@ export default {
 
 .nav-logo {
   width: auto;
-  height: 4rem;
-  margin: 0 0.2rem;
+  height: 3.8rem;
+  margin: 0.2rem 0;
 }
-.nav-container {
-  box-shadow: 0px 4px 8px 0px rgba(230, 230, 230, 0.6);
-  background-color: #181616;
 
+
+.nav-container {
+  box-shadow: 0px 4px 8px 0px #000000;
+  background-color: #181616;
   margin: 0 auto;
 
   @media only screen and (max-width: 560px) {
   .nav-panel {
     max-width: 320px;
-
   }
 
 }
@@ -171,146 +169,17 @@ export default {
   .nav-panel {
     text-align: left;
     box-sizing: border-box;
-    width: 1200px;
+    width: 86em;
     margin: 0 auto;
+    height: 4.2rem;
     .logo-neatio {
-      width: 48px;
+      width: 4rem;
       height: auto;
     }
     .ii {
       vertical-align: middle;
     }
-    .ic {
-     
-      width: auto;
-      & a {
-        margin-right: 15px;
-        color: #46bbf4;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 3rem;
-
-        &:hover {
-          color: #1AA7EC;
-          transition: all .3s ease-in-out;
-        }
-        span {
-          vertical-align: middle;
-        }
-      }
-      .d-meun {
-        margin-right: 15px;
-        color: #666666;
-        font-weight: 500;
-        position: relative;
-        line-height: 22px;
-
-        .nav-icon {
-          display: inline-block;
-          font-weight: bold;
-          margin-left: 5px;
-          vertical-align: middle;
-          transition: all .3s;
-        }
-
-        &:hover{
-          .m-title {
-            color: #1AA7EC;
-          }
-          .nav-icon {
-            transform: rotate(180deg);
-          }
-          .menu-box {
-            height: auto;
-            padding: 10px 0;
-          }
-        }
-        .menu-box {
-          position: absolute;
-          top: 22px;
-          left: -20px;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          height: 0;
-          overflow: hidden;
-          /*width: 150px;*/
-          background: #ffffff;
-          box-shadow:0 0 8px 0 rgb(230,230,230);
-          z-index: 100;
-          transition: all .5s;
-          .menu-item {
-            height: 25px;
-            line-height: 25px;
-            padding: 5px 10px;
-            font-size: 21px;
-            & > a {
-              display: inline-block;
-              width: 100%;
-              min-width: 125px;
-            }
-            &:hover {
-              background-color: #f3f3f3;
-              & > a {
-                color: #1AA7EC;
-              }
-            }
-          }
-        }
-      }
-
-
-      .vg {
-        position: relative;
-        top: -2px;
-        display: inline-block;
-        height: 55px;
-        &:hover > .chain-dropdown {
-          display: block !important;
-        }
-        .chain-dropdown {
-          position: absolute;
-
-          top: 45px;
-          box-shadow: 0px 6px 10px 0px #ccc;
-          background-color: #000;
-          padding: 10px 15px;
-          left: -16px;
-          font-size: 18px;
-          display: none;
-          z-index: 1000;
-          .chain-dropdown-i {
-            cursor: pointer;
-          }
-          .chain-dropdown-i:not(:first-child) {
-            margin-top: 8px;
-          }
-          .chain-dropdown-i:hover {
-            color: #1AA7EC;
-          }
-        }
-        .triangle {
-          display: inline-block;
-          width: 0;
-          height: 0;
-          border-width: 7px 7px 0;
-          border-style: solid;
-          border-color: #999 transparent transparent;
-          margin-left: 8px;
-          vertical-align: middle;
-        }
-      }
-      .nav-active {
-        color: #1AA7EC;
-        font-family: "Anita", Helvetica, Arial;
-        font-size: 18px;
-
-
-      }
-      .triangle-active {
-        border-color: #1AA7EC transparent transparent !important;
-      }
-    }
+    router-link-exact-active router-link-active
     .help:hover {
       color: #1AA7EC;
       padding-bottom: 2px;
