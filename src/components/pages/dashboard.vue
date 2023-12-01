@@ -2,174 +2,142 @@
   <div class="dashboard">
 
 
-        <div v-show="address == ''">
-          <div class="boxe">
-              <div class="wallet-description">
-                Please make sure the URL is: <span style="color: #8d80ff">wallet.neatio.net</span>
-                  </div>
-            </div> 
-          <div class="boxd">
-            <div class="boxwb">
-                <div class="lockked">
-                  <img src="../../assets/metamask.png" alt="Metamask" class="lockimg" />
-                    </div>
-                <div class="locked">Metamask</div>        
-                <button class="rippleSelectM" @click="connectAccount" >OPEN</button>
-              </div>
-              <div class="boxwb">
-                <div class="lockked">
-                  <img src="../../assets/unencrypted.png" alt="Private Key" class="lockimg" />
-                    </div>
-                <div class="locked">Private Key</div>
-                <button class="rippleSelectM" @click="connectAccount" >IMPORT</button>
-              </div>
-              <div class="boxwb">
-                <div class="lockked">
-                  <img src="../../assets/encrypted.png" alt="Keystore File" class="lockimg" />
-                    </div>
-                <div class="locked">Keystore File</div>
-                <button class="rippleSelectM" @click="connectAccount" >SELECT</button>                
-              </div>
+    <div v-show="address == ''">
+      <div class="boxe">
+        <div class="wallet-description">
+          Please make sure the URL is: <span style="color: #8d80ff">wallet.neatio.net</span>
         </div>
-       </div>
-        
-      <!-- DASHBOARD OPEN-->
-
-    
-
-          <div class="balance-box" > 
-   
-          <div class="neatStaking">
-            <div class="balance-details" >
-              <div class="wallet-balance" >
-                
-                <div class="walBalT">{{ (+balance).toFixed(2)}} 
-      
-                  <div class="test-nio">NIO</div>
-                </div>
-                
-               <div class="separator"></div>
-                <div class="wallet-address"> {{ address }}</div>
-               
-              </div>        
-      
-          </div>
-          </div>
-        </div>
-
-
-        <app-tabs class="wallet-tabs" :tabList="tabList">
-          <template v-slot:tabPanel-1>         
-            <div class="action-box1" >    
-                  <div class="neatSending">
-                              <div class="hero__title" >
-                      <input
-                        type="text"
-                        class="send-input1"
-                        v-model="addressToSend"
-                        placeholder="Destination Address"
-                      />
-                    </div>
-                    <div class="hero__title" >
-                      <input
-                        type="text"
-                        class="send-input2"
-                        v-model="amountToSend"
-                        placeholder="Amount"
-                      />
-                    </div>
-                    <button class="rippleSelectM" @click="neatSend" >SEND</button>
-                  </div>
-                </div> 
-          </template>
-          <template v-slot:tabPanel-2> 
-            <div class="action-box2" >    
-                  <div class="neatStaking">
-                    <div class="balance-details" >  
-                          
-                      <div class="boxess-left">
-                        <div class="balance-staked1">
-                       
-                      
-                       <div class="wl-stake"><img src="../../assets/stake.png" alt="Stake" class="stake-image" /></div>
-                       <div class="earn-text">Earn up to 10% per year</div>    
-                       <div><button class="rippleStakeNew" @click="neatStake">STAKE</button></div> 
-                      
-                     </div>
-                        
-
-                        <div class="boxess-right">
-
-                          <div class="balance-staked">
-                       
-                       <div class="wl"><div class="spinr"><pixel-spinner :animation-duration="2000" :size="70"  color="#000000"/></div></div>
-                       
-                       <div>Coins In Stake</div>
-                         <div>{{(+staking).toFixed(2)}}</div>     
-                         <div><button class="rippleUnStakeNew" @click="unStake">UNSTAKE</button></div>    
-                     </div>
-                     <div class="unclaimed-rewards">                         
-                      
-                       <div class="wl"><div class="spinr"><self-building-square-spinner  :animation-duration="6000"  :size="40"  color="#000000"/></div></div>
-                       <div>Unclaimed Rewards</div> 
-                        <div>{{(+rewards).toFixed(2)}}</div>
-                        <div><button class="rippleClaimNew" @click="claimRwd">CLAIM</button></div>
-                     </div>
-
-               
-               
-                              
-      
-                  
-                      </div>
-                      </div>
-
-                   
-                    
-                    
-
-                  
-                  </div>
-                  </div>
-                </div>
-           </template>
-           <template v-slot:tabPanel-3>         
-            <div class="action-box1" >    
-                  <div class="neatSending">
-                              <div class="hero__title" >
-                      <input
-                        type="text"
-                        class="send-input1"
-                        v-model="addressToSend"
-                        placeholder="Address"
-                      />
-                    </div>
-                    <div class="hero__title" >
-                      <input
-                        type="text"
-                        class="send-input2"
-                        v-model="amountToSend"
-                        placeholder="Amount"
-                      />
-                    </div>
-                    <button class="rippleSelectM" @click="neatSend" >SEND</button>
-                  </div>
-                </div> 
-          </template>
-          >
-            </app-tabs>
-
-
-
-
-
-
-
-
-      <div v-if="step == 1">
-        <Access @unlock="unlock"></Access>
       </div>
-      <div v-if="step == 2" style="padding-bottom: 90px"></div>
+      <div class="boxd">
+        <div class="boxwb">
+          <div class="lockked">
+            <img src="../../assets/metamask.png" alt="Metamask" class="lockimg" />
+          </div>
+          <div class="locked">Metamask</div>
+          <button class="rippleSelectM" @click="connectAccount">OPEN</button>
+        </div>
+        <div class="boxwb">
+          <div class="lockked">
+            <img src="../../assets/unencrypted.png" alt="Private Key" class="lockimg" />
+          </div>
+          <div class="locked">Private Key</div>
+          <button class="rippleSelectM" @click="connectAccount2">IMPORT</button>
+        </div>
+        <div class="boxwb">
+          <div class="lockked">
+            <img src="../../assets/encrypted.png" alt="Keystore File" class="lockimg" />
+          </div>
+          <div class="locked">Keystore File</div>
+          <button class="rippleSelectM" @click="connectAccount3">SELECT</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD OPEN-->
+
+
+
+    <div class="balance-box">
+
+      <div class="neatStaking">
+        <div class="balance-details">
+          <div class="wallet-balance">
+
+            <div class="walBalT">{{ (+balance).toFixed(2) }}
+
+              <div class="test-nio">NIO</div>
+            </div>
+
+            <div class="separator"></div>
+            <div class="wallet-address"> {{ address }}</div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <app-tabs class="wallet-tabs" :tabList="tabList">
+      <template v-slot:tabPanel-1>
+        <div class="action-box1">
+          <div class="neatSending">
+            <div class="hero__title">
+              <input type="text" class="send-input1" v-model="addressToSend" placeholder="Destination Address" />
+            </div>
+            <div class="hero__title">
+              <input type="text" class="send-input2" v-model="amountToSend" placeholder="Amount" />
+            </div>
+            <button class="rippleSelectM" @click="neatSend">SEND</button>
+          </div>
+        </div>
+      </template>
+      <template v-slot:tabPanel-2>
+        <div class="action-box2">
+          <div class="neatStaking">
+            <div class="balance-details">
+
+              <div class="boxess-left">
+                <div class="balance-staked1">
+
+
+                  <div class="wl-stake"><img src="../../assets/stake.png" alt="Stake" class="stake-image" /></div>
+                  <div class="earn-text">Earn up to 10% per year</div>
+                  <div><button class="rippleStakeNew" @click="neatStake">STAKE</button></div>
+
+                </div>
+
+
+                <div class="boxess-right">
+
+                  <div class="balance-staked">
+
+                    <div class="wl">
+                      <div class="spinr"><pixel-spinner :animation-duration="2000" :size="70" color="#000000" /></div>
+                    </div>
+
+                    <div>Coins In Stake</div>
+                    <div>{{ (+staking).toFixed(2) }}</div>
+                    <div><button class="rippleUnStakeNew" @click="unStake">UNSTAKE</button></div>
+                  </div>
+                  <div class="unclaimed-rewards">
+
+                    <div class="wl">
+                      <div class="spinr"><self-building-square-spinner :animation-duration="6000" :size="40"
+                          color="#000000" /></div>
+                    </div>
+                    <div>Unclaimed Rewards</div>
+                    <div>{{ (+rewards).toFixed(2) }}</div>
+                    <div><button class="rippleClaimNew" @click="claimRwd">CLAIM</button></div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </template>
+      <template v-slot:tabPanel-3>
+        <div class="action-box1">
+          <div class="neatSending">
+            <div class="hero__title">
+              <input type="text" class="send-input1" v-model="addressToSend" placeholder="Address" />
+            </div>
+            <div class="hero__title">
+              <input type="text" class="send-input2" v-model="amountToSend" placeholder="Amount" />
+            </div>
+            <button class="rippleSelectM" @click="neatSend">SEND</button>
+          </div>
+        </div>
+      </template>
+      >
+    </app-tabs>
+
+    <div v-if="step == 1">
+      <Access @unlock="unlock"></Access>
+    </div>
+    <div v-if="step == 2" style="padding-bottom: 90px"></div>
 
   </div>
 </template>
@@ -178,7 +146,7 @@
 import MetaMaskOnboarding from '@metamask/onboarding';
 import { PixelSpinner } from 'epic-spinners'
 import { OrbitSpinner } from "epic-spinners";
-import { SelfBuildingSquareSpinner  } from 'epic-spinners'
+import { SelfBuildingSquareSpinner } from 'epic-spinners'
 import { LoopingRhombusesSpinner } from "epic-spinners";
 import { Socket } from "vue-loading-spinner";
 import Access from "./modules/access";
@@ -213,7 +181,7 @@ export default {
       addry: null,
       price: "",
       vComm: "15%",
-      pool1: null,   
+      pool1: null,
       height: null,
       totalStake: "",
       circulating: "",
@@ -240,7 +208,7 @@ export default {
   },
 
   async mounted() {
-    this.connectAccount();
+    // this.connectAccount();
     // this.getValidators();
     this.initialize();
     // this.getHeight();
@@ -302,48 +270,48 @@ export default {
       }
     },
 
-    async switchToNeatio () {
-          let chainIds = '0x3e9';
-          let rpc = 'https://rpc.neatio.net';
-          let browser = 'https://scan.neatio.net';
-          let chainName = 'Neatio Mainnet';
+    async switchToNeatio() {
+      let chainIds = '0x3e9';
+      let rpc = 'https://rpc.neatio.net';
+      let browser = 'https://scan.neatio.net';
+      let chainName = 'Neatio Mainnet';
 
+      try {
+        this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
+        if (this.currentChainId === chainIds) {
+          window.alert("Neatio Network has been added to Metamask.")
+        }
+
+        await ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: chainIds }]
+        })
+
+      } catch (e) {
+        if (e.code === 4902) {
           try {
-            this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
-            if (this.currentChainId === chainIds) {
-              window.alert("Neatio Network has been added to Metamask.")
-            }
-
             await ethereum.request({
-              method: 'wallet_switchEthereumChain',
-              params: [{ chainId: chainIds}]
+              method: 'wallet_addEthereumChain',
+              params: [{
+                chainId: chainIds,
+                chainName: chainName,
+                nativeCurrency: {
+                  name: "NIO",
+                  symbol: "NIO",
+                  decimals: 18
+                },
+                rpcUrls: [rpc],
+                blockExplorerUrls: [browser]
+              }]
             })
 
+            this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
           } catch (e) {
-            if (e.code === 4902) {
-              try {
-                await ethereum.request({
-                  method: 'wallet_addEthereumChain',
-                  params: [{
-                    chainId: chainIds,
-                    chainName: chainName,
-                    nativeCurrency: {
-                      name: "NIO",
-                      symbol: "NIO",
-                      decimals: 18
-                    },
-                    rpcUrls: [rpc],
-                    blockExplorerUrls: [browser]
-                  }]
-                })
-
-                this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
-              } catch (e) {
-                console.log('add network error', e)
-              }
-            }
+            console.log('add network error', e)
           }
-        },
+        }
+      }
+    },
 
     getBalance() {
       ethereum
@@ -381,7 +349,7 @@ export default {
 
           this.delegatedTo = response.data.result.rewardDetail;
 
-          
+
         })
         .catch((error) => {
           console.log("error", error);
@@ -455,9 +423,9 @@ export default {
         .then((response) => (this.array = response.data.result));
 
       const validators = this.array;
-     // console.log(validators);
+      // console.log(validators);
 
- 
+
 
 
 
@@ -510,8 +478,8 @@ export default {
         ];
 
         ethereum
-          .request({method: "eth_sendTransaction", params,  })
-          .then((result) => {this.$alert("TX ID: " + result, "Staking Was Succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", }); })
+          .request({ method: "eth_sendTransaction", params, })
+          .then((result) => { this.$alert("TX ID: " + result, "Staking Was Succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", }); })
           .catch((error) => { console.log("tx error", error); });
       });
     },
@@ -533,21 +501,22 @@ export default {
           }
         },
       }).then(({ value }) => {
-        let data = Abi.encodeParams(["address", "uint256"], [ this.pool1, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16), ] );
-        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(2,8);
+        let data = Abi.encodeParams(["address", "uint256"], [this.pool1, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
+        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(2, 8);
         const params = [{
-            from: this.address,
-            to: "0x0000000000000000000000000000000000001001",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },];
-        ethereum.request({method: "eth_sendTransaction", params, })
-          .then((result) => { console.log("hash", result);  this.$alert(
-              "TX ID: " + result,"You succesfully unstaked your coins!",  { confirmButtonText: this.$t("CLOSE"), type: "success",    }    );
+          from: this.address,
+          to: "0x0000000000000000000000000000000000001001",
+          gas: Utils.toHex(this.limit),
+          gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+          value: "0x0",
+          data: "0x" + functionSig + data.substring(2),
+        },];
+        ethereum.request({ method: "eth_sendTransaction", params, })
+          .then((result) => {
+            console.log("hash", result); this.$alert(
+              "TX ID: " + result, "You succesfully unstaked your coins!", { confirmButtonText: this.$t("CLOSE"), type: "success", });
           })
-          .catch((error) => {   console.log("tx error", error); });
+          .catch((error) => { console.log("tx error", error); });
       });
     },
 
@@ -571,23 +540,24 @@ export default {
         },
       }).then(({ value }) => {
         let data = Abi.encodeParams(["address", "uint256"], [this.pool1, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
-        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(2,8);
+        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(2, 8);
         const params = [{
-            from: this.address,
-            to: "0x0000000000000000000000000000000000001001",
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: "0x0",
-            data: "0x" + functionSig + data.substring(2),
-          },];
-        ethereum.request({ method: "eth_sendTransaction",params, }).then((result) => {console.log("hash", result);
-            this.$alert("TX ID: " + result, "You succesfully claimed your rewards!",{confirmButtonText: this.$t("confirm"), type: "success", });
-          }).catch((error) => {console.log("tx error", error);});
+          from: this.address,
+          to: "0x0000000000000000000000000000000000001001",
+          gas: Utils.toHex(this.limit),
+          gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+          value: "0x0",
+          data: "0x" + functionSig + data.substring(2),
+        },];
+        ethereum.request({ method: "eth_sendTransaction", params, }).then((result) => {
+          console.log("hash", result);
+          this.$alert("TX ID: " + result, "You succesfully claimed your rewards!", { confirmButtonText: this.$t("confirm"), type: "success", });
+        }).catch((error) => { console.log("tx error", error); });
       });
     },
 
     async neatSend() {
-     
+
       if (!Utils.isAddress(this.addressToSend)) {
         this.info("error", this.$t("errAddr"));
         return;
@@ -620,18 +590,19 @@ export default {
         return;
       }
 
-          const params = [{
-            from: this.address,
-            to: this.addressToSend,
-            gas: Utils.toHex(this.limit),
-            gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
-            value: Utils.toHex(Utils.fromNEAT(this.amountToSend)),
-          },];
-          ethereum.request({method: "eth_sendTransaction", params, })
-          .then((result) => { console.log("hash", result);  this.$alert(
-          "Coins were sent!",  { confirmButtonText: this.$t("CLOSE"), type: "success",    }    );
-          })
-          .catch((error) => {   console.log("tx error", error); });
+      const params = [{
+        from: this.address,
+        to: this.addressToSend,
+        gas: Utils.toHex(this.limit),
+        gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
+        value: Utils.toHex(Utils.fromNEAT(this.amountToSend)),
+      },];
+      ethereum.request({ method: "eth_sendTransaction", params, })
+        .then((result) => {
+          console.log("hash", result); this.$alert(
+            "Coins were sent!", { confirmButtonText: this.$t("CLOSE"), type: "success", });
+        })
+        .catch((error) => { console.log("tx error", error); });
 
     },
 
@@ -654,12 +625,11 @@ button {
   margin: 10px auto;
 }
 
-.el-message-box {
+.el-message-box {}
 
-}
 .separator {
-   margin: 1.2rem auto;
-   max-width: 42rem;
+  margin: 1.2rem auto;
+  max-width: 42rem;
   border-bottom: 3px solid #000;
 }
 
@@ -671,7 +641,7 @@ button {
   background-color: #ffffff;
   background-size: 100%;
   background-repeat: repeat;
-  background-image: linear-gradient(45deg,#a044ff,#46bbf4,#2472fc);
+  background-image: linear-gradient(45deg, #a044ff, #46bbf4, #2472fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -683,45 +653,46 @@ button {
   background-color: #ffffff;
   background-size: 100%;
   background-repeat: repeat;
-  background-image: linear-gradient(to right,#a044ff,#46bbf4,#2472fc);
+  background-image: linear-gradient(to right, #a044ff, #46bbf4, #2472fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent
-
 }
-.send-input1 {
-  
-    margin: 4rem auto 0 auto;
-    width: 75vw;
-    max-width: 740px;
-    font-family: "Anita";
-    font-size: 1.4rem;
-    background-color: #1f2331 ;
-    border-style: solid;
-    border-radius: 10px;
-    border-color: #000;
-    box-sizing: 1px;
-    text-align: center;
-    line-height: 1.8;
-    position: relative;
-    color: #fff;    
-  }
 
-  .send-input2 {
-    margin: 2rem auto;
-    width: 54vw;
-    max-width: 540px;
-    font-family: "Anita";
-    font-size: 1.4rem;
-    background-color: #1f2331 ;
-    border-style: solid;
-    border-radius: 10px;
-    border-color: #000;
-    box-sizing: 1px;
-    text-align: center;
-    line-height: 1.8;
-    position: relative;
-    color: #fff;    
-  }
+.send-input1 {
+
+  margin: 4rem auto 0 auto;
+  width: 75vw;
+  max-width: 740px;
+  font-family: "Anita";
+  font-size: 1.4rem;
+  background-color: #1f2331;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #000;
+  box-sizing: 1px;
+  text-align: center;
+  line-height: 1.8;
+  position: relative;
+  color: #fff;
+}
+
+.send-input2 {
+  margin: 2rem auto;
+  width: 54vw;
+  max-width: 540px;
+  font-family: "Anita";
+  font-size: 1.4rem;
+  background-color: #1f2331;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #000;
+  box-sizing: 1px;
+  text-align: center;
+  line-height: 1.8;
+  position: relative;
+  color: #fff;
+}
+
 .wallet-description {
   padding: 2em;
   font-size: 1.6rem;
@@ -750,6 +721,7 @@ button {
   align-items: center;
   justify-content: center;
 }
+
 .lockimg {
   width: 6rem;
   height: auto;
@@ -767,36 +739,37 @@ button {
 
 }
 
-.sepr{
+.sepr {
   width: 2px;
   background-color: #000000;
 }
 
-.staking-side{
+.staking-side {
   color: #000000;
- }
+}
 
-.balance-staked{
+.balance-staked {
 
   color: #000000;
- }
- .balance-staked2{
+}
+
+.balance-staked2 {
   display: flexbox;
   vertical-align: middle;
   padding-top: 3rem;
   border-right: #000 3px solid;
 
- }
+}
 
- .unclaimed-rewards{
+.unclaimed-rewards {
   color: #000000;
   margin-top: 1.4rem;
- }
+}
 
 .walBalT {
   color: #ffffff;
   font-family: Anita, Helvetica, sans-serif;
-   padding: 0.6rem;
+  padding: 0.6rem;
   font-size: 3rem;
   font-weight: 400;
 }
@@ -805,6 +778,7 @@ button {
   text-align: left;
   margin: 10px;
 }
+
 .walimgs {
   width: 28px;
   height: auto;
@@ -821,7 +795,7 @@ button {
   display: inline-block;
 }
 
-.wallet-tabs{
+.wallet-tabs {
   max-width: 80em;
   margin: 0 auto;
   font-family: Anita, Helvetica, sans-serif;
@@ -831,11 +805,13 @@ button {
   text-align: center;
   margin-top: 10px;
 }
+
 .dashboard {
   font-weight: bold;
   color: #ffffff;
   padding-top: 10px;
 }
+
 .pools {
   margin: 10px auto;
 }
@@ -865,8 +841,7 @@ button {
 .rippleStake:hover {
   color: #000;
   text-transform: uppercase;
-  background: #ffffff radial-gradient(circle, transparent 1%, #00bfff 1%)
-    center/15000%;
+  background: #ffffff radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
 }
 
 .rippleSelectM {
@@ -884,12 +859,11 @@ button {
 .rippleSelectM:hover {
   color: #fff;
   text-transform: uppercase;
-  background: #6f5fff radial-gradient(circle, transparent 1%, #00bfff 1%)
-    center/15000%;
+  background: #6f5fff radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
 }
 
 
-.earn-text{
+.earn-text {
   margin: 1rem;
   font-size: 1.2rem;
   color: #000000;
@@ -910,8 +884,7 @@ button {
 .rippleStakeNew:hover {
   color: #fff;
   text-transform: uppercase;
-  background: #000000 radial-gradient(circle, transparent 1%, #00bfff 1%)
-    center/15000%;
+  background: #000000 radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
 }
 
 .rippleUnStakeNew {
@@ -929,8 +902,7 @@ button {
 .rippleUnStakeNew:hover {
   color: #fff;
   text-transform: uppercase;
-  background: #000000 radial-gradient(circle, transparent 1%, #00bfff 1%)
-    center/15000%;
+  background: #000000 radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
 }
 
 .rippleClaimNew {
@@ -948,8 +920,7 @@ button {
 .rippleClaimNew:hover {
   color: #fff;
   text-transform: uppercase;
-  background: #000000 radial-gradient(circle, transparent 1%, #00bfff 1%)
-    center/15000%;
+  background: #000000 radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
 }
 
 .deleg {
@@ -984,29 +955,29 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  padding: 20px 0px;  
+  padding: 20px 0px;
 }
 
 .boxess-right {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  padding: 20px 0px;  
+  padding: 20px 0px;
 }
 
 .boxwb {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction:column;
-    vertical-align: center;
-    width: 20em;
-    height: 30rem;
-    border-radius: 10px;
-    margin: auto;
-    background: linear-gradient(to bottom,#11001e,#786afb);
-    /* filter: brightness(70%); */
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  vertical-align: center;
+  width: 20em;
+  height: 30rem;
+  border-radius: 10px;
+  margin: auto;
+  background: linear-gradient(to bottom, #11001e, #786afb);
+  /* filter: brightness(70%); */
+}
 
 @media only screen and (max-width: 560px) {
   .boxwb {
@@ -1032,24 +1003,24 @@ button {
   }
 
   .ripp {
-  font-size: 1.2rem;
-  font-family: Anita, Helvetica, sans-serif;
-  width: 12rem;
-  height: 4rem;
-  border-radius: 10px;
-  font-weight: bold;
-  color: #000;
-  background: linear-gradient(to right,#6519c9,#2472fc);
-  background-position: center;
-  transition: background 0.4s;
-  margin: 40px;
-}
+    font-size: 1.2rem;
+    font-family: Anita, Helvetica, sans-serif;
+    width: 12rem;
+    height: 4rem;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #000;
+    background: linear-gradient(to right, #6519c9, #2472fc);
+    background-position: center;
+    transition: background 0.4s;
+    margin: 40px;
+  }
 
-.ripp:hover {
-  color: #000000;
-  text-transform: uppercase;
-  background: #2472fc;
-}
+  .ripp:hover {
+    color: #000000;
+    text-transform: uppercase;
+    background: #2472fc;
+  }
 
   .rippleStake {
     font-size: 12px;
@@ -1068,9 +1039,9 @@ button {
   .rippleStake:hover {
     color: #000;
     text-transform: uppercase;
-    background: #ffffff radial-gradient(circle, transparent 1%, red 1%)
-      center/15000%;
+    background: #ffffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
   }
+
   .rippleUnstake {
     font-size: 12px;
     min-width: 68px;
@@ -1088,8 +1059,7 @@ button {
   .rippleUnstake:hover {
     color: #000;
     text-transform: uppercase;
-    background: #ffffff radial-gradient(circle, transparent 1%, red 1%)
-      center/15000%;
+    background: #ffffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
   }
 
 
@@ -1110,8 +1080,7 @@ button {
     color: #000;
     text-transform: uppercase;
 
-    background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%)
-      center/15000%;
+    background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%) center/15000%;
   }
 
   #myGrid {
