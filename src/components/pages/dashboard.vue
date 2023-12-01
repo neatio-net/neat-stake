@@ -14,7 +14,9 @@
             <img src="../../assets/metamask.png" alt="Metamask" class="lockimg" />
           </div>
           <div class="locked">Metamask</div>
-          <button class="rippleSelectM" @click="connectAccount">OPEN</button>
+          
+          <button class="rippleSelectM" @click="connectAccount">UNLOCK</button>
+ 
         </div>
         <div class="boxwb">
           <div class="lockked">
