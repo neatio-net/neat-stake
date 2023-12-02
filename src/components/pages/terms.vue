@@ -1,9 +1,9 @@
 <template>
     <div class="dashboard">
         <div class="terms-main">
-            <div></div>
-        `TERMS AND CONDITIONS`, 
-          `These Terms and Conditions constitute a legally binding agreement made between you,
+            <div class="terms-h1">Terms & Conditions</div>
+            <div class="terms-h2">
+          These Terms and Conditions constitute a legally binding agreement made between you,
           whether personally or on behalf of an entity (“you”) and, Neatio
           and/or NIO (“we,” “us” or “our”), concerning your
           access to and use of the www.neatio.net website
@@ -51,11 +51,12 @@
           representations concerning the accuracy, likely results, or reliability of the
           use of the materials on its websites or otherwise relating to such materials or
           on any websites linked to this website.
-          `,
+        </div>
 
-          `RISKS OF USE`,
- 
-          `The risk associated with
+
+          <div class="terms-h1">Risks of use</div>
+          <div class="terms-h2">
+            The risk associated with
           the Ethernet core agreement since Neatio (NIO) is based on the Ethernet
           protocol development, any failure, unpredictable functional problems, or
           attacks that occur in any Ethernet core protocol can cause Neatio (NIO) or our
@@ -84,10 +85,13 @@
           and/or application failure, meaning that our websites and/or platforms
           may break down due to various reasons, and therefore may not be able to provide
           the normal, expected, services.
-          `,
-          `DISCLAIMER`, 
- 
-          `Our website is used only for the purpose
+    
+          </div>
+          
+   
+          <div class="terms-h1">Disclaimer</div>
+          <div class="terms-h2">
+          Our website is used only for the purpose
           of conveying information and does not constitute an opinion on the trading of
           Neatio (NIO) or any other cryptocurrency/cryptoasset. Any such proposal shall be carried out under a
           trustworthy term and with the permission of the applicable securities law and
@@ -107,9 +111,9 @@
           any direct or indirect damages resulting from any participation in our project,
           including this website and any software and/or materials provided on our
           websites and social media channels.
-          `,
-
-          `Last updated: December 02, 2023`
+          </div>
+          <div class="terms-h1">Last updated: December 02, 2023</div>
+          
     </div>
     </div>
 
@@ -121,4 +125,18 @@
  margin: 0 auto;
  padding-top: 4rem;
 } 
+
+.terms-h1{
+    text-align: left;
+    font-family: Anita, Helvetica, sans-serif;
+    font-size: medium;
+
+    margin: 1rem 0;
+}
+
+.terms-h2{
+    text-align: left;
+    font-family: Anita, Helvetica, sans-serif;
+    font-size:small;
+}
 </style>

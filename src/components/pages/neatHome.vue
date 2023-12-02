@@ -83,7 +83,7 @@ export default {
 button {
   border: none;
   min-width: 36px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Anita, Helvetica, sans-serif;
   text-transform: uppercase;
   cursor: pointer;
   color: #ffffff;
@@ -102,10 +102,6 @@ button {
   font-family: Anita, Helvetica, sans-serif;
 }
 
-.buttns {
-  margin: 10px 0 20px 0;
-  display: inline-block;
-}
 
 .locked {
   text-align: center;
@@ -140,92 +136,15 @@ button {
   transform: translate(-50%, -50%);
 }
 
-.valueD {
-  font-family: Helvetica, sans-serif;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: lighter;
-  margin-bottom: 5px;
-}
-
 .wallet-terms {
-  color: #46bbf4;
+  color: rgb(141, 128, 255);
+  font-family: Anita, Helvetica, sans-serif;
+  font-weight: normal;
 }
 
-.vAddy1 {
-  font-size: 12px;
-  font-weight: 100;
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #ffffff;
-  text-align: center;
-  display: inline-block;
-  min-width: 140px;
-}
 
-.stian {
-  font-size: 15px;
-  font-weight: 100;
-  font-family: Anita, Arial, Helvetica, sans-serif !important;
-  color: #ffffff;
-  text-align: center;
-  display: inline-block;
-  min-width: 140px;
-}
 
-.vAddy2 {
-  font-size: 12px;
-  font-weight: 100;
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #ffffff;
-  text-align: center;
-  display: inline-block;
-  min-width: 140px;
-  margin-bottom: 24px;
-}
 
-.vAddy11 {
-  font-size: 12px;
-  font-weight: 100;
-  padding-top: 10px;
-  font-family: Pirulen, Arial, Helvetica, sans-serif;
-  color: #ffffff;
-  text-align: center;
-  display: inline-block;
-  min-width: 140px;
-}
-
-.walBalT {
-  color: #ffffff;
-  margin: 10px;
-  font-size: 28px;
-  font-weight: 400;
-}
-
-.neatStaking {
-  text-align: left;
-  margin: 10px;
-}
-
-.walimgs {
-  width: 28px;
-  height: auto;
-}
-
-.walimg {
-  width: 64px;
-  height: auto;
-  margin: 0;
-}
-
-.spinr {
-  margin: 0 auto;
-  display: inline-block;
-}
-
-.balance-details {
-  text-align: center;
-  margin-top: 10px;
-}
 
 .dashboard {
   font-weight: bold;
@@ -265,11 +184,12 @@ button {
 }
 
 .terms-of-use {
-  font-size: 12px;
-  width: 6rem;
+  font-size: 14px;
+  width: 8rem;
   height: 22px;
   border-radius: 4px;
-  font-weight: bold;
+  margin-left: -10px;
+  text-transform: lowercase;
   color: #ffffff;
   background-color: transparent;
   background-position: center;
@@ -278,8 +198,7 @@ button {
 }
 
 .terms-of-use:hover {
-  color: #000;
-  text-transform: uppercase;
+  color: #000;  
   background: #ffffff radial-gradient(circle, transparent 1%, red 1%) center/15000%;
 }
 

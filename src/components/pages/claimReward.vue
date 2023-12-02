@@ -261,7 +261,7 @@ export default {
 button {
 	border: none;
    min-width: 40px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Anita, Helvetica, sans-serif;
 	text-transform: uppercase;
 	cursor: pointer;
 	color: #00BFFF;

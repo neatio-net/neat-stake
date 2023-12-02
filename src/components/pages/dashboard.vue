@@ -616,7 +616,7 @@ export default {
 button {
   border: none;
   width: 36px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Anita, Helvetica, sans-serif;
   text-transform: uppercase;
   cursor: pointer;
   color: #ffffff;
@@ -704,10 +704,6 @@ button {
 }
 
 
-.buttns {
-  margin: 10px 0 20px 0;
-  display: inline-block;
-}
 
 .locked {
   text-align: center;
@@ -741,27 +737,14 @@ button {
 
 }
 
-.sepr {
-  width: 2px;
-  background-color: #000000;
-}
 
-.staking-side {
-  color: #000000;
-}
 
 .balance-staked {
 
   color: #000000;
 }
 
-.balance-staked2 {
-  display: flexbox;
-  vertical-align: middle;
-  padding-top: 3rem;
-  border-right: #000 3px solid;
 
-}
 
 .unclaimed-rewards {
   color: #000000;
@@ -781,16 +764,6 @@ button {
   margin: 10px;
 }
 
-.walimgs {
-  width: 28px;
-  height: auto;
-}
-
-.walimg {
-  width: 64px;
-  height: auto;
-  margin: 0;
-}
 
 .spinr {
   margin: 0 auto;
@@ -818,33 +791,9 @@ button {
   margin: 10px auto;
 }
 
-.btnss {
-  margin-bottom: -10px;
-}
 
-.btns4 {
-  margin-bottom: -20px;
-}
 
-.rippleStake {
-  font-size: 12px;
-  min-width: 68px;
-  height: 22px;
-  border-radius: 4px;
-  font-weight: bold;
-  color: #ffffff;
-  border: 1px solid #ffffffa4;
-  background-color: transparent;
-  background-position: center;
-  transition: background 0.4s;
-  margin: 0 10px;
-}
 
-.rippleStake:hover {
-  color: #000;
-  text-transform: uppercase;
-  background: #ffffff radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
-}
 
 .rippleSelectM {
   font-size: 1.4rem;
@@ -925,33 +874,8 @@ button {
   background: #000000 radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
 }
 
-.deleg {
-  text-align: center;
-  margin: 10px 0px;
-  font-size: 13px;
-  font-weight: 100;
-  color: #496785;
-  font-family: Pirulen, Helvetica, sans-serif;
-}
 
-.noSel {
-  text-align: center;
 
-  margin: 10px 0px;
-  font-size: 16px;
-  font-weight: 100;
-  color: #496785;
-  font-family: Pirulen, Helvetica, sans-serif;
-}
-
-.addry-w {
-  text-align: center;
-
-  font-size: 16px;
-  font-weight: 100;
-  color: #496785;
-  font-family: Pirulen, Helvetica, sans-serif;
-}
 
 .boxess-left {
   display: grid;
