@@ -1,7 +1,5 @@
 <template>
   <div class="dashboard">
-
-
     <div v-show="address == null">
       <div class="boxe">
         <div class="wallet-description">
@@ -18,7 +16,7 @@
           <button class="rippleSelectM" @click="connectAccount">UNLOCK</button>
  
         </div>
-        <div class="boxwb">
+        <div class="boxwb" id="card2">
           <div class="lockked">
             <img src="../../assets/unencrypted.png" alt="Private Key" class="lockimg" />
           </div>
@@ -31,45 +29,42 @@
             <img src="../../assets/encrypted.png" alt="Keystore File" class="lockimg" />
           </div>
           <div class="locked">Keystore File</div>
-          <button class="rippleSelectM" @click="importKeyStore">SELECT</button>
+          <button class="rippleSelectM" @click="importKeyStore">IMPORT</button>
         </div>
             <div>
               <div style="display:none;" class="boxwbk" id="pk">
                   <input type="password" class="key-input" v-model="keyInput" placeholder=" Enter your Private Key in here"/>     
-                  <button class="openWallet">ACCESS</button>         
-                </div>              
-
-            </div>
-       
-            
-      </div>
-          
-      </div>
-
+                  <button class="openWallet" @click="openWalletPK">OPEN</button>         
+                </div> 
+            </div> 
+            <div>
+              <div style="display:none;" class="boxwbk" id="ks">
+                <button class="rippleSelectKS" @click="selectKeyStore" v-show="txtName == ''">SELECT KS</button>
+               <input @change="onFileChange" style="display:none" id="f" ref="f" type="file" class="choose-file"/>
+               <div class="loaded-ks" v-show="txtName !== '' && address == null">
+                    KeyStore File Loaded
+                  </div>
+                <input type="password" class="key-input" @keyup.enter="decryptWallet" v-model="passwd" placeholder="Wallet Password"/>     
+                  <button class="openWallet" @click="decryptWallet">OPEN</button>         
+                </div> 
+            </div>                       
+      </div>         
+      </div>    
+      
     <!-- DASHBOARD OPEN-->
-
-
-
     <div class="balance-box" v-show="address != null">
-
       <div class="neatStaking">
         <div class="balance-details">
           <div class="wallet-balance">
-
             <div class="walBalT">{{ (+balance).toFixed(2) }}
-
               <div class="test-nio">NIO</div>
             </div>
-
             <div class="separator"></div>
             <div class="wallet-address"> {{ address }}</div>
-
           </div>
-
         </div>
       </div>
     </div>
-
 
     <app-tabs class="wallet-tabs" :tabList="tabList" v-show="address != null">
       <template v-slot:tabPanel-1>
@@ -81,7 +76,8 @@
             <div class="hero__title">
               <input type="text" class="send-input2" v-model="amountToSend" placeholder="Amount" />
             </div>
-            <button class="rippleSelectM" @click="neatSend">SEND</button>
+            <button class="rippleSelectM" @click="neatSendMM" v-show="privateKey == null">SEND MM</button>
+            <button class="rippleSelectM" @click="neatSendPK" v-show="privateKey != null">SEND PK</button>
           </div>
         </div>
       </template>
@@ -89,49 +85,37 @@
         <div class="action-box2">
           <div class="neatStaking">
             <div class="balance-details">
-
               <div class="boxess-left">
                 <div class="balance-staked1">
-
-
                   <div class="wl-stake"><img src="../../assets/stake.png" alt="Stake" class="stake-image" /></div>
                   <div class="earn-text">Earn up to 10% per year</div>
-                  <div><button class="rippleStakeNew" @click="neatStake">STAKE</button></div>
-
+                  <div><button class="rippleStakeNew" @click="neatStakeMM">STAKE MM</button></div>
                 </div>
-
-
                 <div class="boxess-right">
-
                   <div class="balance-staked">
-
                     <div class="wl">
                       <div class="spinr"><pixel-spinner :animation-duration="2000" :size="70" color="#000000" /></div>
                     </div>
-
                     <div>Coins In Stake</div>
                     <div>{{ (+staking).toFixed(2) }}</div>
-                    <div><button class="rippleUnStakeNew" @click="unStake">UNSTAKE</button></div>
+                    <div><button class="rippleUnStakeNew" @click="unStakeMM">UNSTAKE MM</button></div>
                   </div>
                   <div class="unclaimed-rewards">
-
                     <div class="wl">
                       <div class="spinr"><self-building-square-spinner :animation-duration="6000" :size="40"
                           color="#000000" /></div>
                     </div>
                     <div>Unclaimed Rewards</div>
                     <div>{{ (+rewards).toFixed(2) }}</div>
-                    <div><button class="rippleClaimNew" @click="claimRwd">CLAIM</button></div>
+                    <div><button class="rippleClaimNew" @click="claimRwdMM">CLAIM MM</button></div>
                   </div>
-
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </template>
-      <template v-slot:tabPanel-3>
+      <!-- <template v-slot:tabPanel-3>
         <div class="action-box1">
           <div class="neatSending">
             <div class="hero__title">
@@ -140,18 +124,16 @@
             <div class="hero__title">
               <input type="text" class="send-input2" v-model="amountToSend" placeholder="Amount" />
             </div>
-            <button class="rippleSelectM" @click="neatSend">SEND</button>
+            <button class="rippleSelectM" @click="neatSendMM">SEND MM</button>
           </div>
         </div>
-      </template>
+      </template> -->
       >
     </app-tabs>
-
     <div v-if="step == 1">
       <Access @unlock="unlock"></Access>
     </div>
     <div v-if="step == 2" style="padding-bottom: 90px"></div>
-
   </div>
 </template>
 
@@ -168,6 +150,10 @@ import BigNumber from "bignumber.js";
 import axios from "axios";
 import AppTabs from "./modules/appTabs";
 
+const Account = require("neatioapi").account;
+const KeyStore = require("neatioapi").keystore;
+const Transaction = require("neatioapi").transaction;
+const RPC = require("neatioapi").rpc;
 const Utils = require("neatioapi").utils;
 const Nat = require("neatioapi").nat;
 const Abi = require("neatioapi").abi;
@@ -178,14 +164,14 @@ const web3 = new Web3("https://rpc.neatio.net");
 
 export default {
   data() {
-    return {
-      
+    return {      
       step: 2,
       keyInput: null,
       balance: "",
       fullbalance: "",
       address: null,
-      privateKey: "",
+      wallet: null,
+      privateKey: null,
       staking: null,
       rewards: null,
       rewardBalance: null,
@@ -194,6 +180,8 @@ export default {
       amount: "",
       limit: "25000",
       addry: null,
+      keyStore: null,
+      passwd: null,
       price: "",
       vComm: "15%",
       pool1: null,
@@ -201,6 +189,7 @@ export default {
       totalStake: "",
       circulating: "",
       circcc: "",
+      txtName: '',
       totalCoins: "",
       stakingAPY: "",
       stakedTo: null,
@@ -258,10 +247,90 @@ export default {
       document.getElementById("card1").style.display = "none";
   
     },
+    openWalletPK() {
+      if (this.keyInput.length != 64) {
+        const keyError = "Invalid private key!";
+        this.keyError = keyError;
+        console.log(keyError);
+        return;
+      } else {
+        const privateKey = "0x" + this.keyInput;
+        const wallet = Account.fromPrivate(privateKey);
+        this.address = wallet.address;
+        this.addry = `${this.address.substr(0, 6)}...${this.address.slice(-4)}`;
+        this.privateKey = wallet.privateKey;
+        const address = this.address;
+
+        const DATA = {
+          jsonrpc: "2.0",
+          method: "neat_getBalance",
+          params: [`${address}`, "latest"],
+          id: 1,
+        };        
+          axios
+            .post(URL, DATA, { "Content-type": "application/json" })
+            .then(
+              (response) =>
+                (this.balance = Utils.toNEAT(Nat.toString(response.data.result)))
+            );
+      }
+    },
+      
+    
     importKeyStore() {
-      document.getElementById("ks").style.display = "block";
+      document.getElementById("ks").style.display = "block";     
+      document.getElementById("card1").style.display = "none";
+      document.getElementById("card2").style.display = "none";
  
     },
+
+    selectKeyStore() {
+      document.getElementById("f").click();
+    },
+
+    onFileChange(f) {
+      const vm = this;
+      const file = document.getElementById("f").files[0];
+      const txtName = file.name;
+      this.txtName = txtName;
+      const reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = function () {
+        vm.keyStore = this.result;
+      };
+    },
+
+    decryptWallet() {
+      const account = KeyStore.fromV3Keystore(
+        JSON.parse(this.keyStore),
+        this.passwd
+      );
+      const privKey = account.privateKey;
+      const wallet = Account.fromPrivate(privKey);
+      this.address = wallet.address;
+      this.privateKey = wallet.privateKey;
+      const address = this.address;
+      this.address = address;
+      console.log(address);
+
+      const DATA = {
+        jsonrpc: "2.0",
+        method: "neat_getBalance",
+        params: [`${address}`, "latest"],
+        id: 1,
+      };
+
+      setInterval(() => {
+          axios
+            .post(URL, DATA, { "Content-type": "application/json" })
+            .then(
+              (response) =>
+                (this.balance = Utils.toNEAT(Nat.toString(response.data.result)))
+            );
+        }, 3500);
+    },
+
+
     initialize() {
       ethereum.on("chainChanged", (_chainId) => {
         this.getGasPrice();
@@ -449,16 +518,6 @@ export default {
 
       const validators = this.array;
       // console.log(validators);
-
-
-
-
-
-
-
-
-
-
     },
 
     stringToHex(str) {
@@ -473,7 +532,7 @@ export default {
       return val;
     },
 
-    neatStake() {
+    neatStakeMM() {
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("CONFIRM"),
         cancelButtonText: this.$t("CANCEL"),
@@ -509,7 +568,7 @@ export default {
       });
     },
 
-    unStake() {
+    unStakeMM() {
       this.$prompt(this.$t("Amount To Unstake"), "", {
         confirmButtonText: this.$t("confirm"),
         cancelButtonText: this.$t("cancel"),
@@ -545,7 +604,7 @@ export default {
       });
     },
 
-    claimRwd() {
+    claimRwdMM() {
       this.$prompt(this.$t("Amount To Claim"), "", {
         confirmButtonText: this.$t("confirm"),
         cancelButtonText: this.$t("cancel"),
@@ -581,7 +640,7 @@ export default {
       });
     },
 
-    async neatSend() {
+    async neatSendMM() {
 
       if (!Utils.isAddress(this.addressToSend)) {
         this.info("error", this.$t("errAddr"));
@@ -622,6 +681,7 @@ export default {
         gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
         value: Utils.toHex(Utils.fromNEAT(this.amountToSend)),
       },];
+
       ethereum.request({ method: "eth_sendTransaction", params, })
         .then((result) => {
           console.log("hash", result); this.$alert(
@@ -630,6 +690,16 @@ export default {
         .catch((error) => { console.log("tx error", error); });
 
     },
+
+    async neatSendPK() {     
+       const userAccount = {
+        address: this.address,
+        privateKey: this.privateKey,
+      };
+      web3.eth.accounts.privateKeyToAccount(userAccount)
+      console.log(userAccount)
+    
+        },
 
   },
 };
@@ -648,6 +718,11 @@ button {
   outline: none;
   align-items: center;
   margin: 10px auto;
+}
+
+.choose-file{
+  color: #8D80FF;
+  margin: 1rem auto;
 }
 
 .separator {
@@ -757,6 +832,30 @@ button {
   margin: 0 auto;
 
 }
+/* .loaded-ks {
+  padding: 2rem;
+  font-family: Anita, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  display: inline;
+  background-color: #ffffff;
+  background-size: 100%;
+  background-repeat: repeat;
+  background-image: linear-gradient(to right, #a044ff, #46bbf4, #2472fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent
+} */
+
+.loaded-ks {
+  padding: 2rem;
+  font-size: 1.4rem;
+  font-family: Anita, Helvetica, sans-serif;
+  background-color: #ffffff;
+  background-size: 100%;
+  background-repeat: repeat;
+  background-image: linear-gradient(to right, #a044ff, #46bbf4, #2472fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent
+}
 
 
 
@@ -839,6 +938,24 @@ button {
 }
 
 .rippleSelectM:hover {
+  color: #fff;
+  text-transform: uppercase;
+  background: #6f5fff radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
+}
+
+.rippleSelectKS {
+  font-size: 1.4rem;
+  font-family: Anita, Helvetica, sans-serif;
+  width: 20rem;
+  height: 3.2rem;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(to right,#3d00b9,#8d80ff);
+  background-position: center;
+  margin: 2rem 10px;
+}
+
+.rippleSelectKS:hover {
   color: #fff;
   text-transform: uppercase;
   background: #6f5fff radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
