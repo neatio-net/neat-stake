@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="boxd">
-        <div class="boxwb">
+        <div class="boxwb" id="card1">
           <div class="lockked">
             <img src="../../assets/metamask.png" alt="Metamask" class="lockimg" />
           </div>
@@ -23,17 +23,28 @@
             <img src="../../assets/unencrypted.png" alt="Private Key" class="lockimg" />
           </div>
           <div class="locked">Private Key</div>
-          <button class="rippleSelectM" >IMPORT</button>
+          <button class="rippleSelectM" @click="importKey" >IMPORT</button>
+ 
         </div>
-        <div class="boxwb">
+        <div class="boxwb" id="card3">
           <div class="lockked">
             <img src="../../assets/encrypted.png" alt="Keystore File" class="lockimg" />
           </div>
           <div class="locked">Keystore File</div>
-          <button class="rippleSelectM" >SELECT</button>
+          <button class="rippleSelectM" @click="importKeyStore">SELECT</button>
         </div>
+            <div>
+              <div style="display:none;" class="boxwbk" id="pk">
+                  <input type="password" class="key-input" v-model="keyInput" placeholder=" Enter your Private Key in here"/>     
+                  <button class="openWallet">ACCESS</button>         
+                </div>              
+
+            </div>
+       
+            
       </div>
-    </div>
+          
+      </div>
 
     <!-- DASHBOARD OPEN-->
 
@@ -168,7 +179,9 @@ const web3 = new Web3("https://rpc.neatio.net");
 export default {
   data() {
     return {
+      
       step: 2,
+      keyInput: null,
       balance: "",
       fullbalance: "",
       address: null,
@@ -239,6 +252,16 @@ export default {
   },
 
   methods: {
+    importKey() {
+      document.getElementById("pk").style.display = "block";
+      document.getElementById("card3").style.display = "none";
+      document.getElementById("card1").style.display = "none";
+  
+    },
+    importKeyStore() {
+      document.getElementById("ks").style.display = "block";
+ 
+    },
     initialize() {
       ethereum.on("chainChanged", (_chainId) => {
         this.getGasPrice();
@@ -627,8 +650,6 @@ button {
   margin: 10px auto;
 }
 
-.el-message-box {}
-
 .separator {
   margin: 1.2rem auto;
   max-width: 42rem;
@@ -787,13 +808,23 @@ button {
   padding-top: 10px;
 }
 
-.pools {
-  margin: 10px auto;
-}
+.openWallet {
+    font-size: 1.4rem;
+    width: 10rem;
+    height: 3.2rem;
+    border-radius: 10px;
+    border: 1px solid #8D80FF;
+    background-color: transparent;
+    background-position: center;
+    transition: background 0.4s;
+    margin: 2rem auto;
+  }
 
-
-
-
+  .openWallet:hover {
+    color: #000;
+    text-transform: uppercase;
+    background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%) center/15000%;
+  }
 
 .rippleSelectM {
   font-size: 1.4rem;
@@ -889,6 +920,29 @@ button {
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   padding: 20px 0px;
+}
+.boxwbk {
+  width: 30rem;
+  height: 30rem;
+  border-radius: 10px;
+  background: transparent;
+  margin-right: 20rem;
+  padding-top: 10rem;
+
+}
+
+.key-input {
+    margin: 0 auto;
+    width: 30rem;
+    font-family: "Anita";
+    font-size: 1.2rem;
+    background-color: #1f2331 ;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    box-sizing: 1px;
+    text-align: center;
+    line-height: 2.4;
+    color: #fff; 
 }
 
 .boxwb {
