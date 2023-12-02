@@ -60,8 +60,7 @@ export default {
 
 .main {
   background: linear-gradient(to left,#24243e, #302b63, #24243e);
-  background-blend-mode: multiply;
-  background-size: cover;
+
   
 
 }
