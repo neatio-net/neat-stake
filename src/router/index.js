@@ -4,6 +4,7 @@ const Layout = resolve => require(['@/components/layouts/Layout'], resolve);
 const neatHome = resolve => require(['@/components/pages/neatHome'], resolve)
 const neatStake = resolve => require(['@/components/pages/neatStake'], resolve)
 const dashboard = resolve => require(['@/components/pages/dashboard'], resolve)
+const terms = resolve => require(['@/components/pages/terms'], resolve)
 // const newWallet = resolve => require(['@/components/pages/newWallet'], resolve)
 // const neatSend = resolve => require(['@/components/pages/neatSend'], resolve)
 
@@ -34,6 +35,11 @@ const router = new Router({
             path: '/neatStake',
             name: 'neatStake',
             component: neatStake,
+        },
+        {
+            path: '/terms',
+            name: 'terms',
+            component: terms,
         },
         ]
     }]
