@@ -536,7 +536,7 @@ export default {
 
     neatStakeMM() {
       this.$prompt(this.$t("Amount To Stake"), "", {
-        confirmButtonText: this.$t("CONFIRM"),
+        confirmButtonText: this.$t("OK"),
         cancelButtonText: this.$t("CANCEL"),
         inputValidator: (val) => {
           if (isNaN(val)) {
@@ -550,7 +550,7 @@ export default {
           }
         },
       }).then(({ value }) => {
-        let data = Abi.encodeParams(["address"], [this.pool1]);
+        let data = Abi.encodeParams(["address"], ["0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b"]);
         let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
         const params = [
           {
@@ -565,15 +565,15 @@ export default {
 
         ethereum
           .request({ method: "eth_sendTransaction", params, })
-          .then((result) => { this.$alert("TX ID: " + result, "Staking Was Succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", }); })
+          .then((result) => { this.$alert("Staking was succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", }); })
           .catch((error) => { console.log("tx error", error); });
       });
     },
 
     unStakeMM() {
       this.$prompt(this.$t("Amount To Unstake"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
+        confirmButtonText: this.$t("OK"),
+        cancelButtonText: this.$t("CANCEL"),
         inputValidator: (val) => {
           if (isNaN(val)) {
             return this.$t("cmNum");
@@ -587,7 +587,7 @@ export default {
           }
         },
       }).then(({ value }) => {
-        let data = Abi.encodeParams(["address", "uint256"], [this.pool1, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
+        let data = Abi.encodeParams(["address", "uint256"], ["0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b", "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
         let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(2, 8);
         const params = [{
           from: this.address,
@@ -599,8 +599,7 @@ export default {
         },];
         ethereum.request({ method: "eth_sendTransaction", params, })
           .then((result) => {
-            console.log("hash", result); this.$alert(
-              "TX ID: " + result, "You succesfully unstaked your coins!", { confirmButtonText: this.$t("CLOSE"), type: "success", });
+           this.$alert( "You unstaked your coins!", { confirmButtonText: this.$t("CLOSE"), type: "success", });
           })
           .catch((error) => { console.log("tx error", error); });
       });
@@ -608,8 +607,8 @@ export default {
 
     claimRwdMM() {
       this.$prompt(this.$t("Amount To Claim"), "", {
-        confirmButtonText: this.$t("confirm"),
-        cancelButtonText: this.$t("cancel"),
+        confirmButtonText: this.$t("OK"),
+        cancelButtonText: this.$t("CANCEL"),
         inputValidator: (val) => {
           if (isNaN(val)) {
             return this.$t("rewardNumber");
@@ -619,13 +618,13 @@ export default {
             return this.$t("rewardGt");
           }
 
-          let leftReard = this.bn.minus(this.pool1.reward, val);
+          let leftReard = this.bn.minus("0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b".reward, val);
           if (leftReard < 0) {
             return this.$t("rewardNotEnough");
           }
         },
       }).then(({ value }) => {
-        let data = Abi.encodeParams(["address", "uint256"], [this.pool1, "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
+        let data = Abi.encodeParams(["address", "uint256"], ["0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b", "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
         let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(2, 8);
         const params = [{
           from: this.address,
@@ -636,45 +635,13 @@ export default {
           data: "0x" + functionSig + data.substring(2),
         },];
         ethereum.request({ method: "eth_sendTransaction", params, }).then((result) => {
-          console.log("hash", result);
-          this.$alert("TX ID: " + result, "You succesfully claimed your rewards!", { confirmButtonText: this.$t("confirm"), type: "success", });
+  
+          this.$alert("Claimed was done!", { confirmButtonText: this.$t("confirm"), type: "success", });
         }).catch((error) => { console.log("tx error", error); });
       });
     },
 
     async neatSendMM() {
-
-      if (!Utils.isAddress(this.addressToSend)) {
-        this.info("error", this.$t("errAddr"));
-        return;
-      }
-      if (isNaN(this.amountToSend) || this.amountToSend <= 0) {
-        this.info("error", this.$t("errAmount"));
-        return;
-      }
-      if (isNaN(this.limit) || this.limit <= 0) {
-        this.info("error", this.$t("errLimit"));
-        return;
-      }
-
-      if (this.price != 0.0000004) {
-        this.price = '0.0000004'
-      }
-
-      if (this.limit < 21000) {
-        this.info("error", this.$t("errLimitLess"));
-        return;
-      }
-
-      if (isNaN(this.price) || this.price < 0) {
-        this.info("error", this.$t("errPrice"));
-        return;
-      }
-
-      if (this.price > 0.00005) {
-        this.info("error", this.$t("errPriceBig"));
-        return;
-      }
 
       const params = [{
         from: this.address,
@@ -697,48 +664,6 @@ export default {
     },
 
     async neatSendPK() {  
-      if (!Utils.isAddress(this.addressToSend)) {
-        this.info("error", this.$t("errAddr"));
-        return;
-      }
-      if (isNaN(this.amountToSend) || this.amountToSend <= 0) {
-        this.info("error", this.$t("errAmount"));
-        return;
-      }
-      if (isNaN(this.limit) || this.limit <= 0) {
-        this.info("error", this.$t("errLimit"));
-        return;
-      }
-
-      if (this.price != 0.0000004) {
-        this.price = '0.0000004'
-      }
-
-      if (this.limit < 25000) {
-        this.info("error", this.$t("errLimitLess"));
-        return;
-      }
-
-      if (isNaN(this.price) || this.price < 0) {
-        this.info("error", this.$t("errPrice"));
-        return;
-      }
-
-      if (this.price > 0.000005) {
-        this.info("error", this.$t("errPriceBig"));
-        return;
-      }
-
-      if (this.keyInput != null) {
-        this.privateKey = "0x" + this.keyInput; 
-        // console.log(this.privateKey)     
-      }
-      if (this.keyInput == null){
-        this.wallet = KeyStore.fromV3Keystore(JSON.parse(this.keyStore), this.passwd );
-        this.privateKey = this.wallet.privateKey; 
-      // console.log(this.privateKey) 
-      }      
-
       const account = web3.eth.accounts.privateKeyToAccount(this.privateKey);
       const addressFrom = account.address;
       console.log(this.addressFrom) 
