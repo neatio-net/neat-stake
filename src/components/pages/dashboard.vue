@@ -311,7 +311,7 @@ export default {
       this.privateKey = wallet.privateKey;
       const address = this.address;
       this.address = address;
-      console.log(address);
+      // console.log(address);
 
       const DATA = {
         jsonrpc: "2.0",
@@ -320,14 +320,16 @@ export default {
         id: 1,
       };
 
-      setInterval(() => {
+     
           axios
             .post(URL, DATA, { "Content-type": "application/json" })
             .then(
               (response) =>
                 (this.balance = Utils.toNEAT(Nat.toString(response.data.result)))
             );
-        }, 3500);
+            setTimeout(() => {
+            this.getBalance();
+          }, 100)
     },
 
 
@@ -688,19 +690,86 @@ export default {
             "Coins were sent!", { confirmButtonText: this.$t("CLOSE"), type: "success", });
         })
         .catch((error) => { console.log("tx error", error); });
+        setTimeout(() => {
+            this.getBalance();
+          }, 500)
 
     },
 
-    async neatSendPK() {     
-       const userAccount = {
-        address: this.address,
-        privateKey: this.privateKey,
-      };
-      web3.eth.accounts.privateKeyToAccount(userAccount)
-      console.log(userAccount)
-    
-        },
+    async neatSendPK() {  
+      if (!Utils.isAddress(this.addressToSend)) {
+        this.info("error", this.$t("errAddr"));
+        return;
+      }
+      if (isNaN(this.amountToSend) || this.amountToSend <= 0) {
+        this.info("error", this.$t("errAmount"));
+        return;
+      }
+      if (isNaN(this.limit) || this.limit <= 0) {
+        this.info("error", this.$t("errLimit"));
+        return;
+      }
 
+      if (this.price != 0.0000004) {
+        this.price = '0.0000004'
+      }
+
+      if (this.limit < 25000) {
+        this.info("error", this.$t("errLimitLess"));
+        return;
+      }
+
+      if (isNaN(this.price) || this.price < 0) {
+        this.info("error", this.$t("errPrice"));
+        return;
+      }
+
+      if (this.price > 0.000005) {
+        this.info("error", this.$t("errPriceBig"));
+        return;
+      }
+
+      if (this.keyInput != null) {
+        this.privateKey = "0x" + this.keyInput; 
+        // console.log(this.privateKey)     
+      }
+      if (this.keyInput == null){
+        this.wallet = KeyStore.fromV3Keystore(JSON.parse(this.keyStore), this.passwd );
+        this.privateKey = this.wallet.privateKey; 
+      // console.log(this.privateKey) 
+      }      
+
+      const account = web3.eth.accounts.privateKeyToAccount(this.privateKey);
+      const addressFrom = account.address;
+      console.log(this.addressFrom) 
+      const amountToSend = this.amountToSend;
+      const addressTo = this.addressToSend;
+      console.log(`Sending... ${addressFrom} to ${addressTo}`);
+      const createTransaction = await web3.eth.accounts.signTransaction(
+        {
+          from: addressFrom,
+          to: addressTo,
+          value: web3.utils.toWei(`${amountToSend}`, "ether"),
+          gas: "21000",
+          gasPrice: "55000000000",
+        },
+        this.privateKey
+      );
+      const sending = "Sending...";
+      console.log(sending);
+      const txHash = await web3.eth.sendSignedTransaction(
+        createTransaction.rawTransaction
+      );
+      const transactionHash = txHash.transactionHash;
+      this.txHash = transactionHash;
+      console.log(`Transaction confirmed: ${txHash.transactionHash}`);
+      this.txHash = txHash.transactionHash;
+      setTimeout(() => {
+            this.getBalance();
+          }, 500)
+    },
+
+  
   },
 };
 </script>
