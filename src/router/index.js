@@ -5,7 +5,8 @@ const neatHome = resolve => require(['@/components/pages/neatHome'], resolve)
 const neatStake = resolve => require(['@/components/pages/neatStake'], resolve)
 const dashboard = resolve => require(['@/components/pages/dashboard'], resolve)
 const terms = resolve => require(['@/components/pages/terms'], resolve)
-// const newWallet = resolve => require(['@/components/pages/newWallet'], resolve)
+const create = resolve => require(['@/components/pages/create'], resolve)
+const createpk = resolve => require(['@/components/pages/createPK'], resolve)
 // const neatSend = resolve => require(['@/components/pages/neatSend'], resolve)
 
 Vue.use(Router)
@@ -26,11 +27,16 @@ const router = new Router({
             name: 'dashboard',
             component: dashboard,
         },
-        // {
-        //     path: '/neatSend',
-        //     name: 'neatSend',
-        //     component: neatSend
-        // },
+        {
+            path: '/create',
+            name: 'create',
+            component: create
+        },
+        {
+            path: '/createpk',
+            name: 'createpk',
+            component: createpk
+        },
         {
             path: '/neatStake',
             name: 'neatStake',
