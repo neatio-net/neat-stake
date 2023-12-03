@@ -444,11 +444,29 @@ display:inline-table;
   font-weight: 200;
   height: 2.4rem;
   border-radius: 10px;
-  color: #46bbf4;
-  background: linear-gradient(to right, #24243e, #302b63, #24243e);
+  color: #8D80FF;
+  background: linear-gradient(to right,#24243e, #302b63, #24243e) !important;
   background-position: center;
   margin: 0 10px;
   border: none;
+}
+
+.el-button--default {
+  font-size: 1rem;
+  font-family: Anita, Helvetica, sans-serif;
+  width: 8rem;
+  font-weight: 200;
+  height: 2.4rem;
+  border-radius: 10px;
+  color: #8D80FF;
+  background: linear-gradient(to right,#24243e, #302b63, #24243e) !important;
+  background-position: center;
+  margin: 0 10px;
+  border: none;
+}
+
+.p{
+  max-width: 342px;
 }
 
 
