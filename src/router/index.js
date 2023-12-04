@@ -7,7 +7,7 @@ const dashboard = resolve => require(['@/components/pages/dashboard'], resolve)
 const terms = resolve => require(['@/components/pages/terms'], resolve)
 const create = resolve => require(['@/components/pages/create'], resolve)
 const createpk = resolve => require(['@/components/pages/createPK'], resolve)
-// const neatSend = resolve => require(['@/components/pages/neatSend'], resolve)
+const createks = resolve => require(['@/components/pages/createKS'], resolve)
 
 Vue.use(Router)
 const router = new Router({
@@ -38,9 +38,9 @@ const router = new Router({
             component: createpk
         },
         {
-            path: '/neatStake',
-            name: 'neatStake',
-            component: neatStake,
+            path: '/createks',
+            name: 'createks',
+            component: createks,
         },
         {
             path: '/terms',
