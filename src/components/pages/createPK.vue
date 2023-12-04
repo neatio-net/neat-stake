@@ -35,11 +35,7 @@
                 <div class="warning-text">2. Store Securely: Save this file in a secure and backed-up location, such as an encrypted USB drive.</div>
                 <div class="warning-text">3. Do Not Share: Never share your PrivateKey with anyone. Treat it as sensitive information.</div>
                 <div class="warning-textn">Important Note: We cannot recover your PrivateKey if lost. Please take the necessary precautions to protect it.</div>
-                
-
-
-
-
+                <button   class="ripplem"   @click="closeModal">   OK, I Understand   </button>
 
               </div>
             </div>
@@ -92,6 +88,7 @@ export default {
   methods: {
     closeModal() {
       this.showModal = false;
+      
     },
     genWallet() {
       const account = neatAccount.create();
@@ -246,9 +243,6 @@ button {
   padding-top: 10px;
 }
 
-.pools {
-  margin: 10px auto;
-}
 
 .addy{
   font-family: Anita, Helvetica, sans-serif;
@@ -309,6 +303,25 @@ button {
 .ripple:hover {
   color: #fff;
   text-transform: uppercase;
+  background: #495cff radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
+}
+
+.ripplem {
+  font-size: 1rem;
+  font-family: Anita, Helvetica, sans-serif;
+  text-transform: none;
+  width: 12rem;
+  height: 2rem;
+  border-radius: 10px;
+  color: #fff;
+  background: #6f5fff;
+  background-position: center;
+  margin: 0.4rem;
+}
+
+.ripplem:hover {
+  color: #fff;
+  /* text-transform: uppercase; */
   background: #495cff radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
 }
 
