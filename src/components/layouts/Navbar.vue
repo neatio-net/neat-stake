@@ -1,7 +1,6 @@
 <template>
   <div class="nav-container">
-    <div class="nav-panel">
-    
+    <div class="nav-panel">    
         <router-link
           to="/"
                   >
@@ -9,7 +8,7 @@
           src="../../assets/logo.png"
           alt="Neatio Wallet"
           class="nav-logo"
-        /></router-link> 
+        /></router-link>        
 
    
 
@@ -19,8 +18,7 @@
 </template>
 
 <script>
-import axios from "axios";
-import MetaMaskOnboarding from '@metamask/onboarding';
+
 
 export default {
   name: "NavPanel",
@@ -35,110 +33,7 @@ export default {
       address: '',
     };
   },
-  created() {
-    this.getLocaction();
-  },
-  mounted() {
-    this.initialize();
-  },
-  methods: {
-    hh() {
-      console.log(this);
-    },
-    strTrim(str) {
-      str = str + "";
-      return str.replace(/(^\s*)|(\s*$)/g, "");
-    },
-    highlight(index) {
-      this.curNav = index;
-    },
 
-    getLocaction() {
-      this.isTestNetwork = window.location.hostname.substr(0, 4) === "test" || window.location.hostname.substr(0, 4) === "loca";
-    },
-
-    async initialize () {
-      this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
-
-      ethereum.on('chainChanged', (_chainId) => {
-        this.connectAccount(_chainId)
-      });
-
-      ethereum.on('accountsChanged', (_accounts) => {
-        this.requestAccount()
-      });
-
-      this.requestAccount();
-    },
-    async requestAccount () {
-      this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
-      try {
-        if (this.currentChainId !== this.chainId) {
-          this.connectAccount();
-        } else {
-          
-          this.address = `Neatio`
-        }
-
-      } catch (e) {
-        console.log('request accounts error:', e);
-      }
-    },
-    async connectAccount () {
-      try {
-        if (this.currentChainId !== this.chainId) {
-          this.address = this.$t('wrongNetwork');
-        }else {
-          const accounts = await ethereum.request({ method: 'eth_accounts' });
-          this.address = `${accounts[0].substr(0, 6)}...${accounts[0].slice(-4)}`;
-        }
-      } catch (e) {
-        console.log('request accounts error:', e);
-      }
-    },
-        async switchToNeatio () {
-          let chainIds = '0x3e9';
-          let rpc = 'https://rpc.neatio.net';
-          let browser = 'https://scan.neatio.net';
-          let chainName = 'Neatio Mainnet';
-
-          try {
-            this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
-            if (this.currentChainId === chainIds) {
-              window.alert("Neatio Network has been added to Metamask.")
-            }
-
-            await ethereum.request({
-              method: 'wallet_switchEthereumChain',
-              params: [{ chainId: chainIds}]
-            })
-
-          } catch (e) {
-            if (e.code === 4902) {
-              try {
-                await ethereum.request({
-                  method: 'wallet_addEthereumChain',
-                  params: [{
-                    chainId: chainIds,
-                    chainName: chainName,
-                    nativeCurrency: {
-                      name: "NIO",
-                      symbol: "NIO",
-                      decimals: 18
-                    },
-                    rpcUrls: [rpc],
-                    blockExplorerUrls: [browser]
-                  }]
-                })
-
-                this.currentChainId = await ethereum.request({ method: 'eth_chainId' });
-              } catch (e) {
-                console.log('add network error', e)
-              }
-            }
-          }
-        },
-  },
 };
 </script>
 
