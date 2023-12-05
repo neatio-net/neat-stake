@@ -76,8 +76,8 @@
             <div class="hero__title">
               <input type="text" class="send-input2" v-model="amountToSend" placeholder="Amount" />
             </div>
-            <button class="rippleSelectM" @click="neatSendMM" v-show="privateKey == null">SEND MM</button>
-            <button class="rippleSelectM" @click="neatSendPK" v-show="privateKey != null">SEND PK</button>
+            <button class="rippleSelectM" @click="neatSendMM" v-show="privateKey == null">SEND</button>
+            <button class="rippleSelectM" @click="neatSendPK" v-show="privateKey != null">SEND</button>
           </div>
         </div>
       </template>
@@ -88,8 +88,9 @@
               <div class="boxess-left">
                 <div class="balance-staked1">
                   <div class="wl-stake"><img src="../../assets/stake.png" alt="Stake" class="stake-image" /></div>
-                  <div class="earn-text">Earn up to 10% per year</div>
-                  <div><button class="rippleStakeNew" @click="neatStakeMM">STAKE MM</button></div>
+                  <div class="earn-text">Reward rate {{ APY }}% per year</div>
+                  <div><button class="rippleStakeNew" @click="neatStakeMM" v-show="privateKey == null">STAKE</button></div>
+                  <div><button class="rippleStakeNew" @click="neatStakePK" v-show="privateKey != null">STAKE</button></div>
                 </div>
                 <div class="boxess-right">
                   <div class="balance-staked">
@@ -98,7 +99,8 @@
                     </div>
                     <div>Coins In Stake</div>
                     <div>{{ (+staking).toFixed(2) }}</div>
-                    <div><button class="rippleUnStakeNew" @click="unStakeMM">UNSTAKE MM</button></div>
+                    <div><button class="rippleUnStakeNew" @click="unStakeMM" v-show="privateKey == null">UNSTAKE</button></div>
+                    <div><button class="rippleUnStakeNew" @click="unStakePK" v-show="privateKey != null">UNSTAKE</button></div>
                   </div>
                   <div class="unclaimed-rewards">
                     <div class="wl">
@@ -107,7 +109,8 @@
                     </div>
                     <div>Unclaimed Rewards</div>
                     <div>{{ (+rewards).toFixed(2) }}</div>
-                    <div><button class="rippleClaimNew" @click="claimRwdMM">CLAIM MM</button></div>
+                    <div><button class="rippleClaimNew" @click="claimRwdMM" v-show="privateKey == null">CLAIM</button></div>
+                    <div><button class="rippleClaimNew" @click="claimRwdPK" v-show="privateKey != null">CLAIM</button></div>
                   </div>
                 </div>
               </div>
@@ -178,14 +181,18 @@ export default {
       addressToSend: '',
       amountToSend: null,
       amount: "",
-      limit: "25000",
+      limit: "21000",
       addry: null,
       keyStore: null,
       passwd: null,
       price: "",
-      vComm: "15%",
-      pool1: null,
       height: null,
+      vPower1: null,
+      v1Pwr: "",
+      v11power: "",
+      vPower2: null,
+      v2Pwr: "",
+      v22power: "",
       totalStake: "",
       circulating: "",
       circcc: "",
@@ -213,7 +220,7 @@ export default {
 
   async mounted() {
     // this.connectAccount();
-    // this.getValidators();
+    this.getValidators();
     this.initialize();
     // this.getHeight();
     // this.getPrice();
@@ -259,20 +266,32 @@ export default {
         this.address = wallet.address;
         this.addry = `${this.address.substr(0, 6)}...${this.address.slice(-4)}`;
         this.privateKey = wallet.privateKey;
-        const address = this.address;
+        const valData = {
+        jsonrpc: "2.0",
+        method: "neat_getBalanceDetail",
+        params: [`${this.address}`, "latest", true],
+        id: 1,
+      };
+      axios
+        .post(URL, valData)
+        .then((response) => {
+          (this.balance = Utils.toNEAT(
+            Nat.toString(response.data.result.balance)
+          )),
+            (this.staking = Utils.toNEAT(
+              Nat.toString(response.data.result.delegateBalance)
+            )),
+            (this.rewards = Utils.toNEAT(
+              Nat.toString(response.data.result.rewardBalance)
+            ));
 
-        const DATA = {
-          jsonrpc: "2.0",
-          method: "neat_getBalance",
-          params: [`${address}`, "latest"],
-          id: 1,
-        };        
-          axios
-            .post(URL, DATA, { "Content-type": "application/json" })
-            .then(
-              (response) =>
-                (this.balance = Utils.toNEAT(Nat.toString(response.data.result)))
-            );
+          this.delegatedTo = response.data.result.rewardDetail;
+
+
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
       }
     },
       
@@ -501,9 +520,10 @@ export default {
       await axios
         .get(cpURL)
         .then((response) => (this.circulating = response.data));
-      const circulating = this.circulating - 3346;
+      const circulating = this.circulating;
       const circc = parseInt(circulating).toFixed(0);
       this.circcc = circc;
+      console.log(circc);
     },
 
     async getValidators() {
@@ -520,6 +540,31 @@ export default {
 
       const validators = this.array;
       // console.log(validators);
+      const v1 = Object(validators)[0]; 
+      const v1Addy = v1.address;
+      const vPower1 = Utils.toNEAT(Nat.toString(v1.votingPower));
+      this.vPower1 = Number(vPower1);
+      const v1Pwr = this.vPower1;
+      this.v1Pwr = v1Pwr.toFixed(0);
+      this.v11power = parseInt(this.v1Pwr);
+
+      const v2 = Object(validators)[1]; 
+      const v2Addy = v2.address;
+      const vPower2 = Utils.toNEAT(Nat.toString(v2.votingPower));
+      this.vPower2 = Number(vPower2);
+      const v2Pwr = this.vPower2;
+      this.v2Pwr = v2Pwr.toFixed(0);
+      this.v22power = parseInt(this.v2Pwr);
+
+      // console.log(this.v11power, this.v22power);
+      const totalStakeHex = parseInt(v1.votingPower) + parseInt(v2.votingPower);
+      const totalStakeNEAT = totalStakeHex / 1e18;
+      console.log(totalStakeNEAT);
+      this.totalStake = totalStakeNEAT.toFixed(0);
+      this.stakingAPY = (3200000 / parseInt(this.totalStake)) * 100 / 2;
+      this.APY =  this.stakingAPY.toFixed(2);
+      console.log(this.APY, '%');
+      console.log("------------------");
     },
 
     stringToHex(str) {
@@ -538,17 +583,7 @@ export default {
       this.$prompt(this.$t("Amount To Stake"), "", {
         confirmButtonText: this.$t("OK"),
         cancelButtonText: this.$t("CANCEL"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("mNum");
-          }
-          if (+val <= 0) {
-            return this.$t("gt0");
-          }
-          if (+val + this.limit * this.price >= this.balance) {
-            return this.$t("notEnough");
-          }
-        },
+
       }).then(({ value }) => {
         let data = Abi.encodeParams(["address"], ["0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b"]);
         let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
@@ -565,7 +600,7 @@ export default {
 
         ethereum
           .request({ method: "eth_sendTransaction", params, })
-          .then((result) => { this.$alert("Staking was succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", }); })
+          .then((result) => { this.$alert("Staking succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", }); })
           .catch((error) => { console.log("tx error", error); });
       });
     },
@@ -574,18 +609,7 @@ export default {
       this.$prompt(this.$t("Amount To Unstake"), "", {
         confirmButtonText: this.$t("OK"),
         cancelButtonText: this.$t("CANCEL"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("cmNum");
-          }
-          if (+val <= 0) {
-            return this.$t("cgt");
-          }
 
-          if (this.limit * this.price > this.balance) {
-            return this.$t("notEnough");
-          }
-        },
       }).then(({ value }) => {
         let data = Abi.encodeParams(["address", "uint256"], ["0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b", "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
         let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(2, 8);
@@ -597,9 +621,10 @@ export default {
           value: "0x0",
           data: "0x" + functionSig + data.substring(2),
         },];
+
         ethereum.request({ method: "eth_sendTransaction", params, })
           .then((result) => {
-           this.$alert( "You unstaked your coins!", { confirmButtonText: this.$t("CLOSE"), type: "success", });
+           this.$alert( "Unstaking succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", });
           })
           .catch((error) => { console.log("tx error", error); });
       });
@@ -609,20 +634,7 @@ export default {
       this.$prompt(this.$t("Amount To Claim"), "", {
         confirmButtonText: this.$t("OK"),
         cancelButtonText: this.$t("CANCEL"),
-        inputValidator: (val) => {
-          if (isNaN(val)) {
-            return this.$t("rewardNumber");
-          }
 
-          if (+val <= 0) {
-            return this.$t("rewardGt");
-          }
-
-          let leftReard = this.bn.minus("0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b".reward, val);
-          if (leftReard < 0) {
-            return this.$t("rewardNotEnough");
-          }
-        },
       }).then(({ value }) => {
         let data = Abi.encodeParams(["address", "uint256"], ["0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b", "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
         let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(2, 8);
@@ -636,13 +648,115 @@ export default {
         },];
         ethereum.request({ method: "eth_sendTransaction", params, }).then((result) => {
   
-          this.$alert("Claimed was done!", { confirmButtonText: this.$t("confirm"), type: "success", });
+          this.$alert("Claiming succesful!", { confirmButtonText: this.$t("confirm"), type: "success", });
         }).catch((error) => { console.log("tx error", error); });
       });
     },
 
-    async neatSendMM() {
+    neatStakePK() {
+      this.$prompt(this.$t("Amount To Stake"), "", {
+        confirmButtonText: this.$t("OK"),
+        cancelButtonText: this.$t("CANCEL"),
+      }).then(async ({ value }) => {
+        let data = Abi.encodeParams(["address"], ["0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b"]);
+        let functionSig = Utilss.sha3("Delegate(address)").substr(2, 8);
 
+                const send = async () => {
+                  console.log(
+                    `Attempting to stake...`
+                  ); 
+                  const createTransaction = await web3.eth.accounts.signTransaction(
+                    {
+                      gas: Utils.toHex(this.limit),
+                      to:"0x0000000000000000000000000000000000001001",
+                      value: web3.utils.toWei(value, 'ether'),
+                      data: "0x" + functionSig + data.substring(2),
+                    },
+                    this.privateKey
+                  );                  
+                  const createReceipt = await web3.eth.sendSignedTransaction(
+                    createTransaction.rawTransaction
+                  ).then((result) => {
+                    this.$alert("Staking succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", });
+                    })
+                    .catch((error) => { console.log("tx error", error); });
+                    };
+               send();
+  
+      });
+    },
+
+
+    unStakePK() {
+      this.$prompt(this.$t("Amount To Unstake"), "", {
+        confirmButtonText: this.$t("OK"),
+        cancelButtonText: this.$t("CANCEL"),
+
+      }).then(({ value }) => {
+        let data = Abi.encodeParams(["address", "uint256"], ["0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b", "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
+        let functionSig = Utilss.sha3("UnDelegate(address,uint256)").substr(2, 8);
+
+        const send = async () => {
+                  console.log(
+                    `Attempting to unstake...`
+                  ); 
+                  const createTransaction = await web3.eth.accounts.signTransaction(
+                    {
+                      gas: Utils.toHex(this.limit),
+                      to:"0x0000000000000000000000000000000000001001",
+                      value: web3.utils.toWei("0", 'ether'),
+                      data: "0x" + functionSig + data.substring(2),
+                    },
+                    this.privateKey
+                  );                  
+                  const createReceipt = await web3.eth.sendSignedTransaction(
+                    createTransaction.rawTransaction
+                  ).then((result) => {
+                    this.$alert("Unstaking succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", });
+                    })
+                    .catch((error) => { console.log("tx error", error); });
+             
+                };
+               send();
+      });
+    },
+
+    claimRwdPK() {
+      this.$prompt(this.$t("Amount To Claim"), "", {
+        confirmButtonText: this.$t("OK"),
+        cancelButtonText: this.$t("CANCEL"),
+
+      }).then(({ value }) => {
+        let data = Abi.encodeParams(["address", "uint256"], ["0xb0745e35006a0fbb88435a15eb8c342a4dc3a02b", "0x" + new BigNumber(value).multipliedBy(Math.pow(10, 18)).toString(16),]);
+        let functionSig = Utilss.sha3("WithdrawReward(address,uint256)").substr(2, 8);
+
+        const send = async () => {
+                  console.log(
+                    `Attempting to unstake...`
+                  ); 
+                  const createTransaction = await web3.eth.accounts.signTransaction(
+                    {
+                      gas: Utils.toHex(this.limit),
+                      to:"0x0000000000000000000000000000000000001001",
+                      value: "0x0",
+                      data: "0x" + functionSig + data.substring(2),
+                    },
+                    this.privateKey
+                  );                  
+                  const createReceipt = await web3.eth.sendSignedTransaction(
+                    createTransaction.rawTransaction
+                  ).then((result) => {
+                    this.$alert("Claim succesful!", { confirmButtonText: this.$t("CLOSE"), type: "success", });
+                    })
+                    .catch((error) => { console.log("tx error", error); });
+             
+                };
+               send();
+      });
+
+    },
+
+    async neatSendMM() {
       const params = [{
         from: this.address,
         to: this.addressToSend,
@@ -666,10 +780,10 @@ export default {
     async neatSendPK() {  
       const account = web3.eth.accounts.privateKeyToAccount(this.privateKey);
       const addressFrom = account.address;
-      console.log(this.addressFrom) 
+ 
       const amountToSend = this.amountToSend;
       const addressTo = this.addressToSend;
-      console.log(`Sending... ${addressFrom} to ${addressTo}`);
+   
       const createTransaction = await web3.eth.accounts.signTransaction(
         {
           from: addressFrom,
@@ -680,8 +794,7 @@ export default {
         },
         this.privateKey
       );
-      const sending = "Sending...";
-      console.log(sending);
+
       const txHash = await web3.eth.sendSignedTransaction(
         createTransaction.rawTransaction
       );
