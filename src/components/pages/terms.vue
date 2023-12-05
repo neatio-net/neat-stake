@@ -112,7 +112,7 @@
           including this website and any software and/or materials provided on our
           websites and social media channels.
           </div>
-          <div class="terms-h1">Last updated: December 02, 2023</div>
+          <div class="terms-h1">Last updated: December 05, 2023</div>
           
     </div>
     </div>
@@ -121,22 +121,23 @@
 
 <style >
 .terms-main {
- width: 1440px;
+ width: 80vw;
  margin: 0 auto;
- padding-top: 4rem;
+ padding-top: 2rem;
+ font-family: Lato, Helvetica, sans-serif;
 } 
 
 .terms-h1{
     text-align: left;
-    font-family: Anita, Helvetica, sans-serif;
-    font-size: medium;
+    font-family: Lato, Helvetica, sans-serif;
+    font-size: 1rem;
 
     margin: 1rem 0;
 }
 
 .terms-h2{
     text-align: left;
-    font-family: Anita, Helvetica, sans-serif;
-    font-size:small;
+    font-family: Lato, Helvetica, sans-serif;
+    font-size: 1rem;
 }
 </style>
