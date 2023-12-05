@@ -167,7 +167,6 @@ button {
 .modal {
   display: block;
   position: fixed;
-  overflow: hidden;
   z-index: 1;
   left: 0;
   top: 0;
@@ -183,7 +182,7 @@ button {
   font-family: Lato, Helvetica, sans-serif;
   background-color: #000;
   margin: 15% auto;
-  padding: 20px;
+  padding: 40px;
   border: 1px solid rgb(141, 128, 255);
   border-radius: 10px;
   width: 80%;
