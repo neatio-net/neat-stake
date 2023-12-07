@@ -223,7 +223,8 @@ export default {
     this.getValidators();
     this.initialize();
     // this.getHeight();
-    // this.getPrice();
+    this.getGasPrice();
+    this.getGasLimit();
     // this.getCirc();
     // this.get24h();
   },
@@ -471,6 +472,11 @@ export default {
         });
     },
 
+    async getGasLimit() {
+      const latest = await web3.eth.getBlockNumber()
+      console.log("gasLimit: " + latest.gasLimit);
+    },
+
     getGasPrice() {
       ethereum
         .request({
@@ -479,6 +485,7 @@ export default {
         })
         .then((result) => {
           this.price = Utils.toNEAT(result);
+          console.log(this.price);
         })
         .catch((error) => {
           console.log("error", error);
@@ -667,7 +674,8 @@ export default {
                   ); 
                   const createTransaction = await web3.eth.accounts.signTransaction(
                     {
-                      gas: Utils.toHex(this.limit),
+                      gas: Utils.toHex("23000"),
+                      gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
                       to:"0x0000000000000000000000000000000000001001",
                       value: web3.utils.toWei(value, 'ether'),
                       data: "0x" + functionSig + data.substring(2),
@@ -702,7 +710,8 @@ export default {
                   ); 
                   const createTransaction = await web3.eth.accounts.signTransaction(
                     {
-                      gas: Utils.toHex(this.limit),
+                      gas: Utils.toHex("23000"),
+                      gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
                       to:"0x0000000000000000000000000000000000001001",
                       value: web3.utils.toWei("0", 'ether'),
                       data: "0x" + functionSig + data.substring(2),
@@ -736,7 +745,8 @@ export default {
                   ); 
                   const createTransaction = await web3.eth.accounts.signTransaction(
                     {
-                      gas: Utils.toHex(this.limit),
+                      gas: Utils.toHex("23000"),
+                      gasPrice: Utils.toHex(Utils.fromNEAT(this.price)),
                       to:"0x0000000000000000000000000000000000001001",
                       value: "0x0",
                       data: "0x" + functionSig + data.substring(2),
@@ -789,9 +799,8 @@ export default {
           from: addressFrom,
           to: addressTo,
           value: web3.utils.toWei(`${amountToSend}`, "ether"),
-          gas: "21000",
-          gasPrice: "55000000000",
-        },
+          gas: Utils.toHex(this.limit),
+          },
         this.privateKey
       );
 
