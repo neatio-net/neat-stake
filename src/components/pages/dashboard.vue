@@ -118,19 +118,45 @@
           </div>
         </div>
       </template>
-      <!-- <template v-slot:tabPanel-3>
-        <div class="action-box1">
-          <div class="neatSending">
-            <div class="hero__title">
-              <input type="text" class="send-input1" v-model="addressToSend" placeholder="Address" />
+      <template v-slot:tabPanel-3>
+        <div class="action-box2">
+          <div class="neatStaking">
+            <div class="balance-details">
+              <div class="boxess-left">
+                <div class="balance-staked1">
+                  <div class="wl-stake"><img src="../../assets/stake2.png" alt="Stake" class="node-owner-image" /></div>
+                  <div class="earn-text2">Reward rate {{ APY * 2 }}% per year</div>
+                </div>
+                <div class="boxess-right">
+                  <div class="cs">Coming soon</div>
+                  
+                  <!-- <div class="balance-staked">
+                    <div class="wl">
+                      <div class="spinr"><pixel-spinner :animation-duration="2000" :size="70" color="#000000" /></div>
+                    </div>
+                    <div>Coins In Stake</div>
+                    <div>{{ (+staking).toFixed(2) }}</div>
+                    <div><button class="rippleUnStakeNew" @click="unStakeMM" v-show="privateKey == null">UNSTAKE</button></div>
+                    <div><button class="rippleUnStakeNew" @click="unStakePK" v-show="privateKey != null">UNSTAKE</button></div>
+                  </div> -->
+
+                  <!-- <div class="unclaimed-rewards">
+                    <div class="wl">
+                      <div class="spinr"><self-building-square-spinner :animation-duration="6000" :size="40"
+                          color="#000000" /></div>
+                    </div>
+                    <div>Unclaimed Rewards</div>
+                    <div>{{ (+rewards).toFixed(2) }}</div>
+                    <div><button class="rippleClaimNew" @click="claimRwdMM" v-show="privateKey == null">CLAIM</button></div>
+                    <div><button class="rippleClaimNew" @click="claimRwdPK" v-show="privateKey != null">CLAIM</button></div>
+                  </div> -->
+
+                </div>
+              </div>
             </div>
-            <div class="hero__title">
-              <input type="text" class="send-input2" v-model="amountToSend" placeholder="Amount" />
-            </div>
-            <button class="rippleSelectM" @click="neatSendMM">SEND MM</button>
           </div>
         </div>
-      </template> -->
+      </template>
       >
     </app-tabs>
     <div v-if="step == 1">
@@ -203,7 +229,7 @@ export default {
       selectedPool: null,
       priceUSD: "",
       price24h: "",
-      tabList: ["Transfer", "Staking"],
+      tabList: ["Transfer", "Staking", "NodeOwner"],
 
     };
   },
@@ -948,6 +974,14 @@ button {
   margin: 0 auto;
 
 }
+
+.node-owner-image {
+  width: auto;
+  height: 8rem;
+  display: block;
+  margin: 0 auto;
+
+}
 /* .loaded-ks {
   padding: 2rem;
   font-family: Anita, Helvetica, sans-serif;
@@ -1077,10 +1111,22 @@ button {
   background: #6f5fff radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
 }
 
+.cs {
+  color: #000;
+  font-size: 2.8rem;
+  margin-left: 12rem;
+}
+
 
 .earn-text {
   margin: 1rem;
   font-size: 1.2rem;
+  color: #000000;
+}
+
+.earn-text2 {
+  margin: 2rem;
+  font-size: 1.4rem;
   color: #000000;
 }
 
