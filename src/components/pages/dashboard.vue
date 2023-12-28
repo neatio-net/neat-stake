@@ -128,17 +128,17 @@
                   <div class="earn-text2">Reward rate {{ APY * 2 }}% per year</div>
                 </div>
                 <div class="boxess-right">
-                  <div class="cs">Coming soon</div>
-                  
-                  <!-- <div class="balance-staked">
-                    <div class="wl">
-                      <div class="spinr"><pixel-spinner :animation-duration="2000" :size="70" color="#000000" /></div>
+                              
+                  <div class="neatSending">
+                    <div class="hero__title">
+                      <input type="text" class="register-input1" v-model="addressToSend" placeholder="Node Public Key" />
                     </div>
-                    <div>Coins In Stake</div>
-                    <div>{{ (+staking).toFixed(2) }}</div>
-                    <div><button class="rippleUnStakeNew" @click="unStakeMM" v-show="privateKey == null">UNSTAKE</button></div>
-                    <div><button class="rippleUnStakeNew" @click="unStakePK" v-show="privateKey != null">UNSTAKE</button></div>
-                  </div> -->
+                    <div class="hero__title">
+                      <input type="text" class="register-input2" v-model="amountToSend" placeholder="Node Private Key" />
+                    </div>
+                    <button class="rippleRegister" @click="neatRegMM" v-show="privateKey == null">Index Node 1</button>
+                    <button class="rippleRegister" @click="neatRegPK" v-show="privateKey != null">Index Node 2</button>
+                  </div>
 
                   <!-- <div class="unclaimed-rewards">
                     <div class="wl">
@@ -792,6 +792,23 @@ export default {
 
     },
 
+    neatRegMM() {
+      // register code MM
+    },
+
+    neatRegPK() {
+      // register code PK
+    },
+
+    neatUnRegMM() {
+      // un-register code MM
+    },
+
+    neatUnRegPK() {
+      // un-register code PK
+    },
+
+
     async neatSendMM() {
       const params = [{
         from: this.address,
@@ -931,6 +948,41 @@ button {
   line-height: 1.8;
   position: relative;
   color: #fff;
+}
+
+.register-input1 {
+
+margin: 0 auto;
+width: 75vw;
+max-width: 540px;
+font-family: "Anita";
+font-size: 1.4rem;
+background-color: #1f2331;
+border-style: solid;
+border-radius: 10px;
+border-color: #000;
+box-sizing: 1px;
+text-align: center;
+line-height: 1.8;
+position: relative;
+color: #fff;
+}
+
+.register-input2 {
+margin: 1.2rem auto;
+width: 54vw;
+max-width: 540px;
+font-family: "Anita";
+font-size: 1.4rem;
+background-color: #1f2331;
+border-style: solid;
+border-radius: 10px;
+border-color: #000;
+box-sizing: 1px;
+text-align: center;
+line-height: 1.8;
+position: relative;
+color: #fff;
 }
 
 .wallet-description {
@@ -1088,6 +1140,25 @@ button {
 }
 
 .rippleSelectM:hover {
+  color: #fff;
+  text-transform: uppercase;
+  background: #6f5fff radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
+}
+
+.rippleRegister {
+  font-size: 1.4rem;
+  font-family: Anita, Helvetica, sans-serif;
+  width: 14rem;
+  height: 3.2rem;
+  border-radius: 10px;
+  color: #fff;
+ 
+  background: linear-gradient(to right, #24243e, #302b63, #24243e);
+  background-position: center;
+  margin: 0 10px;
+}
+
+.rippleRegister:hover {
   color: #fff;
   text-transform: uppercase;
   background: #6f5fff radial-gradient(circle, transparent 1%, #00bfff 1%) center/15000%;
