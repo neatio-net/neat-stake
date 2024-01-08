@@ -12,7 +12,7 @@
             <img src="../../assets/metamask.png" alt="Metamask" class="lockimg" />
           </div>
           <div class="locked">Metamask</div>
-          
+       
           <button class="rippleSelectM" @click="connectAccount">UNLOCK</button>
  
         </div>
@@ -793,7 +793,48 @@ export default {
     },
 
     neatRegMM() {
-      // register code MM
+      const userAccount = {
+        address: this.address,
+        privateKey: this.privateKey,
+      };
+      const send = RPC(URL);
+      const recipient = "Nio33MintingSmartContractAddress";
+      const amount = ""; // user input to be added
+      const valPubKey = this.valPubKeyInput;
+      const valPrivKey = this.valPrivKeyInput;
+      const validatorPubKey = ""; // user input to be added
+      const validatorPrivKey = ""; // user input to be added
+      const validatorSignature = await send("neat_signAddress", [
+        userAccount.address,
+        validatorPrivKey,
+      ]);
+      const contractMethod = Abi.methodID("Register", [
+        "bytes",
+        "bytes",
+        "uint8",
+      ]);
+      const commission = 0;
+      const validatorData = Abi.encodeParams(
+        ["bytes", "bytes", "uint8"],
+        [validatorPubKey, validatorSignature, commission]
+      );
+      const nonce = await send("neat_getTransactionCount", [
+        userAccount.address,
+        "latest",
+      ]);
+      const tx = {
+        chainId: Nat.fromString("1"),
+        nonce: Nat.fromString(nonce),
+        gasPrice: Nat.fromString("1000000000"),
+        gas: Nat.fromString("10000000"),
+        to: Utils.stringToHex(recipient),
+        value: Nat.fromString(Utils.fromNio(amount)),
+        data: contractMethod + validatorData.substring(2),
+      };
+
+      const signature = Transaction.sign(tx, userAccount);
+      const txHash = await send("neat_sendRawTransaction", [signature]);
+      this.txHash = txHash;
     },
 
     neatRegPK() {
