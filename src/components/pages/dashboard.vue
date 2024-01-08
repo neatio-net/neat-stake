@@ -792,50 +792,126 @@ export default {
 
     },
 
-    neatRegMM() {
-      const userAccount = {
-        address: this.address,
-        privateKey: this.privateKey,
-      };
-      const send = RPC(URL);
-      const recipient = "Nio33MintingSmartContractAddress";
-      const amount = ""; // user input to be added
-      const valPubKey = this.valPubKeyInput;
-      const valPrivKey = this.valPrivKeyInput;
-      const validatorPubKey = ""; // user input to be added
-      const validatorPrivKey = ""; // user input to be added
-      const validatorSignature = await send("neat_signAddress", [
-        userAccount.address,
-        validatorPrivKey,
-      ]);
-      const contractMethod = Abi.methodID("Register", [
+    async registerValidator() {
+      if (
+        this.nodePublicKey.indexOf("0x") === 0 &&
+        this.nodePublicKey.length !== 258
+      ) {
+        this.info("error", this.$t("errPublicKey"));
+        return;
+      }
+      if (
+        this.nodePublicKey.indexOf("0x") !== 0 &&
+        this.nodePublicKey.length !== 256
+      ) {
+        this.info("error", this.$t("errPublicKey"));
+        return;
+      }
+      if (this.nodePublicKey.indexOf("0x") !== 0) {
+        this.nodePublicKey = "0x" + this.nodePublicKey;
+      }
+
+      if (
+        this.nodePrivateKey.indexOf("0x") === 0 &&
+        this.nodePrivateKey.length !== 66
+      ) {
+        this.info("error", this.$t("errPrivatekey"));
+        return;
+      }
+      if (
+        this.nodePrivateKey.indexOf("0x") !== 0 &&
+        this.nodePrivateKey.length !== 64
+      ) {
+        this.info("error", this.$t("errPrivatekey"));
+        return;
+      }
+      if (this.nodePrivateKey.indexOf("0x") !== 0) {
+        this.nodePrivateKey = "0x" + this.nodePrivateKey;
+      }
+
+      // if (
+      //   isNaN(this.commission) ||
+      //   Math.floor(this.commission) !== this.commission ||
+      //   this.commission > 100 ||
+      //   this.commission < 1
+      // ) {
+      //   this.info("error", this.$t("errCommission"));
+      //   return;
+      // }
+      if (isNaN(this.limit) || this.limit <= 0) {
+        this.info("error", this.$t("errLimit"));
+        return;
+      }
+      if (isNaN(this.price) || this.price < 0) {
+        this.info("error", this.$t("errPrice"));
+        return;
+      }
+
+      // if (this.price < 0.0000005) {
+      //   this.price = '0.0000005'
+      // }
+
+      if (this.limit < 21000) {
+        this.info("error", this.$t("errLimitLess"));
+        return;
+      }
+
+      // if (this.price > 0.000005) {
+      //   this.info("error", this.$t("errPriceBig"));
+      //   return;
+      // }
+      
+      let send = RPC(Url);
+
+      let contractMethod = neatioapi.abi.methodID("Register", [
         "bytes",
         "bytes",
         "uint8",
       ]);
-      const commission = 0;
-      const validatorData = Abi.encodeParams(
-        ["bytes", "bytes", "uint8"],
-        [validatorPubKey, validatorSignature, commission]
-      );
-      const nonce = await send("neat_getTransactionCount", [
-        userAccount.address,
-        "latest",
-      ]);
-      const tx = {
-        chainId: Nat.fromString("1"),
-        nonce: Nat.fromString(nonce),
-        gasPrice: Nat.fromString("1000000000"),
-        gas: Nat.fromString("10000000"),
-        to: Utils.stringToHex(recipient),
-        value: Nat.fromString(Utils.fromNio(amount)),
-        data: contractMethod + validatorData.substring(2),
-      };
 
-      const signature = Transaction.sign(tx, userAccount);
-      const txHash = await send("neat_sendRawTransaction", [signature]);
-      this.txHash = txHash;
+      let signature = await send("neat_signAddress", [
+        this.address, "0x" + this.nodePrivateKey,
+      ]);
+      
+
+      let data = neatioapi.abi.encodeParams(
+        ["bytes", "bytes", "uint8"],
+        ["0x" + this.nodePublicKey, signature, this.commission]
+      );
+
+       
+      const params = [
+        {
+          from: this.address,
+          to: "0x0000000000000000000000000000000000001001",
+          gas: this.limit,
+          gasPrice: this.price,
+          value: Utils.toHex(Utils.fromNEAT(this.amount)),
+          data: contractMethod + data.substring(2)
+        },
+      ];
+
+      ethereum
+        .request({
+          method: 'eth_sendTransaction',
+          params,
+        })
+        .then((result) => {
+          console.log('hash', result);
+          this.$alert(result, "Validator successfully registered!", {
+            confirmButtonText: this.$t("confirm"),
+            type: "success",
+          });
+
+          setTimeout(() => {
+            this.getBalance();
+          }, 2000)
+        })
+        .catch((error) => {
+          console.log('tx error', error)
+        });
     },
+
 
     neatRegPK() {
       // register code PK
