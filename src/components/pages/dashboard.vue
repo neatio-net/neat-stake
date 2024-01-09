@@ -829,15 +829,6 @@ export default {
         this.nodePrivateKey = "0x" + this.nodePrivateKey;
       }
 
-      // if (
-      //   isNaN(this.commission) ||
-      //   Math.floor(this.commission) !== this.commission ||
-      //   this.commission > 100 ||
-      //   this.commission < 1
-      // ) {
-      //   this.info("error", this.$t("errCommission"));
-      //   return;
-      // }
       if (isNaN(this.limit) || this.limit <= 0) {
         this.info("error", this.$t("errLimit"));
         return;
@@ -847,20 +838,11 @@ export default {
         return;
       }
 
-      // if (this.price < 0.0000005) {
-      //   this.price = '0.0000005'
-      // }
-
-      if (this.limit < 21000) {
+       if (this.limit < 21000) {
         this.info("error", this.$t("errLimitLess"));
         return;
       }
 
-      // if (this.price > 0.000005) {
-      //   this.info("error", this.$t("errPriceBig"));
-      //   return;
-      // }
-      
       let send = RPC(Url);
 
       let contractMethod = neatioapi.abi.methodID("Register", [
