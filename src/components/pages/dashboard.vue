@@ -11,8 +11,8 @@
           <div class="lockked">
             <img src="../../assets/metamask.png" alt="Metamask" class="lockimg" />
           </div>
-          <div class="locked">Metamask</div>
-          Trezor/Ledger not supported.
+          <div class="lockedm">Metamask</div>
+          <div class="lockedm2">Trezor/Ledger not supported.</div> 
           <button class="rippleSelectM" @click="connectAccount">UNLOCK</button>
  
         </div>
@@ -1107,6 +1107,21 @@ color: #fff;
 .lockked {
   align-items: center;
   justify-content: center;
+}
+
+.lockedm {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  font-weight: 200;
+  font-family: Pirulen, Helvetica, sans-serif;
+}
+.lockedm2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #000000;
+  font-weight: 200;
+  font-family: Anita, Helvetica, sans-serif;
 }
 
 .lockimg {
