@@ -12,7 +12,7 @@
             <img src="../../assets/metamask.png" alt="Metamask" class="lockimg" />
           </div>
           <div class="locked">Metamask</div>
-       
+          Trezor/Ledger not supported.
           <button class="rippleSelectM" @click="connectAccount">UNLOCK</button>
  
         </div>
