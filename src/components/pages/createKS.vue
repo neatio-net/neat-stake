@@ -78,9 +78,8 @@ import VideoBackground from 'vue-responsive-video-background-player';
 import { Socket } from "vue-loading-spinner";
 import Access from "./modules/access";
 import EyeInput from "./modules/eyeInput";
-
-
 const neatAccount = require("neatioapi").account;
+const neatKeystore = require("neatioapi").keystore;
 
 
 
