@@ -35,6 +35,7 @@
 
     .nav-container {
       width: auto;
+      margin-top: -5px;
     }
     }
 
