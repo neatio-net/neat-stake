@@ -12,7 +12,7 @@
             <img src="../../assets/metamask.png" alt="Metamask" class="lockimg" />
           </div>
           <div class="lockedm">Metamask</div>
-          <div class="lockedm2">Trezor/Ledger not supported.</div> 
+          <div class="lockedm2"></div> 
           <button class="rippleSelectM" @click="connectAccount">UNLOCK</button>
  
         </div>
@@ -20,7 +20,8 @@
           <div class="lockked">
             <img src="../../assets/unencrypted.png" alt="Private Key" class="lockimg" />
           </div>
-          <div class="locked">Private Key</div>
+          <div class="lockedm">Private Key</div>
+          <div class="lockedm2"></div> 
           <button class="rippleSelectM" @click="importKey" >IMPORT</button>
  
         </div>
@@ -28,7 +29,8 @@
           <div class="lockked">
             <img src="../../assets/encrypted.png" alt="Keystore File" class="lockimg" />
           </div>
-          <div class="locked">Keystore File</div>
+          <div class="lockedm">KeyStore File</div>
+          <div class="lockedm2"></div> 
           <button class="rippleSelectM" @click="importKeyStore">IMPORT</button>
         </div>
             <div>
@@ -119,6 +121,45 @@
         </div>
       </template>
       <template v-slot:tabPanel-3>
+        <div class="action-box2">
+          <div class="neatStaking">
+            <div class="balance-details">
+              <div class="boxess-left">
+                <div class="balance-staked1">
+                  <div class="wl-stake"><img src="../../assets/nodeowner.png" alt="Stake" class="node-owner-image" /></div>
+                  <div class="earn-text2">Reward rate {{ APY * 1.5 }}% per year</div>
+                </div>
+                <div class="boxess-right">
+                              
+                  <div class="neatSending">
+                    <div class="hero__title">
+                      <input type="text" class="register-input1" v-model="addressToSend" placeholder="Node Public Key" />
+                    </div>
+                    <div class="hero__title">
+                      <input type="text" class="register-input2" v-model="amountToSend" placeholder="Node Private Key" />
+                    </div>
+                    <button class="rippleRegister" @click="neatRegMM" v-show="privateKey == null">Index Node 1</button>
+                    <button class="rippleRegister" @click="neatRegPK" v-show="privateKey != null">Index Node 2</button>
+                  </div>
+
+                  <!-- <div class="unclaimed-rewards">
+                    <div class="wl">
+                      <div class="spinr"><self-building-square-spinner :animation-duration="6000" :size="40"
+                          color="#000000" /></div>
+                    </div>
+                    <div>Unclaimed Rewards</div>
+                    <div>{{ (+rewards).toFixed(2) }}</div>
+                    <div><button class="rippleClaimNew" @click="claimRwdMM" v-show="privateKey == null">CLAIM</button></div>
+                    <div><button class="rippleClaimNew" @click="claimRwdPK" v-show="privateKey != null">CLAIM</button></div>
+                  </div> -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+      <template v-slot:tabPanel-4>
         <div class="action-box2">
           <div class="neatStaking">
             <div class="balance-details">
@@ -229,7 +270,7 @@ export default {
       selectedPool: null,
       priceUSD: "",
       price24h: "",
-      tabList: ["Transfer", "Staking", "NodeOwner"],
+      tabList: ["Transfer", "Staking", "NodeOwner" , "Validator"],
 
     };
   },
@@ -357,7 +398,7 @@ export default {
       this.privateKey = wallet.privateKey;
       const address = this.address;
       this.address = address;
-      // console.log(address);
+      console.log(address);
 
       const DATA = {
         jsonrpc: "2.0",
@@ -377,6 +418,8 @@ export default {
             this.getBalance();
           }, 100)
     },
+
+
 
 
     initialize() {
@@ -790,121 +833,6 @@ export default {
                send();
       });
 
-    },
-
-    async registerValidator() {
-      if (
-        this.nodePublicKey.indexOf("0x") === 0 &&
-        this.nodePublicKey.length !== 258
-      ) {
-        this.info("error", this.$t("errPublicKey"));
-        return;
-      }
-      if (
-        this.nodePublicKey.indexOf("0x") !== 0 &&
-        this.nodePublicKey.length !== 256
-      ) {
-        this.info("error", this.$t("errPublicKey"));
-        return;
-      }
-      if (this.nodePublicKey.indexOf("0x") !== 0) {
-        this.nodePublicKey = "0x" + this.nodePublicKey;
-      }
-
-      if (
-        this.nodePrivateKey.indexOf("0x") === 0 &&
-        this.nodePrivateKey.length !== 66
-      ) {
-        this.info("error", this.$t("errPrivatekey"));
-        return;
-      }
-      if (
-        this.nodePrivateKey.indexOf("0x") !== 0 &&
-        this.nodePrivateKey.length !== 64
-      ) {
-        this.info("error", this.$t("errPrivatekey"));
-        return;
-      }
-      if (this.nodePrivateKey.indexOf("0x") !== 0) {
-        this.nodePrivateKey = "0x" + this.nodePrivateKey;
-      }
-
-      if (isNaN(this.limit) || this.limit <= 0) {
-        this.info("error", this.$t("errLimit"));
-        return;
-      }
-      if (isNaN(this.price) || this.price < 0) {
-        this.info("error", this.$t("errPrice"));
-        return;
-      }
-
-       if (this.limit < 21000) {
-        this.info("error", this.$t("errLimitLess"));
-        return;
-      }
-
-      let send = RPC(Url);
-
-      let contractMethod = neatioapi.abi.methodID("Register", [
-        "bytes",
-        "bytes",
-        "uint8",
-      ]);
-
-      let signature = await send("neat_signAddress", [
-        this.address, "0x" + this.nodePrivateKey,
-      ]);
-      
-
-      let data = neatioapi.abi.encodeParams(
-        ["bytes", "bytes", "uint8"],
-        ["0x" + this.nodePublicKey, signature, this.commission]
-      );
-
-       
-      const params = [
-        {
-          from: this.address,
-          to: "0x0000000000000000000000000000000000001001",
-          gas: this.limit,
-          gasPrice: this.price,
-          value: Utils.toHex(Utils.fromNEAT(this.amount)),
-          data: contractMethod + data.substring(2)
-        },
-      ];
-
-      ethereum
-        .request({
-          method: 'eth_sendTransaction',
-          params,
-        })
-        .then((result) => {
-          console.log('hash', result);
-          this.$alert(result, "Validator successfully registered!", {
-            confirmButtonText: this.$t("confirm"),
-            type: "success",
-          });
-
-          setTimeout(() => {
-            this.getBalance();
-          }, 2000)
-        })
-        .catch((error) => {
-          console.log('tx error', error)
-        });
-    },
-
-
-    neatRegPK() {
-      // register code PK
-    },
-
-    neatUnRegMM() {
-      // un-register code MM
-    },
-
-    neatUnRegPK() {
-      // un-register code PK
     },
 
 
