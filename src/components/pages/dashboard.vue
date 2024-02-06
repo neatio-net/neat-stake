@@ -120,7 +120,11 @@
           </div>
         </div>
       </template>
-      <template v-slot:tabPanel-3>
+
+
+
+      
+     <!-- <template v-slot:tabPanel-3>
         <div class="action-box2">
           <div class="neatStaking">
             <div class="balance-details">
@@ -142,7 +146,7 @@
                     <button class="rippleRegister" @click="neatRegPK" v-show="privateKey != null">Index Node 2</button>
                   </div>
 
-                  <!-- <div class="unclaimed-rewards">
+              <div class="unclaimed-rewards">
                     <div class="wl">
                       <div class="spinr"><self-building-square-spinner :animation-duration="6000" :size="40"
                           color="#000000" /></div>
@@ -151,7 +155,7 @@
                     <div>{{ (+rewards).toFixed(2) }}</div>
                     <div><button class="rippleClaimNew" @click="claimRwdMM" v-show="privateKey == null">CLAIM</button></div>
                     <div><button class="rippleClaimNew" @click="claimRwdPK" v-show="privateKey != null">CLAIM</button></div>
-                  </div> -->
+                  </div> 
 
                 </div>
               </div>
@@ -181,7 +185,7 @@
                     <button class="rippleRegister" @click="neatRegPK" v-show="privateKey != null">Index Node 2</button>
                   </div>
 
-                  <!-- <div class="unclaimed-rewards">
+                 <div class="unclaimed-rewards">
                     <div class="wl">
                       <div class="spinr"><self-building-square-spinner :animation-duration="6000" :size="40"
                           color="#000000" /></div>
@@ -190,14 +194,16 @@
                     <div>{{ (+rewards).toFixed(2) }}</div>
                     <div><button class="rippleClaimNew" @click="claimRwdMM" v-show="privateKey == null">CLAIM</button></div>
                     <div><button class="rippleClaimNew" @click="claimRwdPK" v-show="privateKey != null">CLAIM</button></div>
-                  </div> -->
+                  </div> 
 
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </template>
+       </template>  -->
+
+
       >
     </app-tabs>
     <div v-if="step == 1">
@@ -270,7 +276,7 @@ export default {
       selectedPool: null,
       priceUSD: "",
       price24h: "",
-      tabList: ["Transfer", "Staking", "NodeOwner" , "Validator"],
+      tabList: [ "Transfer", "Staking",],
 
     };
   },
@@ -402,21 +408,30 @@ export default {
 
       const DATA = {
         jsonrpc: "2.0",
-        method: "neat_getBalance",
-        params: [`${address}`, "latest"],
+        method: "neat_getBalanceDetail",
+        params: [`${address}`, "latest", true],
         id: 1,
       };
+      axios
+        .post(URL, DATA)
+        .then((response) => {
+          (this.balance = Utils.toNEAT(
+            Nat.toString(response.data.result.balance)
+          )),
+            (this.staking = Utils.toNEAT(
+              Nat.toString(response.data.result.delegateBalance)
+            )),
+            (this.rewards = Utils.toNEAT(
+              Nat.toString(response.data.result.rewardBalance)
+            ));
 
-     
-          axios
-            .post(URL, DATA, { "Content-type": "application/json" })
-            .then(
-              (response) =>
-                (this.balance = Utils.toNEAT(Nat.toString(response.data.result)))
-            );
-            setTimeout(() => {
-            this.getBalance();
-          }, 100)
+          this.delegatedTo = response.data.result.rewardDetail;
+
+
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
     },
 
 
